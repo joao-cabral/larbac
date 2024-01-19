@@ -1,0 +1,49 @@
+---
+import Footer from '../components/footer.astro';
+import Header from '../components/header.astro';
+import '../styles/index.scss';
+
+interface Props {
+	title: string;
+	header: boolean;
+}
+
+const { title, header = false } = Astro.props;
+---
+
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta
+      		name='viewport'
+      		content='width=device-width, initial-scale=1, viewport-fit=cover'
+    	/>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+
+		<title>{title}</title>
+
+		<slot name='head' />
+
+		<style lang='scss'>
+			main {
+				margin: auto 0;
+			}
+
+			body {
+				@media (max-width: 920px) {
+					overflow-x: hidden !important;
+				}
+			}
+    	</style>
+	</head>
+	<body>
+		{header && <Header />}
+		<main>
+			<slot />
+		</main>
+		
+		<Footer/>
+	</body>
+</html>
