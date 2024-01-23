@@ -1,93 +1,264 @@
 ---
-import Card from '../../../components/Card.astro';
+import { Icon } from 'astro-icon/components';
+import Logo from '../../../components/logo.astro';
 import Layout from '../../../layouts/index.astro';
 
 const backgroundColor = "#DC8983";
-const borderRadius = "24px"
+// const borderRadius = "24px"
+const text = 'Gostaria de saber sobre a coleção';
+
+const images = [
+	'../../../public/collection1.jpeg',
+	'../../../public/collection2.jpeg',
+	'../../../public/collection3.jpeg',
+];
 ---
 
 <Layout  title="mmstoream" header={false}>
 	<main>
-		<h1 class="title">mmstoream</h1>
-		<p>
-			Loja de roupas.<br />
-			Veja o catalogo e acesse as redes sociais.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Catalago"
-				body=""
-				borderRadius={borderRadius}
-				backgroundColor={backgroundColor}
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-		</ul>
+		<section>
+			<Logo src='src="../../../public/mmstoream_logo.jpg' borderRadius='50px'/> 
+			<h1 class="title">mmstoream</h1>
+			<p>
+				Explore a moda feminina irresistível que combina estilo e conforto. ✨✨
+				<!-- De tendências modernas a clássicos atemporais, temos o que você procura.  -->
+			</p>
+			<section>
+				<ul class="links-list">
+					<li>
+						<a href='https://www.instagram.com/mmstoream/' title='Instagram' target="_blank">
+							<Icon name='mdi:instagram' />
+						</a>
+					</li>
+					<!-- Embed the contents of the `/src/icons/tiktok.svg` file -->
+					<li>
+						<a href='https://www.tiktok.com/@mmstoream?lang=pt-BR' title='Tiktok' target="_blank">
+							<Icon name='tiktok' />
+						</a>
+					</li>
+					<li>
+						<a href=`https://wa.me/+5592984483987/?text=${text}` title='Whatsapp' target="_blank">
+							<Icon name='mdi:whatsapp' />
+						</a>
+					</li>
+				</ul>
+			</section>
+		</section>
+
+		<section>
+			<div class="carousel">
+				{
+					images.map((img) => (
+						<div class="item">
+							<img src={img} alt="Imagem 1">
+						</div>
+					))
+				}
+			</div>
+		</section>
 	</main>
 </Layout>
-
-<style define:vars={{ backgroundColor }}>
-	main {
+	
+<style lang='scss' define:vars={{ backgroundColor }}>
+	body{
+		background-color: rgb(219, 137, 131);
+	}
+	.title {
+	  font-size: min(10rem, 8vw);
+	  min-width: 100vw;
+	  text-align: center;
+	  margin: 0 auto;
+	//   margin-bottom: 10.5rem;
+	  margin-left: 50%;
+	  transform: translateX(-50%);
+  
+	  .name {
+		background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
+		background-clip: text;
+		color: transparent;
+	  }
+	}
+	section {
+	  margin: 3rem 0;
+	  max-width: min(920px, 90vw);
+  
+	  p {
+		padding-top: 20px;
 		margin: auto;
-		padding: 1rem;
-		/* width: 800px; */
-		max-width: calc(100% - 2rem);
 		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-        background-color: var(--backgroundColor);
-	}
-    .title {
-    font-size: min(10rem, 8vw);
-    min-width: 100vw;
-    text-align: center;
-    margin: 0 auto;
-    margin-bottom: 10.5rem;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    }
-	.astro-a {
-		position: absolute;
-		top: -32px;
-		left: 50%;
-		transform: translatex(-50%);
-		width: 220px;
-		height: auto;
-		z-index: -1;
-	}
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
 		text-align: center;
-		margin-bottom: 1em;
+	  }
 	}
-	.instructions {
-		margin-bottom: 2rem;
-		border: 1px solid rgba(var(--accent-light), 25%);
-		background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
-		padding: 1.5rem;
-		border-radius: 8px;
+
+	.showcase {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+	padding: 0px;
+
+    @media (max-width: 800px) {
+      flex: 50%;
+    }
+
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    li {
+      transition: all 150ms ease-in-out;
+      margin: 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid transparent;
+      border: 1px solid var(--shade-bg);
+
+      &:hover {
+        cursor: pointer;
+        background-color: var(--shade-bg);
+        border: 1px solid var(--shade-outline);
+
+        h3 {
+          color: var(--color-primary);
+        }
+      }
+
+      a {
+        color: unset;
+        padding: 1rem;
+        aspect-ratio: 15/10;
+        height: 10rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+
+      h3 {
+        margin: 0;
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.3rem;
+      }
+
+      p {
+        text-align: center;
+        margin: 0.8rem 0;
+        font-size: 0.8rem;
+      }
+
+      small {
+        width: 100%;
+        text-align: center;
+        color: var(--color-100);
+        line-height: 0.5rem;
+      }
+    }
+  }
+
+	.links-list {
+	  display: flex;
+	  flex-direction: row;
+	  flex-wrap: wrap;
+	  gap: 1rem;
+	  padding: 0px;
+  
+	  @media (max-width: 800px) {
+		flex: 50%;
+	  }
+  
+	  width: 100%;
+	  justify-content: center;
+	  align-items: center;
+  
+	  width: 100%;
+	  justify-content: center;
+	  align-items: center;
+  
+	  li {
+		border-radius: 0.5rem;
+		transition: all 150ms ease-in-out;
+		border: 1px solid transparent;
+		list-style-type: none;
+  
+		&:hover {
+		  cursor: pointer;
+		  background-color: var(--shade-bg);
+		  border: 1px solid var(--shade-outline);
+		}
+  
+		&:hover {
+		  svg {
+			color: white;
+		  }
+  
+		  a {
+			color: transparent;
+		  }
+		}
+  
+		svg,
+		a {
+		  transition: color 150ms ease-in-out;
+		}
+  
+		svg {
+		  width: 2rem;
+		  height: 2rem;
+		  position: absolute;
+		  left: 0;
+		  right: 0;
+		  top: 0;
+		  bottom: 0;
+		  margin: auto;
+  
+		  color: white;
+		}
+  
+		a {
+		  aspect-ratio: 1;
+		  width: 2rem;
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  position: relative;
+  
+		  color: unset;
+		  font-size: 1.25rem;
+		  font-weight: bold;
+		}
+	  }
 	}
-	.instructions code {
-		font-size: 0.8em;
-		font-weight: bold;
-		background: rgba(var(--accent-light), 12%);
-		color: rgb(var(--accent-light));
-		border-radius: 4px;
-		padding: 0.3em 0.4em;
+
+	.carousel{
+		@media (max-width: 800px) {
+			display: flex;
+			overflow-x: auto;
+		}
+
+		@media (min-width: 800px) {
+			display: flex;
+		}
+		
+		.item{
+			@media (max-width: 800px) {
+				flex: none;
+				min-width: 22rem;
+				height: 22rem;
+			}
+
+			padding: 1rem;
+			height: 27vw;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+		}
+		
+		img {
+			height: 100%;
+			height: 100%;
+		}
 	}
-	.instructions strong {
-		color: rgb(var(--accent-light));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 2rem;
-		padding: 0;
-	}
+	
 </style>
