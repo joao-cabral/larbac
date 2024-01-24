@@ -5,7 +5,7 @@ on:
   # Usando um nome de branch diferente? Modifique `main` para o nome da sua branch
   push:
     branches: [main]
-# Permite que esse workflow seja executado manualmente da aba "Actions" no GitHub.
+  # Permite que esse workflow seja executado manualmente da aba "Actions" no GitHub.
   workflow_dispatch:
 
 # Permite que este job clone o repositório e crie uma página de deploy
@@ -22,10 +22,9 @@ jobs:
         uses: actions/checkout@v3
       - name: Install, build, and upload your site
         uses: withastro/action@v1
-         with:
-           node-version: 18 # A versão específica do Node que deve ser utilizada para a build do seu site. A versão padrão é a 18. (opcional)
-           package-manager: pnpm@latest # O gerenciador de pacotes usado para instalar as dependências e fazer a build do site. É automaticamente detectado a partir da sua lockfile. (opcional)
-          #  path: . # A localização da pasta raiz do seu projeto Astro dentro do seu repositório. (opcional)
+        with:
+          node-version: 18
+          package-manager: pnpm@latest
 
   deploy:
     needs: build
