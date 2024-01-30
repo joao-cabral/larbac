@@ -10,7 +10,9 @@ import Layout from '../layouts/index.astro';
 <Layout title="Joao" header={false}>
 	<main>
 		<section>
-			<h1 class="title">🔭<br />João Cabral</h1>
+			<div>
+				<h1 class="title">🔭<br />João Ca<span class="last-name">br</span>al</h1>
+			</div>
 			<p>
 				Criativo, curioso, inovador, comunicativo e ama um desafio - acredito que essas qualidades 
 				me descrevam bem. Natural de Manaus, sou um Desenvolvedor Frontend Web/Mobile. 
@@ -70,19 +72,19 @@ import Layout from '../layouts/index.astro';
 
 		<section>
 			<ul class="links-list">
-				<li>
+				<li class="curriculum">
 					<a href='./curriculum' title='Currículo' target="_blank">
 						<Icon name='mdi:account-file-outline' />
 						<h3>Currículo</h3>
 					</a>
 				</li>
-				<li>
+				<li class="linkedin">
 					<a href='https://www.linkedin.com/in/jo%C3%A3o-cabral-6296a8174/' title='Linkedin' target="_blank">
 						<Icon name='mdi:linkedin' />
 						<h3>Linkedin</h3>
 					</a>
 				</li>
-				<li>
+				<li class="github">
 					<a href='https://github.com/joao-cabral' title='Github' target="_blank">
 						<Icon name='mdi:github' />
 						<h3>Github</h3>
@@ -95,7 +97,13 @@ import Layout from '../layouts/index.astro';
 
 <style lang='scss'>
 	body{
-		background-color: rgb(26, 26, 30);
+		background-color: var(--white-special);
+	}
+	p{
+		color: var(--color-900)	
+	}
+	h1{
+	  color: var(--color-900)
 	}
 	.title {
 	  font-size: min(10rem, 8vw);
@@ -105,12 +113,10 @@ import Layout from '../layouts/index.astro';
 	  margin-bottom: 10.5rem;
 	  margin-left: 50%;
 	  transform: translateX(-50%);
-  
-	  .name {
-		background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
-		background-clip: text;
-		color: transparent;
-	  }
+
+	  .last-name {
+		color: var(--naples-yellow)
+	}
 	}
   
 	section {
@@ -123,69 +129,61 @@ import Layout from '../layouts/index.astro';
 	}
 
 	.showcase {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-	padding: 0px;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		padding: 0px;
 
-    @media (max-width: 800px) {
-      flex: 50%;
-    }
+		@media (max-width: 800px) {
+			flex: 50%;
+		}
 
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+		width: 100%;
+		justify-content: center;
+		align-items: center;
 
-    li {
-      transition: all 150ms ease-in-out;
-      margin: 1rem;
-      border-radius: 0.5rem;
-      border: 1px solid transparent;
-      border: 1px solid var(--shade-bg);
+		li {
+			transition: all 150ms ease-in-out;
+			margin: 1rem;
+			border-radius: 0.5rem;
+			border: 1px solid transparent;
+			border: 1px solid var(--shade-bg);
+			background-color: white;
 
-      &:hover {
-        cursor: pointer;
-        background-color: var(--shade-bg);
-        border: 1px solid var(--shade-outline);
+			a {
+				color: unset;
+				padding: 1rem;
+				aspect-ratio: 15/10;
+				height: 10rem;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
 
-        h3 {
-          color: var(--color-primary);
-        }
-      }
+				&:hover {
+				text-decoration: none;
+				}
+			}
 
-      a {
-        color: unset;
-        padding: 1rem;
-        aspect-ratio: 15/10;
-        height: 10rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
+		h3 {
+			margin: 0;
+			text-align: center;
+			font-weight: bold;
+			font-size: 1.3rem;
+			color: var(--earth-yellow);
+		}
 
-        &:hover {
-          text-decoration: none;
-        }
-      }
+		p {
+			text-align: center;
+			margin: 0.8rem 0;
+			font-size: 0.8rem;
+		}
 
-      h3 {
-        margin: 0;
-        text-align: center;
-        font-weight: bold;
-        font-size: 1.3rem;
-      }
-
-      p {
-        text-align: center;
-        margin: 0.8rem 0;
-        font-size: 0.8rem;
-      }
-
-      small {
-        width: 100%;
-        text-align: center;
-        color: var(--color-100);
-        line-height: 0.5rem;
-      }
+		small {
+			width: 100%;
+			text-align: center;
+			color: var(--naples-yellow);
+			line-height: 0.5rem;
+		}
     }
   }
 
@@ -207,64 +205,163 @@ import Layout from '../layouts/index.astro';
 	  width: 100%;
 	  justify-content: center;
 	  align-items: center;
+	  
+	  .curriculum{
+			background-color: var(--celestial-blue);
+			&:hover {
+				cursor: pointer;
+				background-color: transparent;
+				border: 1px solid var(--shade-outline);
+			}
+			
+			&:hover {
+				svg {
+					color: var(--celestial-blue);
+				}
+			}
+
+
+			svg,a {
+				transition: color 150ms ease-in-out;
+			}
+  
+			svg {
+				width: 5rem;
+				height: 5rem;
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				z-index: -1;
+			}
+  
+			a {
+				aspect-ratio: 1;
+				width: 8rem;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+		
+				color: var(--colo-50);
+				font-size: 1.25rem;
+				font-weight: bold;
+		
+				&:hover {
+					text-decoration: none;
+					color: transparent;
+				}
+			}
+		}
+		
+		.linkedin{
+			background-color: var(--hollywood-cerise);
+			&:hover {
+				cursor: pointer;
+				background-color: transparent;
+				border: 1px solid var(--shade-outline);
+			}
+			
+			&:hover {
+				svg {
+					color: var(--hollywood-cerise);
+				}
+			}
+
+
+			svg,a {
+				transition: color 150ms ease-in-out;
+			}
+  
+			svg {
+				width: 5rem;
+				height: 5rem;
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				z-index: -1;
+			}
+  
+			a {
+				aspect-ratio: 1;
+				width: 8rem;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+		
+				color: var(--colo-50);
+				font-size: 1.25rem;
+				font-weight: bold;
+		
+				&:hover {
+					text-decoration: none;
+					color: transparent;
+				}
+			}
+		}
+
+		.github{
+			background-color: var(--persian-indigo);
+			
+			&:hover {
+				cursor: pointer;
+				background-color: transparent;
+				border: 1px solid var(--shade-outline);
+			}
+			
+			&:hover {
+				svg {
+					color: var(--persian-indigo);
+				}
+			}
+
+
+			svg,a {
+				transition: color 150ms ease-in-out;
+			}
+  
+			svg {
+				width: 5rem;
+				height: 5rem;
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				z-index: -1;
+			}
+  
+			a {
+				aspect-ratio: 1;
+				width: 8rem;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+		
+				color: var(--colo-50);
+				font-size: 1.25rem;
+				font-weight: bold;
+		
+				&:hover {
+					text-decoration: none;
+					color: transparent;
+				}
+			}
+		}
   
 	  li {
 		border-radius: 0.5rem;
 		transition: all 150ms ease-in-out;
 		border: 1px solid transparent;
 		list-style-type: none;
-  
-		&:hover {
-		  cursor: pointer;
-		  background-color: var(--shade-bg);
-		  border: 1px solid var(--shade-outline);
-		}
-  
-		&:hover {
-		  svg {
-			color: var(--color-primary);
-		  }
-  
-		  a {
-			color: transparent;
-		  }
-		}
-  
-		svg,
-		a {
-		  transition: color 150ms ease-in-out;
-		}
-  
-		svg {
-		  width: 5rem;
-		  height: 5rem;
-		  position: absolute;
-		  left: 0;
-		  right: 0;
-		  top: 0;
-		  bottom: 0;
-		  margin: auto;
-		  z-index: -1;
-  
-		  color: var(--shade-bg);
-		}
-  
-		a {
-		  aspect-ratio: 1;
-		  width: 8rem;
-		  display: flex;
-		  justify-content: center;
-		  align-items: center;
-		  position: relative;
-  
-		  color: unset;
-		  font-size: 1.25rem;
-		  font-weight: bold;
-  
-		  &:hover {
-			text-decoration: none;
-		  }
-		}
 	  }
 	}
 </style>
