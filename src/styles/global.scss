@@ -53,8 +53,16 @@ li {
   font-display: swap;
 }
 
+@font-face {
+  font-family: "BrasilComS";
+  src: url("/public/fonts/Brs10-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 html {
-  font-family: "Twemoji Country Flags", Poppins, sans-serif;
+  font-family: "Twemoji Country Flags", sans-serif;
   overflow-x: hidden;
   min-height: 100%;
   max-width: 100vw;
