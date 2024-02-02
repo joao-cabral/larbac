@@ -20,6 +20,87 @@
 
   --shade-bg: hsla(0, 0%, 100%, 5%);
   --shade-outline: hsla(0, 0%, 100%, 10%);
+
+  /* SCSS RGB */
+  --hollywood-cerise: rgba(215, 65, 167, 1);
+  --persian-indigo: rgba(58, 23, 114, 1);
+  --celestial-blue: rgba(83, 152, 190, 1);
+  --naples-yellow: rgba(242, 205, 93, 1);
+  --earth-yellow: rgba(222, 165, 75, 1);
+  --white-special: rgba(247, 247, 248, 1);
+
+  /* SCSS Gradient */
+  --gradient-top: linear-gradient(
+    0deg,
+    #d741a7ff,
+    #3a1772ff,
+    #5398beff,
+    #f2cd5dff,
+    #dea54bff
+  );
+  --gradient-right: linear-gradient(
+    90deg,
+    #d741a7ff,
+    #3a1772ff,
+    #5398beff,
+    #f2cd5dff,
+    #dea54bff
+  );
+  --gradient-bottom: linear-gradient(
+    180deg,
+    #d741a7ff,
+    #3a1772ff,
+    #5398beff,
+    #f2cd5dff,
+    #dea54bff
+  );
+  --gradient-left: linear-gradient(
+    270deg,
+    #d741a7ff,
+    #3a1772ff,
+    #5398beff,
+    #f2cd5dff,
+    #dea54bff
+  );
+  $gradient-top-right: linear-gradient(
+    45deg,
+    #d741a7ff,
+    #3a1772ff,
+    #5398beff,
+    #f2cd5dff,
+    #dea54bff
+  );
+  $gradient-bottom-right: linear-gradient(
+    135deg,
+    #d741a7ff,
+    #3a1772ff,
+    #5398beff,
+    #f2cd5dff,
+    #dea54bff
+  );
+  $gradient-top-left: linear-gradient(
+    225deg,
+    #d741a7ff,
+    #3a1772ff,
+    #5398beff,
+    #f2cd5dff,
+    #dea54bff
+  );
+  --gradient-bottom-left: linear-gradient(
+    315deg,
+    #d741a7ff,
+    #3a1772ff,
+    #5398beff,
+    #f2cd5dff,
+    #dea54bff
+  );
+  --gradient-radial: radial-gradient(
+    #d741a7ff,
+    #3a1772ff,
+    #5398beff,
+    #f2cd5dff,
+    #dea54bff
+  );
 }
 
 @media (prefers-color-scheme: light) {
