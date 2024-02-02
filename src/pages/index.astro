@@ -1,18 +1,25 @@
 ---
 import { Icon } from 'astro-icon/components';
-// import Card from '../components/Card.astro';
 import Layout from '../layouts/index.astro';
-
-// const backgroundColor = "#23262d";
-// const borderRadius = "60px"
 ---
 
 <Layout title="Joao" header={false}>
 	<main>
 		<section>
-			<div>
-				<h1 class="title">🔭<br />João Ca<span class="last-name">br</span>al</h1>
+			<div style={{
+				display: 'flex',
+				justifyContent: 'center'
+			}}>
+				<iframe 
+					frameborder="0" 
+					height="300" 
+					width="480" 
+					src="https://giphy.com/embed/SIJmx1iZOZw8Ye3bHa/video">
+				</iframe>
 			</div>
+			
+			<h1 class="title"><br />João Ca<span class="b-yellow">b</span><span class="r-green">r</span>al</h1>
+			
 			<p>
 				Criativo, curioso, inovador, comunicativo e ama um desafio - acredito que essas qualidades 
 				me descrevam bem. Natural de Manaus, sou um Desenvolvedor Frontend Web/Mobile. 
@@ -110,13 +117,28 @@ import Layout from '../layouts/index.astro';
 	  font-size: min(10rem, 11vw);
 	  min-width: 100vw;
 	  text-align: center;
-	  margin: 0 auto;
-	  margin-bottom: 5rem;
-	  margin-left: 50%;
+	  
 	  transform: translateX(-50%);
+	  color: black;
 
-	  .last-name {
+	  @media (max-width: 800px) {
+		margin: 0 auto;
+	  	margin-bottom: 5rem;
+	  	margin-left: 50%;
+		}
+
+
+	  @media (min-width: 800px) {
+		margin: -100px auto;
+		margin-bottom: 5rem;
+		margin-left: 50%;
+		}
+
+	  .b-yellow {
 			color: var(--naples-yellow)
+		}
+		.r-green {
+			color: green
 		}
 	}
   
