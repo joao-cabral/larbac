@@ -41,11 +41,13 @@ import Layout from '../layouts/index.astro';
 		
 			<ul class='showcase'>
 				<li>
+					<img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjc4ZDBzYmpjc21odm04ZmtrYXBtdG1nMWF0cGowanhxeTEwMmtpYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LecePnmaLOzToa5MG1/giphy.gif" alt="gif">
 					<a
 						href={`https://github.com/joao-cabral`}
 						title={'project'}
 						target='_blank'
-						rel='noopener noreferrer'>
+						rel='noopener noreferrer'
+					>
 						<h3>{'Projeto de Sensoriamento'}</h3>
 						<p>{'Conexão bluetooth com placas IoT e coleta de dados dos sensores.'}</p>
 						<small>
@@ -58,6 +60,7 @@ import Layout from '../layouts/index.astro';
 				</li>
 
 				<li>
+					<img id="gif" src="https://media4.giphy.com/media/j1RdWetLBJQIdP8TnK/200w.webp" alt="gif">
 					<a
 						href={`https://github.com/joao-cabral`}
 						title={'project'}
@@ -172,6 +175,13 @@ import Layout from '../layouts/index.astro';
 			border: 1px solid transparent;
 			border: 1px solid var(--shade-bg);
 			background-color: white;
+			position: relative;
+			overflow: hidden;
+
+			img {
+				width: 100%;
+        		height: 150px;
+			}
 
 			a {
 				color: unset;
