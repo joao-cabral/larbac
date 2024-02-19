@@ -1,0 +1,58 @@
+{
+  "id": "curriculum-pt",
+  "lang": "Ler em português 🇧🇷",
+  "month": "Atualizado em fevereiro de 2024",
+  "name": "João da Silva Cabral",
+  "title": "Desenvolvedor Mobile/Web",
+  "phone": "+55 92 99268-9937",
+  "email": "larbac.me",
+  "about": [
+    "Meu interesse por desenvolvimento Mobile inicia em 2019 quando eu entro para um programa de inovação em um instituto de pesquisa de Manaus-AM, e desde então, sou fascinado por essa área. Me considero uma pessoa inovadora, criativa, comunicativa e que gosta de compartilhar informação.",
+    "Sou um <b>Desenvolvedor Mobile</b>, que também tem experiência com desenvolvimento <b>Frontend Web</b> e <b>liderança</b>"
+  ],
+  "educationName": "Educação",
+  "education": [
+    {
+      "date": "2017-2020",
+      "title": "Sistemas de Informação",
+      "institution": "FUCAPI -  Fundação Centro de Análise, Pesquisa e Inovação Tecnológica"
+    }
+  ],
+  "experienceName": "Experiência",
+  "experiences": [
+    {
+      "title": "Engenheiro de Software - Kasco P&D",
+      "start": "Set de 2021",
+      "end": "Hoje",
+      "type": "",
+      "about": [
+        "<b>Projeto Feed Manager</b> - Como Engenheiro de Software na equipe de P&D, meus principais objetivos são desenvolver e manter o lado do Frontend de um <b>sistema de gerenciamento de alimentação para grandes fazendas de gado</b>. Utilizamos diversas tecnologias para oferecer a melhor experiência ao usuário fazendeiro",
+        "Todas as interfaces foram construídas com <b>React</b>, <b>Typescript</b>, <b>Material UI</b> e geração de código para garantir a segurança de tipos."
+      ]
+    },
+    {
+      "title": "Desenvolvedor Mobile Flutter - Grupo ICTS",
+      "start": "Jun de 2021",
+      "end": "Dez de 2023",
+      "type": "",
+      "about": [
+        "<b>Projeto Rotas</b> - O projeto teve como objetivo mostrar para os colaboradores onde os itinerários estão em tempo real, para os motoristas a melhor rota que deve percorrer para embarcar os colaboradores, e por fim, o perfil administrativo pode verificar em tempo real todas as rotas que estão em andamento.",
+        "<b>Projeto Nimrod</b> -  O projeto teve como propósito desenvolver um APP que configure placas de sensoriamento para que sejam realizadas coletas de dados dos sensores através de protocolo MQTT."
+      ]
+    },
+    {
+      "title": "Desenvolvedor Mobile Flutter - Neuron",
+      "start": "Jan de 2022",
+      "end": "Jun de 2022",
+      "type": "",
+      "about": [
+        "<b>Feedback 360</b> - O projeto tinha como objetivo realizar avaliações 360 com todos os colaboradores. O consumo de uma api era realizado para pegar as perguntas e usuários que seriam avaliados, logo após a avaliação os dados eram enviados para o backend."
+      ]
+    }
+  ],
+  "ossTitle": "Projetos pessoal",
+  "oss": [
+    "<b>LibrasCode</b> - App para aumentar acessibilidade e autonomia dos deficientes auditivos nos museus de Manaus. Ele tem como objetivo fazer a leitura de QR Code que contém a URL de links de vídeos do youtube, os vídeos são iniciados no próprio app.",
+    "<b>Adenilso</b> - O projeto tem como propósito ser uma versão mobile do site Google Trends, para funcionamento do app é necessário apenas consumir um endpoint onde é retornado todos os países com seus 20 termos mais pesquisados no Google. Mais sobre o projeto aqui."
+  ]
+}
