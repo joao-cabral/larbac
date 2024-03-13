@@ -30,7 +30,7 @@ const cv = Astro.props;
       </div>
 
       <div class='icon'>
-        <a href={`https://larbac.me/${cv.data.id}.pdf`} title='Download as PDF'>
+        <a href={`https://larbac.me/${cv.data.id}.pdf`} title='Download PDF'>
           <Icon name='mdi:file-download' color='green' />
         </a>
       </div>
@@ -71,7 +71,7 @@ const cv = Astro.props;
 
     <div class='experience'>
       <h4 class='layout-title'>
-        Experiência
+        {cv.data.experienceName}
       </h4>
 
       <ul>
