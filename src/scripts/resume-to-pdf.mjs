@@ -6,7 +6,7 @@ const app = express();
 app.use(express.static(path.join("dist")));
 
 const server = app.listen(18347);
-const FILENAMES = ["curriculo", "curriculum"];
+const FILENAMES = ["curriculum-pt"];
 
 const browser = await puppeteer.launch({
   headless: "new",
@@ -22,8 +22,8 @@ async function generatePDF(url, outputPath) {
   await page.pdf({ path: outputPath, format: "A4", tagged: true, scale: 0.75 });
 }
 
-await generatePDF("http://localhost:18347/curriculo", "dist/curriculo.pdf");
-await generatePDF("http://localhost:18347/curriculum-pt", "dist/curriculum-pdf.pdf");
+await generatePDF("https://localhost:4321/curriculum-pt", "dist/curriculum-pt.pdf");
+// await generatePDF('http://localhost:18347/curriculum', 'dist/curriculum.pdf');
 
 await browser.close();
 server.close();
