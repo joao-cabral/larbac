@@ -7,8 +7,8 @@
   "phone": "+55 92 99268-9937",
   "email": "larbac.me",
   "about": [
-    "Meu interesse por desenvolvimento Mobile inicia em 2019 quando eu entro para um programa de inovação em um instituto de pesquisa de Manaus-AM, e desde então, sou fascinado por essa área. Me considero uma pessoa inovadora, criativa, comunicativa e que gosta de compartilhar informação.",
-    "Sou um <b>Desenvolvedor Mobile</b>, que também tem experiência com desenvolvimento <b>Frontend Web</b> e <b>liderança</b>"
+    "Meu interesse por desenvolvimento Mobile se iniciou em 2019 quando entrei para um programa de inovação em um instituto de pesquisa de Manaus-AM, e desde então, sou fascinado por essa área. Me considero uma pessoa inovadora, criativa, comunicativa e que gosta de compartilhar informação.",
+    "Sou um <b>Desenvolvedor Mobile</b>, que também tem experiência com desenvolvimento <b>Frontend Web</b> e <b>Liderança</b>."
   ],
   "educationName": "Educação",
   "education": [
@@ -18,7 +18,7 @@
       "institution": "FUCAPI -  Fundação Centro de Análise, Pesquisa e Inovação Tecnológica"
     }
   ],
-  "experienceName": "Experiência",
+  "experienceName": "Experiência Profissional",
   "experiences": [
     {
       "title": "Engenheiro de Software - Kasco P&D",
@@ -50,7 +50,7 @@
       ]
     }
   ],
-  "ossTitle": "Projetos pessoal",
+  "ossTitle": "Projetos Pessoal",
   "oss": [
     "<b>LibrasCode</b> - App para aumentar acessibilidade e autonomia dos deficientes auditivos nos museus de Manaus. Ele tem como objetivo fazer a leitura de QR Code que contém a URL de links de vídeos do youtube, os vídeos são iniciados no próprio app.",
     "<b>Adenilso</b> - O projeto tem como propósito ser uma versão mobile do site Google Trends, para funcionamento do app é necessário apenas consumir um endpoint onde é retornado todos os países com seus 20 termos mais pesquisados no Google. Mais sobre o projeto aqui."
