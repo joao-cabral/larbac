@@ -182,6 +182,12 @@ const cv = Astro.props;
       margin-bottom: -2rem !important;
     }
 
+    @media print {
+      .langs { 
+        display: none !important;
+      };
+    }
+
     .icon {
       @media print {
         display: none !important;
@@ -201,11 +207,6 @@ const cv = Astro.props;
       display: flex;
       gap: 1rem;
       justify-content: center;
-
-      @media print {
-        margin: 0.5rem 0 !important;
-        font-size: 0.8rem !important;
-      }
     }
 
     a {
