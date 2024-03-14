@@ -22,7 +22,7 @@ async function generatePDF(url, outputPath) {
   await page.pdf({ path: outputPath, format: "A4", tagged: true, scale: 0.75 });
 }
 
-await generatePDF("https://localhost:4321/curriculum-pt", "dist/curriculum-pt.pdf");
+await generatePDF("http://localhost:18347/curriculum-pt", "dist/curriculum-pt.pdf");
 // await generatePDF('http://localhost:18347/curriculum', 'dist/curriculum.pdf');
 
 await browser.close();
