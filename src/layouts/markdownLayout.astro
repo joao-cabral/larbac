@@ -11,8 +11,12 @@ const { frontmatter } = Astro.props;
 </Layout>
 
 <style lang='scss'>
+      :root {
+    --color-primary: black !important;
+    --color-secondary: black !important;
+  }
 	body{
 		background-color: var(--white-special);
-        color: black;
+        color: black !important;
 	}
 </style>
