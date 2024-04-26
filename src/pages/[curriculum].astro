@@ -26,7 +26,7 @@ const cv = Astro.props;
       </div>
 
       <div class='langs'>
-        Em construção...
+        larbac
       </div>
 
       <div class='icon'>
@@ -37,23 +37,23 @@ const cv = Astro.props;
     </nav>
 
     <header>
-      <div>
-        <small>{cv.data.title}</small>
         <h1>
           <br />
           {cv.data.name}
         </h1>
-      </div>
 
       <div class='contact'>
-        <div>{cv.data.phone} | {cv.data.email}</div>
-        <a href='https://larbac.me' target='_blank'>larbac.me</a>
+        <div>Tel: {cv.data.phone} | {cv.data.email}</div>
+        <a href='https://larbac.me' target='_blank'>Portfolio: larbac.me</a>
         <br />
         <a href='https://www.linkedin.com/in/jo%C3%A3o-cabral-6296a8174/' target='_blank'
-          >linkedin.com/in/joaocabral</a
+          >Linkedin: linkedin.com/in/joaocabral</a
+        >
+        <br>
+        <a href='https://github.com/joao-cabral' target='_blank'
+          >Github: juao.cabral</a
         >
       </div>
-      <div>{cv.data.month}</div>
       <hr />
     </header>
 
@@ -61,32 +61,22 @@ const cv = Astro.props;
       {cv.data.about.map((a) => <p set:html={a} />)}
     </div>
 
-    <div class='about'>
-      <h4 class='layout-title'>
-        {cv.data.ossTitle}
-      </h4>
-
-      {cv.data.oss.map((c) => <p set:html={c} />)}
-    </div>
-
     <div class='experience'>
-      <h4 class='layout-title'>
+      <div class='layout-title'>
         {cv.data.experienceName}
-      </h4>
+      </div>
 
       <ul>
         {
           cv.data.experiences.map((experience) => (
             <li>
               <div class='experience__title'>
-                <br />
                 <div>{experience.start}</div>
                 <div>{experience.end}</div>
-                <small>{experience.type}</small>
               </div>
 
               <div class='experience__about'>
-                <h4 set:html={experience.title} />
+                <div>{experience.title}</div>
 
                 {experience.about.map((c) => (
                   <p set:html={c} />
@@ -98,6 +88,14 @@ const cv = Astro.props;
       </ul>
     </div>
 
+    <div class='about'>
+      <h4 class='layout-title'>
+        {cv.data.ossTitle}
+      </h4>
+
+      {cv.data.oss.map((c) => <p set:html={c} />)}
+    </div>
+
     <div class='education'>
       <h4 class='layout-title'>
         {cv.data.educationName}
@@ -107,9 +105,7 @@ const cv = Astro.props;
         {
           cv.data.education.map((education) => (
             <li>
-              <h4>{education.date}</h4>
-              <div class='title' set:html={education.title} />
-              <br />
+              <div> {education.title} - {education.date}</div>
               <div>{education.institution}</div>
             </li>
           ))
@@ -146,12 +142,13 @@ const cv = Astro.props;
   }
 
   header {
-    margin-bottom: 5rem;
-    text-align: center;
+    text-align: left;
 
     h1 {
       font-size: 1.5rem;
       font-weight: bold;
+    text-align: left;
+
 
       a {
         text-decoration: none;
@@ -168,7 +165,7 @@ const cv = Astro.props;
     }
 
     hr {
-      max-width: 50%;
+      max-width: 100%;
     }
   }
 
@@ -215,10 +212,10 @@ const cv = Astro.props;
   }
 
   .layout-title {
-    font-size: 1.5rem;
-    text-align: center;
-    margin: 2rem 0;
-    font-weight: 300;
+    font-size: 1.2rem;
+    text-align: left;
+    font-weight: 500;
+    color: grey
   }
 
   .layout {
@@ -237,7 +234,7 @@ const cv = Astro.props;
     ul {
       display: flex;
       flex-direction: row;
-      justify-content: center;
+      justify-content: left;
 
       @media (max-width: 768px) {
         flex-direction: column;
@@ -248,15 +245,11 @@ const cv = Astro.props;
       }
 
       li {
-        text-align: center;
+        text-align: left;
         max-width: 24rem;
 
         .title{
           font-weight: bold;
-        }
-
-        h6, h4{
-          font-weight: 300;
         }
       }
     }
@@ -270,29 +263,21 @@ const cv = Astro.props;
         break-inside: avoid;
 
         .experience__title {
-          width: 15%;
-          margin-right: 1rem;
-          font-weight: bold;
-          text-align: right;
-
-          small {
-            font-weight: normal;
-          }
+          width: 10%;
+          font-weight: normal;
+          text-align: left;
+          font-size: 0.8rem;
         }
 
+        @media (max-width: 768px) {
+          .experience__title {
+          display: none;
+        }
+      }
+
         .experience__about {
-          width: 85%;
+          width: 90%;
           text-align: left;
-
-          h6 {
-            font-weight: bold;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-          }
-
-          p:not(:first-child) {
-            margin-top: 1rem;
-          }
         }
 
         &:not(:first-child) {

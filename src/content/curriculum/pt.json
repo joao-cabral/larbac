@@ -5,12 +5,11 @@
   "name": "João da Silva Cabral",
   "title": "Desenvolvedor Mobile/Web",
   "phone": "+55 92 99268-9937",
-  "email": "larbac.me",
+  "email": "joaocabral1232@gmail.com",
   "about": [
-    "Meu interesse por desenvolvimento Mobile se iniciou em 2019 quando entrei para um programa de inovação em um instituto de pesquisa de Manaus-AM, e desde então, sou fascinado por essa área. Me considero uma pessoa inovadora, criativa, comunicativa e que gosta de compartilhar informação.",
-    "Sou um <b>Desenvolvedor Mobile</b>, que também tem experiência com desenvolvimento <b>Frontend Web</b> e <b>Liderança</b>."
+    "Inovador, criativo e comunicativo. Estou na área de desenvolvimento desde 2017, porém atuo profissionalmente desde 2019. Trabalhei em empresas do setor de testes automatizados, agronegócios, IoT e pesquisa. Ao decorrer da minha carreira arquitetei, desenvolvi design, publiquei, dei manutenção e liderei time voltado para desenvolvimento Frontend/Mobile."
   ],
-  "educationName": "Educação",
+  "educationName": "Formação",
   "education": [
     {
       "date": "2017-2020",
@@ -22,31 +21,32 @@
   "experiences": [
     {
       "title": "Engenheiro de Software - Kasco P&D",
-      "start": "Set de 2021",
-      "end": "Hoje",
+      "start": "Jan/2022",
+      "end": "Fev/2024",
       "type": "",
       "about": [
-        "<b>Projeto Feed Manager</b> - Como Engenheiro de Software na equipe de P&D, meus principais objetivos são desenvolver e manter o lado do Frontend de um <b>sistema de gerenciamento de alimentação para grandes fazendas de gado</b>. Utilizamos diversas tecnologias para oferecer a melhor experiência ao usuário fazendeiro",
-        "Todas as interfaces foram construídas com <b>React</b>, <b>Typescript</b>, <b>Material UI</b> e geração de código para garantir a segurança de tipos."
+        "<b>Principais atividades:</b> Desenvolvimento de novos features com base nos requisitos do cliente, liderança do time de desenvolvimento, lidar diretamente com o cliente para novas especificações.",
+        "O projeto voltado para o Agro tem como propósito modernizar uma ferramenta já utilizada por grandes fazendas e incluir novas funcionalidades. A nova interface é construída em <b>React</b>, <b>TypeScript</b> e <b>Material UI</b>. Já no backend é utilizado <b>Fastify</b>, <b>NodeJS</b>, <b>Typescript</b>, <b>Open API</b>, <b>Postgres</b> e <b>Kita</b>. Na parte Mobile é usando <b>React Native</b>."
       ]
     },
     {
-      "title": "Desenvolvedor Mobile Flutter - Grupo ICTS",
-      "start": "Jun de 2021",
-      "end": "Dez de 2023",
+      "title": "Desenvolvedor Web/Mobile - Grupo ICTS",
+      "start": "Jun/2021",
+      "end": "Dez/2023",
       "type": "",
       "about": [
-        "<b>Projeto Rotas</b> - O projeto teve como objetivo mostrar para os colaboradores onde os itinerários estão em tempo real, para os motoristas a melhor rota que deve percorrer para embarcar os colaboradores, e por fim, o perfil administrativo pode verificar em tempo real todas as rotas que estão em andamento.",
-        "<b>Projeto Nimrod</b> -  O projeto teve como propósito desenvolver um APP que configure placas de sensoriamento para que sejam realizadas coletas de dados dos sensores através de protocolo MQTT."
+        "<b>Principais atividades:</b> Planejamento, desenvolvimento dos projetos, integração de funcionalidades, realizações de testes e suporte para clientes. Para os principais projetos desenvolvidos na empresa eu liderei o desenvolvimento do aplicativo desde a concepção até a implementação, e lidei diretamente com o designer e cliente para o desenvolvimento das interfaces com uma ótima experiência para o usuário.",
+        "<b>Rotas:</b> O projeto foi desenvolvido em <b>Flutter</b> e teve como objetivo mostrar para os colaboradores as rotas em tempo real, para os motoristas a localização de embarque dos colaboradores e o administrativo também poderia visualizar o andamento das rotas em tempo real. As tecnologias utilizadas foram: <b>GetX</b>, <b>MapBox</b>, <b>SocketIO</b> e outras tecnologias.",
+        "<b>Sensoriamento:</b> O projeto teve como propósito desenvolver um APP que configure placas (IoT) de sensoriamento para que sejam realizadas coletas de dados dos sensores através do protocolo <b>MQTT</b>. O aplicativo foi desenvolvido em Flutter utilizando <b>MobX</b>, <b>Provider</b> e outras tecnologias, a interface web foi desenvolvida em <b>Angular</b>, e tinha como principal objetivo o monitoramento de todas as placas e geração de relatórios."
       ]
     },
     {
-      "title": "Desenvolvedor Mobile Flutter - Neuron",
-      "start": "Jan de 2022",
-      "end": "Jun de 2022",
+      "title": "Desenvolvedor Testes - SIDIA",
+      "start": "Fev/2019",
+      "end": "Jun/2021",
       "type": "",
       "about": [
-        "<b>Feedback 360</b> - O projeto tinha como objetivo realizar avaliações 360 com todos os colaboradores. O consumo de uma api era realizado para pegar as perguntas e usuários que seriam avaliados, logo após a avaliação os dados eram enviados para o backend."
+        "<b>Principais atividades:</b> Executar, planejar, desenvolver testes automatizados para os principais devices da Samsung. Além de executar as principais funções de tester, fiz parte do time de automação onde foi desenvolvido ferramentas internas para melhorar a eficiência dos colaboradores. Foi utilizado tecnologias como <b>React</b>, <b>Eletron</b> e <b>Python</b>."
       ]
     }
   ],
