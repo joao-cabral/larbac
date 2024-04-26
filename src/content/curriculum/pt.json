@@ -50,7 +50,7 @@
       ]
     }
   ],
-  "ossTitle": "Projetos Pessoal",
+  "ossTitle": "Projetos Pessoais",
   "oss": [
     "<b>LibrasCode</b> - App para aumentar acessibilidade e autonomia dos deficientes auditivos nos museus de Manaus. Ele tem como objetivo fazer a leitura de QR Code que contém a URL de links de vídeos do youtube, os vídeos são iniciados no próprio app.",
     "<b>Adenilso</b> - O projeto tem como propósito ser uma versão mobile do site Google Trends, para funcionamento do app é necessário apenas consumir um endpoint onde é retornado todos os países com seus 20 termos mais pesquisados no Google. Mais sobre o projeto aqui."
