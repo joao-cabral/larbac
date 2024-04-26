@@ -6,6 +6,10 @@ const year = new Date().getFullYear();
 
 <style lang="scss">
   footer {
+    @media print {
+        display: none !important;
+    }
+
     margin: 0;
     margin-top: auto;
     padding-bottom: 2rem;
