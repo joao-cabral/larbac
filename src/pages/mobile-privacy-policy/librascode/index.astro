@@ -1,86 +1,227 @@
 ---
 import Layout from '../../../layouts/index.astro';
 
----
-<Layout title="Política de Privacidade - LibrasCode" header={false}>
-  <main>
-    <section>
-      <h1 class="title">Política de Privacidade</h1>
+// Conteúdo da política de privacidade em Português e Inglês
+const policyContent = {
+  'pt-br': {
+    title: 'Política de Privacidade',
+    content: `
       <p>
         A sua privacidade é importante para nós. Esta Política de Privacidade descreve como o aplicativo <strong>LibrasCode</strong> coleta, usa e protege as informações dos usuários. Ao utilizar o aplicativo, você concorda com os termos desta política.
       </p>
 
-      <section class="policy-section">
-        <h2>1. Coleta de Informações</h2>
-        <h3>1.1 Informações Pessoais</h3>
-        <p>
-          O <strong>LibrasCode</strong> <strong>não coleta</strong> informações pessoais identificáveis dos usuários, como nome, endereço de e-mail ou número de telefone.
-        </p>
+      <h2>1. Coleta de Informações</h2>
+      <h3>1.1 Informações Pessoais</h3>
+      <p>
+        O <strong>LibrasCode</strong> <strong>não coleta</strong> informações pessoais identificáveis dos usuários, como nome, endereço de e-mail ou número de telefone.
+      </p>
 
-        <h3>1.2 Informações Não Pessoais</h3>
-        <p>
-          Podemos coletar informações não pessoais sobre o uso do aplicativo para melhorar a experiência do usuário, tais como dados estatísticos anônimos.
-        </p>
+      <h3>1.2 Informações Não Pessoais</h3>
+      <p>
+        Podemos coletar informações não pessoais sobre o uso do aplicativo para melhorar a experiência do usuário, tais como dados estatísticos anônimos.
+      </p>
 
-        <h2>2. Uso da Câmera</h2>
-        <p>
-          O aplicativo solicita acesso à <strong>câmera</strong> do dispositivo para permitir a leitura de códigos QR associados às obras em exposição. A câmera é utilizada exclusivamente para essa finalidade.
-        </p>
-        <ul>
-          <li><strong>Nenhuma imagem ou vídeo é armazenado ou transmitido</strong> pelo aplicativo.</li>
-          <li>O acesso à câmera pode ser desativado a qualquer momento nas configurações do dispositivo, mas isso pode limitar a funcionalidade do aplicativo.</li>
-        </ul>
+      <h2>2. Uso da Câmera</h2>
+      <p>
+        O aplicativo solicita acesso à <strong>câmera</strong> do dispositivo para permitir a leitura de códigos QR associados às obras em exposição. A câmera é utilizada exclusivamente para essa finalidade.
+      </p>
+      <ul>
+        <li><strong>Nenhuma imagem ou vídeo é armazenado ou transmitido</strong> pelo aplicativo.</li>
+        <li>O acesso à câmera pode ser desativado a qualquer momento nas configurações do dispositivo, mas isso pode limitar a funcionalidade do aplicativo.</li>
+      </ul>
 
-        <h2>3. Compartilhamento de Informações</h2>
-        <p>
-          O <strong>LibrasCode</strong> não compartilha quaisquer informações dos usuários com terceiros. Como não coletamos informações pessoais, não há dados a serem divulgados ou vendidos.
-        </p>
+      <h2>3. Compartilhamento de Informações</h2>
+      <p>
+        O <strong>LibrasCode</strong> não compartilha quaisquer informações dos usuários com terceiros. Como não coletamos informações pessoais, não há dados a serem divulgados ou vendidos.
+      </p>
 
-        <h2>4. Segurança</h2>
-        <p>
-          Empregamos medidas de segurança adequadas para proteger o aplicativo contra acessos não autorizados ou alterações que possam comprometer a integridade dos dados.
-        </p>
+      <h2>4. Segurança</h2>
+      <p>
+        Empregamos medidas de segurança adequadas para proteger o aplicativo contra acessos não autorizados ou alterações que possam comprometer a integridade dos dados.
+      </p>
 
-        <h2>5. Links para Sites de Terceiros</h2>
-        <p>
-          O aplicativo pode conter links para sites externos que não são operados por nós. Recomendamos que você revise a política de privacidade de cada site que visitar, pois não temos controle sobre o conteúdo e práticas de sites de terceiros.
-        </p>
+      <h2>5. Links para Sites de Terceiros</h2>
+      <p>
+        O aplicativo pode conter links para sites externos que não são operados por nós. Recomendamos que você revise a política de privacidade de cada site que visitar, pois não temos controle sobre o conteúdo e práticas de sites de terceiros.
+      </p>
 
-        <h2>6. Privacidade de Crianças</h2>
-        <p>
-          O <strong>LibrasCode</strong> não se destina a menores de 13 anos. Não coletamos intencionalmente informações pessoais de crianças. Se você é pai ou responsável e acredita que seu filho nos forneceu informações pessoais, entre em contato conosco.
-        </p>
+      <h2>6. Privacidade de Crianças</h2>
+      <p>
+        O <strong>LibrasCode</strong> não se destina a menores de 13 anos. Não coletamos intencionalmente informações pessoais de crianças. Se você é pai ou responsável e acredita que seu filho nos forneceu informações pessoais, entre em contato conosco.
+      </p>
 
-        <h2>7. Alterações nesta Política</h2>
-        <p>
-          Podemos atualizar nossa Política de Privacidade periodicamente. Notificaremos você sobre quaisquer alterações publicando a nova política nesta página. Recomenda-se que você reveja esta política regularmente para se manter informado.
-        </p>
+      <h2>7. Alterações nesta Política</h2>
+      <p>
+        Podemos atualizar nossa Política de Privacidade periodicamente. Notificaremos você sobre quaisquer alterações publicando a nova política nesta página. Recomenda-se que você reveja esta política regularmente para se manter informado.
+      </p>
 
-        <h2>8. Consentimento</h2>
-        <p>
-          Ao utilizar o <strong>LibrasCode</strong>, você concorda com a nossa Política de Privacidade e seus termos.
-        </p>
+      <h2>8. Consentimento</h2>
+      <p>
+        Ao utilizar o <strong>LibrasCode</strong>, você concorda com a nossa Política de Privacidade e seus termos.
+      </p>
 
-        <h2>9. Contato</h2>
-        <p>
-          Se você tiver alguma dúvida ou sugestão sobre nossa Política de Privacidade, não hesite em nos contatar:
-        </p>
-        <ul>
-          <li><strong>E-mail:</strong> contato.cabraljoao@gmail.com</li>
-          <li><strong>Site:</strong> <a rel="stylesheet" href="www.larbac.me">larbac site</li>
-        </ul>
+      <h2>9. Contato</h2>
+      <p>
+        Se você tiver alguma dúvida ou sugestão sobre nossa Política de Privacidade, não hesite em nos contatar:
+      </p>
+      <ul>
+        <li><strong>E-mail:</strong> contato.cabraljoao@gmail.com</li>
+        <li><strong>Site:</strong> <a href="https://www.larbac.me">larbac site</a></li>
+      </ul>
 
-        <p class="date">
-          Data de vigência: setembro de 2024
-        </p>
-      </section>
+      <p class="date">
+        Data de vigência: setembro de 2024
+      </p>
+    `,
+  },
+  'en': {
+    title: 'Privacy Policy',
+    content: `
+      <p>
+        Your privacy is important to us. This Privacy Policy describes how the <strong>LibrasCode</strong> app collects, uses, and protects user information. By using the app, you agree to the terms of this policy.
+      </p>
+
+      <h2>1. Information Collection</h2>
+      <h3>1.1 Personal Information</h3>
+      <p>
+        The <strong>LibrasCode</strong> app <strong>does not collect</strong> personally identifiable information such as name, email address, or phone number.
+      </p>
+
+      <h3>1.2 Non-Personal Information</h3>
+      <p>
+        We may collect non-personal information about app usage to improve user experience, such as anonymous statistical data.
+      </p>
+
+      <h2>2. Use of Camera</h2>
+      <p>
+        The app requests access to the device's <strong>camera</strong> to enable scanning of QR codes associated with the exhibits. The camera is used exclusively for this purpose.
+      </p>
+      <ul>
+        <li><strong>No images or videos are stored or transmitted</strong> by the app.</li>
+        <li>Access to the camera can be disabled at any time in the device settings, but this may limit the app's functionality.</li>
+      </ul>
+
+      <h2>3. Information Sharing</h2>
+      <p>
+        The <strong>LibrasCode</strong> app does not share any user information with third parties. Since we do not collect personal information, there is no data to disclose or sell.
+      </p>
+
+      <h2>4. Security</h2>
+      <p>
+        We employ appropriate security measures to protect the app against unauthorized access or alterations that could compromise data integrity.
+      </p>
+
+      <h2>5. Links to Third-Party Sites</h2>
+      <p>
+        The app may contain links to external sites not operated by us. We recommend that you review the privacy policy of every site you visit, as we have no control over the content and practices of third-party sites.
+      </p>
+
+      <h2>6. Children's Privacy</h2>
+      <p>
+        The <strong>LibrasCode</strong> app is not intended for children under 13 years of age. We do not knowingly collect personal information from children. If you are a parent or guardian and believe your child has provided us with personal information, please contact us.
+      </p>
+
+      <h2>7. Changes to This Policy</h2>
+      <p>
+        We may update our Privacy Policy periodically. We will notify you of any changes by posting the new policy on this page. You are advised to review this policy regularly to stay informed.
+      </p>
+
+      <h2>8. Consent</h2>
+      <p>
+        By using the <strong>LibrasCode</strong> app, you agree to our Privacy Policy and its terms.
+      </p>
+
+      <h2>9. Contact</h2>
+      <p>
+        If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us:
+      </p>
+      <ul>
+        <li><strong>Email:</strong> contato.cabraljoao@gmail.com</li>
+        <li><strong>Website:</strong> <a href="https://www.larbac.me">larbac site</a></li>
+      </ul>
+
+      <p class="date">
+        Effective date: September 2024
+      </p>
+    `,
+  },
+};
+---
+
+<Layout title="Política de Privacidade - LibrasCode" header={false}>
+  <main>
+    <!-- Botão para trocar o idioma -->
+    <div class="language-switcher">
+      <button id="language-btn">English</button>
+    </div>
+
+    <section>
+      <!-- Seção em Português -->
+      <div id="policy-pt-br">
+        <h1 class="title">{policyContent['pt-br'].title}</h1>
+        <div set:html={policyContent['pt-br'].content}></div>
+      </div>
+
+      <!-- Seção em Inglês (inicialmente escondida) -->
+      <div id="policy-en" style="display: none;">
+        <h1 class="title">{policyContent['en'].title}</h1>
+        <div set:html={policyContent['en'].content}></div>
+      </div>
     </section>
   </main>
+
+  <!-- Script para alternar entre os idiomas -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const btn = document.getElementById('language-btn');
+      const policyPtBr = document.getElementById('policy-pt-br');
+      const policyEn = document.getElementById('policy-en');
+
+      // Verificar o idioma salvo no localStorage
+      const savedLanguage = localStorage.getItem('language') || 'pt-br';
+      if (savedLanguage === 'en') {
+        policyPtBr!.style.display = 'none';
+        policyEn!.style.display = 'block';
+        btn!.textContent = 'Português';
+      }
+
+      btn!.addEventListener('click', function () {
+        if (policyPtBr!.style.display !== 'none') {
+          // Trocar para Inglês
+          policyPtBr!.style.display = 'none';
+          policyEn!.style.display = 'block';
+          btn!.textContent = 'Português';
+          localStorage.setItem('language', 'en');
+        } else {
+          // Trocar para Português
+          policyPtBr!.style.display = 'block';
+          policyEn!.style.display = 'none';
+          btn!.textContent = 'English';
+          localStorage.setItem('language', 'pt-br');
+        }
+      });
+    });
+  </script>
 </Layout>
 
 <style lang="scss">
   body {
     background-color: rgb(37, 44, 56);
+  }
+
+  .language-switcher {
+    text-align: right;
+    margin: 1rem;
+  }
+
+  .language-switcher button {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
   }
 
   .title {
@@ -119,6 +260,10 @@ import Layout from '../../../layouts/index.astro';
       li {
         margin-bottom: 0.5rem;
       }
+    }
+
+    a {
+      color: #add8e6;
     }
 
     .policy-section {
