@@ -1,189 +1,227 @@
 ---
+// import { Icon } from 'astro-icon/components';
 import { Icon } from 'astro-icon/components';
 import Layout from '../layouts/index.astro';
 ---
 
 <Layout title="Joao" header={false}>
-	<main>
-		<section>
-			
-			<h1 class="title"><br />João Ca<span class="b-yellow">b</span><span class="r-green">r</span>al</h1>
-			<p>
-				Desenvolvedor de Software com foco em projetos com impacto social.
-			</p>
-			<p>
-				Criativo, curioso, inovador - acredito que essas qualidades 
-				me descrevam bem. Natural de Manaus, sou um Desenvolvedor Frontend Web/Mobile. 
-			</p>
-			<p>
-				Adoro idealizar aplicativos mobile, não é à toa que minha dedicação é mais voltada para essa área.
-				Tenho aplicativos desenvolvidos que estão com seus respectivos clientes, também tenho aplicativo publicado na play store.
-				Dependendo do projeto, migro com facilidade entre as tecnologias.
-			</p>
+	<div class="container">
+		<section class="fixed-section">
+			<img class="profile-picture" src="https://github.com/joao-cabral.png" alt="Joao Cabral">
+
+			<h1 class="title">João Ca<span class="b-yellow">b</span><span class="r-green">r</span>al</h1>
+			<div>
+				<p>
+					• Frontend Web & Mobile Cross-Platform
+				</p>
+				<p>
+					• Dev com foco em projetos com impacto social
+				</p>
+			</div>
 		</section>
 
-		<section>
-			<p>
-			  Abaixo segue alguns dos projetos
-			  pessoais e de algumas empresas/freela que já desenvolvi.
-			</p>
-		
-			<ul class='showcase'>
-				<li>
-
-					<img src="https://media2.giphy.com/media/LNmzbkBXpDl5yPGtf2/200w.webp" alt="gif">
-					<a
-						href={`http://larbac.me/projects/nimrod-project`}
-						title={'Sensoriamento'}
-						rel='noopener noreferrer'
-					>
-						<h3>{'Sensoriamento'}</h3>
-						<p>{'Configuração de placas IoT para coleta de dados dos sensores.'}</p>
-						<small>
-							<>
+		<section class="scroll-section">
+			<div class="column-container">
+				<p>
+					Trabalhando atualmente
+				</p>
+				<ul class='showcase'>
+					<li>
+						<img src="https://media2.giphy.com/media/LNmzbkBXpDl5yPGtf2/200w.webp" alt="gif">
+						<a href={`http://larbac.me/projects/nimrod-project`} title={'Sensoriamento'} rel='noopener noreferrer'>
+							<h3>{'Sensoriamento'}</h3>
+							<p>{'Configuração de placas IoT para coleta de dados dos sensores.'}</p>
+							<small>
 								Projeto privado, 2021-2022
 								<span style={{ display: 'inline-block', width: '1rem' }} />
-							</>
-						</small>
-					</a>
-				</li>
-
-				<li>
-					<img id="gif" src="https://media4.giphy.com/media/j1RdWetLBJQIdP8TnK/200w.webp" alt="gif">
-					<a
-						href={`http://larbac.me/projects/routes-project`}
-						title={'Rotas'}
-						rel='noopener noreferrer'>
-						<h3>{'Rotas'}</h3>
-						<p>{'Navegação e visualização de rotas em tempo real no mapa.'}</p>
-		
-						<small>
-							<>
+							</small>
+						</a>
+					</li>
+					<li>
+						<img id="gif" src="https://media4.giphy.com/media/j1RdWetLBJQIdP8TnK/200w.webp" alt="gif">
+						<a
+							href={`http://larbac.me/projects/routes-project`}
+							title={'Rotas'}
+							rel='noopener noreferrer'>
+							<h3>{'Rotas'}</h3>
+							<p>{'Navegação e visualização de rotas em tempo real no mapa.'}</p>
+							<small>
 								projeto privado, 2022-2023
 								<span style={{ display: 'inline-block', width: '1rem' }} />
-							</>
-						</small>
-					</a>
-				</li>
-
-				
-
-				<li>
-					<img id="gif" src="https://i.giphy.com/ounv1hey86r5DM6WhP.webp" alt="gif">
-					<a
-						href={`https://github.com/joao-cabral`}
-						title={'project'}
-						target='_blank'
-						rel='noopener noreferrer'>
-						<h3>{'Vem aí'}</h3>
-						<p>{'Em breve, vem aí'}</p>
-		
-						<small>
-							<>
+							</small>
+						</a>
+					</li>
+					<li>
+						<img id="gif" src="https://i.giphy.com/ounv1hey86r5DM6WhP.webp" alt="gif">
+						<a
+							href={`https://github.com/joao-cabral`}
+							title={'project'}
+							target='_blank'
+							rel='noopener noreferrer'>
+							<h3>{'Vem aí'}</h3>
+							<p>{'Em breve, vem aí'}</p>
+							<small>
 								2024...
 								<span style={{ display: 'inline-block', width: '1rem' }} />
-							</>
-						</small>
-					</a>
-				</li>
-			</ul>
-		</section>
+							</small>
+						</a>
+					</li>
+				</ul>
+			</div>
 
-		<section>
-			<ul class="links-list">
-				<li class="curriculum">
-					<a href='./curriculum-pt' title='Currículo'>
-						<Icon name='mdi:account-file-outline' />
-						<h3>Currículo</h3>
-					</a>
-				</li>
-				<li class="linkedin">
-					<a href='https://www.linkedin.com/in/jo%C3%A3o-cabral-6296a8174/' title='Linkedin' target="_blank">
-						<Icon name='mdi:linkedin' />
-						<h3>Linkedin</h3>
-					</a>
-				</li>
-				<li class="github">
-					<a href='https://github.com/joao-cabral' title='Github' target="_blank">
-						<Icon name='mdi:github' />
-						<h3>Github</h3>
-					</a>
-				</li>
-			</ul>
+			<div class="column-container">
+				<p>
+					Projetos
+				</p>
+				<ul class='showcase'>
+					<li>
+						<img src="https://media2.giphy.com/media/LNmzbkBXpDl5yPGtf2/200w.webp" alt="gif">
+						<a href={`http://larbac.me/projects/nimrod-project`} title={'Sensoriamento'} rel='noopener noreferrer'>
+							<h3>{'Sensoriamento'}</h3>
+							<p>{'Configuração de placas IoT para coleta de dados dos sensores.'}</p>
+							<small>
+								Projeto privado, 2021-2022
+								<span style={{ display: 'inline-block', width: '1rem' }} />
+							</small>
+						</a>
+					</li>
+					<li>
+						<img id="gif" src="https://media4.giphy.com/media/j1RdWetLBJQIdP8TnK/200w.webp" alt="gif">
+						<a
+							href={`http://larbac.me/projects/routes-project`}
+							title={'Rotas'}
+							rel='noopener noreferrer'>
+							<h3>{'Rotas'}</h3>
+							<p>{'Navegação e visualização de rotas em tempo real no mapa.'}</p>
+							<small>
+								projeto privado, 2022-2023
+								<span style={{ display: 'inline-block', width: '1rem' }} />
+							</small>
+						</a>
+					</li>
+					<li>
+						<img id="gif" src="https://i.giphy.com/ounv1hey86r5DM6WhP.webp" alt="gif">
+						<a
+							href={`https://github.com/joao-cabral`}
+							title={'project'}
+							target='_blank'
+							rel='noopener noreferrer'>
+							<h3>{'Vem aí'}</h3>
+							<p>{'Em breve, vem aí'}</p>
+							<small>
+								2024...
+								<span style={{ display: 'inline-block', width: '1rem' }} />
+							</small>
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div>
+				<p>
+					Links
+				</p>
+      <ul class="links-list">
+        <li class="curriculum">
+          <a href='./curriculum-pt' title='Currículo'>
+            <Icon name='mdi:account-file-outline' />
+            <h3>Currículo</h3>
+          </a>
+        </li>
+        <li class="linkedin">
+          <a href='https://www.linkedin.com/in/jo%C3%A3o-cabral-6296a8174/' title='Linkedin' target="_blank">
+            <Icon name='mdi:linkedin' />
+            <h3>Linkedin</h3>
+          </a>
+        </li>
+        <li class="github">
+          <a href='https://github.com/joao-cabral' title='Github' target="_blank">
+            <Icon name='mdi:github' />
+            <h3>Github</h3>
+          </a>
+        </li>
+      </ul>
+    </div>
 		</section>
-	</main>
+	</div>
 </Layout>
 
 <style lang='scss'>
-	body{
+	body {
 		background-color: rgb(37, 44, 56);
 	}
-	p{
-		color: var(--white-special);
+
+	.container {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		gap: 1rem;
+		margin: 6rem;
 	}
-	h1{
-	  color: var(--color-900);
-	  font-family: 'BrasilComS', sans-serif;
+
+	.fixed-section {
+		position: fixed;
+		width: 40%;
 	}
+
+	.scroll-section {
+		margin-left: 40%;
+		width: 60%;
+		max-height: 100vh;
+	}
+
+	.profile-picture {
+		max-width: 200px;
+		height: auto;
+		border-radius: 50%;
+		object-fit: cover;
+	}
+
 	.title {
-	  font-size: min(10rem, 11vw);
-	  min-width: 100vw;
-	  text-align: center;
-	  
-	  transform: translateX(-50%);
-	  color: white;
+		color: white;
+		margin: 12px 0px 8px 0px;
+		padding: 0px;
+		font-size: 2.4rem;
 
-	  @media (max-width: 800px) {
-		margin: 0 auto;
-	  	margin-bottom: 5rem;
-	  	margin-left: 50%;
-		}
-
-
-	  @media (min-width: 800px) {
-		margin: -100px auto;
-		margin-bottom: 5rem;
-		margin-left: 50%;
-		}
-
-	  .b-yellow {
-			color: var(--naples-yellow)
+		.b-yellow {
+			color: var(--naples-yellow);
 		}
 		.r-green {
-			color: green
+			color: green;
 		}
 	}
-  
-	section {
-	  margin: 3rem 0;
-	  max-width: min(920px, 90vw);
-  
-	  p {
-		margin: 1rem 0;
-	  }
+
+	p {
+		font-size: 1.2rem;
+		margin: 0px 0px 8px 0px;
+	}
+
+	.column-container {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		padding: 0px;
 	}
 
 	.showcase {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
+		gap: 1rem;
 		padding: 0px;
+		width: 100%;
 
 		@media (max-width: 800px) {
 			flex: 50%;
 		}
 
-		width: 100%;
-		justify-content: center;
-		align-items: center;
 
 		li {
 			transition: all 150ms ease-in-out;
-			margin: 1rem;
 			border-radius: 0.5rem;
 			border: 1px solid transparent;
 			border: 1px solid var(--shade-bg);
-			background-color: white;
+			background-color: black;
 			position: relative;
 			overflow: hidden;
 
@@ -211,11 +249,11 @@ import Layout from '../layouts/index.astro';
 				text-align: center;
 				font-weight: bold;
 				font-size: 1.3rem;
-				color: var(--earth-yellow);
+				color: white;
 			}
 
 			p {
-				color: var(--earth-yellow);
+				color: white;
 				text-align: center;
 				margin: 0.8rem 0;
 				font-size: 0.8rem;
@@ -238,7 +276,7 @@ import Layout from '../layouts/index.astro';
 	  padding: 0px;
   
 	  @media (max-width: 800px) {
-		flex: 50%;
+			flex: 50%;
 	  }
   
 	  width: 100%;
@@ -411,4 +449,11 @@ import Layout from '../layouts/index.astro';
 		list-style-type: none;
 	  }
 	}
+
+	small {
+				width: 100%;
+				text-align: center;
+				color: var(--naples-yellow);
+				line-height: 0.5rem;
+			}
 </style>
