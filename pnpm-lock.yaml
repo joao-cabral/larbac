@@ -16,10 +16,13 @@ importers:
         version: 1.1.64
       astro:
         specifier: ^4.1.2
-        version: 4.1.2(sass@1.69.7)(typescript@5.3.3)
+        version: 4.1.2(@types/node@20.11.5)(sass@1.69.7)(typescript@5.3.3)
       astro-icon:
         specifier: ^1.0.2
         version: 1.0.2
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
       sass:
         specifier: ^1.69.7
         version: 1.69.7
@@ -977,6 +980,10 @@ packages:
 
   domutils@3.1.0:
     resolution: {integrity: sha512-H78uMmQtI2AhgDJjWeQmHwJJ2bLPD3GMmO7Zja/ZZh84wkm+4ut+IUnUdRa8uCGX88DiVx1j6FRe1XfxEgjEZA==}
+
+  dotenv@16.4.5:
+    resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
+    engines: {node: '>=12'}
 
   dset@3.1.3:
     resolution: {integrity: sha512-20TuZZHCEZ2O71q9/+8BwKwZ0QtD9D8ObhrihJPr+vLLYlSuAU3/zL4cSlgbfeoGHTjCSJBa7NGcrF9/Bx/WJQ==}
@@ -3290,7 +3297,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astro@4.1.2(sass@1.69.7)(typescript@5.3.3):
+  astro@4.1.2(@types/node@20.11.5)(sass@1.69.7)(typescript@5.3.3):
     dependencies:
       '@astrojs/compiler': 2.4.1
       '@astrojs/internal-helpers': 0.2.1
@@ -3350,8 +3357,8 @@ snapshots:
       tsconfck: 3.0.1(typescript@5.3.3)
       unist-util-visit: 5.0.0
       vfile: 6.0.1
-      vite: 5.0.11(sass@1.69.7)
-      vitefu: 0.2.5(vite@5.0.11)
+      vite: 5.0.11(@types/node@20.11.5)(sass@1.69.7)
+      vitefu: 0.2.5(vite@5.0.11(@types/node@20.11.5)(sass@1.69.7))
       which-pm: 2.1.1
       yargs-parser: 21.1.1
       zod: 3.22.4
@@ -3613,6 +3620,7 @@ snapshots:
       import-fresh: 3.3.0
       js-yaml: 4.1.0
       parse-json: 5.2.0
+    optionalDependencies:
       typescript: 5.3.3
 
   cross-fetch@4.0.0:
@@ -3731,6 +3739,8 @@ snapshots:
       dom-serializer: 2.0.0
       domelementtype: 2.3.0
       domhandler: 5.0.3
+
+  dotenv@16.4.5: {}
 
   dset@3.1.3: {}
 
@@ -5438,7 +5448,7 @@ snapshots:
   trough@2.1.0: {}
 
   tsconfck@3.0.1(typescript@5.3.3):
-    dependencies:
+    optionalDependencies:
       typescript: 5.3.3
 
   tslib@2.6.2: {}
@@ -5589,48 +5599,51 @@ snapshots:
       unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.2
 
-  vite@5.0.11(sass@1.69.7):
+  vite@5.0.11(@types/node@20.11.5)(sass@1.69.7):
     dependencies:
       esbuild: 0.19.11
       postcss: 8.4.33
       rollup: 4.9.5
-      sass: 1.69.7
     optionalDependencies:
+      '@types/node': 20.11.5
       fsevents: 2.3.3
+      sass: 1.69.7
 
-  vitefu@0.2.5(vite@5.0.11):
-    dependencies:
-      vite: 5.0.11(sass@1.69.7)
+  vitefu@0.2.5(vite@5.0.11(@types/node@20.11.5)(sass@1.69.7)):
+    optionalDependencies:
+      vite: 5.0.11(@types/node@20.11.5)(sass@1.69.7)
 
   volar-service-css@0.0.17(@volar/language-service@1.11.1):
     dependencies:
-      '@volar/language-service': 1.11.1
       vscode-css-languageservice: 6.2.11
       vscode-uri: 3.0.8
+    optionalDependencies:
+      '@volar/language-service': 1.11.1
 
   volar-service-emmet@0.0.17(@volar/language-service@1.11.1):
     dependencies:
-      '@volar/language-service': 1.11.1
       '@vscode/emmet-helper': 2.9.2
       volar-service-html: 0.0.17(@volar/language-service@1.11.1)
+    optionalDependencies:
+      '@volar/language-service': 1.11.1
 
   volar-service-html@0.0.17(@volar/language-service@1.11.1):
     dependencies:
-      '@volar/language-service': 1.11.1
       vscode-html-languageservice: 5.1.1
       vscode-uri: 3.0.8
+    optionalDependencies:
+      '@volar/language-service': 1.11.1
 
   volar-service-prettier@0.0.17(@volar/language-service@1.11.1):
-    dependencies:
+    optionalDependencies:
       '@volar/language-service': 1.11.1
 
   volar-service-typescript-twoslash-queries@0.0.17(@volar/language-service@1.11.1):
-    dependencies:
+    optionalDependencies:
       '@volar/language-service': 1.11.1
 
   volar-service-typescript@0.0.17(@volar/language-service@1.11.1)(@volar/typescript@1.11.1):
     dependencies:
-      '@volar/language-service': 1.11.1
       '@volar/typescript': 1.11.1
       path-browserify: 1.0.1
       semver: 7.5.4
@@ -5638,6 +5651,8 @@ snapshots:
       vscode-languageserver-textdocument: 1.0.11
       vscode-nls: 5.2.0
       vscode-uri: 3.0.8
+    optionalDependencies:
+      '@volar/language-service': 1.11.1
 
   vscode-css-languageservice@6.2.11:
     dependencies:
