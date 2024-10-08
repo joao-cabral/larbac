@@ -2,6 +2,9 @@
 // import { Icon } from 'astro-icon/components';
 import { Icon } from 'astro-icon/components';
 import Layout from '../layouts/index.astro';
+
+const librascode = '../../images/librascode.png'
+const librascodebanner = '../../images/librascodebanner.png'
 ---
 
 <Layout title="Joao" header={false}>
@@ -15,55 +18,50 @@ import Layout from '../layouts/index.astro';
 					• Frontend Web & Mobile Cross-Platform
 				</p>
 				<p>
-					• Dev com foco em projetos com impacto social
+					• Dev com foco em projetos com impacto social. 
+				</p>
+				<p>
+					• Trabalhei em empresas do setor de testes automatizado, agro, IoT e pesquisa.
+				</p>
+				<p>
+					• Arquitetei, construí design, publiquei, dei manutenção e liderei time voltado para desenvolvimento Frontend/Mobile.
 				</p>
 			</div>
+
+			<ul class="links-list">
+        <li class="curriculum">
+          <a href='./curriculum-pt' title='Currículo'>
+            <Icon name='mdi:account-file-outline' />
+          </a>
+        </li>
+        <li class="linkedin">
+          <a href='https://www.linkedin.com/in/jo%C3%A3o-cabral-6296a8174/' title='Linkedin' target="_blank">
+            <Icon name='mdi:linkedin' />
+          </a>
+        </li>
+        <li class="github">
+          <a href='https://github.com/joao-cabral' title='Github' target="_blank">
+            <Icon name='mdi:github' />
+          </a>
+        </li>
+      </ul>
 		</section>
 
 		<section class="scroll-section">
 			<div class="column-container">
 				<p>
-					Trabalhando atualmente
+					em construção...
 				</p>
-				<ul class='showcase'>
+				<ul class='working-list'>
 					<li>
-						<img src="https://media2.giphy.com/media/LNmzbkBXpDl5yPGtf2/200w.webp" alt="gif">
-						<a href={`http://larbac.me/projects/nimrod-project`} title={'Sensoriamento'} rel='noopener noreferrer'>
-							<h3>{'Sensoriamento'}</h3>
-							<p>{'Configuração de placas IoT para coleta de dados dos sensores.'}</p>
-							<small>
-								Projeto privado, 2021-2022
-								<span style={{ display: 'inline-block', width: '1rem' }} />
-							</small>
-						</a>
-					</li>
-					<li>
-						<img id="gif" src="https://media4.giphy.com/media/j1RdWetLBJQIdP8TnK/200w.webp" alt="gif">
-						<a
-							href={`http://larbac.me/projects/routes-project`}
-							title={'Rotas'}
-							rel='noopener noreferrer'>
-							<h3>{'Rotas'}</h3>
-							<p>{'Navegação e visualização de rotas em tempo real no mapa.'}</p>
-							<small>
-								projeto privado, 2022-2023
-								<span style={{ display: 'inline-block', width: '1rem' }} />
-							</small>
-						</a>
-					</li>
-					<li>
-						<img id="gif" src="https://i.giphy.com/ounv1hey86r5DM6WhP.webp" alt="gif">
-						<a
-							href={`https://github.com/joao-cabral`}
-							title={'project'}
-							target='_blank'
-							rel='noopener noreferrer'>
-							<h3>{'Vem aí'}</h3>
-							<p>{'Em breve, vem aí'}</p>
-							<small>
-								2024...
-								<span style={{ display: 'inline-block', width: '1rem' }} />
-							</small>
+						<a href={`http://localhost:4321/projects/librascode-project`} title={'LibrasCode'} rel='noopener noreferrer'>
+							<img class="app-icon" src={librascode} alt="librascode">
+						
+							<h3>{'LibrasCode'}</h3>
+							<p>{'App para acessibilidade e autonomia dos deficientes auditivos em espaços culturais.'}</p>
+
+							<img class="app-banner" src={librascodebanner} alt="librascode">
+
 						</a>
 					</li>
 				</ul>
@@ -116,32 +114,6 @@ import Layout from '../layouts/index.astro';
 					</li>
 				</ul>
 			</div>
-
-			<div>
-				<p>
-					Links
-				</p>
-      <ul class="links-list">
-        <li class="curriculum">
-          <a href='./curriculum-pt' title='Currículo'>
-            <Icon name='mdi:account-file-outline' />
-            <h3>Currículo</h3>
-          </a>
-        </li>
-        <li class="linkedin">
-          <a href='https://www.linkedin.com/in/jo%C3%A3o-cabral-6296a8174/' title='Linkedin' target="_blank">
-            <Icon name='mdi:linkedin' />
-            <h3>Linkedin</h3>
-          </a>
-        </li>
-        <li class="github">
-          <a href='https://github.com/joao-cabral' title='Github' target="_blank">
-            <Icon name='mdi:github' />
-            <h3>Github</h3>
-          </a>
-        </li>
-      </ul>
-    </div>
 		</section>
 	</div>
 </Layout>
@@ -156,7 +128,7 @@ import Layout from '../layouts/index.astro';
 		flex-direction: row;
 		width: 100%;
 		gap: 1rem;
-		margin: 6rem;
+		margin: 2rem;
 	}
 
 	.fixed-section {
@@ -165,9 +137,8 @@ import Layout from '../layouts/index.astro';
 	}
 
 	.scroll-section {
-		margin-left: 40%;
+		margin-left: 45%;
 		width: 60%;
-		max-height: 100vh;
 	}
 
 	.profile-picture {
@@ -179,9 +150,10 @@ import Layout from '../layouts/index.astro';
 
 	.title {
 		color: white;
-		margin: 12px 0px 8px 0px;
+		margin: 12px 0px 22px 0px;
 		padding: 0px;
 		font-size: 2.4rem;
+		font-family: 'BrasilComS', sans-serif;
 
 		.b-yellow {
 			color: var(--naples-yellow);
@@ -219,9 +191,9 @@ import Layout from '../layouts/index.astro';
 		li {
 			transition: all 150ms ease-in-out;
 			border-radius: 0.5rem;
-			border: 1px solid transparent;
 			border: 1px solid var(--shade-bg);
-			background-color: black;
+			box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+			background-color: rgb(37, 44, 56);
 			position: relative;
 			overflow: hidden;
 
@@ -268,31 +240,131 @@ import Layout from '../layouts/index.astro';
     }
   }
 
+	.working-list {
+		display: flex;
+		flex-direction: row;
+		gap: 1rem;
+		flex-wrap: wrap;
+		width: 100%;
+
+		li {
+			transition: all 150ms ease-in-out;
+			border-radius: 0.5rem;
+			border: 1px solid var(--shade-bg);
+			box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+			background-color: rgb(37, 44, 56);
+
+			width: 45%;
+
+			.app-icon {
+				width: 50px;
+				height: 50px;
+				border-radius: 0.5rem;
+				margin-bottom: 0.5rem;
+			}
+
+			.app-banner {
+				width: 100%;
+				height: 150px;
+				object-fit: cover;
+				border-radius: 0.5rem;
+			}
+
+			a {
+				display: flex;
+				flex-direction: column;
+				padding: 1rem;
+				gap: 0.5rem;
+				align-items: flex-start;
+				
+				&:hover {
+					text-decoration: none;
+				}
+			}
+
+			h3 {
+				margin: 0;
+				text-align: center;
+				font-weight: bold;
+				font-size: 1.3rem;
+				color: white;
+			}
+
+			p {
+				color: white;
+				text-align: left;
+				margin: 0.8rem 0;
+				font-size: 0.8rem;
+			}
+    }
+  }
+
 	.links-list {
 	  display: flex;
 	  flex-direction: row;
-	  flex-wrap: wrap;
+		justify-content: space-between;
 	  gap: 1rem;
 	  padding: 0px;
+		width: 80%;
   
 	  @media (max-width: 800px) {
 			flex: 50%;
 	  }
-  
-	  width: 100%;
-	  justify-content: center;
-	  align-items: center;
-  
-	  width: 100%;
-	  justify-content: center;
-	  align-items: center;
 
 	  a {
 			font-family: 'BrasilComS', sans-serif;
 	  }
 	  
 	  .curriculum{
-			background-color: var(--celestial-blue);
+			&:hover {
+				cursor: pointer;
+				background-color: transparent;
+				border: 1px solid var(--shade-outline);
+			}
+			
+			&:hover {
+				svg {
+					color: white;
+				}
+			}
+
+
+			svg,a {
+				transition: color 150ms ease-in-out;
+			}
+  
+			svg {
+				width: 5rem;
+				height: 5rem;
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				z-index: -1;
+			}
+  
+			a {
+				aspect-ratio: 1;
+				width: 8rem;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+		
+				color: var(--colo-50);
+				font-size: 1.25rem;
+				font-weight: bold;
+		
+				&:hover {
+					text-decoration: none;
+					color: transparent;
+				}
+			}
+		}
+		
+		.linkedin{
 			&:hover {
 				cursor: pointer;
 				background-color: transparent;
@@ -340,60 +412,8 @@ import Layout from '../layouts/index.astro';
 				}
 			}
 		}
-		
-		.linkedin{
-			background-color: var(--hollywood-cerise);
-			&:hover {
-				cursor: pointer;
-				background-color: transparent;
-				border: 1px solid var(--shade-outline);
-			}
-			
-			&:hover {
-				svg {
-					color: var(--hollywood-cerise);
-				}
-			}
-
-
-			svg,a {
-				transition: color 150ms ease-in-out;
-			}
-  
-			svg {
-				width: 5rem;
-				height: 5rem;
-				position: absolute;
-				left: 0;
-				right: 0;
-				top: 0;
-				bottom: 0;
-				margin: auto;
-				z-index: -1;
-			}
-  
-			a {
-				aspect-ratio: 1;
-				width: 8rem;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				position: relative;
-		
-				color: var(--colo-50);
-				font-size: 1.25rem;
-				font-weight: bold;
-		
-				&:hover {
-					text-decoration: none;
-					color: transparent;
-				}
-			}
-		}
 
 		.github{
-			background-color: var(--persian-indigo);
-			
 			&:hover {
 				cursor: pointer;
 				background-color: transparent;
@@ -402,7 +422,7 @@ import Layout from '../layouts/index.astro';
 			
 			&:hover {
 				svg {
-					color: var(--persian-indigo);
+					color: black;
 				}
 			}
 
