@@ -1,479 +1,742 @@
 ---
-// import { Icon } from 'astro-icon/components';
-import { Icon } from 'astro-icon/components';
-import Layout from '../layouts/index.astro';
+import { Icon } from "astro-icon/components";
+import Layout from "../layouts/index.astro";
 
-const librascode = '../../images/librascode.png'
-const librascodebanner = '../../images/librascodebanner.png'
+const librascode = "../../images/librascode.png";
+const librascodebanner = "../../images/librascodebanner.png";
 ---
 
-<Layout title="Joao" header={false}>
-	<div class="container">
-		<section class="fixed-section">
-			<img class="profile-picture" src="https://github.com/joao-cabral.png" alt="Joao Cabral">
+<Layout title="João Cabral - Portfolio" header={false}>
+  <div class="layout-container">
+    <!-- Fixed Profile Card -->
+    <div class="profile-sidebar">
+      <div class="bento-card profile-card">
+        <img
+          class="profile-picture"
+          src="https://github.com/joao-cabral.png"
+          alt="João Cabral"
+        />
+        <h1 class="name">
+          João Ca<span class="b-yellow">b</span><span class="r-green">r</span>al
+        </h1>
+        <p class="role">Software Engineer</p>
+        <p class="description">
+          Desenvolvedor com foco em projetos com impacto social
+        </p>
+      </div>
+    </div>
 
-			<h1 class="title">João Ca<span class="b-yellow">b</span><span class="r-green">r</span>al</h1>
-			<div>
-				<p>
-					• Frontend Web & Mobile Cross-Platform
-				</p>
-				<p>
-					• Dev com foco em projetos com impacto social. 
-				</p>
-				<p>
-					• Trabalhei em empresas do setor de testes automatizado, agro, IoT e pesquisa.
-				</p>
-				<p>
-					• Arquitetei, construí design, publiquei, dei manutenção e liderei time voltado para desenvolvimento Frontend/Mobile.
-				</p>
-			</div>
+    <!-- Scrollable Content Area -->
+    <div class="content-area">
+      <div class="bento-container">
+        <!-- About Card -->
+    <div class="bento-card about-card">
+      <h3>Sobre</h3>
+      <p>
+        Frontend Web & Mobile Cross-Platform desde 2017. Experiência em empresas
+        de testes automatizado, agro, IoT e pesquisa.
+      </p>
+      <div class="stats">
+        <div class="stat">
+          <span class="number">7+</span>
+          <span class="label">Anos</span>
+        </div>
+        <div class="stat">
+          <span class="number">10+</span>
+          <span class="label">Projetos</span>
+        </div>
+      </div>
+    </div>
 
-			<ul class="links-list">
-        <li class="curriculum">
-          <a href='./curriculum-pt' title='Currículo'>
-            <Icon name='mdi:account-file-outline' />
-          </a>
-        </li>
-        <li class="linkedin">
-          <a href='https://www.linkedin.com/in/jo%C3%A3o-cabral-6296a8174/' title='Linkedin' target="_blank">
-            <Icon name='mdi:linkedin' />
-          </a>
-        </li>
-        <li class="github">
-          <a href='https://github.com/joao-cabral' title='Github' target="_blank">
-            <Icon name='mdi:github' />
-          </a>
-        </li>
-      </ul>
-		</section>
+    <!-- Links Card -->
+    <div class="bento-card links-card">
+      <h3>Conecte-se</h3>
+      <div class="social-links">
+        <a href="./curriculum-pt" title="Currículo" class="link-item">
+          <Icon name="mdi:linkedin" />
+          <span>CV</span>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/jo%C3%A3o-cabral-6296a8174/"
+          title="LinkedIn"
+          target="_blank"
+          class="link-item"
+        >
+          <Icon name="mdi:linkedin" />
+          <span>LinkedIn</span>
+        </a>
+        <a
+          href="https://github.com/joao-cabral"
+          title="GitHub"
+          target="_blank"
+          class="link-item"
+        >
+          <Icon name="mdi:github" />
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+    <!-- LibrasCode Featured Project -->
+    <div class="bento-card featured-project">
+      <div class="project-header">
+        <img class="project-icon" src={librascode} alt="LibrasCode" />
+        <div>
+          <h3>LibrasCode</h3>
+          <span class="project-status">Em desenvolvimento</span>
+        </div>
+      </div>
+      <p>
+        App para acessibilidade e autonomia dos deficientes auditivos em museus
+        de Manaus
+      </p>
+      <div class="tech-stack">
+        <span class="tech">Flutter</span>
+        <span class="tech">SQLite</span>
+        <span class="tech">QR Code</span>
+      </div>
+      <img
+        class="project-banner"
+        src={librascodebanner}
+        alt="LibrasCode Banner"
+      />
+    </div>
 
-		<section class="scroll-section">
-			<div class="column-container">
-				<p>
-					em construção...
-				</p>
-				<ul class='working-list'>
-					<li>
-						<a href={`http://larbac.me/projects/librascode-project`} title={'LibrasCode'} rel='noopener noreferrer'>
-							<img class="app-icon" src={librascode} alt="librascode">
-						
-							<h3>{'LibrasCode'}</h3>
-							<p>{'App para acessibilidade e autonomia dos deficientes auditivos em espaços culturais.'}</p>
+    <!-- Skills Card -->
+    <div class="bento-card skills-card">
+      <h3>Tecnologias</h3>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h4>Frontend</h4>
+          <div class="skills">
+            <span>React</span>
+            <span>TypeScript</span>
+            <span>Angular</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h4>Mobile</h4>
+          <div class="skills">
+            <span>Flutter</span>
+            <span>React Native</span>
+            <span>GetX</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h4>Backend</h4>
+          <div class="skills">
+            <span>Node.js</span>
+            <span>Fastify</span>
+            <span>PostgreSQL</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
-							<img class="app-banner" src={librascodebanner} alt="librascode">
+    <!-- Experience Card -->
+    <div class="bento-card experience-card">
+      <h3>Experiência</h3>
+      <div class="experience-item current">
+        <div class="company">Bilhon</div>
+        <div class="role">Engenheiro de Software</div>
+        <div class="period">Jan 2024 - Atual</div>
+        <div class="description">
+          Plataforma de marketing digital com microsserviços
+        </div>
+      </div>
+      <div class="experience-item">
+        <div class="company">Kasco P&D</div>
+        <div class="role">Engenheiro de Software</div>
+        <div class="period">Jan 2022 - Dez 2024</div>
+        <div class="description">
+          Modernização de ferramentas para agronegócio
+        </div>
+      </div>
+    </div>
 
-						</a>
-					</li>
-				</ul>
-			</div>
+    <!-- Projects Grid -->
+    <div class="bento-card project-sensoriamento">
+      <div class="project-visual">
+        <img
+          src="https://media2.giphy.com/media/LNmzbkBXpDl5yPGtf2/200w.webp"
+          alt="Sensoriamento"
+        />
+      </div>
+      <div class="project-content">
+        <h3>Sensoriamento IoT</h3>
+        <p>Configuração de placas IoT para coleta de dados via MQTT</p>
+        <div class="tech-stack">
+          <span class="tech">Flutter</span>
+          <span class="tech">Angular</span>
+          <span class="tech">MQTT</span>
+        </div>
+      </div>
+    </div>
 
-			<div class="column-container">
-				<p>
-					Projetos
-				</p>
-				<ul class='showcase'>
-					<li>
-						<img src="https://media2.giphy.com/media/LNmzbkBXpDl5yPGtf2/200w.webp" alt="gif">
-						<a href={`http://larbac.me/projects/nimrod-project`} title={'Sensoriamento'} rel='noopener noreferrer'>
-							<h3>{'Sensoriamento'}</h3>
-							<p>{'Configuração de placas IoT para coleta de dados dos sensores.'}</p>
-							<small>
-								Projeto privado, 2021-2022
-								<span style={{ display: 'inline-block', width: '1rem' }} />
-							</small>
-						</a>
-					</li>
-					<li>
-						<img id="gif" src="https://media4.giphy.com/media/j1RdWetLBJQIdP8TnK/200w.webp" alt="gif">
-						<a
-							href={`http://larbac.me/projects/routes-project`}
-							title={'Rotas'}
-							rel='noopener noreferrer'>
-							<h3>{'Rotas'}</h3>
-							<p>{'Navegação e visualização de rotas em tempo real no mapa.'}</p>
-							<small>
-								projeto privado, 2022-2023
-								<span style={{ display: 'inline-block', width: '1rem' }} />
-							</small>
-						</a>
-					</li>
-					<li>
-						<img id="gif" src="https://i.giphy.com/ounv1hey86r5DM6WhP.webp" alt="gif">
-						<a
-							href={`https://github.com/joao-cabral`}
-							title={'project'}
-							target='_blank'
-							rel='noopener noreferrer'>
-							<h3>{'Vem aí'}</h3>
-							<p>{'Em breve, vem aí'}</p>
-							<small>
-								2024...
-								<span style={{ display: 'inline-block', width: '1rem' }} />
-							</small>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</section>
-	</div>
+    <div class="bento-card project-routes">
+      <div class="project-visual">
+        <img
+          src="https://media4.giphy.com/media/j1RdWetLBJQIdP8TnK/200w.webp"
+          alt="Rotas"
+        />
+      </div>
+      <div class="project-content">
+        <h3>Sistema de Rotas</h3>
+        <p>Visualização de rotas em tempo real com geolocalização</p>
+        <div class="tech-stack">
+          <span class="tech">GetX</span>
+          <span class="tech">MapBox</span>
+          <span class="tech">SocketIO</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Card -->
+    <div class="bento-card contact-card">
+      <h3>Contato</h3>
+      <div class="contact-info">
+        <div class="contact-item">
+          <Icon name="mdi:linkedin" />
+          <span>joaocabral1232@gmail.com</span>
+        </div>
+        <div class="contact-item">
+          <Icon name="mdi:linkedin" />
+          <span>(92) 99268-9937</span>
+        </div>
+        <div class="contact-item">
+          <Icon name="mdi:linkedin" />
+          <span>Manaus, AM</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education Card -->
+    <div class="bento-card education-card">
+      <h3>Formação</h3>
+      <div class="education-item">
+        <div class="degree">Sistemas de Informação</div>
+        <div class="institution">FUCAPI</div>
+        <div class="period">2017 - 2020</div>
+      </div>
+    </div>
+      </div>
+    </div>
+  </div>
 </Layout>
 
-<style lang='scss'>
-	body {
-		background-color: rgb(37, 44, 56);
-	}
+<style lang="scss">
+  body {
+    background-color: #0a0a0a;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      sans-serif;
+  }
 
-	.container {
-		display: flex;
-		flex-direction: row;
-		width: 100%;
-		gap: 1rem;
-		margin: 2rem;
-	}
+  // Layout Container
+  .layout-container {
+    display: flex;
+    height: 100vh;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 2rem;
+    padding: 2rem;
+    padding-left: calc(350px + 4rem);
 
-	.fixed-section {
-		position: fixed;
-		width: 40%;
-	}
+    @media (max-width: 768px) {
+      flex-direction: column;
+      height: auto;
+      padding: 1rem;
+      gap: 1rem;
+      padding-left: 1rem;
+    }
+  }
 
-	.scroll-section {
-		margin-left: 45%;
-		width: 60%;
-	}
+  // Profile Sidebar
+  .profile-sidebar {
+    flex: 0 0 350px;
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    width: 350px;
+    height: fit-content;
+    overflow: visible;
 
-	.profile-picture {
-		max-width: 200px;
-		height: auto;
-		border-radius: 50%;
-		object-fit: cover;
-	}
+    @media (max-width: 768px) {
+      flex: none;
+      position: static;
+      width: auto;
+      height: auto;
+      overflow: visible;
+      left: auto;
+    }
+  }
 
-	.title {
-		color: white;
-		margin: 12px 0px 22px 0px;
-		padding: 0px;
-		font-size: 2.4rem;
-		font-family: 'BrasilComS', sans-serif;
+  // Content Area
+  .content-area {
+    flex: 1;
+    overflow-y: visible;
+    padding-right: 0.5rem;
+    width: 100%;
 
-		.b-yellow {
-			color: var(--naples-yellow);
+    @media (max-width: 768px) {
+      padding-right: 0;
+      width: auto;
+    }
+  }
+
+  .bento-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+
+  .bento-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    color: white;
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    h3 {
+      margin: 0 0 1rem 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: white;
+    }
+
+    p {
+      margin: 0.5rem 0;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.5;
+    }
+  }
+
+  // Profile Card
+  .profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.05)
+    );
+    height: 100%;
+    min-height: 400px;
+
+    .profile-picture {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1.5rem;
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    .name {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 0.5rem 0;
+      font-family: "BrasilComS", sans-serif;
+      line-height: 1.2;
+
+      .b-yellow {
+        color: var(--naples-yellow);
+      }
+      .r-green {
+        color: #4ade80;
+      }
+    }
+
+    .role {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0.5rem 0;
+      font-weight: 500;
+    }
+
+    .description {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 1rem;
+      line-height: 1.4;
+      max-width: 280px;
+    }
+  }
+
+  // About Card
+  .about-card {
+    grid-column: span 2;
+
+    @media (max-width: 768px) {
+      grid-column: span 1;
+    }
+
+    .stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1rem;
+      justify-content: center;
+
+      @media (max-width: 768px) {
+        gap: 1.5rem;
+      }
+
+      .stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .number {
+          font-size: 2rem;
+          font-weight: 700;
+          color: #4ade80;
+        }
+
+        .label {
+          font-size: 0.9rem;
+          color: rgba(255, 255, 255, 0.6);
+        }
+      }
+    }
+  }
+
+  // Links Card
+  .links-card {
+    grid-column: span 1;
+
+    @media (max-width: 768px) {
+      grid-column: span 1;
+    }
+
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+
+      .link-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+          color: white;
+          border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+
+        span {
+          font-size: 0.9rem;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  // Featured Project Card
+  .featured-project {
+    grid-column: span 1;
+    background: linear-gradient(
+      135deg,
+      rgba(74, 222, 128, 0.1),
+      rgba(34, 197, 94, 0.05)
+    );
+
+    @media (max-width: 768px) {
+      grid-column: span 1;
+    }
+
+    .project-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+
+      .project-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
+      }
+
+      h3 {
+        margin: 0;
+        font-size: 1.5rem;
+      }
+
+      .project-status {
+        font-size: 0.8rem;
+        color: #4ade80;
+        background: rgba(74, 222, 128, 0.2);
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        margin-top: 0.25rem;
+        display: inline-block;
+      }
+    }
+
+    .tech-stack {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+
+      .tech {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 0.25rem 0.75rem;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.9);
+      }
+    }
+
+    .project-banner {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-top: auto;
+    }
+  }
+
+  // Skills Card
+  .skills-card {
+    grid-column: span 2;
+
+    @media (max-width: 768px) {
+      grid-column: span 1;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+
+      @media (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+      }
+
+      .skill-category {
+        h4 {
+          margin: 0 0 0.5rem 0;
+          font-size: 1rem;
+          color: #4ade80;
+        }
+
+        .skills {
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+
+          span {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+          }
+        }
+      }
+    }
+  }
+
+  // Experience Card
+	.experience-card {
+		grid-column: span 2;
+
+		@media (max-width: 768px) {
+			grid-column: span 1;
 		}
-		.r-green {
-			color: green;
-		}
-	}
 
-	p {
-		font-size: 1.2rem;
-		margin: 0px 0px 8px 0px;
-	}
+    .experience-item {
+      padding: 1rem;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 1rem;
 
-	.column-container {
+      &.current {
+        border-color: #4ade80;
+        background: rgba(74, 222, 128, 0.1);
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .company {
+        font-weight: 600;
+        color: white;
+        font-size: 1.1rem;
+      }
+
+      .role {
+        color: #4ade80;
+        font-size: 0.9rem;
+        margin: 0.25rem 0;
+      }
+
+      .period {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .description {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+    }
+  }
+
+  // Project Cards
+	.project-sensoriamento,
+	.project-routes {
+		grid-column: span 1;
 		display: flex;
 		flex-direction: column;
-		flex-wrap: wrap;
-		padding: 0px;
-	}
 
-	.showcase {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		gap: 1rem;
-		padding: 0px;
-		width: 100%;
-
-		@media (max-width: 800px) {
-			flex: 50%;
+		@media (max-width: 768px) {
+			grid-column: span 1;
 		}
 
+    .project-visual {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1rem;
 
-		li {
-			transition: all 150ms ease-in-out;
-			border-radius: 0.5rem;
-			border: 1px solid var(--shade-bg);
-			box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
-			background-color: rgb(37, 44, 56);
-			position: relative;
-			overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
 
-			img {
-				width: 100%;
-				height: 150px;
-			}
+    .project-content {
+      flex: 1;
 
-			a {
-				color: unset;
-				padding: 1rem;
-				aspect-ratio: 15/10;
-				height: 10rem;
-				display: flex;
-				flex-direction: column;
-				justify-content: space-around;
+      h3 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.1rem;
+      }
 
-				&:hover {
-					text-decoration: none;
-				}
-			}
+      p {
+        margin: 0 0 1rem 0;
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
 
-			h3 {
-				margin: 0;
-				text-align: center;
-				font-weight: bold;
-				font-size: 1.3rem;
-				color: white;
-			}
+      .tech-stack {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-top: auto;
 
-			p {
-				color: white;
-				text-align: center;
-				margin: 0.8rem 0;
-				font-size: 0.8rem;
-			}
-
-		small {
-			width: 100%;
-			text-align: center;
-			color: var(--naples-yellow);
-			line-height: 0.5rem;
-		}
+        .tech {
+          background: rgba(255, 255, 255, 0.1);
+          padding: 0.25rem 0.5rem;
+          border-radius: 8px;
+          font-size: 0.75rem;
+          color: rgba(255, 255, 255, 0.9);
+        }
+      }
     }
   }
 
-	.working-list {
-		display: flex;
-		flex-direction: row;
-		gap: 1rem;
-		flex-wrap: wrap;
-		width: 100%;
+  // Contact Card
+	.contact-card {
+		grid-column: span 1;
 
-		li {
-			transition: all 150ms ease-in-out;
-			border-radius: 0.5rem;
-			border: 1px solid var(--shade-bg);
-			box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
-			background-color: rgb(37, 44, 56);
+		@media (max-width: 768px) {
+			grid-column: span 1;
+		}
 
-			width: 45%;
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
 
-			.app-icon {
-				width: 50px;
-				height: 50px;
-				border-radius: 0.5rem;
-				margin-bottom: 0.5rem;
-			}
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: rgba(255, 255, 255, 0.8);
 
-			.app-banner {
-				width: 100%;
-				height: 150px;
-				object-fit: cover;
-				border-radius: 0.5rem;
-			}
+        svg {
+          width: 18px;
+          height: 18px;
+          color: #4ade80;
+        }
 
-			a {
-				display: flex;
-				flex-direction: column;
-				padding: 1rem;
-				gap: 0.5rem;
-				align-items: flex-start;
-				
-				&:hover {
-					text-decoration: none;
-				}
-			}
-
-			h3 {
-				margin: 0;
-				text-align: center;
-				font-weight: bold;
-				font-size: 1.3rem;
-				color: white;
-			}
-
-			p {
-				color: white;
-				text-align: left;
-				margin: 0.8rem 0;
-				font-size: 0.8rem;
-			}
+        span {
+          font-size: 0.9rem;
+        }
+      }
     }
   }
 
-	.links-list {
-	  display: flex;
-	  flex-direction: row;
-		justify-content: space-between;
-	  gap: 1rem;
-	  padding: 0px;
-		width: 80%;
-  
-	  @media (max-width: 800px) {
-			flex: 50%;
-	  }
+  // Education Card
+	.education-card {
+		grid-column: span 1;
 
-	  a {
-			font-family: 'BrasilComS', sans-serif;
-	  }
-	  
-	  .curriculum{
-			&:hover {
-				cursor: pointer;
-				background-color: transparent;
-				border: 1px solid var(--shade-outline);
-			}
-			
-			&:hover {
-				svg {
-					color: white;
-				}
-			}
-
-
-			svg,a {
-				transition: color 150ms ease-in-out;
-			}
-  
-			svg {
-				width: 5rem;
-				height: 5rem;
-				position: absolute;
-				left: 0;
-				right: 0;
-				top: 0;
-				bottom: 0;
-				margin: auto;
-				z-index: -1;
-			}
-  
-			a {
-				aspect-ratio: 1;
-				width: 8rem;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				position: relative;
-		
-				color: var(--colo-50);
-				font-size: 1.25rem;
-				font-weight: bold;
-		
-				&:hover {
-					text-decoration: none;
-					color: transparent;
-				}
-			}
-		}
-		
-		.linkedin{
-			&:hover {
-				cursor: pointer;
-				background-color: transparent;
-				border: 1px solid var(--shade-outline);
-			}
-			
-			&:hover {
-				svg {
-					color: var(--celestial-blue);
-				}
-			}
-
-
-			svg,a {
-				transition: color 150ms ease-in-out;
-			}
-  
-			svg {
-				width: 5rem;
-				height: 5rem;
-				position: absolute;
-				left: 0;
-				right: 0;
-				top: 0;
-				bottom: 0;
-				margin: auto;
-				z-index: -1;
-			}
-  
-			a {
-				aspect-ratio: 1;
-				width: 8rem;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				position: relative;
-		
-				color: var(--colo-50);
-				font-size: 1.25rem;
-				font-weight: bold;
-		
-				&:hover {
-					text-decoration: none;
-					color: transparent;
-				}
-			}
+		@media (max-width: 768px) {
+			grid-column: span 1;
 		}
 
-		.github{
-			&:hover {
-				cursor: pointer;
-				background-color: transparent;
-				border: 1px solid var(--shade-outline);
-			}
-			
-			&:hover {
-				svg {
-					color: black;
-				}
-			}
+    .education-item {
+      .degree {
+        font-weight: 600;
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
 
+      .institution {
+        color: #4ade80;
+        font-size: 0.9rem;
+        margin-bottom: 0.25rem;
+      }
 
-			svg,a {
-				transition: color 150ms ease-in-out;
-			}
-  
-			svg {
-				width: 5rem;
-				height: 5rem;
-				position: absolute;
-				left: 0;
-				right: 0;
-				top: 0;
-				bottom: 0;
-				margin: auto;
-				z-index: -1;
-			}
-  
-			a {
-				aspect-ratio: 1;
-				width: 8rem;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				position: relative;
-		
-				color: var(--colo-50);
-				font-size: 1.25rem;
-				font-weight: bold;
-		
-				&:hover {
-					text-decoration: none;
-					color: transparent;
-				}
-			}
-		}
-  
-	  li {
-		border-radius: 0.5rem;
-		transition: all 150ms ease-in-out;
-		border: 1px solid transparent;
-		list-style-type: none;
-	  }
-	}
-
-	small {
-				width: 100%;
-				text-align: center;
-				color: var(--naples-yellow);
-				line-height: 0.5rem;
-			}
+      .period {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.8rem;
+      }
+    }
+  }
 </style>

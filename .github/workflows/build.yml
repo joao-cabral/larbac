@@ -1,38 +1,71 @@
-name: GitHub Pages Astro CI
+name: Deploy to VPS on Tag
 
 on:
-  # Ativa o workflow toda vez que você fizer um push para a branch `main`
-  # Usando um nome de branch diferente? Modifique `main` para o nome da sua branch
   push:
-    branches: [main]
-  # Permite que esse workflow seja executado manualmente da aba "Actions" no GitHub.
-  workflow_dispatch:
-
-# Permite que este job clone o repositório e crie uma página de deploy
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+    tags:
+      - "v*.*.*" # Dispara quando uma tag no formato v1.0.0 for criada
+      - "release-*" # Ou tags no formato release-*
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout your repository using git
-        uses: actions/checkout@v3
-      - name: Install, build, and upload your site
-        uses: withastro/action@v1
-        with:
-          node-version: 18
-          package-manager: pnpm@latest
-
   deploy:
-    needs: build
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "22.18.0"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script: |
+            # Navegar para o diretório do projeto
+            cd /var/www/html
+
+            # Fazer backup da versão atual
+            sudo cp -r . ../backup-$(date +%Y%m%d-%H%M%S)
+
+            # Fazer pull das mudanças
+            sudo git fetch --all
+            sudo git checkout ${{ github.ref_name }}
+
+            # Instalar dependências e fazer build
+            sudo npm ci
+            sudo npm run build
+
+            # Copiar arquivos buildados para o diretório web
+            sudo cp -r dist/* .
+
+            # Reiniciar nginx (se necessário)
+            sudo systemctl reload nginx
+
+            echo "Deploy da tag ${{ github.ref_name }} concluído!"
+
+      - name: Notify deployment success
+        if: success()
+        run: |
+          echo "✅ Deploy realizado com sucesso!"
+          echo "Tag: ${{ github.ref_name }}"
+          echo "Commit: ${{ github.sha }}"
+
+      - name: Notify deployment failure
+        if: failure()
+        run: |
+          echo "❌ Falha no deploy!"
+          echo "Tag: ${{ github.ref_name }}"
+          echo "Verifique os logs para mais detalhes."
