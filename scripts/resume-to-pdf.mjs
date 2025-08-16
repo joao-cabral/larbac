@@ -10,6 +10,7 @@ const FILENAMES = ["curriculum-pt"];
 
 const browser = await puppeteer.launch({
   headless: "new",
+  args: process.env.CI ? ['--no-sandbox', '--disable-setuid-sandbox'] : [],
 });
 
 async function generatePDF(url, outputPath) {

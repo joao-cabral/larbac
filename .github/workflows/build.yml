@@ -33,6 +33,8 @@ jobs:
 
       - name: Build project
         run: pnpm run build
+        env:
+          PUPPETEER_ARGS: --no-sandbox --disable-setuid-sandbox
 
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v0.1.7
