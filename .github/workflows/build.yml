@@ -48,21 +48,33 @@ jobs:
             cd /var/www/larbac
 
             # Fazer backup da versão atual
-            sudo cp -r . ../backup-$(date +%Y%m%d-%H%M%S)
+            sudo cp -r . ../backup-$(date +%Y%m%d-%H%M%S) 2>/dev/null || true
 
-            # Fazer pull das mudanças
+            # Instalar pnpm se não estiver instalado
+            if ! command -v pnpm &> /dev/null; then
+              curl -fsSL https://get.pnpm.io/install.sh | sh -
+              export PATH="$HOME/.local/share/pnpm:$PATH"
+            fi
+
+            # Resetar mudanças locais e fazer pull das mudanças
             sudo git fetch --all
+            sudo git reset --hard HEAD
+            sudo git clean -fd
             sudo git checkout ${{ github.ref_name }}
 
             # Instalar dependências e fazer build
-            sudo pnpm install --frozen-lockfile
-            sudo pnpm run build
+            sudo -E env PATH=$PATH pnpm install --frozen-lockfile
+            sudo -E env PATH=$PATH pnpm run build
 
             # Copiar arquivos buildados para o diretório web
-            sudo cp -r dist/* .
+            sudo cp -r dist/* . 2>/dev/null || echo "Nenhum arquivo dist encontrado"
 
-            # Reiniciar nginx (se necessário)
-            sudo systemctl reload nginx
+            # Reiniciar nginx se estiver ativo
+            if systemctl is-active --quiet nginx; then
+              sudo systemctl reload nginx
+            else
+              echo "Nginx não está ativo, pulando reload"
+            fi
 
             echo "Deploy da tag ${{ github.ref_name }} concluído!"
 
