@@ -50,10 +50,16 @@ jobs:
             # Fazer backup da versão atual
             sudo cp -r . ../backup-$(date +%Y%m%d-%H%M%S) 2>/dev/null || true
 
+            # Configurar PATH para Node.js e pnpm
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+            
             # Instalar pnpm se não estiver instalado
             if ! command -v pnpm &> /dev/null; then
               curl -fsSL https://get.pnpm.io/install.sh | sh -
-              export PATH="$HOME/.local/share/pnpm:$PATH"
+              export PNPM_HOME="$HOME/.local/share/pnpm"
+              export PATH="$PNPM_HOME:$PATH"
             fi
 
             # Resetar mudanças locais e fazer pull das mudanças
@@ -62,9 +68,14 @@ jobs:
             sudo git clean -fd
             sudo git checkout ${{ github.ref_name }}
 
+            # Configurar PATH completo para sudo
+            NODE_PATH=$(which node)
+            PNPM_PATH=$(which pnpm)
+            FULL_PATH="$(dirname $NODE_PATH):$(dirname $PNPM_PATH):$PATH"
+
             # Instalar dependências e fazer build
-            sudo -E env PATH=$PATH pnpm install --frozen-lockfile
-            sudo -E env PATH=$PATH pnpm run build
+            sudo -E env PATH="$FULL_PATH" pnpm install --frozen-lockfile
+            sudo -E env PATH="$FULL_PATH" pnpm run build
 
             # Copiar arquivos buildados para o diretório web
             sudo cp -r dist/* . 2>/dev/null || echo "Nenhum arquivo dist encontrado"
