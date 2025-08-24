@@ -21,19 +21,15 @@ const librascodebanner = "../../images/librascodebanner.png";
             João Ca<span class="b-yellow">b</span><span class="r-green">r</span
             >al
           </h1>
-          <p class="role">Software Engineer</p>
         </div>
-        <!-- <p class="description">
-          Desenvolvedor com foco em projetos com impacto social
-        </p> -->
 
         <!-- About Card -->
         <div class="about-card">
           <div>
-            <h3>Sobre</h3>
+            <p class="role">Software Engineer</p>
             <p>
-              Frontend Web & Mobile desde 2019. Experiência em empresas
-              marketing digital, agro, IoT, testes automatizado e P&D.
+              Frontend Web & Mobile desde 2019. Com experiência em empresas do
+              marketing digital, agro, IoT, P&D e testes automatizado.
             </p>
           </div>
 
@@ -41,9 +37,11 @@ const librascodebanner = "../../images/librascodebanner.png";
             <div class="education-card">
               <h3>Formação</h3>
               <div class="education-item">
-                <div class="degree">Sistemas de Informação</div>
+                <div>Sistemas de Informação</div>
                 <div style="display: flex; flex-direction: row; gap: 16px;">
-                  <div class="institution">FUCAPI</div>
+                  <a href="https://fucapi.edu.br/" target="_blank">
+                    <div class="institution">FUCAPI</div>
+                  </a>
                   <div class="period">2017 - 2020</div>
                 </div>
               </div>
@@ -89,56 +87,67 @@ const librascodebanner = "../../images/librascodebanner.png";
           <h3>Tecnologias</h3>
           <div class="skills-grid">
             <div class="skill-category">
-              <h4>Frontend</h4>
+              <div class="category-header">
+                <span class="category-icon">💻</span>
+                <h4>Frontend</h4>
+              </div>
               <div class="skills">
-                <span>React</span>
-                <span>TypeScript</span>
-                <span>Angular</span>
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">TypeScript</span>
+                <span class="skill-tag">Angular</span>
               </div>
             </div>
             <div class="skill-category">
-              <h4>Mobile</h4>
+              <div class="category-header">
+                <span class="category-icon">📱</span>
+                <h4>Mobile</h4>
+              </div>
               <div class="skills">
-                <span>Flutter</span>
-                <span>React Native</span>
-                <span>GetX</span>
+                <span class="skill-tag">Flutter</span>
+                <span class="skill-tag">React Native</span>
+                <span class="skill-tag">GetX</span>
               </div>
             </div>
             <div class="skill-category">
-              <h4>Backend</h4>
+              <div class="category-header">
+                <span class="category-icon">⚙️</span>
+                <h4>Backend</h4>
+              </div>
               <div class="skills">
-                <span>Node.js</span>
-                <span>Fastify</span>
-                <span>PostgreSQL</span>
+                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag">Fastify</span>
+                <span class="skill-tag">PostgreSQL</span>
               </div>
             </div>
           </div>
         </div>
 
         <!-- LibrasCode Featured Project -->
-        <div class="bento-card featured-project">
-          <div class="project-header">
-            <img class="project-icon" src={librascode} alt="LibrasCode" />
-            <div>
-              <h3>LibrasCode</h3>
-              <span class="project-status">Em desenvolvimento</span>
+        <a href="/projects/librascode-project" class="project-link">
+          <div class="bento-card featured-project">
+            <div class="project-header">
+              <img class="project-icon" src={librascode} alt="LibrasCode" />
+              <div>
+                <h3>LibrasCode</h3>
+                <span class="project-status">Em desenvolvimento</span>
+              </div>
             </div>
+            <p>
+              App para acessibilidade e autonomia dos deficientes auditivos em
+              museus de Manaus
+            </p>
+            <div class="tech-stack">
+              <span class="tech">Flutter</span>
+              <span class="tech">SQLite</span>
+              <span class="tech">QR Code</span>
+            </div>
+            <img
+              class="project-banner"
+              src={librascodebanner}
+              alt="LibrasCode Banner"
+            />
           </div>
-          <p>
-            App para acessibilidade e autonomia dos deficientes auditivos em
-            museus de Manaus
-          </p>
-          <div class="tech-stack">
-            <span class="tech">Flutter</span>
-            <span class="tech">SQLite</span>
-            <span class="tech">QR Code</span>
-          </div>
-          <img
-            class="project-banner"
-            src={librascodebanner}
-            alt="LibrasCode Banner"
-          />
-        </div>
+        </a>
 
         <!-- Experience Card -->
         <div class="bento-card experience-card">
@@ -146,57 +155,125 @@ const librascodebanner = "../../images/librascodebanner.png";
           <div class="experience-item current">
             <div class="company">Bilhon</div>
             <div class="role">Engenheiro de Software</div>
-            <div class="period">Jan 2024 - Atual</div>
+            <div class="period">2024 - Atual</div>
             <div class="description">
-              Plataforma de marketing digital com microsserviços
+              Atuo como dev frontend para desenvolver uma plataforma que oferece
+              uma solução all-in-one que abrange desde a criação de checkouts e
+              páginas de vendas até o gerenciamento de leads, processamento de
+              vendas, automação de mensagens pós-venda e gestão de programas de
+              afiliados. Plataforma completa de marketing digital desenvolvida
+              em arquitetura de monorepo, projetada para atender marketeiros,
+              afiliados e anunciantes.
             </div>
           </div>
           <div class="experience-item">
             <div class="company">Kasco P&D</div>
             <div class="role">Engenheiro de Software</div>
-            <div class="period">Jan 2022 - Dez 2024</div>
+            <div class="period">2022 - 2024</div>
             <div class="description">
-              Modernização de ferramentas para agronegócio
+              Atuei no desenvolvimento e liderança técnica de soluções para o
+              setor Agro, modernizando uma plataforma já utilizada por grandes
+              fazendas e expandindo suas funcionalidades. A solução contou com
+              interface em React, Electron, TypeScript e Material UI, backend em
+              Fastify, NodeJS, Postgres e OpenAPI, além de aplicativo mobile em
+              React Native.
+            </div>
+          </div>
+          <div class="experience-item">
+            <div class="company">Grupo ICTS</div>
+            <div class="role">Engenheiro de Software</div>
+            <div class="period">2021 - 2023</div>
+            <div class="description">
+              Atuei como desenvolvedor mobile e frontend liderando o
+              desenvolvimento de aplicativos e interfaces web desde a concepção
+              até a entrega, garantindo uma experiência de usuário eficiente.
+              Entre os principais projetos, destaque para:
+            </div>
+            <div class="description">
+              <b>Sensoriamento:</b> app em Flutter para configuração de placas IoT
+              via MQTT, com monitoramento em Angular e geração de relatórios.
+            </div>
+            <div class="description">
+              <b>Rotas:</b> solução em Flutter e React/TypeScript para acompanhamento
+              de rotas em tempo real, com gerenciamento de rotas e automação via
+              plataforma web.
+            </div>
+          </div>
+          <div class="experience-item">
+            <div class="company">Sidia Instituto de Ciência e Tecnologia</div>
+            <div class="role">Desenvolvedor Testes</div>
+            <div class="period">2019 - 2021</div>
+            <div class="description">
+              Executar, planejar, desenvolver testes automatizados para os
+              principais devices da Samsung. Além de executar as principais
+              funções de tester, fiz parte do time de automação onde foi
+              desenvolvido ferramentas internas para melhorar a eficiência dos
+              colaboradores. Foi utilizado tecnologias como React, Electron e
+              Python.
             </div>
           </div>
         </div>
 
         <!-- Projects Grid -->
-        <div class="bento-card project-sensoriamento">
-          <div class="project-visual">
-            <img
-              src="https://media2.giphy.com/media/LNmzbkBXpDl5yPGtf2/200w.webp"
-              alt="Sensoriamento"
-            />
-          </div>
-          <div class="project-content">
-            <h3>Sensoriamento IoT</h3>
-            <p>Configuração de placas IoT para coleta de dados via MQTT</p>
-            <div class="tech-stack">
-              <span class="tech">Flutter</span>
-              <span class="tech">Angular</span>
-              <span class="tech">MQTT</span>
+        <a href="/projects/clickmax-project" class="project-link">
+          <div class="bento-card project-clickmax">
+            <div class="project-visual">
+              <img
+                src="https://media1.giphy.com/media/3oKIPEqDGUULpEU0aQ/200w.webp"
+                alt="Clickmax"
+              />
+            </div>
+            <div class="project-content">
+              <h3>Clickmax</h3>
+              <p>Plataforma completa de marketing digital all-in-one</p>
+              <div class="tech-stack">
+                <span class="tech">React</span>
+                <span class="tech">TypeScript</span>
+                <span class="tech">Fastify</span>
+              </div>
             </div>
           </div>
-        </div>
+        </a>
 
-        <div class="bento-card project-routes">
-          <div class="project-visual">
-            <img
-              src="https://media4.giphy.com/media/j1RdWetLBJQIdP8TnK/200w.webp"
-              alt="Rotas"
-            />
-          </div>
-          <div class="project-content">
-            <h3>Sistema de Rotas</h3>
-            <p>Visualização de rotas em tempo real com geolocalização</p>
-            <div class="tech-stack">
-              <span class="tech">GetX</span>
-              <span class="tech">MapBox</span>
-              <span class="tech">SocketIO</span>
+        <a href="/projects/routes-project" class="project-link">
+          <div class="bento-card project-routes">
+            <div class="project-visual">
+              <img
+                src="https://media4.giphy.com/media/j1RdWetLBJQIdP8TnK/200w.webp"
+                alt="Rotas"
+              />
+            </div>
+            <div class="project-content">
+              <h3>Sistema de Rotas</h3>
+              <p>Visualização de rotas em tempo real com geolocalização</p>
+              <div class="tech-stack">
+                <span class="tech">GetX</span>
+                <span class="tech">MapBox</span>
+                <span class="tech">SocketIO</span>
+              </div>
             </div>
           </div>
-        </div>
+        </a>
+
+        <a href="/projects/nimrod-project" class="project-link">
+          <div class="bento-card project-sensoriamento">
+            <div class="project-visual">
+              <img
+                src="https://media2.giphy.com/media/LNmzbkBXpDl5yPGtf2/200w.webp"
+                alt="Sensoriamento"
+              />
+            </div>
+            <div class="project-content">
+              <h3>Sensoriamento IoT</h3>
+              <p>Configuração de placas IoT para coleta de dados via MQTT</p>
+              <div class="tech-stack">
+                <span class="tech">Flutter</span>
+                <span class="tech">Angular</span>
+                <span class="tech">MQTT</span>
+              </div>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
   </div>
@@ -411,34 +488,6 @@ const librascodebanner = "../../images/librascodebanner.png";
         }
       }
     }
-
-    .stats {
-      display: flex;
-      gap: 2rem;
-      margin-top: 1rem;
-      justify-content: center;
-
-      @media (max-width: 768px) {
-        gap: 1.5rem;
-      }
-
-      .stat {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .number {
-          font-size: 2rem;
-          font-weight: 700;
-          color: #4ade80;
-        }
-
-        .label {
-          font-size: 0.9rem;
-          color: rgba(255, 255, 255, 0.6);
-        }
-      }
-    }
   }
 
   // Featured Project Card
@@ -514,34 +563,99 @@ const librascodebanner = "../../images/librascodebanner.png";
       grid-column: span 1;
     }
 
+    h3 {
+      margin-bottom: 1.5rem;
+      font-size: 1.4rem;
+      color: #ffffff;
+      text-align: center;
+
+      @media (max-width: 480px) {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+    }
+
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
+      gap: 1.2rem;
 
       @media (max-width: 768px) {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
       }
 
       @media (max-width: 480px) {
         grid-template-columns: 1fr;
+        gap: 0.8rem;
       }
 
       .skill-category {
-        h4 {
-          margin: 0 0 0.5rem 0;
-          font-size: 1rem;
-          color: #4ade80;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 1rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.08);
+          border-color: rgba(74, 222, 128, 0.3);
+          transform: translateY(-2px);
+        }
+
+        @media (max-width: 480px) {
+          padding: 0.8rem;
+        }
+
+        .category-header {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin-bottom: 0.8rem;
+
+          .category-icon {
+            font-size: 1.2rem;
+            filter: grayscale(0.2);
+          }
+
+          h4 {
+            margin: 0;
+            font-size: 1rem;
+            color: #4ade80;
+            font-weight: 600;
+
+            @media (max-width: 480px) {
+              font-size: 0.9rem;
+            }
+          }
         }
 
         .skills {
           display: flex;
-          flex-direction: column;
-          gap: 0.25rem;
+          flex-wrap: wrap;
+          gap: 0.4rem;
 
-          span {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.8);
+          .skill-tag {
+            background: rgba(74, 222, 128, 0.15);
+            color: rgba(255, 255, 255, 0.9);
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            transition: all 0.2s ease;
+
+            &:hover {
+              background: rgba(74, 222, 128, 0.25);
+              border-color: rgba(74, 222, 128, 0.4);
+              color: #ffffff;
+            }
+
+            @media (max-width: 480px) {
+              font-size: 0.75rem;
+              padding: 0.25rem 0.5rem;
+            }
           }
         }
       }
@@ -600,7 +714,8 @@ const librascodebanner = "../../images/librascodebanner.png";
 
   // Project Cards
   .project-sensoriamento,
-  .project-routes {
+  .project-routes,
+  .project-clickmax {
     grid-column: span 1;
     display: flex;
     flex-direction: column;
