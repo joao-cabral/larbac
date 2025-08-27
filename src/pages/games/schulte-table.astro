@@ -1,0 +1,666 @@
+---
+import Layout from "../../layouts/index.astro";
+---
+
+<Layout title="Tabela de Schulte" header={false}>
+  <div class="game-container">
+    <div class="game-header">
+      <h1>Tabela de Schulte</h1>
+      <p>Encontre os números em ordem crescente o mais rápido possível!</p>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+
+    <div class="game-controls">
+      <div class="control-group">
+        <label for="gridSize">Tamanho da Grade:</label>
+        <select id="gridSize">
+          <option value="4">4x4</option>
+          <option value="5" selected>5x5</option>
+          <option value="6">6x6</option>
+          <option value="7">7x7</option>
+          <option value="8">8x8</option>
+          <option value="9">9x9</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <button id="startBtn" class="btn btn-primary">Iniciar</button>
+        <button id="resetBtn" class="btn btn-secondary">Reiniciar</button>
+      </div>
+    </div>
+
+    <div class="game-info">
+      <div id="timer" class="timer">00:00</div>
+      <div id="nextNumber" class="next-number">Próximo: 1</div>
+      <div id="gameMessage" class="game-message">
+        Clique em "Iniciar" para começar!
+      </div>
+    </div>
+
+    <div id="schulteGrid" class="schulte-grid"></div>
+  </div>
+</Layout>
+
+<style>
+  .game-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 768px) {
+    .game-container {
+      padding: 15px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .game-container {
+      padding: 10px;
+    }
+  }
+
+  .game-header {
+    position: relative;
+  }
+
+  .game-header h1 {
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .game-header p {
+    color: #666;
+    margin-bottom: 30px;
+  }
+
+  .theme-toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #f0f0f0;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    transition: all 0.3s ease;
+  }
+
+  .theme-toggle:hover {
+    background: #e0e0e0;
+    transform: scale(1.1);
+  }
+
+  /* Ajustes para mobile - reposicionar botão de tema */
+  @media (max-width: 768px) {
+    .theme-toggle {
+      position: static;
+      margin: 10px auto 20px auto;
+      width: 45px;
+      height: 45px;
+      font-size: 18px;
+    }
+    
+    .game-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .game-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+
+  .control-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .control-group label {
+    font-weight: bold;
+    color: #333;
+  }
+
+  select {
+    padding: 8px 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    background: white;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary {
+    background: #4caf50;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #45a049;
+  }
+
+  .btn-secondary {
+    background: #f44336;
+    color: white;
+  }
+
+  .btn-secondary:hover {
+    background: #da190b;
+  }
+
+  .btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .game-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+
+  .timer {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    background: #f0f0f0;
+    padding: 10px 20px;
+    border-radius: 6px;
+  }
+
+  .next-number {
+    font-size: 18px;
+    font-weight: bold;
+    color: #4caf50;
+  }
+
+  .game-message {
+    font-size: 16px;
+    font-weight: bold;
+    color: #666;
+  }
+
+  .schulte-grid {
+    display: grid;
+    gap: 5px;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
+
+    .cell {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #1a1a1a !important;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+      min-height: 55px;
+      min-width: 55px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Responsividade para dispositivos móveis */
+    @media (max-width: 768px) {
+      max-width: 95vw;
+      padding: 10px;
+      gap: 3px;
+      
+      .cell {
+        min-height: 40px;
+        min-width: 40px;
+        font-size: 16px;
+        border-width: 1px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      max-width: 98vw;
+      padding: 5px;
+      gap: 2px;
+      
+      .cell {
+        min-height: 35px;
+        min-width: 35px;
+        font-size: 14px;
+        border-width: 1px;
+      }
+    }
+
+    .cell:hover {
+      background: #e3f2fd;
+      border-color: #2196f3;
+      transform: scale(1.05);
+    }
+
+    .cell.correct {
+      background: #dbe7dc !important;
+      border-color: #93b194 !important;
+      /* color: #6a8a6c; */
+    }
+  }
+
+  @keyframes shake {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-5px);
+    }
+    75% {
+      transform: translateX(5px);
+    }
+  }
+
+  .cell.shake {
+    animation: shake 0.5s;
+  }
+
+  /* Modo Escuro */
+  body.dark-mode {
+    background: #1a1a1a;
+    color: #e0e0e0;
+  }
+
+  .dark-mode .game-container {
+    background: #2d2d2d;
+    color: #e0e0e0;
+  }
+
+  .dark-mode .game-header h1 {
+    color: #e0e0e0;
+  }
+
+  .dark-mode .game-header p {
+    color: #b0b0b0;
+  }
+
+  .dark-mode .theme-toggle {
+    background: #404040;
+    border-color: #555;
+    color: #e0e0e0;
+  }
+
+  .dark-mode .theme-toggle:hover {
+    background: #505050;
+  }
+
+  .dark-mode .btn-primary {
+    background: #4caf50;
+    border-color: #4caf50;
+  }
+
+  .dark-mode .btn-secondary {
+    background: #666;
+    border-color: #666;
+    color: #e0e0e0;
+  }
+
+  .dark-mode .schulte-grid {
+    background: #333;
+  }
+
+  .dark-mode .cell {
+    background: #404040;
+    border-color: #555;
+    color: #e0e0e0 !important;
+  }
+
+  .dark-mode .cell:hover {
+    background: #505050;
+    border-color: #4caf50;
+  }
+
+  .dark-mode .cell.correct {
+    background: #2e7d32 !important;
+    border-color: #4caf50 !important;
+    color: #e0e0e0 !important;
+  }
+
+  .dark-mode .timer {
+    color: #4caf50;
+  }
+
+  .dark-mode .next-number {
+    color: #4caf50;
+  }
+
+  .dark-mode .game-message {
+    color: #b0b0b0;
+  }
+
+  @media (max-width: 600px) {
+    .game-controls {
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .game-info {
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .schulte-grid {
+      max-width: 350px;
+    }
+
+    .cell {
+      font-size: 16px;
+    }
+
+    .theme-toggle {
+      width: 40px;
+      height: 40px;
+      font-size: 16px;
+    }
+  }
+</style>
+
+<script>
+  // Game state variables
+  let gridSize: number = 5;
+  let maxNumber: number = gridSize * gridSize;
+  let currentNumber: number = 1;
+  let startTime: number | null = null;
+  let timerInterval: ReturnType<typeof setInterval> | null = null;
+  let isGameActive: boolean = false;
+
+  // DOM elements
+  let gridSizeSelect: HTMLSelectElement | null = null;
+  let startBtn: HTMLButtonElement | null = null;
+  let resetBtn: HTMLButtonElement | null = null;
+  let timerDisplay: HTMLElement | null = null;
+  let nextNumberDisplay: HTMLElement | null = null;
+  let schulteGrid: HTMLElement | null = null;
+  let gameMessage: HTMLElement | null = null;
+
+  function initializeGame(): void {
+    console.log("Initializing game...");
+
+    // Get DOM elements
+    gridSizeSelect = document.getElementById("gridSize") as HTMLSelectElement;
+    startBtn = document.getElementById("startBtn") as HTMLButtonElement;
+    resetBtn = document.getElementById("resetBtn") as HTMLButtonElement;
+    timerDisplay = document.getElementById("timer");
+    nextNumberDisplay = document.getElementById("nextNumber");
+    schulteGrid = document.getElementById("schulteGrid");
+    gameMessage = document.getElementById("gameMessage");
+
+    if (!schulteGrid) {
+      console.error("schulteGrid element not found!");
+      return;
+    }
+
+    // Bind events
+    bindEvents();
+
+    // Generate initial grid
+    generateGrid();
+  }
+
+  function bindEvents(): void {
+    if (gridSizeSelect) {
+      gridSizeSelect.addEventListener("change", () => {
+        if (gridSizeSelect) {
+          const newSize = parseInt(gridSizeSelect.value, 10);
+          if (!isNaN(newSize)) {
+            gridSize = newSize;
+            resetGame();
+          }
+        }
+      });
+    }
+
+    if (startBtn) {
+      startBtn.addEventListener("click", startGame);
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener("click", resetGame);
+    }
+  }
+
+  function generateGrid(): void {
+    console.log("Generating grid with size:", gridSize);
+
+    if (!schulteGrid) {
+      console.error("schulteGrid not available!");
+      return;
+    }
+
+    schulteGrid.innerHTML = "";
+    schulteGrid.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+
+    const numbers = Array.from({ length: maxNumber }, (_, index) => index + 1);
+    shuffle(numbers);
+
+    console.log("Creating cells for numbers:", numbers);
+
+    numbers.forEach((number) => {
+      const cell = document.createElement("div");
+      cell.className = "cell";
+      cell.textContent = number.toString();
+      cell.dataset.number = number.toString();
+
+      cell.addEventListener("click", () => {
+        handleCellClick(cell, number);
+      });
+
+      if (schulteGrid) {
+        schulteGrid.appendChild(cell);
+      }
+    });
+
+    console.log("Grid generated successfully with", numbers.length, "cells");
+  }
+
+  function shuffle(array: number[]): number[] {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = array[i];
+      if (temp !== undefined && array[j] !== undefined) {
+        array[i] = array[j]!;
+        array[j] = temp;
+      }
+    }
+    return array;
+  }
+
+  function startGame(): void {
+    isGameActive = true;
+    startTime = Date.now();
+    currentNumber = 1;
+
+    if (nextNumberDisplay)
+      nextNumberDisplay.textContent = `Próximo: ${currentNumber}`;
+
+    if (startBtn) {
+      startBtn.textContent = "Jogando...";
+      startBtn.disabled = true;
+    }
+    if (resetBtn) resetBtn.disabled = false;
+    if (gridSizeSelect) gridSizeSelect.disabled = true;
+
+    if (gameMessage) {
+      gameMessage.textContent = `Encontre o número ${currentNumber}`;
+      gameMessage.style.color = "#4CAF50";
+    }
+
+    startTimer();
+  }
+
+  function startTimer(): void {
+    timerInterval = setInterval(() => {
+      if (isGameActive && startTime && timerDisplay) {
+        const elapsed = Date.now() - startTime;
+        const minutes = Math.floor(elapsed / 60000);
+        const seconds = Math.floor((elapsed % 60000) / 1000);
+        timerDisplay.textContent = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+      }
+    }, 100);
+  }
+
+  function handleCellClick(cell: HTMLElement, number: number): void {
+    if (!isGameActive) {
+      if (gameMessage) {
+        gameMessage.textContent = 'Clique em "Iniciar" para começar!';
+        gameMessage.style.color = "#ff6b6b";
+      }
+      return;
+    }
+
+    if (number === currentNumber) {
+      cell.classList.add("correct");
+      currentNumber++;
+      if (nextNumberDisplay)
+        nextNumberDisplay.textContent = `Próximo: ${currentNumber}`;
+
+      if (currentNumber > maxNumber) {
+        endGame(true);
+      } else {
+        if (gameMessage) {
+          gameMessage.textContent = `Encontre o número ${currentNumber}`;
+          gameMessage.style.color = "#4CAF50";
+        }
+      }
+    } else {
+      if (gameMessage) {
+        gameMessage.textContent = `Número incorreto! Procure o ${currentNumber}`;
+        gameMessage.style.color = "#ff6b6b";
+      }
+      cell.classList.add("shake");
+      setTimeout(() => {
+        cell.classList.remove("shake");
+      }, 500);
+    }
+  }
+
+  function endGame(completed: boolean): void {
+    isGameActive = false;
+    if (timerInterval) {
+      clearInterval(timerInterval);
+    }
+
+    if (completed) {
+      const elapsed = Date.now() - (startTime || 0);
+      const minutes = Math.floor(elapsed / 60000);
+      const seconds = Math.floor((elapsed % 60000) / 1000);
+      const totalTime = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+      if (gameMessage) {
+        gameMessage.textContent = `Parabéns! Você completou em ${totalTime}!`;
+        gameMessage.style.color = "#4CAF50";
+      }
+    }
+
+    if (startBtn) {
+      startBtn.textContent = "Iniciar";
+      startBtn.disabled = false;
+    }
+    if (resetBtn) resetBtn.disabled = false;
+    if (gridSizeSelect) gridSizeSelect.disabled = false;
+  }
+
+  function resetGame(): void {
+    isGameActive = false;
+    currentNumber = 1;
+    if (nextNumberDisplay)
+      nextNumberDisplay.textContent = `Próximo: ${currentNumber}`;
+
+    if (timerInterval) {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+
+    if (timerDisplay) timerDisplay.textContent = "00:00";
+    if (gameMessage) {
+      gameMessage.textContent = 'Clique em "Iniciar" para começar!';
+      gameMessage.style.color = "#666";
+    }
+
+    if (startBtn) {
+      startBtn.textContent = "Iniciar";
+      startBtn.disabled = false;
+    }
+    if (resetBtn) resetBtn.disabled = false;
+    if (gridSizeSelect) gridSizeSelect.disabled = false;
+
+    maxNumber = gridSize * gridSize;
+    generateGrid();
+  }
+
+  // Initialize the game when the page loads
+  document.addEventListener("DOMContentLoaded", () => {
+    console.log("DOM loaded, initializing game...");
+    setTimeout(() => {
+      initializeGame();
+
+      // Theme toggle functionality
+      const themeToggle = document.getElementById(
+        "theme-toggle"
+      ) as HTMLButtonElement | null;
+
+      if (themeToggle) {
+        // Check saved theme
+        const savedTheme = localStorage.getItem("schulte-theme");
+        if (savedTheme === "dark") {
+          document.body.classList.add("dark-mode");
+          const themeIcon = themeToggle.querySelector(".theme-icon");
+          if (themeIcon) themeIcon.textContent = "☀️";
+        }
+
+        themeToggle.addEventListener("click", () => {
+          document.body.classList.toggle("dark-mode");
+          const isDark = document.body.classList.contains("dark-mode");
+          const themeIcon = themeToggle.querySelector(".theme-icon");
+
+          if (themeIcon) {
+            themeIcon.textContent = isDark ? "☀️" : "🌙";
+          }
+
+          // Save preference
+          localStorage.setItem("schulte-theme", isDark ? "dark" : "light");
+        });
+      }
+    }, 100);
+  });
+</script>
