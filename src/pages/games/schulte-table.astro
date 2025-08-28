@@ -26,8 +26,7 @@ import Layout from "../../layouts/index.astro";
       </div>
 
       <div class="control-group">
-        <button id="startBtn" class="btn btn-primary">Iniciar</button>
-        <button id="resetBtn" class="btn btn-secondary">Reiniciar</button>
+        <button id="gameBtn" class="btn btn-primary">Iniciar</button>
       </div>
     </div>
 
@@ -40,6 +39,32 @@ import Layout from "../../layouts/index.astro";
     </div>
 
     <div id="schulteGrid" class="schulte-grid"></div>
+
+    <!-- Seção de Explicação -->
+    <div class="explanation-section">
+      <h2>O que é a Tabela de Schulte?</h2>
+      <p>
+        A Tabela de Schulte foi desenvolvida pelo psiquiatra e psicoterapeuta alemão Walter Schulte como um teste psicodiagnóstico para estudar as propriedades da atenção e reação cerebral. <mcreference link="https://m.apkpure.com/schulte-table-brain-training/ru.kriopeg.schultetable" index="4">4</mcreference>
+      </p>
+      
+      <h3>Como funciona?</h3>
+      <p>
+        É uma grade (geralmente 5x5) com números ou letras distribuídos aleatoriamente. O objetivo é encontrar e clicar nos números em ordem sequencial (1, 2, 3...) o mais rápido possível. <mcreference link="https://m.apkpure.com/schulte-table-brain-training/ru.kriopeg.schultetable" index="4">4</mcreference>
+      </p>
+      
+      <h3>Benefícios do exercício:</h3>
+      <ul>
+        <li><strong>Melhora da concentração:</strong> As Tabelas de Schulte forçam o indivíduo a se concentrar profundamente, bloqueando distrações externas. <mcreference link="https://calcopedia.com/pt/tables/" index="2">2</mcreference></li>
+        <li><strong>Desenvolvimento da visão periférica:</strong> O exercício ajuda a ampliar o campo de visão e melhorar a percepção visual. <mcreference link="https://fastreading.yurkap.com/pt" index="3">3</mcreference></li>
+        <li><strong>Aumento da velocidade de leitura:</strong> Ao melhorar a visão periférica e concentração, contribui para uma leitura mais rápida. <mcreference link="https://fastreading.yurkap.com/pt" index="3">3</mcreference></li>
+        <li><strong>Coordenação olho-mão:</strong> À medida que identifica números em sequência, a coordenação entre o que é visto e a ação é constantemente refinada. <mcreference link="https://calcopedia.com/pt/tables/" index="2">2</mcreference></li>
+        <li><strong>Fortalecimento da memória:</strong> O exercício regular fortalece a memória visual e aumenta a capacidade de armazenamento. <mcreference link="http://pt.nextews.com/4439105a/" index="1">1</mcreference></li>
+      </ul>
+      
+      <p>
+        O estado de concentração alcançado durante o exercício com as tabelas de Schulte é comparável à meditação, sendo eficaz tanto para adultos quanto para crianças. <mcreference link="https://fastreading.yurkap.com/pt" index="3">3</mcreference>
+      </p>
+    </div>
   </div>
 </Layout>
 
@@ -172,6 +197,76 @@ import Layout from "../../layouts/index.astro";
 
   .btn-secondary:hover {
     background: #da190b;
+  }
+
+  /* Explanation Section */
+  .explanation-section {
+    max-width: 800px;
+    margin: 40px auto 0;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+  }
+
+  .explanation-section h2 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .explanation-section h3 {
+    color: #333;
+    font-size: 22px;
+    margin: 25px 0 15px;
+  }
+
+  .explanation-section p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+
+  .explanation-section ul {
+    color: #666;
+    margin: 15px 0;
+    padding-left: 20px;
+  }
+
+  .explanation-section li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+
+  .explanation-section strong {
+    color: #4caf50;
+  }
+
+  .dark-mode .explanation-section {
+    background-color: #333;
+  }
+
+  .dark-mode .explanation-section h2 {
+    color: #e0e0e0;
+  }
+
+  .dark-mode .explanation-section h3 {
+    color: #e0e0e0;
+  }
+
+  .dark-mode .explanation-section p {
+    color: #b0b0b0;
+  }
+
+  .dark-mode .explanation-section ul {
+    color: #b0b0b0;
+  }
+
+  .dark-mode .explanation-section strong {
+    color: #4caf50;
   }
 
   .btn:disabled {
@@ -407,8 +502,7 @@ import Layout from "../../layouts/index.astro";
 
   // DOM elements
   let gridSizeSelect: HTMLSelectElement | null = null;
-  let startBtn: HTMLButtonElement | null = null;
-  let resetBtn: HTMLButtonElement | null = null;
+  let gameBtn: HTMLButtonElement | null = null;
   let timerDisplay: HTMLElement | null = null;
   let nextNumberDisplay: HTMLElement | null = null;
   let schulteGrid: HTMLElement | null = null;
@@ -419,8 +513,7 @@ import Layout from "../../layouts/index.astro";
 
     // Get DOM elements
     gridSizeSelect = document.getElementById("gridSize") as HTMLSelectElement;
-    startBtn = document.getElementById("startBtn") as HTMLButtonElement;
-    resetBtn = document.getElementById("resetBtn") as HTMLButtonElement;
+    gameBtn = document.getElementById("gameBtn") as HTMLButtonElement;
     timerDisplay = document.getElementById("timer");
     nextNumberDisplay = document.getElementById("nextNumber");
     schulteGrid = document.getElementById("schulteGrid");
@@ -451,12 +544,14 @@ import Layout from "../../layouts/index.astro";
       });
     }
 
-    if (startBtn) {
-      startBtn.addEventListener("click", startGame);
-    }
-
-    if (resetBtn) {
-      resetBtn.addEventListener("click", resetGame);
+    if (gameBtn) {
+      gameBtn.addEventListener("click", () => {
+        if (isGameActive) {
+          resetGame();
+        } else {
+          startGame();
+        }
+      });
     }
   }
 
@@ -507,18 +602,18 @@ import Layout from "../../layouts/index.astro";
   }
 
   function startGame(): void {
+    console.log("Starting game...");
     isGameActive = true;
-    startTime = Date.now();
     currentNumber = 1;
+    startTime = Date.now();
 
     if (nextNumberDisplay)
       nextNumberDisplay.textContent = `Próximo: ${currentNumber}`;
 
-    if (startBtn) {
-      startBtn.textContent = "Jogando...";
-      startBtn.disabled = true;
+    if (gameBtn) {
+      gameBtn.textContent = "Reiniciar";
+      gameBtn.className = "btn btn-secondary";
     }
-    if (resetBtn) resetBtn.disabled = false;
     if (gridSizeSelect) gridSizeSelect.disabled = true;
 
     if (gameMessage) {
@@ -592,11 +687,10 @@ import Layout from "../../layouts/index.astro";
       }
     }
 
-    if (startBtn) {
-      startBtn.textContent = "Iniciar";
-      startBtn.disabled = false;
+  if (gameBtn) {
+      gameBtn.textContent = "Reiniciar";
+      gameBtn.className = "btn btn-secondary";
     }
-    if (resetBtn) resetBtn.disabled = false;
     if (gridSizeSelect) gridSizeSelect.disabled = false;
   }
 
@@ -617,11 +711,10 @@ import Layout from "../../layouts/index.astro";
       gameMessage.style.color = "#666";
     }
 
-    if (startBtn) {
-      startBtn.textContent = "Iniciar";
-      startBtn.disabled = false;
+  if (gameBtn) {
+      gameBtn.textContent = "Iniciar";
+      gameBtn.className = "btn btn-primary";
     }
-    if (resetBtn) resetBtn.disabled = false;
     if (gridSizeSelect) gridSizeSelect.disabled = false;
 
     maxNumber = gridSize * gridSize;
