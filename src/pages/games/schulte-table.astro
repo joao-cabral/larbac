@@ -5,6 +5,9 @@ import Layout from "../../layouts/index.astro";
 <Layout title="Tabela de Schulte" header={false}>
   <div class="game-container">
     <div class="game-header">
+      <button id="back-btn" class="back-btn" aria-label="Voltar">
+        <span class="back-icon">←</span>
+      </button>
       <h1>Tabela de Schulte</h1>
       <p>Encontre os números em ordem crescente o mais rápido possível!</p>
       <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
@@ -38,31 +41,90 @@ import Layout from "../../layouts/index.astro";
       </div>
     </div>
 
-    <div id="schulteGrid" class="schulte-grid"></div>
+    <div class="grid-container">
+      <div id="countdown" class="countdown hidden">3</div>
+      <div id="schulteGrid" class="schulte-grid"></div>
+    </div>
+
+    <!-- Modal de Parabéns -->
+    <div id="congratulations-modal" class="congratulations-modal">
+      <div class="modal-content">
+        <h2>🎉 Parabéns! 🎉</h2>
+        <p>Você completou a Tabela de Schulte!</p>
+        <p id="completion-time" class="completion-time"></p>
+        <button id="reload-button" class="reload-button">🔄 Recomeçar</button>
+      </div>
+    </div>
 
     <!-- Seção de Explicação -->
     <div class="explanation-section">
       <h2>O que é a Tabela de Schulte?</h2>
       <p>
-        A Tabela de Schulte foi desenvolvida pelo psiquiatra e psicoterapeuta alemão Walter Schulte como um teste psicodiagnóstico para estudar as propriedades da atenção e reação cerebral. <mcreference link="https://m.apkpure.com/schulte-table-brain-training/ru.kriopeg.schultetable" index="4">4</mcreference>
+        A Tabela de Schulte foi desenvolvida pelo psiquiatra e psicoterapeuta
+        alemão Walter Schulte como um teste psicodiagnóstico para estudar as
+        propriedades da atenção e reação cerebral. <mcreference
+          link="https://m.apkpure.com/schulte-table-brain-training/ru.kriopeg.schultetable"
+          index="4">4</mcreference
+        >
       </p>
-      
+
       <h3>Como funciona?</h3>
       <p>
-        É uma grade (geralmente 5x5) com números ou letras distribuídos aleatoriamente. O objetivo é encontrar e clicar nos números em ordem sequencial (1, 2, 3...) o mais rápido possível. <mcreference link="https://m.apkpure.com/schulte-table-brain-training/ru.kriopeg.schultetable" index="4">4</mcreference>
+        É uma grade (geralmente 5x5) com números ou letras distribuídos
+        aleatoriamente. O objetivo é encontrar e clicar nos números em ordem
+        sequencial (1, 2, 3...) o mais rápido possível. <mcreference
+          link="https://m.apkpure.com/schulte-table-brain-training/ru.kriopeg.schultetable"
+          index="4">4</mcreference
+        >
       </p>
-      
+
       <h3>Benefícios do exercício:</h3>
       <ul>
-        <li><strong>Melhora da concentração:</strong> As Tabelas de Schulte forçam o indivíduo a se concentrar profundamente, bloqueando distrações externas. <mcreference link="https://calcopedia.com/pt/tables/" index="2">2</mcreference></li>
-        <li><strong>Desenvolvimento da visão periférica:</strong> O exercício ajuda a ampliar o campo de visão e melhorar a percepção visual. <mcreference link="https://fastreading.yurkap.com/pt" index="3">3</mcreference></li>
-        <li><strong>Aumento da velocidade de leitura:</strong> Ao melhorar a visão periférica e concentração, contribui para uma leitura mais rápida. <mcreference link="https://fastreading.yurkap.com/pt" index="3">3</mcreference></li>
-        <li><strong>Coordenação olho-mão:</strong> À medida que identifica números em sequência, a coordenação entre o que é visto e a ação é constantemente refinada. <mcreference link="https://calcopedia.com/pt/tables/" index="2">2</mcreference></li>
-        <li><strong>Fortalecimento da memória:</strong> O exercício regular fortalece a memória visual e aumenta a capacidade de armazenamento. <mcreference link="http://pt.nextews.com/4439105a/" index="1">1</mcreference></li>
+        <li>
+          <strong>Melhora da concentração:</strong> As Tabelas de Schulte forçam
+          o indivíduo a se concentrar profundamente, bloqueando distrações externas.
+          <mcreference link="https://calcopedia.com/pt/tables/" index="2"
+            >2</mcreference
+          >
+        </li>
+        <li>
+          <strong>Desenvolvimento da visão periférica:</strong> O exercício ajuda
+          a ampliar o campo de visão e melhorar a percepção visual. <mcreference
+            link="https://fastreading.yurkap.com/pt"
+            index="3">3</mcreference
+          >
+        </li>
+        <li>
+          <strong>Aumento da velocidade de leitura:</strong> Ao melhorar a visão
+          periférica e concentração, contribui para uma leitura mais rápida. <mcreference
+            link="https://fastreading.yurkap.com/pt"
+            index="3">3</mcreference
+          >
+        </li>
+        <li>
+          <strong>Coordenação olho-mão:</strong> À medida que identifica números
+          em sequência, a coordenação entre o que é visto e a ação é constantemente
+          refinada. <mcreference
+            link="https://calcopedia.com/pt/tables/"
+            index="2">2</mcreference
+          >
+        </li>
+        <li>
+          <strong>Fortalecimento da memória:</strong> O exercício regular fortalece
+          a memória visual e aumenta a capacidade de armazenamento. <mcreference
+            link="http://pt.nextews.com/4439105a/"
+            index="1">1</mcreference
+          >
+        </li>
       </ul>
-      
+
       <p>
-        O estado de concentração alcançado durante o exercício com as tabelas de Schulte é comparável à meditação, sendo eficaz tanto para adultos quanto para crianças. <mcreference link="https://fastreading.yurkap.com/pt" index="3">3</mcreference>
+        O estado de concentração alcançado durante o exercício com as tabelas de
+        Schulte é comparável à meditação, sendo eficaz tanto para adultos quanto
+        para crianças. <mcreference
+          link="https://fastreading.yurkap.com/pt"
+          index="3">3</mcreference
+        >
       </p>
     </div>
   </div>
@@ -104,6 +166,29 @@ import Layout from "../../layouts/index.astro";
     margin-bottom: 30px;
   }
 
+  .back-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #f0f0f0;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    color: #333;
+  }
+
+  .back-btn:hover {
+    background: #e0e0e0;
+    transform: scale(1.1);
+  }
+
   .theme-toggle {
     position: absolute;
     top: 0;
@@ -126,8 +211,16 @@ import Layout from "../../layouts/index.astro";
     transform: scale(1.1);
   }
 
-  /* Ajustes para mobile - reposicionar botão de tema */
+  /* Ajustes para mobile - reposicionar botões */
   @media (max-width: 768px) {
+    .back-btn {
+      position: static;
+      margin: 10px auto 10px auto;
+      width: 45px;
+      height: 45px;
+      font-size: 18px;
+    }
+
     .theme-toggle {
       position: static;
       margin: 10px auto 20px auto;
@@ -135,7 +228,7 @@ import Layout from "../../layouts/index.astro";
       height: 45px;
       font-size: 18px;
     }
-    
+
     .game-header {
       display: flex;
       flex-direction: column;
@@ -304,11 +397,55 @@ import Layout from "../../layouts/index.astro";
     color: #666;
   }
 
+  .grid-container {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .countdown {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 120px;
+    font-weight: bold;
+    color: #4caf50;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    animation: countdownPulse 1s ease-in-out;
+  }
+
+  .countdown.hidden {
+    display: none;
+  }
+
+  @keyframes countdownPulse {
+    0% {
+      transform: translate(-50%, -50%) scale(0.5);
+      opacity: 0;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+  }
+
   .schulte-grid {
     display: grid;
     gap: 5px;
-    max-width: 700px;
-    margin: 0 auto;
     padding: 20px;
     background: #f9f9f9;
     border-radius: 10px;
@@ -339,7 +476,7 @@ import Layout from "../../layouts/index.astro";
       max-width: 95vw;
       padding: 10px;
       gap: 3px;
-      
+
       .cell {
         min-height: 40px;
         min-width: 40px;
@@ -352,7 +489,7 @@ import Layout from "../../layouts/index.astro";
       max-width: 98vw;
       padding: 5px;
       gap: 2px;
-      
+
       .cell {
         min-height: 35px;
         min-width: 35px;
@@ -410,6 +547,16 @@ import Layout from "../../layouts/index.astro";
     color: #b0b0b0;
   }
 
+  .dark-mode .back-btn {
+    background: #404040;
+    border-color: #555;
+    color: #e0e0e0;
+  }
+
+  .dark-mode .back-btn:hover {
+    background: #505050;
+  }
+
   .dark-mode .theme-toggle {
     background: #404040;
     border-color: #555;
@@ -429,6 +576,11 @@ import Layout from "../../layouts/index.astro";
     background: #666;
     border-color: #666;
     color: #e0e0e0;
+  }
+
+  .dark-mode .countdown {
+    color: #4caf50;
+    background: rgba(45, 45, 45, 0.95);
   }
 
   .dark-mode .schulte-grid {
@@ -462,6 +614,82 @@ import Layout from "../../layouts/index.astro";
 
   .dark-mode .game-message {
     color: #b0b0b0;
+  }
+
+  /* Modal de Parabéns */
+  .congratulations-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .modal-content {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 90%;
+  }
+
+  .modal-content h2 {
+    color: #4caf50;
+    margin-bottom: 20px;
+    font-size: 2em;
+  }
+
+  .modal-content p {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+  }
+
+  .completion-time {
+    color: #4caf50 !important;
+    font-weight: bold;
+    font-size: 1.4em !important;
+    margin-bottom: 30px !important;
+  }
+
+  .reload-button {
+    background: #4caf50;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .reload-button:hover {
+    background: #45a049;
+  }
+
+  /* Dark mode para o modal */
+  .dark-mode .modal-content {
+    background: #2d2d2d;
+    color: #e0e0e0;
+  }
+
+  .dark-mode .modal-content h2 {
+    color: #4caf50;
+  }
+
+  .dark-mode .modal-content p {
+    color: #b0b0b0;
+  }
+
+  .dark-mode .completion-time {
+    color: #4caf50 !important;
   }
 
   @media (max-width: 600px) {
@@ -548,6 +776,8 @@ import Layout from "../../layouts/index.astro";
       gameBtn.addEventListener("click", () => {
         if (isGameActive) {
           resetGame();
+        } else if (gameBtn && gameBtn.textContent === "Recomeçar") {
+          resetGame();
         } else {
           startGame();
         }
@@ -602,6 +832,51 @@ import Layout from "../../layouts/index.astro";
   }
 
   function startGame(): void {
+    console.log("Starting countdown...");
+
+    // Disable button during countdown
+    if (gameBtn) {
+      gameBtn.disabled = true;
+    }
+    if (gridSizeSelect) gridSizeSelect.disabled = true;
+
+    // Show countdown
+    const countdownElement = document.getElementById("countdown");
+    if (countdownElement) {
+      countdownElement.classList.remove("hidden");
+
+      let count = 3;
+      countdownElement.textContent = count.toString();
+
+      const countdownInterval = setInterval(() => {
+        count--;
+        if (count > 0) {
+          countdownElement.textContent = count.toString();
+          // Restart animation
+          countdownElement.style.animation = "none";
+          countdownElement.offsetHeight; // Trigger reflow
+          countdownElement.style.animation = "countdownPulse 1s ease-in-out";
+        } else {
+          countdownElement.textContent = "GO!";
+          countdownElement.style.animation = "none";
+          countdownElement.offsetHeight;
+          countdownElement.style.animation = "countdownPulse 1s ease-in-out";
+
+          setTimeout(() => {
+            countdownElement.classList.add("hidden");
+            actuallyStartGame();
+          }, 1000);
+
+          clearInterval(countdownInterval);
+        }
+      }, 1000);
+    } else {
+      // Fallback if countdown element not found
+      actuallyStartGame();
+    }
+  }
+
+  function actuallyStartGame(): void {
     console.log("Starting game...");
     isGameActive = true;
     currentNumber = 1;
@@ -613,6 +888,7 @@ import Layout from "../../layouts/index.astro";
     if (gameBtn) {
       gameBtn.textContent = "Reiniciar";
       gameBtn.className = "btn btn-secondary";
+      gameBtn.disabled = false;
     }
     if (gridSizeSelect) gridSizeSelect.disabled = true;
 
@@ -637,8 +913,12 @@ import Layout from "../../layouts/index.astro";
 
   function handleCellClick(cell: HTMLElement, number: number): void {
     if (!isGameActive) {
-      if (gameMessage) {
-        gameMessage.textContent = 'Clique em "Iniciar" para começar!';
+      // Se o jogo não estiver ativo, iniciar a contagem regressiva
+      if (gameBtn && gameBtn.textContent === "Iniciar") {
+        startGame();
+      } else if (gameMessage) {
+        gameMessage.textContent =
+          'Clique em "Iniciar" para começar! Ou clique na tabela';
         gameMessage.style.color = "#ff6b6b";
       }
       return;
@@ -670,6 +950,28 @@ import Layout from "../../layouts/index.astro";
     }
   }
 
+  function showCongulations(completionTime: string): void {
+    const modal = document.getElementById("congratulations-modal");
+    if (!modal) return;
+
+    // Exibir o tempo de finalização
+    const timeElement = document.getElementById("completion-time");
+    if (timeElement) {
+      timeElement.textContent = `⏱️ Tempo: ${completionTime}`;
+    }
+
+    modal.style.display = "flex";
+
+    // Adicionar event listener para o botão de reload
+    const reloadButton = document.getElementById("reload-button");
+    if (reloadButton) {
+      reloadButton.onclick = () => {
+        modal.style.display = "none";
+        resetGame();
+      };
+    }
+  }
+
   function endGame(completed: boolean): void {
     isGameActive = false;
     if (timerInterval) {
@@ -685,10 +987,13 @@ import Layout from "../../layouts/index.astro";
         gameMessage.textContent = `Parabéns! Você completou em ${totalTime}!`;
         gameMessage.style.color = "#4CAF50";
       }
+
+      // Mostrar modal de parabéns com o tempo
+      showCongulations(totalTime);
     }
 
-  if (gameBtn) {
-      gameBtn.textContent = "Reiniciar";
+    if (gameBtn) {
+      gameBtn.textContent = "Recomeçar";
       gameBtn.className = "btn btn-secondary";
     }
     if (gridSizeSelect) gridSizeSelect.disabled = false;
@@ -711,7 +1016,7 @@ import Layout from "../../layouts/index.astro";
       gameMessage.style.color = "#666";
     }
 
-  if (gameBtn) {
+    if (gameBtn) {
       gameBtn.textContent = "Iniciar";
       gameBtn.className = "btn btn-primary";
     }
@@ -726,6 +1031,16 @@ import Layout from "../../layouts/index.astro";
     console.log("DOM loaded, initializing game...");
     setTimeout(() => {
       initializeGame();
+
+      // Back button functionality
+      const backBtn = document.getElementById(
+        "back-btn"
+      ) as HTMLButtonElement | null;
+      if (backBtn) {
+        backBtn.addEventListener("click", () => {
+          window.history.back();
+        });
+      }
 
       // Theme toggle functionality
       const themeToggle = document.getElementById(
