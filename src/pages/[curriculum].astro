@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 const cv = Astro.props;
 ---
 
-<Layout title="Joao" header={false}>
+<Layout title="João Cabral" header={false}>
   <div class='layout'>
     <nav>
       <div class='icon'>
@@ -41,17 +41,18 @@ const cv = Astro.props;
           <br />
           {cv.data.name}
         </h1>
+        <div class='role'>{cv.data.title}</div>
 
       <div class='contact'>
         <div>Tel: {cv.data.phone} | {cv.data.email}</div>
         <a href='https://larbac.me' target='_blank'>Portfolio: larbac.me</a>
         <br />
         <a href='https://www.linkedin.com/in/jo%C3%A3o-cabral-6296a8174/' target='_blank'
-          >Linkedin: linkedin.com/in/joaocabral</a
+          >LinkedIn: linkedin.com/in/joão-cabral</a
         >
         <br>
         <a href='https://github.com/joao-cabral' target='_blank'
-          >Github: juao.cabral</a
+          >GitHub: github.com/joao-cabral</a
         >
       </div>
       <hr />
@@ -166,6 +167,11 @@ const cv = Astro.props;
     .contact {
       font-size: 0.8rem;
       margin-bottom: 1rem;
+    }
+
+    .role {
+      margin-bottom: 0.25rem;
+      font-weight: 500;
     }
 
     hr {

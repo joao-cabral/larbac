@@ -3,8 +3,15 @@ name: Deploy to VPS on Tag
 on:
   push:
     tags:
-      - "v*.*.*" # Dispara quando uma tag no formato v1.0.0 for criada
-      - "release-*" # Ou tags no formato release-*
+      - "v*.*.*"
+      - "release-*"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -12,93 +19,94 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
-          version: latest
+          version: 9.15.9
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: "22.18.0"
-          cache: "pnpm"
+          cache: pnpm
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Install Chrome for Puppeteer
-        run: npx puppeteer browsers install chrome
+        run: pnpm exec puppeteer browsers install chrome
 
       - name: Build project
         run: pnpm run build
+
+      - name: Configure SSH
         env:
-          PUPPETEER_ARGS: --no-sandbox --disable-setuid-sandbox
-
-      - name: Deploy to VPS
-        uses: appleboy/ssh-action@v0.1.7
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USERNAME }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          port: ${{ secrets.VPS_PORT || 22 }}
-          script: |
-            # Navegar para o diretório do projeto
-            cd /var/www/larbac
-
-            # Fazer backup da versão atual
-            sudo cp -r . ../backup-$(date +%Y%m%d-%H%M%S) 2>/dev/null || true
-
-            # Configurar PATH para Node.js e pnpm
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-            
-            # Instalar pnpm se não estiver instalado
-            if ! command -v pnpm &> /dev/null; then
-              curl -fsSL https://get.pnpm.io/install.sh | sh -
-              export PNPM_HOME="$HOME/.local/share/pnpm"
-              export PATH="$PNPM_HOME:$PATH"
-            fi
-
-            # Resetar mudanças locais e fazer pull das mudanças
-            sudo git fetch --all
-            sudo git reset --hard HEAD
-            sudo git clean -fd
-            sudo git checkout ${{ github.ref_name }}
-
-            # Configurar PATH completo para sudo
-            NODE_PATH=$(which node)
-            PNPM_PATH=$(which pnpm)
-            FULL_PATH="$(dirname $NODE_PATH):$(dirname $PNPM_PATH):$PATH"
-
-            # Instalar dependências e fazer build
-            sudo -E env PATH="$FULL_PATH" pnpm install --frozen-lockfile
-            sudo -E env PATH="$FULL_PATH" pnpm run build
-
-            # Copiar arquivos buildados para o diretório web
-            sudo cp -r dist/* . 2>/dev/null || echo "Nenhum arquivo dist encontrado"
-
-            # Reiniciar nginx se estiver ativo
-            if systemctl is-active --quiet nginx; then
-              sudo systemctl reload nginx
-            else
-              echo "Nginx não está ativo, pulando reload"
-            fi
-
-            echo "Deploy da tag ${{ github.ref_name }} concluído!"
-
-      - name: Notify deployment success
-        if: success()
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          VPS_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
         run: |
-          echo "✅ Deploy realizado com sucesso!"
-          echo "Tag: ${{ github.ref_name }}"
-          echo "Commit: ${{ github.sha }}"
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/deploy_key
+          printf '%s\n' "$VPS_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/deploy_key ~/.ssh/known_hosts
 
-      - name: Notify deployment failure
-        if: failure()
+      - name: Upload release
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+          VPS_USERNAME: ${{ secrets.VPS_USERNAME }}
         run: |
-          echo "❌ Falha no deploy!"
-          echo "Tag: ${{ github.ref_name }}"
-          echo "Verifique os logs para mais detalhes."
+          tar -czf larbac-release.tar.gz dist deploy/nginx.conf
+          scp -i ~/.ssh/deploy_key -P "${VPS_PORT:-22}" \
+            larbac-release.tar.gz \
+            "$VPS_USERNAME@$VPS_HOST:/tmp/larbac-$GITHUB_SHA.tar.gz"
+
+      - name: Activate release
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+          VPS_USERNAME: ${{ secrets.VPS_USERNAME }}
+        run: |
+          ssh -i ~/.ssh/deploy_key -p "${VPS_PORT:-22}" \
+            "$VPS_USERNAME@$VPS_HOST" \
+            "bash -s -- '$GITHUB_SHA'" <<'REMOTE'
+          set -euo pipefail
+
+          release="$1"
+          app_root="$HOME/apps/larbac"
+          release_dir="$app_root/releases/$release"
+          artifact="/tmp/larbac-$release.tar.gz"
+
+          mkdir -p "$release_dir"
+          tar -xzf "$artifact" -C "$release_dir"
+          rm -f "$artifact"
+
+          ln -sfn "releases/$release" "$app_root/current.next"
+          mv -Tf "$app_root/current.next" "$app_root/current"
+
+          docker pull nginx:1.28-alpine
+          docker rm -f larbac-web 2>/dev/null || true
+          docker run -d \
+            --name larbac-web \
+            --restart unless-stopped \
+            --network kamal \
+            --volume "$app_root:/srv/larbac:ro" \
+            --volume "$app_root/current/deploy/nginx.conf:/etc/nginx/conf.d/default.conf:ro" \
+            nginx:1.28-alpine
+
+          docker exec kamal-proxy kamal-proxy deploy larbac-web \
+            --target larbac-web:80 \
+            --host larbac.me \
+            --host www.larbac.me \
+            --canonical-host larbac.me \
+            --health-check-path /up \
+            --tls
+
+          find "$app_root/releases" -mindepth 1 -maxdepth 1 -type d \
+            -not -name "$release" -printf '%T@ %p\n' \
+            | sort -nr \
+            | tail -n +4 \
+            | cut -d' ' -f2- \
+            | xargs -r rm -rf
+          REMOTE
