@@ -1,0 +1,89 @@
+---
+import Layout from "./index.astro";
+
+interface Props {
+  title: string;
+  eyebrow: string;
+  description: string;
+}
+
+const { title, eyebrow, description } = Astro.props;
+---
+
+<Layout title={`${title} — João Cabral`} header={true}>
+  <div class="section-page">
+    <header class="section-hero">
+      <p>{eyebrow}</p>
+      <h1>{title}</h1>
+      <div class="section-hero__description">{description}</div>
+    </header>
+
+    <div class="section-content">
+      <slot />
+    </div>
+  </div>
+</Layout>
+
+<style lang="scss">
+  :global(body) {
+    margin: 0;
+    background: #f4f5f2;
+    color: #171816;
+  }
+
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  .section-page {
+    width: min(1240px, 100%);
+    margin: 0 auto;
+    padding: clamp(28px, 4vw, 48px) clamp(20px, 5vw, 72px) 96px;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .section-page * {
+    font-family: inherit;
+  }
+
+  .section-hero {
+    max-width: 860px;
+    margin-bottom: clamp(32px, 4vw, 52px);
+  }
+
+  .section-hero > p {
+    margin: 0 0 16px;
+    color: #258753;
+    font-size: 0.76rem;
+    font-weight: 760;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .section-hero h1 {
+    margin: 0;
+    font-size: clamp(3.4rem, 8vw, 7.8rem);
+    line-height: 0.88;
+    letter-spacing: -0.075em;
+  }
+
+  .section-hero__description {
+    max-width: 720px;
+    margin-top: 30px;
+    color: #686c66;
+    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+    line-height: 1.55;
+    letter-spacing: -0.02em;
+  }
+
+  @media (max-width: 600px) {
+    .section-page {
+      padding-top: 28px;
+      padding-bottom: 64px;
+    }
+
+    .section-hero h1 {
+      font-size: clamp(3.15rem, 18vw, 5rem);
+    }
+  }
+</style>
