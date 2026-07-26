@@ -1,0 +1,119 @@
+---
+import SectionLayout from "../layouts/sectionLayout.astro";
+
+const categories = [
+  {
+    number: "01",
+    title: "Ferramentas e setup",
+    description: "Hardware, editor, terminal e aplicativos que fazem parte do meu ambiente de trabalho.",
+    color: "blue",
+  },
+  {
+    number: "02",
+    title: "Workflow",
+    description: "Como organizo tarefas, desenvolvo features, reviso código e acompanho entregas.",
+    color: "green",
+  },
+  {
+    number: "03",
+    title: "Scripts e configuração",
+    description: "Dotfiles, automações e scripts para preparar uma máquina e reduzir trabalho repetitivo.",
+    color: "yellow",
+  },
+];
+---
+
+<SectionLayout
+  title="Uses"
+  eyebrow="Como eu trabalho"
+  description="Meu ambiente, minhas ferramentas e as pequenas automações que ajudam a transformar intenção em software."
+>
+  <div class="uses-grid">
+    {categories.map((category) => (
+      <article class={`uses-card uses-card--${category.color}`}>
+        <span class="uses-card__number">{category.number}</span>
+        <div class="uses-card__symbol" aria-hidden="true">+</div>
+        <div>
+          <p>Conteúdo em preparação</p>
+          <h2>{category.title}</h2>
+          <div>{category.description}</div>
+        </div>
+      </article>
+    ))}
+  </div>
+</SectionLayout>
+
+<style lang="scss">
+  .uses-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .uses-card {
+    min-height: 410px;
+    position: relative;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    border-radius: 30px;
+  }
+
+  .uses-card:first-child { grid-column: 1 / -1; }
+  .uses-card--blue { background: #ccdcff; }
+  .uses-card--green { background: #c9dfd0; }
+  .uses-card--yellow { background: #f0d477; }
+
+  .uses-card__number {
+    font-size: 0.72rem;
+    font-weight: 800;
+  }
+
+  .uses-card__symbol {
+    position: absolute;
+    top: 16px;
+    right: 28px;
+    color: rgba(23, 24, 22, 0.12);
+    font-size: 13rem;
+    font-weight: 200;
+    line-height: 1;
+    transform: rotate(12deg);
+  }
+
+  .uses-card > div:last-child {
+    position: relative;
+    z-index: 1;
+    max-width: 620px;
+  }
+
+  .uses-card p {
+    margin: 0 0 10px;
+    font-size: 0.68rem;
+    font-weight: 760;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .uses-card h2 {
+    margin: 0;
+    font-size: clamp(1.8rem, 4vw, 3.4rem);
+    line-height: 1;
+    letter-spacing: -0.055em;
+  }
+
+  .uses-card > div:last-child > div {
+    max-width: 520px;
+    margin-top: 16px;
+    color: rgba(23, 24, 22, 0.66);
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 700px) {
+    .uses-grid { grid-template-columns: 1fr; gap: 16px; }
+    .uses-card:first-child { grid-column: 1; }
+    .uses-card { min-height: 350px; border-radius: 24px; }
+  }
+</style>
