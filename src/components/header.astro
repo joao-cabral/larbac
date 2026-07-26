@@ -146,6 +146,16 @@ const isActive = (href: string) =>
       --site-header-height: 72px;
     }
 
+    :global(body) {
+      padding-top: var(--site-header-height);
+    }
+
+    .site-header {
+      position: fixed;
+      right: 0;
+      left: 0;
+    }
+
     .site-header__inner {
       padding: 0 16px;
       gap: 12px;
