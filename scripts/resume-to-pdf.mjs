@@ -1,4 +1,5 @@
 import express from "express";
+import { existsSync } from "node:fs";
 import path from "path";
 import puppeteer from "puppeteer";
 
@@ -7,9 +8,14 @@ app.use(express.static(path.join("dist")));
 
 const server = app.listen(18347);
 const FILENAMES = ["curriculum-pt"];
+const macOSChrome = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+const executablePath = process.platform === "darwin" && existsSync(macOSChrome)
+  ? macOSChrome
+  : undefined;
 
 const browser = await puppeteer.launch({
   headless: "new",
+  executablePath,
   args: [
     '--no-sandbox',
     '--disable-setuid-sandbox',

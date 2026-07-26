@@ -1,5 +1,6 @@
 ---
 import Footer from '../components/footer.astro';
+import GoogleAnalytics from '../components/GoogleAnalytics.astro';
 import Header from '../components/header.astro';
 import '../styles/index.scss';
 
@@ -23,6 +24,7 @@ const { title, header = false } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 
 		<title>{title}</title>
+		<GoogleAnalytics />
 
 		<slot name='head' />
 
