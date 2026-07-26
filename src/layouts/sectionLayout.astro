@@ -1,5 +1,6 @@
 ---
 import Layout from "./index.astro";
+import { DotPattern } from "../components/ui/dot-pattern";
 
 interface Props {
   title: string;
@@ -11,6 +12,9 @@ const { title, eyebrow, description } = Astro.props;
 ---
 
 <Layout title={`${title} — João Cabral`} header={true}>
+  <div class="page-background" aria-hidden="true">
+    <DotPattern className="dot-pattern" width={24} height={24} cx={1.5} cy={1.5} cr={1.1} />
+  </div>
   <div class="section-page">
     <header class="section-hero">
       <p>{eyebrow}</p>
@@ -27,8 +31,44 @@ const { title, eyebrow, description } = Astro.props;
 <style lang="scss">
   :global(body) {
     margin: 0;
-    background: #f4f5f2;
+    background: transparent;
     color: #171816;
+  }
+
+  :global(html) {
+    background: #fff;
+  }
+
+  .page-background {
+    position: fixed;
+    z-index: -1;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  :global(.dot-pattern) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    fill: #d2d6cf;
+    opacity: 0.62;
+  }
+
+  :global(.site-header) {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  :global(.site-header nav[aria-label="Navegação principal"]) {
+    height: auto;
+    padding: 4px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
   }
 
   :global(*) {
