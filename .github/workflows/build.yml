@@ -40,6 +40,8 @@ jobs:
 
       - name: Build project
         run: pnpm run build
+        env:
+          PUBLIC_GOOGLE_ANALYTICS_ID: ${{ secrets.PUBLIC_GOOGLE_ANALYTICS_ID }}
 
       - name: Configure SSH
         env:

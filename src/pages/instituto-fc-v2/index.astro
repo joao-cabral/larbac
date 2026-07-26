@@ -1,0 +1,129 @@
+---
+import GoogleAnalytics from '../../components/GoogleAnalytics.astro';
+
+const badges = [['science', 'Pureza certificada'], ['ecg_heart', 'Desenvolvido por médicos'], ['nature', 'Ingredientes naturais'], ['clinical_notes', 'Testado em laboratório']];
+---
+
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="Nutracêuticos premium desenvolvidos sob rigor clínico pelo Instituto FC." />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL@24,300,0&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet" />
+		<title>Instituto FC | Nutracêuticos Premium</title>
+		<GoogleAnalytics />
+	</head>
+	<body>
+		<header class="site-header"><div class="container nav-wrap"><a class="brand" href="#inicio"><strong>Instituto</strong> FC</a><nav><a href="#produtos">Especialidades</a><a href="#ciencia">Sobre</a><a href="#ciencia">Ciência</a><a class="active" href="#produtos">Suplementos</a></nav><a class="button button-small" href="#guia">Marcar Consulta</a><button class="mobile-menu" type="button" aria-label="Abrir menu"><span class="material-symbols-outlined">menu</span></button></div></header>
+		<main class="desktop-v2">
+			<section class="hero" id="inicio"><div class="container hero-grid"><div class="hero-copy"><span class="chip"><span class="material-symbols-outlined">verified</span>Biotecnologia de alta absorção</span><h1>Nutracêuticos <em>Premium</em></h1><p>A ciência da suplementação personalizada para sua melhor versão. Desenvolvido sob rigor clínico para resultados que você sente.</p><div class="actions"><a class="button" href="#produtos">Explorar coleção</a><a class="button outline" href="#guia">Falar com Nutrólogo</a></div></div><div class="hero-image"><img src="/images/instituto-fc-v2/hero.jpg" alt="Nutracêuticos premium do Instituto FC" /></div></div></section>
+
+			<section class="badges"><div class="container badge-grid">{badges.map(([icon, label]) => <div><span class="material-symbols-outlined">{icon}</span>{label}</div>)}</div></section>
+
+			<section class="section products" id="produtos"><div class="container"><header class="section-heading"><h2>Excelência em cada dose</h2><p>Fórmulas autorais que combinam o melhor da natureza com a precisão da tecnologia farmacêutica.</p></header><div class="product-grid">
+				<article class="product vitamin"><div><small>Fundamental</small><h3>Vitamina D3 High Potency</h3><p>Colecalciferol puro em gotas para absorção imediata. Essencial para imunidade, saúde óssea e equilíbrio hormonal.</p><ul><li>2.000 UI por dose</li><li>Veículo em TCM de alta pureza</li><li>Sabor neutro e prático</li></ul></div><img src="/images/instituto-fc-v2/vitamin-d3.jpg" alt="Vitamina D3 Instituto FC" /></article>
+				<article class="product collagen"><small>Estética &amp; Saúde</small><h3>Collagen Peptides Verisol®</h3><p>Peptídeos bioativos de colágeno para pele, cabelos e articulações. Tecnologia de absorção profunda.</p><a href="#guia">Ver detalhes</a><span class="material-symbols-outlined leaf">spa</span></article>
+				<article class="product magistral"><span class="icon material-symbols-outlined">biotech</span><h3>Fórmulas Magistrais</h3><p>Manipulamos a dosagem exata que o seu metabolismo exige, baseada em exames laboratoriais.</p></article>
+				<article class="product neuro"><div><h3>Performance Mental &amp; Foco</h3><p>Nootrópicos de elite para otimizar sua capacidade cognitiva e resistência ao estresse diário.</p><a href="#guia">Conhecer a linha neuro <span class="material-symbols-outlined">arrow_forward</span></a></div><img src="/images/instituto-fc-v2/neuro.jpg" alt="Nootrópicos e ingredientes naturais" /></article>
+			</div></div></section>
+
+			<section class="section guide-section" id="guia"><div class="container guide-card"><div><h2>Por onde começar sua jornada?</h2><p>Baixe nosso guia exclusivo de suplementação básica e entenda como os micronutrientes impactam sua longevidade.</p><form id="guide-form"><label>Seu melhor e-mail<input required type="email" placeholder="contato@exemplo.com" /></label><button type="submit">Receber Guia <span class="material-symbols-outlined">download</span></button></form><small class="form-message" aria-live="polite">Respeitamos sua privacidade. Seus dados estão seguros.</small></div><img src="/images/instituto-fc-v2/guide.jpg" alt="Guia de Suplementação Estratégica" /></div></section>
+
+			<section class="section science" id="ciencia"><div class="container science-grid"><div class="science-images"><img src="/images/instituto-fc-v2/laboratory.jpg" alt="Pesquisa em laboratório" /><img src="/images/instituto-fc-v2/botanicals.jpg" alt="Extratos botânicos em laboratório" /></div><div class="science-copy"><h2>Onde a Natureza encontra a Ciência</h2><p>Acreditamos que a suplementação não deve ser genérica. Nosso laboratório foca em biodisponibilidade: a capacidade do seu corpo de realmente absorver e utilizar o que você ingere.</p><div class="science-item"><span class="material-symbols-outlined filled">smb_share</span><div><strong>Qualidade farmacêutica</strong><p>Insumos de grau médico com laudos de pureza em cada lote.</p></div></div><div class="science-item"><span class="material-symbols-outlined filled">fluid_med</span><div><strong>Biodisponibilidade real</strong><p>Fórmulas em veículos lipossomados e quelatados para máxima eficácia.</p></div></div></div></div></section>
+		</main>
+		<main class="mobile-v2">
+			<section class="mv2-hero" id="mv2-inicio"><div class="mv2-shell"><p class="mv2-kicker">Excelência em Nutrologia</p><h1>Nutracêuticos <em>Premium</em></h1><p>A ciência da performance humana aliada aos ativos mais puros da natureza para resultados excepcionais.</p><div class="mv2-actions"><a href="#mv2-produtos">Conhecer protocolos</a><a href="#mv2-guia">Falar com especialista</a></div><div class="mv2-hero-image"><img src="/images/instituto-fc-v2/mobile-hero.jpg" alt="Suplementos premium em frascos âmbar" /></div></div></section>
+			<section class="mv2-section mv2-science" id="mv2-ciencia"><div class="mv2-shell"><span class="mv2-science-icon material-symbols-outlined filled">science</span><h2>Onde a Natureza encontra a <em>Ciência</em></h2><p>Nossos protocolos não são apenas suplementos; são ferramentas biológicas de precisão. Desenvolvemos fórmulas que respeitam a fisiologia humana, utilizando biodisponibilidade avançada para garantir que cada miligrama seja aproveitado pelo seu organismo.</p><ul><li><span class="material-symbols-outlined">eco</span>Ingredientes de origem controlada e pureza testada.</li><li><span class="material-symbols-outlined">biotech</span>Fórmulas baseadas em evidências clínicas robustas.</li></ul><img src="/images/instituto-fc-v2/mobile-nature-lab.jpg" alt="Laboratório moderno integrado à natureza" /></div></section>
+			<section class="mv2-section mv2-products" id="mv2-produtos"><div class="mv2-shell"><h2>Produtos de Excelência</h2><p>Nossa seleção exclusiva para otimização hormonal, cognitiva e física.</p><div class="mv2-product-list"><article><img src="/images/instituto-fc-v2/mobile-collagen.jpg" alt="Collagen Peptides" /><small>Pele &amp; Articulações</small><h3>Collagen Peptides</h3><p>Peptídeos bioativos de colágeno Verisol para máxima absorção e regeneração tecidual.</p><a href="#mv2-guia">Ver detalhes <span class="material-symbols-outlined">arrow_forward</span></a></article><article><img src="/images/instituto-fc-v2/mobile-d3.jpg" alt="Vitamina D3 Lipossomal" /><small>Sistema Imune</small><h3>Vitamina D3 Lipossomal</h3><p>Alta concentração com tecnologia de transporte lipossomal para absorção superior.</p><a href="#mv2-guia">Ver detalhes <span class="material-symbols-outlined">arrow_forward</span></a></article></div></div></section>
+			<section class="mv2-guide" id="mv2-guia"><span class="material-symbols-outlined mv2-guide-leaf">spa</span><div class="mv2-shell"><h2>Guia Gratuito de Otimização Nutrológica</h2><p>Descubra como os nutracêuticos corretos podem transformar sua clareza mental e performance física. Um guia prático baseado em protocolos do Instituto FC.</p><form id="mobile-guide-form"><input required type="email" placeholder="Seu melhor e-mail" /><button type="submit">Baixar guia agora</button><small aria-live="polite">Respeitamos sua privacidade. Seus dados estão seguros.</small></form></div></section>
+		</main>
+		<footer><div class="container footer-wrap"><div><span class="brand">Instituto FC</span><small>Nutrologia e Performance Humana.</small></div><nav><a href="#">Termos de Uso</a><a href="#">Privacidade</a><a href="#">FAQ</a><a href="#guia">Contato</a></nav><small>© 2026 Instituto FC. Todos os direitos reservados.</small></div></footer>
+		<nav class="mobile-bottom-nav" aria-label="Navegação mobile"><a href="#mv2-inicio"><span class="material-symbols-outlined">home</span><small>Início</small></a><a class="active" href="#mv2-produtos"><span class="material-symbols-outlined filled">medication</span><small>Produtos</small></a><a href="#mv2-guia"><span class="material-symbols-outlined">calendar_today</span><small>Consulta</small></a><a href="#mv2-ciencia"><span class="material-symbols-outlined">person</span><small>Perfil</small></a></nav>
+		<script>
+			const form = document.querySelector<HTMLFormElement>('#guide-form');
+			form?.addEventListener('submit', (event) => { event.preventDefault(); form.reset(); const message = document.querySelector<HTMLElement>('.form-message'); if (message) message.textContent = 'Guia solicitado. Confira seu e-mail.'; });
+			const mobileForm = document.querySelector<HTMLFormElement>('#mobile-guide-form');
+			mobileForm?.addEventListener('submit', (event) => { event.preventDefault(); mobileForm.reset(); const message = mobileForm.querySelector('small'); if (message) message.textContent = 'Guia solicitado. Confira seu e-mail.'; });
+		</script>
+	</body>
+</html>
+
+<style lang="scss" is:global>
+	:root { --cream:#fbf9f4; --cream-low:#f5f3ee; --stone:#eae8e3; --green:#506143; --green-soft:#687a5a; --gold:#775a19; --ink:#1b1c19; --muted:#555a51; --line:#c5c8bd; }
+	* { box-sizing:border-box; } html { scroll-behavior:smooth; } body { margin:0; color:var(--ink); background:var(--cream); font-family:'Manrope',sans-serif; line-height:1.6; } a { color:inherit; text-decoration:none; } img { display:block; max-width:100%; } button,input { font:inherit; } .container { width:min(100% - 128px,1152px); margin-inline:auto; }
+	.material-symbols-outlined { font-family:'Material Symbols Outlined'; font-weight:normal; font-style:normal; font-size:25px; line-height:1; letter-spacing:normal; text-transform:none; white-space:nowrap; -webkit-font-feature-settings:'liga'; -webkit-font-smoothing:antialiased; } .filled { font-variation-settings:'FILL' 1; }
+	.site-header { position:sticky; z-index:40; top:0; border-bottom:1px solid rgba(80,97,67,.06); background:rgba(251,249,244,.86); backdrop-filter:blur(18px); } .nav-wrap { height:76px; display:flex; align-items:center; gap:34px; } .brand { color:var(--green); font:500 27px/1 'Playfair Display',serif; white-space:nowrap; } .nav-wrap nav { display:flex; gap:28px; margin-left:auto; } .nav-wrap nav a, footer nav a { color:#484d45; font-size:13px; } .nav-wrap .active { color:var(--green); font-weight:700; border-bottom:2px solid var(--green); }
+	.button { display:inline-flex; align-items:center; justify-content:center; padding:14px 28px; border:1px solid var(--green); border-radius:999px; color:white; background:var(--green); font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; transition:.2s; } .button:hover { transform:translateY(-2px); box-shadow:0 14px 35px rgba(80,97,67,.17); } .button-small { padding:10px 22px; letter-spacing:0; text-transform:none; }
+	h1,h2,h3 { margin-top:0; font-family:'Playfair Display',serif; font-weight:500; line-height:1.15; } .hero { min-height:760px; display:flex; align-items:center; background:radial-gradient(circle at 70% 45%,rgba(104,122,90,.15),transparent 36%); } .hero-grid { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:72px; padding-block:65px; } .chip { display:inline-flex; align-items:center; gap:8px; margin-bottom:26px; padding:7px 14px; border-radius:999px; color:var(--muted); background:var(--stone); font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; } .chip span { color:var(--green); font-size:18px; } h1 { margin-bottom:24px; font-size:clamp(56px,5vw,72px); letter-spacing:-.04em; } h1 em { color:var(--green); font-weight:400; } .hero-copy > p { max-width:530px; margin:0 0 34px; color:var(--muted); font-size:17px; } .actions { display:flex; gap:14px; } .outline { color:var(--green); background:transparent; } .hero-image { overflow:hidden; border-radius:22px; box-shadow:0 24px 60px rgba(80,97,67,.15); } .hero-image img { width:100%; aspect-ratio:4/5; object-fit:cover; }
+	.badges { padding:29px 0; background:rgba(245,243,238,.7); } .badge-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:25px; opacity:.64; } .badge-grid div { display:flex; align-items:center; justify-content:center; gap:9px; font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+	.section { padding:118px 0; } .section-heading { max-width:670px; margin:0 auto 46px; text-align:center; } .section-heading h2,.guide-card h2,.science-copy h2 { margin-bottom:14px; font-size:clamp(38px,3.7vw,50px); } .section-heading p,.guide-card > div > p,.science-copy > p { margin:0; color:var(--muted); }
+	.product-grid { display:grid; grid-template-columns:repeat(12,1fr); gap:23px; } .product { position:relative; overflow:hidden; min-height:310px; padding:36px; border-radius:18px; background:#fff; box-shadow:0 15px 45px rgba(80,97,67,.06); } .product h3 { margin-bottom:13px; font-size:31px; } .product p { margin:0; color:var(--muted); font-size:14px; } .product small { display:block; margin-bottom:12px; color:var(--green); font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; } .vitamin { grid-column:span 7; display:grid; grid-template-columns:1fr 180px; gap:25px; background:#f0eee9; } .vitamin ul { padding:10px 0 0; list-style:none; font-size:13px; } .vitamin li::before { content:'eco'; margin-right:7px; color:var(--green); font-family:'Material Symbols Outlined'; } .vitamin img { width:180px; height:180px; align-self:end; border-radius:50%; object-fit:cover; } .collagen { grid-column:span 5; color:#f9ffed; background:var(--green-soft); } .collagen h3,.collagen p,.collagen small { color:inherit; } .collagen a { display:inline-block; margin-top:44px; padding:10px 20px; border-radius:999px; color:var(--green); background:var(--cream); font-size:11px; font-weight:700; } .collagen .leaf { position:absolute; right:-35px; bottom:-55px; font-size:200px; opacity:.15; } .magistral { grid-column:span 4; background:var(--stone); } .icon { display:grid; place-items:center; width:48px; height:48px; margin-bottom:20px; border-radius:50%; color:var(--green); background:rgba(80,97,67,.1); } .neuro { grid-column:span 8; display:grid; grid-template-columns:1fr 190px; align-items:center; gap:28px; border:1px solid rgba(197,200,189,.5); box-shadow:none; background:transparent; } .neuro a { display:flex; align-items:center; gap:7px; margin-top:22px; color:var(--green); font-size:11px; font-weight:700; text-transform:uppercase; } .neuro a span { font-size:17px; } .neuro img { width:190px; height:190px; border-radius:12px; object-fit:cover; }
+	.guide-section { background:var(--cream-low); } .guide-card { display:grid; grid-template-columns:1.2fr .8fr; align-items:center; gap:70px; padding:68px; border-radius:22px; background:white; box-shadow:0 24px 60px rgba(80,97,67,.09); } .guide-card form { display:grid; grid-template-columns:1fr auto; align-items:end; gap:18px; margin-top:30px; } .guide-card label { color:var(--muted); font-size:10px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; } .guide-card input { width:100%; margin-top:6px; padding:13px 0; border:0; border-bottom:1px solid var(--line); outline:0; } .guide-card button { display:flex; align-items:center; gap:7px; height:54px; padding:0 24px; border:0; border-radius:999px; color:white; background:var(--gold); font-size:11px; font-weight:700; text-transform:uppercase; cursor:pointer; } .guide-card img { width:100%; aspect-ratio:4/3; border-radius:12px; object-fit:cover; transform:rotate(2deg); } .form-message { display:block; margin-top:14px; color:#75786f; font-size:10px; font-style:italic; }
+	.science-grid { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:80px; } .science-images { display:grid; grid-template-columns:1fr 1fr; gap:14px; } .science-images img { width:100%; aspect-ratio:3/4; border-radius:12px; object-fit:cover; box-shadow:0 16px 35px rgba(80,97,67,.1); } .science-images img:first-child { transform:translateY(-28px); } .science-copy > p { margin-bottom:28px; font-size:16px; } .science-item { display:grid; grid-template-columns:42px 1fr; gap:14px; margin-top:20px; } .science-item > span { display:grid; place-items:center; width:42px; height:42px; border-radius:50%; color:var(--green); background:rgba(80,97,67,.1); } .science-item strong { display:block; margin-bottom:4px; color:var(--green); font-size:10px; letter-spacing:.09em; text-transform:uppercase; } .science-item p { margin:0; color:var(--muted); font-size:13px; }
+	footer { padding:38px 0; border-top:1px solid rgba(197,200,189,.4); background:var(--cream-low); } .footer-wrap { display:flex; align-items:center; justify-content:space-between; gap:30px; } .footer-wrap > div small { display:block; margin-top:8px; color:var(--muted); font-size:11px; } footer nav { display:flex; gap:22px; } .footer-wrap > small { color:var(--muted); font-size:10px; }
+	.mobile-v2,.mobile-menu,.mobile-bottom-nav { display:none; }
+	@media(max-width:900px) { .container { width:min(100% - 48px,740px); } .nav-wrap nav { display:none; } .hero-grid { gap:40px; } .badge-grid { grid-template-columns:1fr 1fr; } .product { grid-column:span 12; } .guide-card { gap:35px; padding:45px; } .science-grid { gap:45px; } .footer-wrap { flex-wrap:wrap; } }
+	@media(max-width:620px) {
+		body { padding-bottom:68px; }
+		.container { width:min(100% - 40px,520px); }
+		.desktop-v2,.nav-wrap .button-small { display:none; }
+		.mobile-v2,.mobile-menu,.mobile-bottom-nav { display:block; }
+		.nav-wrap { height:68px; }
+		.nav-wrap .brand { font-size:22px; text-transform:uppercase; }
+		.nav-wrap .brand strong { font-weight:600; }
+		.mobile-menu { margin-left:auto; padding:7px; border:0; color:var(--green); background:transparent; }
+		.mobile-menu span { font-size:28px; }
+		.mv2-shell { width:calc(100% - 40px); max-width:520px; margin-inline:auto; }
+		.mv2-hero { min-height:795px; padding:74px 0 0; overflow:hidden; background-color:var(--cream); background-image:radial-gradient(circle at 2px 2px,rgba(80,97,67,.055) 1px,transparent 0); background-size:40px 40px; text-align:center; }
+		.mv2-kicker { margin:0 0 14px; color:var(--gold); font-size:10px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; }
+		.mv2-hero h1 { margin-bottom:20px; color:var(--green); font-size:42px; line-height:1.18; }
+		.mv2-hero h1 em { display:inline; font-weight:400; }
+		.mv2-hero > div > p:not(.mv2-kicker) { margin:0 auto 30px; color:var(--muted); font-size:15px; line-height:1.7; }
+		.mv2-actions { display:grid; gap:12px; }
+		.mv2-actions a { padding:14px 20px; border:1px solid var(--line); border-radius:999px; color:var(--green); font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+		.mv2-actions a:first-child { border-color:var(--green); color:white; background:var(--green); box-shadow:0 12px 28px rgba(80,97,67,.19); }
+		.mv2-hero-image { width:100%; margin-top:46px; overflow:hidden; border-radius:55px 55px 0 0; box-shadow:0 18px 40px rgba(80,97,67,.1); }
+		.mv2-hero-image img { width:100%; height:390px; object-fit:cover; }
+		.mv2-section { padding:83px 0; }
+		.mv2-science { background:var(--cream-low); }
+		.mv2-science-icon { display:grid; place-items:center; width:48px; height:48px; margin-bottom:18px; border-radius:50%; color:var(--green); background:rgba(80,97,67,.1); }
+		.mv2-science h2,.mv2-products h2,.mv2-guide h2 { margin-bottom:18px; color:var(--ink); font-size:34px; line-height:1.23; }
+		.mv2-science h2 em { color:var(--green); font-weight:400; }
+		.mv2-science > div > p { margin:0; color:var(--muted); font-size:14px; line-height:1.75; }
+		.mv2-science ul { display:grid; gap:15px; margin:25px 0 34px; padding:0; list-style:none; }
+		.mv2-science li { display:flex; align-items:flex-start; gap:12px; font-size:13px; }
+		.mv2-science li span { color:var(--gold); font-size:20px; }
+		.mv2-science img { width:100%; height:210px; border-radius:10px; object-fit:cover; box-shadow:0 16px 35px rgba(80,97,67,.1); }
+		.mv2-products > div > p { margin:0 0 34px; color:var(--muted); font-size:14px; }
+		.mv2-product-list { display:grid; gap:26px; }
+		.mv2-product-list article { padding:20px; border:1px solid rgba(197,200,189,.5); border-radius:12px; background:var(--cream); }
+		.mv2-product-list img { width:100%; aspect-ratio:1; margin-bottom:22px; border-radius:8px; object-fit:cover; background:#f0eee9; }
+		.mv2-product-list small { display:block; margin-bottom:7px; color:var(--gold); font-size:9px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; }
+		.mv2-product-list h3 { margin-bottom:8px; font-size:25px; }
+		.mv2-product-list p { margin:0 0 20px; color:var(--muted); font-size:13px; }
+		.mv2-product-list a { display:flex; align-items:center; gap:7px; color:var(--green); font-size:11px; font-weight:700; text-transform:uppercase; }
+		.mv2-product-list a span { font-size:17px; }
+		.mv2-guide { position:relative; overflow:hidden; padding:83px 0; color:white; background:var(--green); }
+		.mv2-guide-leaf { position:absolute; top:-40px; right:-70px; color:rgba(255,255,255,.12); font-size:250px; }
+		.mv2-guide h2 { position:relative; color:white; }
+		.mv2-guide > div > p { position:relative; margin:0 0 28px; color:rgba(255,255,255,.82); font-size:15px; line-height:1.7; }
+		.mv2-guide form { position:relative; display:grid; gap:13px; }
+		.mv2-guide input { width:100%; padding:13px 2px; border:0; border-bottom:1px solid rgba(255,255,255,.35); border-radius:0; outline:0; color:white; background:transparent; font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+		.mv2-guide input::placeholder { color:rgba(255,255,255,.55); }
+		.mv2-guide button { padding:15px; border:0; border-radius:999px; color:white; background:var(--gold); font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+		.mv2-guide form small { color:rgba(255,255,255,.6); font-size:9px; text-align:center; }
+		footer { padding:42px 0 28px; }
+		.footer-wrap { flex-direction:column; align-items:center; text-align:center; }
+		.footer-wrap .brand { font-size:22px; text-transform:uppercase; }
+		footer nav { flex-wrap:wrap; justify-content:center; gap:13px 22px; }
+		.mobile-bottom-nav { position:fixed; z-index:60; right:0; bottom:0; left:0; padding:9px 22px calc(9px + env(safe-area-inset-bottom)); border-top:1px solid rgba(197,200,189,.4); background:rgba(251,249,244,.94); backdrop-filter:blur(14px); }
+		.mobile-bottom-nav { display:flex; align-items:center; justify-content:space-between; }
+		.mobile-bottom-nav a { display:flex; flex-direction:column; align-items:center; gap:2px; color:var(--muted); }
+		.mobile-bottom-nav a.active { color:var(--green); }
+		.mobile-bottom-nav span { font-size:22px; }
+		.mobile-bottom-nav small { font-size:8px; font-weight:700; }
+	}
+</style>

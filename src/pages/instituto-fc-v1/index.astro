@@ -1,0 +1,398 @@
+---
+import GoogleAnalytics from '../../components/GoogleAnalytics.astro';
+
+const pillars = [
+	['psychology', 'Nutrologia de Verdade'],
+	['eco', 'Ciência que Transforma'],
+	['favorite', 'Cuidado que Acolhe'],
+	['auto_awesome', 'Resultados que Inspiram'],
+];
+
+const benefits = [
+	['Avaliação personalizada', 'Mapeamento completo do seu metabolismo e perfil biológico.'],
+	['Plano nutricional baseado em evidências', 'Estratégias alimentares desenhadas exclusivamente para sua rotina.'],
+	['Acompanhamento integral', 'Monitoramento contínuo para ajustes finos em sua performance.'],
+];
+---
+
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="Protocolos personalizados de nutrologia e performance humana." />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL@24,300,0&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+		<title>Instituto FC | Nutrologia e Performance Humana</title>
+		<GoogleAnalytics />
+	</head>
+	<body>
+		<header class="site-header">
+			<div class="container nav-wrap">
+				<a class="brand" href="#inicio" aria-label="Instituto FC, início"><span>Instituto</span><i></i><span>FC</span></a>
+				<nav class="desktop-nav" aria-label="Navegação principal">
+					<a href="#especialidades">Especialidades</a>
+					<a href="#sobre">Sobre</a>
+					<a href="#ciencia">Ciência</a>
+					<a href="#suplementos">Suplementos</a>
+				</nav>
+				<a class="button button-small" href="#cadastro">Marcar Consulta</a>
+				<button class="mobile-menu-button" type="button" aria-label="Abrir menu" aria-expanded="false"><span class="material-symbols-outlined">menu</span></button>
+			</div>
+		</header>
+
+		<main class="desktop-page">
+			<section class="hero" id="inicio">
+				<div class="hero-image" role="img" aria-label="Recepção elegante do Instituto FC"></div>
+				<div class="container hero-grid">
+					<div class="hero-copy">
+						<p class="eyebrow">Performance Humana &amp; Nutrologia</p>
+						<h1>Performance <em>Além dos Limites</em></h1>
+						<p class="lead">Protocolos personalizados para quem busca o máximo do corpo e da mente através de uma abordagem científica e acolhedora.</p>
+						<div class="hero-actions">
+							<a class="button" href="#cadastro">Começar Agora</a>
+							<a class="button button-outline" href="#metodo">Conhecer Método</a>
+						</div>
+					</div>
+
+					<aside class="contact-card" id="cadastro">
+						<h2>Comece sua jornada</h2>
+						<p>Agende sua avaliação diagnóstica inicial.</p>
+						<form id="lead-form">
+							<label>Nome completo <input required type="text" name="name" placeholder="Como podemos te chamar?" /></label>
+							<label>E-mail <input required type="email" name="email" placeholder="seu@email.com" /></label>
+							<label>Objetivo principal
+								<select name="goal">
+									<option>Alta Performance Esportiva</option>
+									<option>Otimização Metabólica</option>
+									<option>Longevidade &amp; Saúde</option>
+									<option>Gestão de Estresse e Sono</option>
+								</select>
+							</label>
+							<button class="button form-button" type="submit">Solicitar contato</button>
+							<p class="form-status" aria-live="polite"></p>
+						</form>
+					</aside>
+				</div>
+			</section>
+
+			<section class="trust-bar" aria-label="Diferenciais">
+				<div class="container trust-grid">
+					{pillars.map(([icon, label]) => (
+						<div class="trust-item"><span class="material-symbols-outlined">{icon}</span><span>{label}</span></div>
+					))}
+				</div>
+			</section>
+
+			<section class="section science" id="ciencia">
+				<div class="container two-column">
+					<div class="science-visual">
+						<img src="/images/instituto-fc/science.jpg" alt="Ambiente de consulta com tecnologia para análise metabólica" />
+						<div class="science-note"><strong>“A ciência é o nosso alicerce.”</strong><span>Unimos tecnologia de ponta com o toque humano essencial para a saúde integral.</span></div>
+					</div>
+					<div class="section-copy" id="sobre">
+						<h2>Ciência, Saúde e Nutrição para sua melhor versão</h2>
+						<p class="lead">No Instituto FC, criamos planos personalizados que integram ciência, nutrição e medicina para alcançar resultados duradouros e sustentáveis.</p>
+						<ul class="benefit-list">
+							{benefits.map(([title, description]) => (
+								<li><span class="material-symbols-outlined filled">check_circle</span><div><strong>{title}</strong><p>{description}</p></div></li>
+							))}
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<section class="section specialties" id="especialidades">
+				<div class="container">
+					<header class="section-heading"><p class="eyebrow">Nossos Pilares</p><h2>Foco Total na Sua Evolução</h2></header>
+					<div class="feature-grid" id="metodo">
+						<article class="feature feature-wide">
+							<span class="material-symbols-outlined">bolt</span><h3>Otimização Metabólica</h3>
+							<p>Descubra como seu corpo processa energia e ajuste os gatilhos certos para queima de gordura e ganho de massa muscular eficiente.</p>
+							<a href="#cadastro">Saiba mais <span class="material-symbols-outlined">arrow_forward</span></a>
+						</article>
+						<article class="feature feature-green">
+							<span class="material-symbols-outlined">biotech</span><h3>Exames Avançados</h3>
+							<p>Utilizamos diagnósticos moleculares e hormonais de última geração para basear cada decisão do seu protocolo.</p>
+						</article>
+						<article class="feature feature-stone" id="suplementos">
+							<span class="material-symbols-outlined">monitoring</span><h3>Performance Cognitiva</h3>
+							<p>Foco, memória e resiliência mental através da nutrição de precisão e suplementação inteligente.</p>
+						</article>
+						<article class="feature feature-wide longevity">
+							<div><span class="material-symbols-outlined">spa</span><h3>Longevidade Ativa</h3><p>Envelhecer não precisa significar perda de vitalidade. Preparamos seu organismo para o amanhã.</p></div>
+							<img src="/images/instituto-fc/leaf.jpg" alt="Folha verde simbolizando vida e longevidade" />
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section class="section quote-section">
+				<div class="container quote-wrap">
+					<span class="material-symbols-outlined quote-icon">format_quote</span>
+					<blockquote>“A busca pela excelência física não é um destino, mas um processo contínuo de autoconhecimento guiado pela ciência e pelo equilíbrio.”</blockquote>
+					<div class="author"><span class="material-symbols-outlined">person</span><div><strong>Dr. Felipe Carvalho</strong><small>Fundador &amp; Nutrologista Chefe</small></div></div>
+				</div>
+			</section>
+		</main>
+
+		<main class="mobile-page">
+			<section class="mobile-hero" id="mobile-inicio">
+				<div class="mobile-hero-bg"></div>
+				<div class="mobile-shell mobile-hero-content">
+					<p class="mobile-kicker">Alta Performance Humana</p>
+					<h1>Performance Além dos <em>Limites</em></h1>
+					<p class="mobile-lead">No Instituto FC, aplicamos a medicina de precisão para otimizar sua saúde, longevidade e rendimento físico.</p>
+					<div class="mobile-lead-card">
+						<h2>Mude sua trajetória</h2>
+						<form id="mobile-lead-form"><input required name="name" placeholder="Nome completo" /><input required type="email" name="email" placeholder="E-mail corporativo" /><button type="submit">Receber plano personalizado</button><p aria-live="polite"></p></form>
+					</div>
+				</div>
+			</section>
+
+			<section class="mobile-section mobile-approach" id="mobile-especialidades">
+				<div class="mobile-shell">
+					<header><h2>Nossa Abordagem Científica</h2><i></i></header>
+					<div class="mobile-pillars">
+						<article class="mobile-pillar mobile-metabolic"><div><span class="material-symbols-outlined">bolt</span><h3>Otimização Metabólica</h3><p>Regulação hormonal e bioquímica personalizada para maximizar a queima de gordura e ganho de energia.</p></div><img src="/images/instituto-fc/mobile-lab.jpg" alt="Tecnologia laboratorial de precisão" /></article>
+						<article class="mobile-pillar mobile-exams"><span class="material-symbols-outlined">biotech</span><h3>Exames Avançados</h3><p>Protocolos laboratoriais que vão além do convencional para identificar cada necessidade única do seu DNA.</p><span class="material-symbols-outlined decoration">genetics</span></article>
+						<article class="mobile-pillar mobile-nutrition"><span class="material-symbols-outlined">nutrition</span><h3>Performance Nutrológica</h3><p>Dietas de alta performance que integram superalimentos e suplementação ortomolecular.</p><ul><li><span class="material-symbols-outlined">eco</span>Nutrição Bioativa</li><li><span class="material-symbols-outlined">eco</span>Suplementação de Elite</li></ul></article>
+						<article class="mobile-pillar mobile-follow"><h3>Acompanhamento Integral</h3><p>Monitoramento contínuo da sua evolução com ajustes dinâmicos baseados em dados reais e feedback do seu corpo.</p><a href="#mobile-inicio">Saber mais</a><span class="material-symbols-outlined chart">query_stats</span></article>
+					</div>
+				</div>
+			</section>
+
+			<section class="mobile-quote" id="mobile-ciencia"><div class="mobile-shell"><span class="material-symbols-outlined">format_quote</span><blockquote>“A verdadeira performance não é apenas sobre força física, mas sobre a <strong>harmonia biológica</strong> entre mente, metabolismo e ambiente.”</blockquote><cite>— Dr. Francisco Castro, Diretor Clínico</cite></div></section>
+
+			<section class="mobile-section mobile-superfoods" id="mobile-suplementos"><div class="mobile-shell"><div class="mobile-superfoods-image"><img src="/images/instituto-fc/mobile-superfoods.jpg" alt="Salmão, abacate, chia e nozes" /></div><div><h2>Superalimentos, Benefícios Reais</h2><p>Pequenas escolhas diárias que geram grandes transformações celulares e cognitivas.</p><article><span class="material-symbols-outlined">psychology</span><div><strong>Saúde Cerebral</strong><p>Ômega-3 e antioxidantes para foco e memória.</p></div></article><article><span class="material-symbols-outlined">favorite</span><div><strong>Proteção Cardiovascular</strong><p>Gorduras boas para controle do colesterol.</p></div></article></div></div></section>
+		</main>
+
+		<footer class="footer">
+			<div class="container">
+				<div class="footer-top"><span class="brand">Instituto FC</span><nav aria-label="Links institucionais"><a href="#">Termos de Uso</a><a href="#">Privacidade</a><a href="#">FAQ</a><a href="#cadastro">Contato</a></nav><div class="social"><a href="#" aria-label="Compartilhar"><span class="material-symbols-outlined">share</span></a><a href="mailto:contato@institutofc.com.br" aria-label="Enviar e-mail"><span class="material-symbols-outlined">mail</span></a></div></div>
+				<div class="footer-bottom"><span>© 2026 Instituto FC. Nutrologia e Performance Humana.</span><span>Feito com cuidado para sua saúde.</span></div>
+			</div>
+		</footer>
+
+		<div class="mobile-drawer" aria-hidden="true"><button class="mobile-overlay" type="button" aria-label="Fechar menu"></button><aside><header><span>Menu</span><button type="button" aria-label="Fechar menu"><span class="material-symbols-outlined">close</span></button></header><nav><a href="#mobile-especialidades">Especialidades</a><a href="#mobile-suplementos">Sobre</a><a href="#mobile-ciencia">Ciência</a><a href="#mobile-suplementos">Suplementos</a></nav><a class="button" href="#mobile-inicio">Marcar Consulta</a></aside></div>
+
+		<script>
+			const form = document.querySelector<HTMLFormElement>('#lead-form');
+			form?.addEventListener('submit', (event) => {
+				event.preventDefault();
+				const button = form.querySelector<HTMLButtonElement>('button');
+				const status = form.querySelector<HTMLElement>('.form-status');
+				if (!button || !status) return;
+				button.disabled = true;
+				button.textContent = 'Solicitação enviada';
+				status.textContent = 'Em breve, nossa equipe entrará em contato.';
+				form.reset();
+			});
+			const mobileForm = document.querySelector<HTMLFormElement>('#mobile-lead-form');
+			mobileForm?.addEventListener('submit', (event) => {
+				event.preventDefault();
+				mobileForm.reset();
+				const status = mobileForm.querySelector('p');
+				if (status) status.textContent = 'Plano solicitado. Entraremos em contato em breve.';
+			});
+			const menuButton = document.querySelector<HTMLButtonElement>('.mobile-menu-button');
+			const drawer = document.querySelector<HTMLElement>('.mobile-drawer');
+			const closeButtons = drawer?.querySelectorAll<HTMLButtonElement>('button');
+			const drawerLinks = drawer?.querySelectorAll<HTMLAnchorElement>('a');
+			const setMenu = (open: boolean) => {
+				drawer?.classList.toggle('open', open);
+				drawer?.setAttribute('aria-hidden', String(!open));
+				menuButton?.setAttribute('aria-expanded', String(open));
+				document.body.style.overflow = open ? 'hidden' : '';
+			};
+			menuButton?.addEventListener('click', () => setMenu(true));
+			closeButtons?.forEach((button) => button.addEventListener('click', () => setMenu(false)));
+			drawerLinks?.forEach((link) => link.addEventListener('click', () => setMenu(false)));
+		</script>
+	</body>
+</html>
+
+<style lang="scss" is:global>
+	:root { --cream: #fbf9f4; --cream-2: #f5f3ee; --stone: #eae8e3; --green: #506143; --green-soft: #687a5a; --ink: #1b1c19; --muted: #5c6158; --line: #c5c8bd; }
+	* { box-sizing: border-box; }
+	html { scroll-behavior: smooth; }
+	body { margin: 0; color: var(--ink); background: var(--cream); font-family: 'Manrope', sans-serif; line-height: 1.6; overflow-x: hidden; }
+	a { color: inherit; text-decoration: none; }
+	button, input, select { font: inherit; }
+	img { display: block; max-width: 100%; }
+	.container { width: min(100% - 128px, 1152px); margin-inline: auto; }
+	.material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-weight: normal; font-style: normal; font-size: 28px; line-height: 1; letter-spacing: normal; text-transform: none; display: inline-block; white-space: nowrap; word-wrap: normal; direction: ltr; -webkit-font-feature-settings: 'liga'; -webkit-font-smoothing: antialiased; }
+	.filled { font-variation-settings: 'FILL' 1; }
+	.site-header { position: sticky; z-index: 30; top: 0; background: rgba(251, 249, 244, .86); border-bottom: 1px solid rgba(80, 97, 67, .06); backdrop-filter: blur(18px); }
+	.nav-wrap { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+	.brand { color: var(--green); font-family: 'Playfair Display', serif; font-size: 27px; font-weight: 500; letter-spacing: -.03em; white-space: nowrap; }
+	.brand i { display: none; }
+	.desktop-nav { display: flex; gap: 32px; margin-left: auto; }
+	.desktop-nav a, .footer nav a { color: #444840; font-size: 14px; transition: color .2s; }
+	.desktop-nav a:hover, .footer nav a:hover { color: var(--green); }
+	.button { display: inline-flex; justify-content: center; align-items: center; border: 1px solid var(--green); border-radius: 999px; padding: 14px 30px; color: #fff; background: var(--green); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; transition: transform .2s, box-shadow .2s, background .2s; }
+	.button:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(80, 97, 67, .17); }
+	.button-small { padding: 11px 24px; text-transform: none; letter-spacing: 0; }
+	.button-outline { color: var(--green); background: transparent; }
+	.button-outline:hover { background: rgba(255, 255, 255, .55); }
+	.hero { position: relative; min-height: 740px; display: grid; align-items: center; overflow: hidden; }
+	.hero-image { position: absolute; inset: 0; background: linear-gradient(90deg, var(--cream) 1%, rgba(251,249,244,.92) 29%, rgba(251,249,244,.3) 68%, rgba(251,249,244,.03)), url('/images/instituto-fc/hero.jpg') center 44% / cover no-repeat; transform: scale(1.01); }
+	.hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 7fr 5fr; align-items: center; gap: 48px; padding-block: 72px; }
+	.hero-copy { max-width: 650px; }
+	.eyebrow { margin: 0 0 15px; color: var(--green); font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+	h1, h2, h3, blockquote { margin-top: 0; font-family: 'Playfair Display', serif; font-weight: 500; line-height: 1.15; }
+	h1 { max-width: 650px; margin-bottom: 25px; color: var(--green); font-size: clamp(52px, 5.2vw, 72px); letter-spacing: -.04em; }
+	h1 em { display: block; font-weight: 400; }
+	.lead { color: var(--muted); font-size: 17px; line-height: 1.75; }
+	.hero-copy .lead { max-width: 580px; margin-bottom: 30px; }
+	.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+	.contact-card { padding: 34px; border: 1px solid rgba(255,255,255,.7); border-radius: 8px; background: rgba(255,255,255,.88); box-shadow: 0 25px 60px rgba(66, 80, 56, .13); backdrop-filter: blur(20px); }
+	.contact-card h2 { margin-bottom: 4px; color: var(--green); font-size: 25px; }
+	.contact-card > p { margin: 0 0 24px; color: var(--muted); font-size: 14px; }
+	.contact-card form { display: grid; gap: 16px; }
+	.contact-card label { color: #4b5048; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+	.contact-card input, .contact-card select { width: 100%; margin-top: 5px; padding: 10px 0; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; outline: 0; color: var(--ink); background: transparent; font-size: 13px; text-transform: none; }
+	.contact-card input:focus, .contact-card select:focus { border-color: var(--green); }
+	.form-button { width: 100%; margin-top: 7px; border-radius: 4px; padding-block: 13px; }
+	.form-button:disabled { background: #738565; cursor: default; }
+	.form-status { min-height: 20px; margin: -7px 0 0; color: var(--green); font-size: 12px; text-align: center; }
+	.trust-bar { padding: 29px 0; color: #f9ffed; background: var(--green-soft); }
+	.trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+	.trust-item { display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 11px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+	.trust-item .material-symbols-outlined { font-size: 27px; }
+	.section { padding: 118px 0; }
+	.two-column { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 92px; }
+	.science-visual { position: relative; width: 88%; }
+	.science-visual > img { width: 100%; aspect-ratio: 4 / 5; border-radius: 8px; object-fit: cover; box-shadow: 0 24px 60px rgba(80, 97, 67, .12); }
+	.science-note { position: absolute; right: -64px; bottom: -40px; width: 310px; padding: 27px; border-radius: 5px; background: var(--stone); box-shadow: 0 18px 40px rgba(80, 97, 67, .12); }
+	.science-note strong { display: block; margin-bottom: 7px; color: var(--green); font-family: 'Playfair Display', serif; font-size: 20px; font-style: italic; font-weight: 500; }
+	.science-note span { color: var(--muted); font-size: 13px; line-height: 1.65; }
+	.section-copy h2, .section-heading h2 { margin-bottom: 20px; color: var(--green); font-size: clamp(36px, 3.5vw, 48px); letter-spacing: -.025em; }
+	.benefit-list { display: grid; gap: 23px; margin: 34px 0 0; padding: 0; list-style: none; }
+	.benefit-list li { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; }
+	.benefit-list .material-symbols-outlined { color: var(--green); font-size: 25px; }
+	.benefit-list strong { display: block; margin-bottom: 3px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+	.benefit-list p { margin: 0; color: var(--muted); font-size: 14px; }
+	.specialties { background: var(--cream-2); }
+	.section-heading { margin-bottom: 48px; text-align: center; }
+	.section-heading h2 { color: var(--ink); }
+	.feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 23px; }
+	.feature { min-height: 325px; padding: 42px; border-radius: 7px; background: #fff; box-shadow: 0 18px 50px rgba(80, 97, 67, .04); }
+	.feature-wide { grid-column: span 2; }
+	.feature > .material-symbols-outlined, .longevity > div > .material-symbols-outlined { margin-bottom: 20px; color: var(--green); font-size: 38px; }
+	.feature h3 { margin-bottom: 14px; color: var(--green); font-size: 31px; }
+	.feature p { max-width: 620px; margin: 0; color: var(--muted); font-size: 15px; line-height: 1.75; }
+	.feature a { display: flex; align-items: center; gap: 8px; width: fit-content; margin-top: 45px; color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+	.feature a .material-symbols-outlined { font-size: 18px; }
+	.feature-green { color: #f9ffed; background: var(--green-soft); }
+	.feature-green h3, .feature-green p, .feature-green > .material-symbols-outlined { color: inherit; }
+	.feature-stone { border: 1px solid var(--line); background: var(--stone); }
+	.longevity { display: grid; grid-template-columns: 1fr 170px; align-items: center; gap: 30px; }
+	.longevity img { width: 170px; height: 170px; border: 5px solid var(--cream-2); border-radius: 50%; object-fit: cover; }
+	.quote-wrap { max-width: 830px; text-align: center; }
+	.quote-icon { margin-bottom: 16px; color: var(--green); font-size: 60px; opacity: .2; }
+	blockquote { margin: 0 0 35px; color: var(--green); font-size: clamp(28px, 3vw, 37px); font-style: italic; line-height: 1.45; }
+	.author { display: inline-flex; align-items: center; gap: 13px; text-align: left; }
+	.author > .material-symbols-outlined { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; color: var(--green); background: rgba(80,97,67,.1); }
+	.author strong, .author small { display: block; }
+	.author strong { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+	.author small { color: var(--muted); font-size: 12px; }
+	.footer { padding: 42px 0 26px; border-top: 1px solid rgba(197,200,189,.45); background: var(--cream-2); }
+	.footer-top { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding-bottom: 32px; }
+	.footer nav { display: flex; flex-wrap: wrap; gap: 28px; }
+	.social { display: flex; gap: 10px; }
+	.social a { display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid var(--line); border-radius: 50%; color: var(--green); }
+	.social .material-symbols-outlined { font-size: 18px; }
+	.footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 23px; border-top: 1px solid rgba(197,200,189,.4); color: var(--muted); font-size: 11px; }
+	.mobile-page, .mobile-menu-button, .mobile-drawer { display: none; }
+	@media (max-width: 900px) {
+		.container { width: min(100% - 48px, 720px); }
+		.desktop-nav { display: none; }
+		.hero { min-height: auto; }
+		.hero-image { background: linear-gradient(180deg, rgba(251,249,244,.8), rgba(251,249,244,.96)), url('/images/instituto-fc/hero.jpg') center / cover; }
+		.hero-grid { grid-template-columns: 1fr; padding-block: 75px; }
+		.contact-card { max-width: 560px; }
+		.trust-grid { grid-template-columns: 1fr 1fr; }
+		.trust-item { justify-content: flex-start; }
+		.two-column { gap: 64px; }
+		.science-visual { width: 100%; }
+		.science-note { right: -20px; }
+		.feature { padding: 32px; }
+		.footer-top { align-items: flex-start; flex-wrap: wrap; }
+	}
+	@media (max-width: 680px) {
+		.container { width: min(100% - 40px, 520px); }
+		.desktop-page, .nav-wrap > .button-small { display: none; }
+		.mobile-page, .mobile-menu-button { display: block; }
+		.nav-wrap { height: 68px; }
+		.nav-wrap .brand { display: flex; align-items: center; gap: 9px; font-size: 22px; letter-spacing: 0; }
+		.nav-wrap .brand i { display: block; width: 1px; height: 28px; background: rgba(117,120,111,.35); }
+		.mobile-menu-button { padding: 7px; border: 0; color: var(--green); background: transparent; cursor: pointer; }
+		.mobile-menu-button span { font-size: 30px; }
+		.mobile-shell { width: calc(100% - 40px); max-width: 520px; margin-inline: auto; }
+		.mobile-hero { position: relative; min-height: 795px; display: flex; align-items: center; overflow: hidden; padding: 44px 0; }
+		.mobile-hero-bg { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(251,249,244,.3), var(--cream) 78%), url('/images/instituto-fc/mobile-hero.jpg') center / cover; opacity: .95; }
+		.mobile-hero-content { position: relative; z-index: 1; text-align: center; }
+		.mobile-kicker { margin: 0 0 14px; color: #775a19; font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+		.mobile-hero h1 { margin: 0 0 17px; color: var(--ink); font-size: 38px; line-height: 1.18; letter-spacing: -.025em; }
+		.mobile-hero h1 em { display: inline; font-weight: 400; }
+		.mobile-lead { margin: 0 auto 25px; color: var(--muted); font-size: 15px; line-height: 1.65; }
+		.mobile-lead-card { padding: 27px 22px; border: 1px solid rgba(255,255,255,.65); border-radius: 8px; background: rgba(245,243,238,.82); box-shadow: 0 18px 45px rgba(80,97,67,.1); backdrop-filter: blur(12px); text-align: left; }
+		.mobile-lead-card h2 { margin-bottom: 14px; color: var(--ink); font-size: 23px; text-align: center; }
+		.mobile-lead-card form { display: grid; gap: 13px; }
+		.mobile-lead-card input { width: 100%; padding: 11px 2px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; outline: 0; background: transparent; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+		.mobile-lead-card button { padding: 14px; border: 0; border-radius: 999px; color: white; background: var(--green); font-size: 10px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+		.mobile-lead-card form p { min-height: 17px; margin: 0; color: var(--green); font-size: 10px; text-align: center; }
+		.mobile-section { padding: 85px 0; }
+		.mobile-approach header { margin-bottom: 44px; text-align: center; }
+		.mobile-approach header h2 { margin-bottom: 14px; color: var(--green); font-size: 34px; }
+		.mobile-approach header i { display: block; width: 48px; height: 3px; margin: auto; background: #a58128; }
+		.mobile-pillars { display: grid; gap: 20px; }
+		.mobile-pillar { position: relative; overflow: hidden; padding: 29px; border-radius: 8px; background: #f0eee9; }
+		.mobile-pillar > .material-symbols-outlined, .mobile-metabolic .material-symbols-outlined { margin-bottom: 14px; color: var(--green); font-size: 38px; }
+		.mobile-pillar h3 { margin-bottom: 10px; font-size: 26px; }
+		.mobile-pillar p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+		.mobile-metabolic { padding: 34px; border-radius: 50px; }
+		.mobile-metabolic img { width: 100%; height: 195px; margin-top: 25px; border-radius: 8px; object-fit: cover; }
+		.mobile-exams { border-top: 4px solid #a58128; }
+		.mobile-exams .decoration { position: absolute; right: 20px; bottom: 10px; color: rgba(117,120,111,.2); font-size: 58px; }
+		.mobile-nutrition { border-bottom: 4px solid var(--green); background: #e4e2dd; }
+		.mobile-nutrition ul { display: grid; gap: 7px; margin: 20px 0 0; padding: 0; color: var(--green); font-size: 11px; font-weight: 700; list-style: none; }
+		.mobile-nutrition li { display: flex; align-items: center; gap: 7px; }
+		.mobile-nutrition li span { font-size: 15px; }
+		.mobile-follow { min-height: 310px; padding: 35px; color: white; background: var(--green-soft); }
+		.mobile-follow p { color: rgba(255,255,255,.85); }
+		.mobile-follow a { display: inline-flex; margin-top: 24px; padding: 11px 23px; border-radius: 999px; color: var(--green); background: var(--cream); font-size: 11px; font-weight: 700; }
+		.mobile-follow .chart { position: absolute; right: 20px; bottom: 15px; color: rgba(255,255,255,.2); font-size: 95px; }
+		.mobile-quote { position: relative; overflow: hidden; padding: 86px 0; background: var(--cream-2); text-align: center; }
+		.mobile-quote > div > span { margin-bottom: 20px; color: rgba(117,120,111,.25); font-size: 56px; }
+		.mobile-quote blockquote { margin-bottom: 27px; color: var(--green); font-size: 27px; line-height: 1.4; }
+		.mobile-quote blockquote strong { border-bottom: 2px solid rgba(119,90,25,.3); font-style: normal; }
+		.mobile-quote cite { color: #775a19; font-size: 9px; font-style: normal; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+		.mobile-superfoods .mobile-shell { display: grid; gap: 35px; }
+		.mobile-superfoods-image img { width: 100%; height: 390px; border-radius: 8px; object-fit: cover; box-shadow: 0 18px 40px rgba(80,97,67,.1); }
+		.mobile-superfoods h2 { margin-bottom: 14px; font-size: 33px; }
+		.mobile-superfoods > div > div > p { margin: 0 0 27px; color: var(--muted); font-size: 15px; }
+		.mobile-superfoods article { display: grid; grid-template-columns: 48px 1fr; gap: 13px; margin-top: 20px; }
+		.mobile-superfoods article > span { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; color: #26351d; background: #dbe6d0; }
+		.mobile-superfoods article:nth-of-type(2) > span { background: #d5e9c3; }
+		.mobile-superfoods article strong { display: block; color: var(--green); font-size: 13px; }
+		.mobile-superfoods article p { margin: 2px 0 0; color: var(--muted); font-size: 12px; }
+		.footer { padding-top: 38px; }
+		.footer-top { flex-direction: column; align-items: center; text-align: center; }
+		.footer nav { justify-content: center; gap: 14px 22px; }
+		.footer-bottom { flex-direction: column; align-items: center; text-align: center; }
+		.mobile-drawer { position: fixed; z-index: 70; inset: 0; display: block; pointer-events: none; opacity: 0; transition: opacity .3s; }
+		.mobile-drawer.open { pointer-events: auto; opacity: 1; }
+		.mobile-overlay { position: absolute; inset: 0; width: 100%; border: 0; background: rgba(20,25,18,.42); backdrop-filter: blur(3px); }
+		.mobile-drawer aside { position: absolute; right: 0; top: 0; width: min(82%, 360px); height: 100%; display: flex; flex-direction: column; padding: 28px; background: var(--cream); transform: translateX(100%); transition: transform .35s; }
+		.mobile-drawer.open aside { transform: none; }
+		.mobile-drawer aside header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 42px; color: var(--green); font-family: 'Playfair Display', serif; font-size: 25px; }
+		.mobile-drawer aside header button { border: 0; color: var(--green); background: transparent; }
+		.mobile-drawer nav { display: grid; }
+		.mobile-drawer nav a { padding: 17px 0; border-bottom: 1px solid rgba(197,200,189,.45); font-family: 'Playfair Display', serif; font-size: 25px; }
+		.mobile-drawer aside > .button { margin-top: auto; }
+	}
+	@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }
+</style>
