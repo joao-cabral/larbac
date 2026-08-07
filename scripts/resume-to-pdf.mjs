@@ -1,5 +1,5 @@
 import express from "express";
-import { existsSync } from "node:fs";
+import { copyFileSync, existsSync } from "node:fs";
 import path from "path";
 import puppeteer from "puppeteer";
 
@@ -7,7 +7,6 @@ const app = express();
 app.use(express.static(path.join("dist")));
 
 const server = app.listen(18347);
-const FILENAMES = ["curriculum-pt"];
 const macOSChrome = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const executablePath = process.platform === "darwin" && existsSync(macOSChrome)
   ? macOSChrome
@@ -38,10 +37,26 @@ async function generatePDF(url, outputPath) {
     waitUntil: "networkidle0",
   });
 
-  await page.pdf({ path: outputPath, format: "A4", tagged: true, scale: 0.75 });
+  await page.pdf({
+    path: outputPath,
+    format: "A4",
+    tagged: true,
+    printBackground: true,
+    scale: 0.75,
+    margin: {
+      top: "12mm",
+      right: "14mm",
+      bottom: "12mm",
+      left: "14mm",
+    },
+  });
 }
 
-await generatePDF("http://localhost:18347/curriculum-pt", "dist/curriculum-pt.pdf");
+const publicPdfPath = "public/curriculum-pt.pdf";
+const distPdfPath = "dist/curriculum-pt.pdf";
+
+await generatePDF("http://localhost:18347/curriculum-pt", publicPdfPath);
+copyFileSync(publicPdfPath, distPdfPath);
 // await generatePDF('http://localhost:18347/curriculum', 'dist/curriculum.pdf');
 
 await browser.close();

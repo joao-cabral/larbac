@@ -16,21 +16,21 @@ export async function getStaticPaths() {
 const cv = Astro.props;
 ---
 
-<Layout title="João Cabral" header={false}>
+<Layout title={`${cv.data.name} | ${cv.data.title}`} header={false}>
   <div class='layout'>
     <nav>
       <div class='icon'>
-        <a href='/' title='Go back'>
+        <a href='/' title='Voltar ao portfólio' aria-label='Voltar ao portfólio'>
           <Icon name='mdi:arrow-left' />
         </a>
       </div>
 
       <div class='langs'>
-        larbac
+        Currículo
       </div>
 
       <div class='icon'>
-        <a href={`https://larbac.me/${cv.data.id}.pdf`} title='Download PDF'>
+        <a href={`/${cv.data.id}.pdf`} title='Baixar currículo em PDF' aria-label='Baixar currículo em PDF'>
           <Icon name='mdi:file-download' color='green' />
         </a>
       </div>
@@ -42,23 +42,24 @@ const cv = Astro.props;
           {cv.data.name}
         </h1>
         <div class='role'>{cv.data.title}</div>
+        <div class='updated'>{cv.data.month}</div>
 
       <div class='contact'>
-        <div>Tel: {cv.data.phone} | {cv.data.email}</div>
-        <a href='https://larbac.me' target='_blank'>Portfolio: larbac.me</a>
-        <br />
-        <a href='https://www.linkedin.com/in/jo%C3%A3o-cabral-6296a8174/' target='_blank'
-          >LinkedIn: linkedin.com/in/joão-cabral</a
-        >
-        <br>
-        <a href='https://github.com/joao-cabral' target='_blank'
-          >GitHub: github.com/joao-cabral</a
-        >
+        <a href={`tel:${cv.data.phone.replaceAll(' ', '')}`}>{cv.data.phone}</a>
+        <span aria-hidden='true'> · </span>
+        <a href={`mailto:${cv.data.email}`}>{cv.data.email}</a>
+        <span aria-hidden='true'> · </span>
+        <a href='https://larbac.me'>larbac.me</a>
+        <span aria-hidden='true'> · </span>
+        <a href='https://www.linkedin.com/in/jo%C3%A3o-cabral-6296a8174/'>linkedin.com/in/joão-cabral</a>
+        <span aria-hidden='true'> · </span>
+        <a href='https://github.com/joao-cabral'>github.com/joao-cabral</a>
       </div>
       <hr />
     </header>
 
     <div class='about'>
+      <h2 class='layout-title'>Resumo Profissional</h2>
       {cv.data.about.map((a) => <p set:html={a} />)}
     </div>
 
@@ -71,13 +72,12 @@ const cv = Astro.props;
         {
           cv.data.experiences.map((experience) => (
             <li>
-              <div class='experience__title'>
-                <div>{experience.start}</div>
-                <div>{experience.end}</div>
-              </div>
-
               <div class='experience__about'>
-                <div>{experience.title}</div>
+                <div class='experience__heading'>
+                  <h3>{experience.title}</h3>
+                  <div class='experience__dates'>{experience.start} – {experience.end}</div>
+                </div>
+                {experience.type && <div class='experience__type'>{experience.type}</div>}
 
                 {experience.about.map((c) => (
                   <p set:html={c} />
@@ -167,11 +167,22 @@ const cv = Astro.props;
     .contact {
       font-size: 0.8rem;
       margin-bottom: 1rem;
+      line-height: 1.6;
+
+      @media print {
+        white-space: nowrap;
+      }
     }
 
     .role {
       margin-bottom: 0.25rem;
       font-weight: 500;
+    }
+
+    .updated {
+      color: #666;
+      font-size: 0.7rem;
+      margin-bottom: 0.5rem;
     }
 
     hr {
@@ -224,8 +235,9 @@ const cv = Astro.props;
   .layout-title {
     font-size: 1.2rem;
     text-align: left;
-    font-weight: 500;
-    color: grey
+    font-weight: 700;
+    color: #000;
+    margin: 1.5rem 0 0.75rem;
   }
 
   .layout {
@@ -252,6 +264,12 @@ const cv = Astro.props;
   }
 
   .about {
+    line-height: 1.55;
+
+    p {
+      margin: 0;
+    }
+
     p:not(:first-child) {
       margin-top: 1rem;
     }
@@ -273,7 +291,7 @@ const cv = Astro.props;
 
       li {
         text-align: left;
-        max-width: 24rem;
+        max-width: none;
 
         .title{
           font-weight: bold;
@@ -284,27 +302,56 @@ const cv = Astro.props;
 
   .experience {
     ul {
+      margin: 0;
+
       li {
-        display: flex;
-        flex-direction: row;
         break-inside: avoid;
+        margin-bottom: 1.25rem;
 
-        .experience__title {
-          width: 10%;
-          font-weight: normal;
-          text-align: left;
+        &:nth-child(3) {
+          @media print {
+            break-before: page;
+          }
+        }
+
+        .experience__heading {
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
+          gap: 1rem;
+
+          h3 {
+            font-size: 1rem;
+            margin: 0;
+          }
+        }
+
+        .experience__dates {
+          flex: none;
           font-size: 0.8rem;
+          white-space: nowrap;
         }
 
-        @media (max-width: 768px) {
-          .experience__title {
-          display: none;
+        .experience__type {
+          color: #666;
+          font-size: 0.75rem;
+          margin-top: 0.15rem;
         }
-      }
 
         .experience__about {
-          width: 90%;
           text-align: left;
+
+          p {
+            margin: 0.35rem 0 0;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .experience__heading {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 0.15rem;
+          }
         }
       }
     }

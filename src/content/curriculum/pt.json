@@ -1,18 +1,18 @@
 {
   "id": "curriculum-pt",
   "lang": "Ler em português 🇧🇷",
-  "month": "Atualizado em julho de 2026",
+  "month": "Atualizado em agosto de 2026",
   "name": "João da Silva Cabral",
-  "title": "Desenvolvedor Frontend/Mobile",
+  "title": "Engenheiro de Software Fullstack/Mobile",
   "phone": "+55 92 99268-9937",
   "email": "joaocabral1232@gmail.com",
   "about": [
-    "Desenvolvedor <b>Fullstack/Mobile</b> com +6 anos de experiência construindo aplicações <b>web, mobile e desktop</b> de alta performance com <b>React, Next.js, React Native, TypeScript e Node.js</b>. Atuação em produtos <b>SaaS, Agronegócio, IoT, Marketing Digital e Automação de Testes</b>, participando desde a arquitetura de interfaces e integração com APIs até sustentação em produção, otimização de performance e entrega contínua. Experiência sólida com <b>SSR, SSG, Lazy Loading, Redux, CI/CD, APIs REST</b>, bancos relacionais e boas práticas de escalabilidade, componentização e UX. Vivência como <b>tech lead</b>, conduzindo <b>planejamento técnico, code reviews, mentoria</b> e alinhamento direto com <b>Produto, Design, clientes e stakeholders</b>."
+    "<b>Engenheiro de Software Fullstack/Mobile</b> com <b>mais de 7 anos de experiência</b> em tecnologia, desenvolvendo aplicações web, mobile e desktop. Especialista em <b>React, Next.js, TypeScript, React Native e Node.js</b>, com atuação em produtos SaaS e soluções para Agronegócio, IoT, Marketing Digital, Logística e Automação de Testes. Experiência em <b>arquitetura frontend, integração com APIs, performance, CI/CD e sustentação em produção</b>. Vivência em <b>liderança técnica, planejamento, code reviews e mentoria</b>, com colaboração direta com Produto, Design, clientes e stakeholders."
   ],
   "educationName": "Formação",
   "education": [
     {
-      "date": "2017-2020",
+      "date": "2017 – 2020",
       "title": "Bacharelado em Sistemas de Informação",
       "institution": "FUCAPI - Fundação Centro de Análise, Pesquisa e Inovação Tecnológica"
     }
@@ -20,62 +20,61 @@
   "experienceName": "Experiência Profissional",
   "experiences": [
     {
-      "title": "Engenheiro de Software - Bilhon",
-      "start": "Jun/2024",
-      "end": "Atualmente",
-      "type": "",
+      "title": "Engenheiro de Software | Bilhon",
+      "start": "jun. 2024",
+      "end": "atual",
+      "type": "Contrato PJ · meio período",
       "about": [
         "Plataforma SaaS all-in-one para checkout, gestão de leads, automação de mensagens e processamento de vendas.",
-        "▸ Desenvolvo e mantenho features <b>end-to-end</b> em <b>React, Next.js, TypeScript, Redux, TanStack e Vite</b>, atuando da arquitetura de componentes até a entrega em produção.",
-        "▸ Trabalho com aplicações web de alta performance utilizando <b>SSR, Lazy Loading</b>, componentização escalável e boas práticas de otimização de UX.",
-        "▸ Contribuo no backend em <b>Node.js, Fastify, PostgreSQL, Kysely e OpenAPI</b>, garantindo contratos consistentes entre APIs e interfaces front-end.",
-        "▸ Participo de fluxos de <b>CI/CD</b>, revisão de código, validação técnica e entregas contínuas em ambiente SaaS.",
-        "▸ Colaboro diretamente com Design, Produto e stakeholders na definição de novas funcionalidades, reduzindo o ciclo entre especificação, desenvolvimento e entrega.",
-        "▸ Atuo em sustentação de produção, diagnóstico de incidentes e correções com baixo impacto na operação de clientes finais."
+        "▸ Desenvolvo e mantenho funcionalidades end-to-end com React, Next.js, TypeScript, Redux, TanStack e Vite, da arquitetura de componentes à entrega em produção.",
+        "▸ Aplico SSR, lazy loading e componentização escalável para melhorar carregamento, manutenção e experiência do usuário.",
+        "▸ Desenvolvo integrações e funcionalidades de backend com Node.js, Fastify, PostgreSQL, Kysely e OpenAPI, mantendo contratos consistentes entre APIs e interfaces.",
+        "▸ Participo de CI/CD, code reviews, validação técnica e entregas contínuas em ambiente SaaS.",
+        "▸ Colaboro com Produto, Design e stakeholders na definição de funcionalidades e na transformação de requisitos de negócio em soluções técnicas.",
+        "▸ Atuo na sustentação em produção, no diagnóstico de incidentes e em correções que preservam a continuidade da operação dos clientes."
       ]
     },
     {
-      "title": "Engenheiro de Software - Kasco P&D",
-      "start": "Set/2021",
-      "end": "Mar/2025",
-      "type": "",
+      "title": "Engenheiro de Software | Kasco P&D",
+      "start": "set. 2021",
+      "end": "mar. 2025",
+      "type": "Contrato PJ · meio período",
       "about": [
-        "Modernização de plataforma utilizada por grandes fazendas no setor de Agronegócio, com interfaces Web e Mobile integradas.",
-        "▸ Liderei o time de desenvolvimento Frontend, conduzindo planejamento técnico, arquitetura, code reviews e mentoria de desenvolvedores Júnior e Pleno.",
-        "▸ Arquitetei e desenvolvi a nova interface da plataforma em <b>React, Electron, TypeScript e Material UI</b>, substituindo uma versão legada e melhorando performance, usabilidade e manutenibilidade.",
-        "▸ Atuei com técnicas de renderização e otimização como <b>SSR, SSG, Lazy Loading</b> e divisão estratégica de bundles para melhorar carregamento e experiência do usuário.",
-        "▸ Conduzi o desenvolvimento Mobile em <b>React Native</b>, garantindo paridade de experiência entre Web, Desktop e dispositivos móveis.",
-        "▸ Contribuí no backend com APIs em <b>Node.js, Express, Fastify, TypeScript, PostgreSQL, OpenAPI e Kita</b>, atuando em features fullstack quando necessário.",
-        "▸ Participei de fluxos de <b>CI/CD</b> e automação de build/deploy com <b>Jenkins</b>, apoiando entregas mais previsíveis e seguras.",
+        "Modernização de plataforma para grandes fazendas do Agronegócio, com aplicações web, desktop e mobile integradas.",
+        "▸ Liderei tecnicamente o time frontend, conduzindo planejamento, decisões de arquitetura, code reviews e mentoria de desenvolvedores júnior e pleno.",
+        "▸ Arquitetei e desenvolvi uma nova interface com React, Electron, TypeScript e Material UI, substituindo a aplicação legada e facilitando sua evolução e manutenção.",
+        "▸ Apliquei lazy loading e divisão estratégica de bundles para melhorar o carregamento e a experiência de uso.",
+        "▸ Conduzi o desenvolvimento mobile com React Native, mantendo uma experiência consistente entre web, desktop e dispositivos móveis.",
+        "▸ Desenvolvi funcionalidades fullstack e APIs com Node.js, Express, Fastify, TypeScript, PostgreSQL, OpenAPI e Kita.",
+        "▸ Participei de CI/CD e da automação de build e deploy com Jenkins, apoiando entregas mais previsíveis e seguras.",
         "▸ Atuei como ponto focal técnico em reuniões com clientes, levantando requisitos, validando escopo e propondo soluções viáveis dentro de prazo."
       ]
     },
     {
-      "title": "Desenvolvedor Web/Mobile - Grupo ICTS",
-      "start": "Jun/2021",
-      "end": "Dez/2023",
+      "title": "Desenvolvedor Web/Mobile | Grupo ICTS",
+      "start": "jun. 2021",
+      "end": "dez. 2023",
       "type": "",
       "about": [
-        "Desenvolvimento de soluções IoT e logística, liderando aplicações desde a concepção até implantação para clientes corporativos.",
-        "▸ Liderei o desenvolvimento de aplicativos mobile da concepção à entrega, atuando junto a designers e clientes para definir interfaces, fluxos e requisitos técnicos.",
-        "▸ Desenvolvi aplicações em <b>Flutter</b> utilizando <b>MobX e Provider</b>, com integração a dispositivos <b>IoT via MQTT, Bluetooth</b> e comunicação em tempo real.",
+        "Desenvolvimento de soluções de IoT e logística para clientes corporativos, da concepção à implantação.",
+        "▸ Liderei o desenvolvimento de aplicativos mobile da concepção à entrega, colaborando com Design e clientes na definição de interfaces, fluxos e requisitos técnicos.",
+        "▸ Desenvolvi aplicações em Flutter com MobX e Provider, integradas a dispositivos IoT por MQTT, Bluetooth e comunicação em tempo real.",
         "▸ Projeto Sensoriamento IoT: desenvolvi app mobile para configuração de placas IoT e painel web em Angular para monitoramento, relatórios e operação dos dispositivos.",
-        "▸ Projeto Rotas: entreguei aplicativo mobile com rastreamento em tempo real para colaboradores e motoristas, complementado por painel administrativo em <b>React + TypeScript</b>.",
+        "▸ Projeto Rotas: entreguei aplicativo mobile com rastreamento em tempo real para colaboradores e motoristas, complementado por painel administrativo em React e TypeScript.",
         "▸ Conduzi planejamento de sprints, integração de funcionalidades, testes, implantação e suporte técnico direto a clientes em produção."
       ]
     },
     {
-      "title": "Desenvolvedor Testes - SIDIA",
-      "start": "Mar/2019",
-      "end": "Jun/2021",
+      "title": "Desenvolvedor de Testes | SIDIA",
+      "start": "mar. 2019",
+      "end": "jun. 2021",
       "type": "",
       "about": [
-        "Time de automação de testes para os principais smartphones Samsung, com desenvolvimento de ferramentas internas para o time de QA.",
+        "Automação de testes para smartphones Samsung e desenvolvimento de ferramentas internas para equipes de QA.",
         "▸ Planejei, executei e desenvolvi testes automatizados para smartphones Samsung, contribuindo para a qualidade de releases globais.",
-        "▸ Atuei com Jira no acompanhamento de demandas, bugs, ciclos de validação e comunicação entre times técnicos.",
-        "▸ Desenvolvi ferramentas internas em <b>React, Electron e Python</b> para acelerar processos manuais, apoiar times de QA e aumentar a eficiência operacional.",
-        "▸ Trabalhei com automação de testes, análise de falhas, documentação de cenários e suporte à validação de funcionalidades em ambiente corporativo de larga escala.",
-        "▸ Primeiro contato profissional com React e Electron, base para minha transição posterior para desenvolvimento Web, Mobile e Fullstack."
+        "▸ Desenvolvi ferramentas internas com React, Electron e Python para automatizar processos manuais e apoiar a operação das equipes de QA.",
+        "▸ Analisei falhas, documentei cenários e acompanhei demandas, bugs e ciclos de validação em um ambiente corporativo de larga escala.",
+        "▸ Colaborei com diferentes times técnicos na validação de funcionalidades e na preparação de releases."
       ]
     }
   ],
@@ -84,7 +83,7 @@
     "<b>Front-end:</b> React, Next.js, TypeScript, Redux, TanStack, Vite, Material UI, Tailwind CSS, Electron",
     "<b>Mobile:</b> React Native, Flutter, MobX, Provider, integração com dispositivos, MQTT, Bluetooth, rastreamento em tempo real",
     "<b>Back-end:</b> Node.js, Express, Fastify, PostgreSQL, Kysely, OpenAPI, APIs REST",
-    "<b>Performance e Renderização:</b> SSR, SSG, Lazy Loading, otimização de bundles, componentização escalável, melhoria de UX",
+    "<b>Performance e Renderização:</b> SSR, SSG, lazy loading, otimização de bundles, componentização escalável, experiência do usuário",
     "<b>Cloud & DevOps:</b> AWS, CI/CD, Jenkins, Docker, pipelines de build e deploy",
     "<b>Testes e Qualidade:</b> testes automatizados, testes unitários, automação de QA, validação de releases",
     "<b>Ferramentas e Práticas:</b> Git, Jira, metodologias ágeis, code review, liderança técnica, mentoria, sustentação em produção"
