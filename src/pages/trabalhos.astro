@@ -14,6 +14,17 @@ const works = [
     status: "Atual",
   },
   {
+    title: "RepareCar",
+    company: "Projeto parceiro",
+    period: "Atual",
+    description:
+      "Plataforma completa para gerenciar oficinas, do atendimento e orçamento à entrega do veículo.",
+    href: "https://www.reparecar.com.br/",
+    image: "/images/reparecar.png",
+    theme: "coral",
+    status: "Atual",
+  },
+  {
     title: "Sistema de Rotas",
     company: "Grupo ICTS",
     period: "2021 — 2023",
@@ -56,6 +67,8 @@ const works = [
         <Tag
           class={`work-card work-card--${work.theme}`}
           href={work.href}
+          target={work.href?.startsWith("http") ? "_blank" : undefined}
+          rel={work.href?.startsWith("http") ? "noreferrer" : undefined}
           aria-label={work.href ? `Ver detalhes de ${work.title}` : undefined}
         >
           <div class="work-card__meta">
