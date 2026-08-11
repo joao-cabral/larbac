@@ -8,7 +8,6 @@ const works = [
     period: "2024 — agora",
     description:
       "Plataforma all-in-one para negócios digitais, com páginas, checkouts, CRM, automações e programa de afiliados.",
-    tags: ["React", "TypeScript", "Fastify", "Monorepo"],
     href: "/projects/clickmax-project",
     image: "https://media1.giphy.com/media/3oKIPEqDGUULpEU0aQ/200w.webp",
     theme: "blue",
@@ -20,7 +19,6 @@ const works = [
     period: "2021 — 2023",
     description:
       "Aplicações mobile e web para acompanhar transporte corporativo, itinerários e ocorrências em tempo real.",
-    tags: ["Flutter", "React", "MapBox", "Socket.IO"],
     href: "/projects/routes-project",
     image: "https://media4.giphy.com/media/j1RdWetLBJQIdP8TnK/200w.webp",
     theme: "coral",
@@ -31,7 +29,6 @@ const works = [
     period: "2021 — 2023",
     description:
       "Configuração de placas industriais e monitoramento de luminosidade, temperatura, ruído e umidade.",
-    tags: ["Flutter", "Angular", "Bluetooth", "MQTT"],
     href: "/projects/nimrod-project",
     image: "https://media2.giphy.com/media/LNmzbkBXpDl5yPGtf2/200w.webp",
     theme: "green",
@@ -42,7 +39,6 @@ const works = [
     period: "2019 — 2021",
     description:
       "Testes automatizados para dispositivos Samsung e ferramentas internas para aumentar a eficiência das equipes.",
-    tags: ["Python", "React", "Electron", "Testes"],
     theme: "dark",
   },
 ];
@@ -82,9 +78,6 @@ const works = [
               {work.href && <span aria-hidden="true">↗</span>}
             </div>
             <p>{work.description}</p>
-            <div class="tags">
-              {work.tags.map((tag) => <span>{tag}</span>)}
-            </div>
           </div>
         </Tag>
       );
@@ -214,22 +207,6 @@ const works = [
     font-size: 0.88rem;
     line-height: 1.55;
   }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-  }
-
-  .tags span {
-    padding: 7px 10px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.55);
-    font-size: 0.66rem;
-    font-weight: 720;
-  }
-
-  .work-card--dark .tags span { background: #2b302c; }
 
   @media (max-width: 760px) {
     .works-grid { grid-template-columns: 1fr; gap: 16px; }

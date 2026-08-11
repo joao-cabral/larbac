@@ -32,6 +32,8 @@ const curriculum = defineCollection({
         about: z.array(z.string()),
       })
     ),
+    projectsName: z.string(),
+    projects: z.array(z.string()),
     ossTitle: z.string(),
     oss: z.array(z.string()),
   }),
