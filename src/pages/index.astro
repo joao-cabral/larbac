@@ -9,7 +9,6 @@ const projects = [
     description: "Plataforma all-in-one para negócios digitais.",
     href: "/projects/clickmax-project",
     image: "https://media1.giphy.com/media/3oKIPEqDGUULpEU0aQ/200w.webp",
-    tags: ["React", "TypeScript", "Fastify"],
     className: "project-card--blue",
   },
   {
@@ -17,7 +16,6 @@ const projects = [
     description: "Acompanhamento de rotas e geolocalização em tempo real.",
     href: "/projects/routes-project",
     image: "https://media4.giphy.com/media/j1RdWetLBJQIdP8TnK/200w.webp",
-    tags: ["GetX", "MapBox", "SocketIO"],
     className: "project-card--coral",
   },
   {
@@ -25,7 +23,6 @@ const projects = [
     description: "Configuração e monitoramento de placas IoT via MQTT.",
     href: "/projects/nimrod-project",
     image: "https://media2.giphy.com/media/LNmzbkBXpDl5yPGtf2/200w.webp",
-    tags: ["Flutter", "Angular", "MQTT"],
     className: "project-card--dark",
   },
 ];
@@ -64,6 +61,13 @@ const experiences = [
     description:
       "Desenvolvimento frontend de uma plataforma completa de marketing digital em arquitetura de monorepo.",
     current: true,
+  },
+  {
+    company: "RepareCar",
+    role: "Engenheiro de Software · Freelance",
+    period: "2025 — agora",
+    description:
+      "Atuei no frontend e em evoluções do backend da plataforma, desenvolvendo fluxos de ordens de serviço, checklists, orçamentos, gestão de pátio e portal do cliente.",
   },
   {
     company: "Kasco P&D",
@@ -239,27 +243,34 @@ const experiences = [
         ></video>
       </a>
 
-      <section class="card card--connect">
-        <div class="connect__header">
-          <div class="connect__icon"><Icon name="mdi:github" /></div>
-          <a href="https://github.com/joao-cabral" target="_blank" rel="noreferrer">
-            Seguir <span>↗</span>
-          </a>
+      <a
+        class="card card--reparecar"
+        href="/projects/reparecar-project"
+      >
+        <span class="card__arrow" aria-hidden="true">↗</span>
+        <div class="reparecar__copy">
+          <p>Gestão automotiva</p>
+          <h2>RepareCar</h2>
+          <p>
+            Uma plataforma completa para gerenciar oficinas, do atendimento e
+            orçamento à entrega do veículo.
+          </p>
         </div>
-        <div>
-          <p class="eyebrow">Open source</p>
-          <h2>GitHub</h2>
-          <p class="connect__handle">@joao-cabral</p>
-        </div>
-        <div class="code-grid" aria-hidden="true">
-          <span>TS</span><span>FL</span><span>RE</span><span>JS</span><span>NG</span><span>DB</span>
-        </div>
-      </section>
+        <img
+          class="reparecar__image"
+          src="/images/reparecar.png"
+          alt="Painel de gestão de oficinas do RepareCar"
+          loading="lazy"
+        />
+      </a>
 
       <section class="projects-section">
         <div class="section-heading projects-section__heading">
-          <p class="eyebrow">Projetos selecionados</p>
-          <h2>Projetos em que trabalhei</h2>
+          <div>
+            <p class="eyebrow">Projetos selecionados</p>
+            <h2>Projetos em que trabalhei</h2>
+          </div>
+          <a href="/trabalhos">Ver todos <span aria-hidden="true">→</span></a>
         </div>
         <div class="projects-grid">
           {projects.map((project) => (
@@ -269,9 +280,6 @@ const experiences = [
               <div class="project-card__body">
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
-                <div class="tags">
-                  {project.tags.map((tag) => <span>{tag}</span>)}
-                </div>
               </div>
             </a>
           ))}
@@ -282,7 +290,6 @@ const experiences = [
               <p class="eyebrow">Experimento</p>
               <h3>Tabela de Schulte</h3>
               <p>Um jogo de concentração e velocidade mental.</p>
-              <div class="tags"><span>JavaScript</span><span>CSS Grid</span></div>
             </div>
           </a>
         </div>
@@ -910,82 +917,65 @@ const experiences = [
     78% { filter: brightness(1.65); transform: scale(1.13); }
   }
 
-  .card--connect {
+  .card--reparecar {
     min-height: 490px;
     padding: 26px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    background: #fff9f6;
-    border-color: #efdcd5;
+    background: #fff8f4;
+    border-color: #f0d8ce;
+    color: #171513;
   }
 
-  .connect__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
+  .card--reparecar::before {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background: radial-gradient(circle at 82% 10%, rgba(255, 112, 61, 0.18), transparent 34%);
+    pointer-events: none;
   }
 
-  .connect__icon {
-    display: grid;
-    place-items: center;
-    width: 52px;
-    height: 52px;
-    flex: 0 0 auto;
-    border-radius: 15px;
-    background: #1e2020;
+  .card--reparecar .card__arrow {
+    background: #ff703d;
     color: #fff;
+    box-shadow: 0 8px 24px rgba(255, 112, 61, 0.24);
   }
 
-  .connect__icon svg {
-    width: 28px;
-    height: 28px;
+  .reparecar__copy {
+    position: relative;
+    z-index: 1;
+    max-width: 430px;
   }
 
-  .connect__header a {
-    padding: 11px 16px;
+  .reparecar__copy > p:first-child {
+    width: fit-content;
+    margin: 0 0 12px;
+    padding: 5px 9px;
+    border: 1px solid #f0c8b9;
     border-radius: 999px;
-    background: #171816;
-    color: #fff;
-    font-size: 0.82rem;
-    font-weight: 650;
-    text-decoration: none;
+    background: rgba(255, 255, 255, 0.62);
+    color: #b5441c;
+    font-size: 0.76rem;
   }
 
-  .connect__handle {
-    margin: 6px 0 0;
-    color: #757873;
+  .reparecar__copy h2 {
+    color: #171513;
+    font-size: clamp(2.2rem, 3.4vw, 3.5rem);
   }
 
-  .code-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+  .reparecar__copy > p:nth-child(3) {
+    margin: 10px 0 0;
+    color: #69635f;
+    font-size: 0.88rem;
+    line-height: 1.5;
   }
 
-  .code-grid span {
-    display: grid;
-    place-items: center;
-    aspect-ratio: 1.15;
-    border-radius: 12px;
-    background: #f1e6e0;
-    color: #e05032;
-    font-size: clamp(0.85rem, 1.4vw, 1.3rem);
-    font-weight: 850;
-    letter-spacing: -0.05em;
-  }
-
-  .code-grid span:nth-child(2),
-  .code-grid span:nth-child(6) {
-    background: #e9f0ff;
-    color: #3977da;
-  }
-
-  .code-grid span:nth-child(3),
-  .code-grid span:nth-child(4) {
-    background: #e8f4eb;
-    color: #258753;
+  .reparecar__image {
+    width: calc(100% + 52px);
+    height: 178px;
+    margin: auto -26px -26px;
+    object-fit: cover;
+    object-position: center bottom;
   }
 
   .card--clickmax {
@@ -1091,6 +1081,28 @@ const experiences = [
 
   .projects-section__heading {
     margin-bottom: 24px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .projects-section__heading > a {
+    flex: 0 0 auto;
+    padding: 10px 14px;
+    border: 1px solid #d8dad5;
+    border-radius: 999px;
+    background: #fff;
+    color: #30332f;
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 180ms ease, border-color 180ms ease;
+  }
+
+  .projects-section__heading > a:hover {
+    border-color: #b9bdb6;
+    background: #f5f6f3;
   }
 
   .projects-grid {
@@ -1130,20 +1142,6 @@ const experiences = [
     line-height: 1.5;
   }
 
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .tags span {
-    padding: 6px 9px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.55);
-    font-size: 0.65rem;
-    font-weight: 700;
-  }
-
   .project-card--blue { background: #cbdcff; }
   .project-card--coral { background: #f2b49f; }
   .project-card--dark { background: #c8d5cb; }
@@ -1156,8 +1154,6 @@ const experiences = [
 
   .project-card--game p { color: #aeb4ae; }
   .project-card--game .eyebrow { color: #82d9a4; }
-  .project-card--game .tags span { background: #282c29; }
-
   .game-mark {
     align-self: center;
     display: grid;
@@ -1253,7 +1249,7 @@ const experiences = [
       grid-column: 1;
     }
 
-    .card--connect,
+    .card--reparecar,
     .card--clickmax {
       min-height: 440px;
     }
@@ -1340,7 +1336,7 @@ const experiences = [
       border-radius: 22px;
     }
 
-    .card--connect,
+    .card--reparecar,
     .card--clickmax {
       min-height: 430px;
     }

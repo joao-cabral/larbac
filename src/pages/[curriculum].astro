@@ -91,6 +91,14 @@ const cv = Astro.props;
 
     <div class='about'>
       <h4 class='layout-title'>
+        {cv.data.projectsName}
+      </h4>
+
+      {cv.data.projects.map((project) => <p set:html={project} />)}
+    </div>
+
+    <div class='about'>
+      <h4 class='layout-title'>
         {cv.data.ossTitle}
       </h4>
 
