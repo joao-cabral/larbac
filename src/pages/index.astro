@@ -268,8 +268,11 @@ const experiences = [
 
       <section class="projects-section">
         <div class="section-heading projects-section__heading">
-          <p class="eyebrow">Projetos selecionados</p>
-          <h2>Projetos em que trabalhei</h2>
+          <div>
+            <p class="eyebrow">Projetos selecionados</p>
+            <h2>Projetos em que trabalhei</h2>
+          </div>
+          <a href="/trabalhos">Ver todos <span aria-hidden="true">→</span></a>
         </div>
         <div class="projects-grid">
           {projects.map((project) => (
@@ -1080,6 +1083,28 @@ const experiences = [
 
   .projects-section__heading {
     margin-bottom: 24px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .projects-section__heading > a {
+    flex: 0 0 auto;
+    padding: 10px 14px;
+    border: 1px solid #d8dad5;
+    border-radius: 999px;
+    background: #fff;
+    color: #30332f;
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 180ms ease, border-color 180ms ease;
+  }
+
+  .projects-section__heading > a:hover {
+    border-color: #b9bdb6;
+    background: #f5f6f3;
   }
 
   .projects-grid {
