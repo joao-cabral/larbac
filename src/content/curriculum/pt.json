@@ -80,7 +80,7 @@
   ],
   "projectsName": "Projetos em Destaque",
   "projects": [
-    "<b><a href=\"https://www.reparecar.com.br/\">RepareCar</a> — SaaS para gestão de oficinas automotivas:</b> atuei no frontend e em evoluções do backend de fluxos de ordens de serviço, checklists, orçamentos, gestão de pátio e portal do cliente, utilizando React, TypeScript, Fastify e PostgreSQL."
+    "<b><a href=\"https://www.reparecar.com.br/\">RepareCar</a> — projeto freelance para gestão de oficinas automotivas:</b> atuei no frontend e em evoluções do backend de fluxos de ordens de serviço, checklists, orçamentos, gestão de pátio e portal do cliente, utilizando React, TypeScript, Fastify e PostgreSQL."
   ],
   "ossTitle": "Competências Técnicas",
   "oss": [
