@@ -9,7 +9,7 @@ const works = [
     description:
       "Plataforma all-in-one para negócios digitais, com páginas, checkouts, CRM, automações e programa de afiliados.",
     href: "/projects/clickmax-project",
-    image: "https://media1.giphy.com/media/3oKIPEqDGUULpEU0aQ/200w.webp",
+    video: "/videos/funnel-builder.webm",
     theme: "blue",
     status: "Atual",
   },
@@ -76,7 +76,17 @@ const works = [
             {work.status && <strong>{work.status}</strong>}
           </div>
 
-          {work.image ? (
+          {work.video ? (
+            <video
+              src={work.video}
+              aria-label={`Demonstração de ${work.title}`}
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+          ) : work.image ? (
             <img src={work.image} alt="" loading="lazy" />
           ) : (
             <div class="work-card__visual" aria-hidden="true">
@@ -149,7 +159,8 @@ const works = [
     text-transform: uppercase;
   }
 
-  .work-card > img {
+  .work-card > img,
+  .work-card > video {
     width: 100%;
     height: 250px;
     object-fit: cover;
