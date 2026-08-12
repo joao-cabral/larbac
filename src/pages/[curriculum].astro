@@ -14,6 +14,7 @@ export async function getStaticPaths() {
 }
 
 const cv = Astro.props;
+const pdfVersion = Date.now();
 ---
 
 <Layout title={`${cv.data.name} | ${cv.data.title}`} header={false}>
@@ -30,7 +31,7 @@ const cv = Astro.props;
       </div>
 
       <div class='icon'>
-        <a href={`/${cv.data.id}.pdf`} title='Baixar currículo em PDF' aria-label='Baixar currículo em PDF'>
+        <a href={`/${cv.data.id}.pdf?v=${pdfVersion}`} download='joaocabral-cv.pdf' title='Baixar currículo em PDF' aria-label='Baixar currículo em PDF'>
           <Icon name='mdi:file-download' color='green' />
         </a>
       </div>
@@ -42,7 +43,6 @@ const cv = Astro.props;
           {cv.data.name}
         </h1>
         <div class='role'>{cv.data.title}</div>
-        <div class='updated'>{cv.data.month}</div>
 
       <div class='contact'>
         <a href={`tel:${cv.data.phone.replaceAll(' ', '')}`}>{cv.data.phone}</a>
@@ -87,14 +87,6 @@ const cv = Astro.props;
           ))
         }
       </ul>
-    </div>
-
-    <div class='about'>
-      <h4 class='layout-title'>
-        {cv.data.projectsName}
-      </h4>
-
-      {cv.data.projects.map((project) => <p set:html={project} />)}
     </div>
 
     <div class='about'>
@@ -185,12 +177,6 @@ const cv = Astro.props;
     .role {
       margin-bottom: 0.25rem;
       font-weight: 500;
-    }
-
-    .updated {
-      color: #666;
-      font-size: 0.7rem;
-      margin-bottom: 0.5rem;
     }
 
     hr {
@@ -313,20 +299,14 @@ const cv = Astro.props;
       margin: 0;
 
       li {
-        break-inside: avoid;
         margin-bottom: 1.25rem;
-
-        &:nth-child(3) {
-          @media print {
-            break-before: page;
-          }
-        }
 
         .experience__heading {
           display: flex;
           justify-content: space-between;
           align-items: baseline;
           gap: 1rem;
+          break-after: avoid;
 
           h3 {
             font-size: 1rem;
@@ -344,6 +324,7 @@ const cv = Astro.props;
           color: #666;
           font-size: 0.75rem;
           margin-top: 0.15rem;
+          break-after: avoid;
         }
 
         .experience__about {
@@ -351,6 +332,7 @@ const cv = Astro.props;
 
           p {
             margin: 0.35rem 0 0;
+            break-inside: avoid;
           }
         }
 

@@ -12,6 +12,13 @@ const projects = [
     className: "project-card--blue",
   },
   {
+    title: "RepareCar",
+    description: "Gestão completa para oficinas automotivas.",
+    href: "/projects/reparecar-project",
+    image: "/images/reparecar.png",
+    className: "project-card--orange",
+  },
+  {
     title: "Sistema de Rotas",
     description: "Acompanhamento de rotas e geolocalização em tempo real.",
     href: "/projects/routes-project",
@@ -59,7 +66,7 @@ const experiences = [
     role: "Engenheiro de Software",
     period: "2024 — agora",
     description:
-      "Desenvolvimento frontend de uma plataforma completa de marketing digital em arquitetura de monorepo.",
+      "Desenvolvimento fullstack e evolução arquitetural de uma plataforma SaaS em monorepo, da componentização e integrações à sustentação em produção.",
     current: true,
   },
   {
@@ -215,6 +222,13 @@ const experiences = [
         </div>
       </section>
 
+      <div class="section-heading selected-projects-heading">
+        <div>
+          <p class="eyebrow">Destaques profissionais</p>
+          <h2>Projetos selecionados</h2>
+        </div>
+      </div>
+
       <a
         class="card card--clickmax"
         href="https://clickmax.io/"
@@ -245,7 +259,9 @@ const experiences = [
 
       <a
         class="card card--reparecar"
-        href="/projects/reparecar-project"
+        href="https://www.reparecar.com.br/"
+        target="_blank"
+        rel="noreferrer"
       >
         <span class="card__arrow" aria-hidden="true">↗</span>
         <div class="reparecar__copy">
@@ -267,7 +283,7 @@ const experiences = [
       <section class="projects-section">
         <div class="section-heading projects-section__heading">
           <div>
-            <p class="eyebrow">Projetos selecionados</p>
+            <p class="eyebrow">Portfólio profissional</p>
             <h2>Projetos em que trabalhei</h2>
           </div>
           <a href="/trabalhos">Ver todos <span aria-hidden="true">→</span></a>
@@ -283,13 +299,37 @@ const experiences = [
               </div>
             </a>
           ))}
+        </div>
+      </section>
+
+      <section class="projects-section personal-projects-section">
+        <div class="section-heading projects-section__heading">
+          <div>
+            <p class="eyebrow">Experimentos e estudos</p>
+            <h2>Projetos pessoais</h2>
+          </div>
+        </div>
+        <div class="projects-grid personal-projects-grid">
           <a href="/games/schulte-table" class="project-card project-card--game">
             <span class="card__arrow" aria-hidden="true">↗</span>
             <div class="game-mark" aria-hidden="true">25</div>
             <div class="project-card__body">
-              <p class="eyebrow">Experimento</p>
+              <p class="eyebrow">Jogo de atenção</p>
               <h3>Tabela de Schulte</h3>
-              <p>Um jogo de concentração e velocidade mental.</p>
+              <p>Um exercício de concentração, percepção periférica e velocidade mental.</p>
+            </div>
+          </a>
+          <a href="/projects/librascode-project" class="project-card project-card--librascode">
+            <span class="card__arrow" aria-hidden="true">↗</span>
+            <img
+              src="/images/librascodebanner.png"
+              alt="Identidade visual do aplicativo LibrasCode"
+              loading="lazy"
+            />
+            <div class="project-card__body">
+              <p class="eyebrow">Acessibilidade · Flutter</p>
+              <h3>LibrasCode</h3>
+              <p>Aplicativo para ampliar a acessibilidade e a autonomia de pessoas surdas em espaços culturais.</p>
             </div>
           </a>
         </div>
@@ -704,6 +744,10 @@ const experiences = [
     letter-spacing: -0.055em;
   }
 
+  .selected-projects-heading {
+    grid-column: 1 / -1;
+  }
+
   .card--skills {
     grid-column: 1 / -1;
     padding: 0;
@@ -1076,7 +1120,6 @@ const experiences = [
 
   .projects-section {
     grid-column: 1 / -1;
-    padding-top: 34px;
   }
 
   .projects-section__heading {
@@ -1144,9 +1187,17 @@ const experiences = [
 
   .project-card--blue { background: #cbdcff; }
   .project-card--coral { background: #f2b49f; }
+  .project-card--orange { background: #f4c1ad; }
   .project-card--dark { background: #c8d5cb; }
 
+  .personal-projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .project-card--game {
+    padding: 0;
+    flex-direction: column;
+    align-items: stretch;
     justify-content: space-between;
     background: #121413;
     color: #fff;
@@ -1154,6 +1205,10 @@ const experiences = [
 
   .project-card--game p { color: #aeb4ae; }
   .project-card--game .eyebrow { color: #82d9a4; }
+  .project-card--game .project-card__body {
+    max-width: none;
+    padding: 24px;
+  }
   .game-mark {
     align-self: center;
     display: grid;
@@ -1168,6 +1223,19 @@ const experiences = [
     font-weight: 800;
     letter-spacing: -0.08em;
     transform: rotate(-6deg);
+  }
+
+  .project-card--librascode {
+    background: #e8e3ff;
+  }
+
+  .project-card--librascode > img {
+    height: 190px;
+    object-position: center;
+  }
+
+  .project-card--librascode .eyebrow {
+    color: #6553a5;
   }
 
   .card--experience {
@@ -1239,7 +1307,8 @@ const experiences = [
     }
 
     .bento,
-    .projects-grid {
+    .projects-grid,
+    .personal-projects-grid {
       grid-template-columns: 1fr;
     }
 
@@ -1339,10 +1408,6 @@ const experiences = [
     .card--reparecar,
     .card--clickmax {
       min-height: 430px;
-    }
-
-    .projects-section {
-      padding-top: 30px;
     }
 
     .projects-grid {
