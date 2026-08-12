@@ -8,7 +8,6 @@ const curriculum = defineCollection({
   schema: z.object({
     id: z.string(),
     lang: z.string(),
-    month: z.string(),
     name: z.string(),
     title: z.string(),
     phone: z.string(),
@@ -32,8 +31,6 @@ const curriculum = defineCollection({
         about: z.array(z.string()),
       })
     ),
-    projectsName: z.string(),
-    projects: z.array(z.string()),
     ossTitle: z.string(),
     oss: z.array(z.string()),
   }),

@@ -1,7 +1,6 @@
 {
   "id": "curriculum-pt",
   "lang": "Ler em português 🇧🇷",
-  "month": "Atualizado em agosto de 2026",
   "name": "João da Silva Cabral",
   "title": "Engenheiro de Software Fullstack/Mobile",
   "phone": "+55 92 99268-9937",
@@ -25,13 +24,27 @@
       "end": "atual",
       "type": "Contrato PJ · meio período",
       "about": [
-        "Plataforma SaaS all-in-one para checkout, gestão de leads, automação de mensagens e processamento de vendas.",
-        "▸ Desenvolvo e mantenho funcionalidades end-to-end com React, Next.js, TypeScript, Redux, TanStack e Vite, da arquitetura de componentes à entrega em produção.",
-        "▸ Aplico SSR, lazy loading e componentização escalável para melhorar carregamento, manutenção e experiência do usuário.",
-        "▸ Desenvolvo integrações e funcionalidades de backend com Node.js, Fastify, PostgreSQL, Kysely e OpenAPI, mantendo contratos consistentes entre APIs e interfaces.",
-        "▸ Participo de CI/CD, code reviews, validação técnica e entregas contínuas em ambiente SaaS.",
-        "▸ Colaboro com Produto, Design e stakeholders na definição de funcionalidades e na transformação de requisitos de negócio em soluções técnicas.",
-        "▸ Atuo na sustentação em produção, no diagnóstico de incidentes e em correções que preservam a continuidade da operação dos clientes."
+        "Desenvolvimento e evolução de uma plataforma SaaS de grande porte, com múltiplas aplicações e serviços integrados.",
+        "▸ Desenvolvo aplicações frontend com React, Next.js, TypeScript, TanStack e Vite, atuando da arquitetura de componentes à entrega e sustentação em produção.",
+        "▸ Participei da migração de aplicações distribuídas em micro frontends para uma arquitetura unificada em monorepo, contribuindo para a decomposição do legado e o compartilhamento de código entre aplicações.",
+        "▸ Crio e evoluo componentes reutilizáveis e padrões de interface integrados ao Design System, em colaboração direta com Design e Produto.",
+        "▸ Desenvolvo integrações por APIs REST e eventos, mantendo contratos consistentes entre interfaces, serviços e pacotes compartilhados.",
+        "▸ Aplico SSR, lazy loading e divisão de bundles, além de testes automatizados e observabilidade frontend, para melhorar performance, confiabilidade e diagnóstico de falhas.",
+        "▸ Participo de CI/CD, code reviews, rollout, monitoramento e estabilização de entregas em produção.",
+        "▸ Contribuo em decisões arquiteturais, planejamento técnico, mentoria e transformação de requisitos de negócio em soluções escaláveis."
+      ]
+    },
+    {
+      "title": "Engenheiro de Software | RepareCar",
+      "start": "2025",
+      "end": "atual",
+      "type": "Freelance · meio período",
+      "about": [
+        "Desenvolvimento e evolução de uma plataforma digital voltada à gestão de oficinas automotivas.",
+        "▸ Desenvolvo e mantenho interfaces responsivas, transformando necessidades do negócio em experiências claras e acessíveis para os usuários.",
+        "▸ Contribuo com evoluções fullstack, integrações e manutenção de funcionalidades, garantindo consistência entre as diferentes áreas do produto.",
+        "▸ Participo da análise de melhorias, resolução de problemas e sustentação da plataforma em produção.",
+        "▸ Colaboro diretamente com a equipe no planejamento e na entrega contínua de melhorias para o produto."
       ]
     },
     {
@@ -72,22 +85,18 @@
       "about": [
         "Automação de testes para smartphones Samsung e desenvolvimento de ferramentas internas para equipes de QA.",
         "▸ Planejei, executei e desenvolvi testes automatizados para smartphones Samsung, contribuindo para a qualidade de releases globais.",
-        "▸ Desenvolvi ferramentas internas com React, Electron e Python para automatizar processos manuais e apoiar a operação das equipes de QA.",
+        "▸ Desenvolvi ferramentas internas com React, Electron e Python para automatizar processos manuais, reduzir o tempo de submissão dos testes e apoiar a operação das equipes de QA.",
         "▸ Analisei falhas, documentei cenários e acompanhei demandas, bugs e ciclos de validação em um ambiente corporativo de larga escala.",
         "▸ Colaborei com diferentes times técnicos na validação de funcionalidades e na preparação de releases."
       ]
     }
   ],
-  "projectsName": "Projetos em Destaque",
-  "projects": [
-    "<b><a href=\"https://www.reparecar.com.br/\">RepareCar</a> — projeto freelance para gestão de oficinas automotivas:</b> atuei no frontend e em evoluções do backend de fluxos de ordens de serviço, checklists, orçamentos, gestão de pátio e portal do cliente, utilizando React, TypeScript, Fastify e PostgreSQL."
-  ],
   "ossTitle": "Competências Técnicas",
   "oss": [
-    "<b>Front-end:</b> React, Next.js, TypeScript, Redux, TanStack, Vite, Material UI, Tailwind CSS, Electron",
+    "<b>Front-end:</b> React, Next.js, TypeScript, Redux, TanStack, Vite, micro frontends, Design Systems, componentes compartilhados, Material UI, Tailwind CSS, Electron",
     "<b>Mobile:</b> React Native, Flutter, MobX, Provider, integração com dispositivos, MQTT, Bluetooth, rastreamento em tempo real",
     "<b>Back-end:</b> Node.js, Express, Fastify, PostgreSQL, Kysely, OpenAPI, APIs REST",
-    "<b>Performance e Renderização:</b> SSR, SSG, lazy loading, otimização de bundles, componentização escalável, experiência do usuário",
+    "<b>Arquitetura e Performance:</b> monorepos, arquitetura orientada a eventos, SSR, SSG, lazy loading, otimização de bundles, componentização escalável, observabilidade frontend",
     "<b>Cloud & DevOps:</b> AWS, CI/CD, Jenkins, Docker, pipelines de build e deploy",
     "<b>Testes e Qualidade:</b> testes automatizados, testes unitários, automação de QA, validação de releases",
     "<b>Ferramentas e Práticas:</b> Git, Jira, metodologias ágeis, code review, liderança técnica, mentoria, sustentação em produção"
