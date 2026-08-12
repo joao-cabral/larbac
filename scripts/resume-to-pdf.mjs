@@ -42,7 +42,7 @@ async function generatePDF(url, outputPath) {
     format: "A4",
     tagged: true,
     printBackground: true,
-    scale: 0.75,
+    scale: 0.72,
     margin: {
       top: "12mm",
       right: "14mm",

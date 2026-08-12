@@ -299,20 +299,14 @@ const pdfVersion = Date.now();
       margin: 0;
 
       li {
-        break-inside: avoid;
         margin-bottom: 1.25rem;
-
-        &:nth-child(3) {
-          @media print {
-            break-before: page;
-          }
-        }
 
         .experience__heading {
           display: flex;
           justify-content: space-between;
           align-items: baseline;
           gap: 1rem;
+          break-after: avoid;
 
           h3 {
             font-size: 1rem;
@@ -330,6 +324,7 @@ const pdfVersion = Date.now();
           color: #666;
           font-size: 0.75rem;
           margin-top: 0.15rem;
+          break-after: avoid;
         }
 
         .experience__about {
@@ -337,6 +332,7 @@ const pdfVersion = Date.now();
 
           p {
             margin: 0.35rem 0 0;
+            break-inside: avoid;
           }
         }
 
