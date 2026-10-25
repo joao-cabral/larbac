@@ -1,0 +1,190 @@
+---
+interface Props { kind: 'clickmax' | 'reparecar'; }
+const { kind } = Astro.props;
+const clickmax = [
+  { id: 'crm', name: 'CRM', title: 'Relacionamento em um só lugar', description: 'Organização de contatos e acompanhamento da jornada dos clientes.', icon: 'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M16 3a4 4 0 0 1 0 8M22 21v-2a4 4 0 0 0-3-3.87M13 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z' },
+  { id: 'funnels', name: 'Funis', title: 'Da primeira visita à conversão', description: 'Páginas e ofertas conectadas para compor a jornada de venda.', icon: 'M4 4h6v6H4zM14 14h6v6h-6zM4 14h6v6H4zM7 10v4M10 7h7v7' },
+  { id: 'pages', name: 'Páginas', title: 'Uma presença para cada oferta', description: 'Construção de páginas para apresentar produtos e captar oportunidades.', icon: 'M3 4h18v16H3zM3 8h18M7 12h10M7 16h6' },
+  { id: 'checkout', name: 'Checkout', title: 'O próximo passo é a compra', description: 'Checkout integrado à experiência de venda do produto digital.', icon: 'M3 5h18v14H3zM3 9h18M7 15h4M16 15h1' },
+  { id: 'automations', name: 'Automações', title: 'Jornadas que continuam conectadas', description: 'Automações para conectar etapas e dar continuidade ao relacionamento.', icon: 'm13 2-9 12h7l-1 8 10-12h-7z' },
+  { id: 'affiliates', name: 'Afiliados', title: 'Mais conexões para o produto', description: 'Programa de afiliados integrado ao ecossistema de vendas.', icon: 'm10 13 4-4M8 16l-2 2a4 4 0 0 1-6-6l4-4a4 4 0 0 1 6 0M16 8l2-2a4 4 0 0 1 6 6l-4 4a4 4 0 0 1-6 0' },
+];
+const reparecar = [
+  { id: 'assessment', name: 'Avaliação', title: 'O cuidado começa na entrada', description: 'Checklists ajudam a registrar as condições do veículo e a organizar o atendimento.', icon: '' },
+  { id: 'budget', name: 'Orçamento', title: 'Clareza antes de executar', description: 'Orçamentos organizam os serviços e apoiam a aprovação pelo cliente.', icon: '' },
+  { id: 'parts', name: 'Peças', title: 'Cada peça no seu contexto', description: 'As peças necessárias ficam ligadas à rotina e às demandas da oficina.', icon: '' },
+  { id: 'execution', name: 'Execução', title: 'A oficina em movimento', description: 'Ordens de serviço e gestão de pátio ajudam a acompanhar a operação.', icon: '' },
+  { id: 'delivery', name: 'Entrega', title: 'Do serviço à entrega do veículo', description: 'O acompanhamento da entrega e o portal do cliente completam a jornada.', icon: '' },
+];
+const modules = kind === 'clickmax' ? clickmax : reparecar;
+---
+<section class={`product-showcase product-showcase--${kind}`} data-product={kind} data-active={modules[0]?.id} aria-label={`Prévia automática dos módulos do ${kind === 'clickmax' ? 'Clickmax' : 'RepareCar'}`}>
+  {kind === 'clickmax' ? (
+    <div class="ecosystem-stage">
+      <svg class="project-flow project-illustration ecosystem-wires" data-project-kind={kind} viewBox="0 0 600 300" preserveAspectRatio="none" role="img" aria-label="Módulos do Clickmax conectados a um núcleo central">
+        <title>Ecossistema Clickmax: contatos, funis, páginas, checkout, automações e afiliados</title>
+        {modules.map((module, index) => {
+          const left = index < 3;
+          const y = 60 + (index % 3) * 90;
+          const d = left ? `M85 ${y}H165Q190 ${y} 210 150H252` : `M348 150H390Q410 ${y} 435 ${y}H515`;
+          return <g class:list={['ecosystem-wire', { 'is-active': index === 0 }]} data-scene-module={module.id}>
+            <path d={d} class="wire-base" />
+            <path d={d} class="flow-packet" />
+          </g>;
+        })}
+      </svg>
+      <div class="ecosystem-core" aria-hidden="true"><span>CX</span><small>tudo conectado</small></div>
+      {modules.map((module, index) => (
+        <div class:list={['module-node', `module-node--${index < 3 ? 'left' : 'right'}`, { 'is-active': index === 0 }]} style={`--node-row: ${index % 3}`} data-module={module.id}>
+          <svg viewBox="0 0 26 24" aria-hidden="true"><path d={module.icon} /></svg>
+          <span>{module.name}</span>
+        </div>
+      ))}
+    </div>
+  ) : (
+    <div class="workshop-stage">
+      <div class="workshop-greeting"><span class="workshop-mark" aria-hidden="true">R</span><strong>O dia a dia da sua oficina</strong><span class="workshop-greeting__dot" aria-hidden="true"></span></div>
+      <div class="workshop-summaries" aria-hidden="true">
+        <div><span>Faturamento</span><i class="summary-bars"><b></b><b></b><b></b><b></b><b></b></i></div>
+        <div><span>Alertas inteligentes</span><i class="summary-alert">!</i></div>
+        <div><span>Peças</span><i class="summary-parts">◇</i></div>
+      </div>
+      <div class="workshop-modules" aria-label="Etapas da oficina">
+        {modules.map((module, index) => <span class:list={{ 'is-active': index === 0 }} data-module={module.id}>{module.name}</span>)}
+      </div>
+      <svg class="project-flow project-illustration workshop-board" data-project-kind={kind} viewBox="0 0 600 190" role="img" aria-label="Quadro ilustrativo de avaliação, orçamento, peças, execução e entrega">
+        <title>Quadro de operação da oficina, inspirado na interface RepareCar</title>
+        {modules.map((module, index) => {
+          const x = 8 + index * 119;
+          const top = [18, 35, 12, 28, 20][index] ?? 18;
+          return <g class:list={['workshop-lane', { 'is-active': index === 0 }]} data-scene-module={module.id}>
+            <rect class="lane-background" x={x} y="4" width="109" height="169" rx="9" />
+            <g class="workshop-ticket" style={`--ticket-delay: ${index * .2}s`}>
+              <rect class="ticket-paper" x={x + 7} y={top} width="95" height="99" rx="7" />
+              <path d={`M${x+22} ${top+28}l7-11h34l7 11v13H${x+22}ZM${x+30} ${top+17}l-4 12h40l-6-12M${x+43} ${top+17}v12`} class="ticket-car" />
+              <circle cx={x+31} cy={top+41} r="4" class="ticket-wheel" /><circle cx={x+62} cy={top+41} r="4" class="ticket-wheel" />
+              <path d={`M${x+18} ${top+60}h64M${x+18} ${top+69}h44`} class="ticket-copy" />
+              <rect x={x+16} y={top+80} width="62" height="10" rx="5" class="ticket-status" />
+            </g>
+          </g>;
+        })}
+        <path class="workshop-track" d="M61 181H537" />
+        <path class="flow-packet workshop-progress" d="M61 181H537" />
+      </svg>
+    </div>
+  )}
+
+  <div class="showcase-detail" aria-live="off" aria-atomic="true">
+    {modules.map((module, index) => <div id={`${kind}-${module.id}-panel`} data-panel={module.id} hidden={index !== 0}>
+      <span class="detail-label">{module.name}</span>
+      <strong>{module.title}</strong>
+      <p>{module.description}</p>
+    </div>)}
+  </div>
+  <div class="showcase-footer"><span>Prévia ilustrativa · sem dados reais</span><span>Apresentação automática</span></div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.product-showcase').forEach(root => {
+    const modules = Array.from(root.querySelectorAll<HTMLElement>('[data-module]'));
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-panel]'));
+    const scenes = Array.from(root.querySelectorAll<SVGElement>('[data-scene-module]'));
+
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let active = 0;
+    let visible = false;
+
+    const select = (index: number) => {
+      active = index;
+      const id = modules[index]?.dataset.module;
+      if (!id) return;
+      root.dataset.active = id;
+      modules.forEach(module => module.classList.toggle('is-active', module.dataset.module === id));
+      panels.forEach(panel => { panel.hidden = panel.dataset.panel !== id; });
+      scenes.forEach(scene => scene.classList.toggle('is-active', scene.dataset.sceneModule === id));
+    };
+    const updatePlayback = () => {
+      root.classList.toggle('is-paused', !visible || motion.matches || document.hidden);
+    };
+    motion.addEventListener('change', updatePlayback);
+    document.addEventListener('visibilitychange', updatePlayback);
+    const observer = new IntersectionObserver(entries => {
+      visible = entries.some(entry => entry.isIntersecting);
+      updatePlayback();
+    }, { threshold: .2 });
+    observer.observe(root);
+    updatePlayback();
+    window.setInterval(() => {
+      if (visible && !motion.matches && !document.hidden) select((active + 1) % modules.length);
+    }, 4500);
+  });
+</script>
+
+<style>
+  .product-showcase { position: relative; display: flex; flex-direction: column; width: 100%; height: 208px; min-width: 0; padding: 12px; box-sizing: border-box; pointer-events: none; font-family: Inter, system-ui, sans-serif; }
+  .product-showcase--clickmax { --accent: #caf37e; color: #e9f2ed; background: #101417; background-image: radial-gradient(#ffffff0a 1px, transparent 1px); background-size: 18px 18px; }
+  .product-showcase--reparecar { --accent: #ff783d; color: #302a25; background: #fff4eb; }
+
+  .ecosystem-stage { position: relative; flex-shrink: 0; width: 100%; height: 138px; margin: 6px 0 4px; }
+  .ecosystem-wires { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .wire-base { fill: none; stroke: #64736c; stroke-width: 1; stroke-dasharray: 5 7; }
+  .ecosystem-wire { opacity: .3; transition: opacity 220ms ease; }
+  .ecosystem-wire.is-active { opacity: 1; }
+  .ecosystem-wire .flow-packet { fill: none; stroke: #c4f2d0; stroke-width: 2; stroke-dasharray: 12 180; animation: ecosystem-packet 4s linear infinite; }
+  .ecosystem-core { position: absolute; width: 26%; max-width: 86px; aspect-ratio: 1; left: 50%; top: 50%; transform: translate(-50%, -50%); display: grid; align-content: center; justify-items: center; gap: 4px; border: 1px solid #64757255; border-radius: 50%; background: radial-gradient(circle at 25% 20%, #3d494e, #1c262b 70%); box-shadow: inset 0 0 0 8px #ffffff03, 0 0 35px #bcffcd0d; }
+  .ecosystem-core::before { content: ''; position: absolute; inset: -7px; border: 1px solid #aedfc516; border-radius: 50%; animation: ecosystem-breathe 4s ease-in-out infinite; }
+  .ecosystem-core > span { background: linear-gradient(100deg, #b5deed, #c5f278); background-clip: text; -webkit-background-clip: text; color: transparent; font-size: 1.8rem; font-weight: 850; line-height: 1; letter-spacing: -.08em; }
+  .ecosystem-core > small { display: none; }
+  .module-node { position: absolute; top: calc(20% + var(--node-row) * 30%); transform: translateY(-50%); width: 24%; max-width: 112px; height: 38px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 3px; border: 1px solid #36433e; border-radius: 8px; background: #19211f; color: #a8b8ad; transition: color 200ms ease, border-color 200ms ease, background 200ms ease; }
+  .module-node--left { left: 0; }
+  .module-node--right { right: 0; }
+  .module-node svg { flex-shrink: 0; width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .module-node > span { font-size: .5rem; line-height: 1; font-weight: 600; }
+  .module-node.is-active { border-color: #a7d987; color: #d4f6b2; background: #243124; box-shadow: 0 0 18px #a5ef7a0a; }
+  .showcase-detail { min-width: 0; height: 22px; flex-shrink: 0; padding-top: 4px; }
+  .showcase-detail [hidden] { display: none; }
+  .showcase-detail [data-panel]:not([hidden]) { animation: showcase-detail-in 250ms ease both; }
+  .detail-label { display: none; }
+  .showcase-detail strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .65rem; line-height: 1.4; font-weight: 550; letter-spacing: -.01em; }
+  .showcase-detail p { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .showcase-footer { display: flex; justify-content: space-between; gap: 8px; margin-top: auto; color: #82978c; font-size: .45rem; line-height: 1.5; }
+  .product-showcase--reparecar .showcase-detail { border-color: #e6d6c8; }
+  .product-showcase--reparecar .showcase-detail p, .product-showcase--reparecar .showcase-footer { color: #8a7260; }
+  .workshop-stage { flex-shrink: 0; box-sizing: border-box; height: 138px; padding: 6px; margin: 6px 0 4px; border: 1px solid #e6dace; border-radius: 9px; background: #f6f5f3; }
+  .workshop-greeting { display: none; }
+  .workshop-greeting strong { font-size: .65rem; letter-spacing: -.02em; }
+  .workshop-mark { display: grid; place-items: center; width: 23px; height: 23px; background: #ff783d; border-radius: 6px; color: #fff; font-size: .75rem; font-weight: 800; }
+  .workshop-greeting__dot { margin-left: auto; width: 6px; height: 6px; border-radius: 50%; background: #7b9b76; }
+  .workshop-summaries { display: none; }
+  .workshop-summaries > div { min-width: 0; padding: 10px 8px; border: 1px solid #eee6de; border-radius: 8px; background: #fff; display: flex; flex-direction: column; justify-content: space-between; gap: 8px; }
+  .workshop-summaries span { font-size: .48rem; color: #716c65; }
+  .summary-bars { display: flex; height: 16px; align-items: flex-end; gap: 4px; }
+  .summary-bars b { width: 8px; height: 45%; border-radius: 2px; background: #e5ba96; }
+  .summary-bars b:nth-child(2n) { height: 80%; }
+  .summary-bars b:last-child { height: 100%; background: #ff783d; }
+  .summary-alert, .summary-parts { font-size: 1.2rem; line-height: 16px; font-style: normal; color: #e8894c; }
+  .workshop-modules { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
+  .workshop-modules > span { min-width: 0; padding: 6px 0; border-bottom: 2px solid transparent; color: #8c8177; font-size: .48rem; font-weight: 650; text-align: center; }
+  .workshop-modules > .is-active { color: #bc4c1c; border-bottom-color: #ff783d; }
+  .workshop-board { display: block; width: 100%; height: 94px; margin-top: 4px; }
+  .lane-background { fill: #eeece9; transition: fill 200ms ease; }
+  .workshop-lane.is-active .lane-background { fill: #f8e1cf; }
+  .ticket-paper { fill: #fff; stroke: #e1dcd5; }
+  .ticket-car { fill: #d7e0e2; stroke: #808b8c; stroke-width: 1.3; stroke-linejoin: round; }
+  .ticket-wheel { fill: #637172; }
+  .ticket-copy { fill: none; stroke: #dfdfda; stroke-width: 3; stroke-linecap: round; }
+  .ticket-status { fill: #e9eee4; }
+  .workshop-lane.is-active .ticket-status { fill: #f4b88f; }
+  .workshop-lane.is-active .workshop-ticket { animation: workshop-float 4s ease-in-out infinite; }
+  .workshop-track { fill: none; stroke: #e0d8cc; stroke-width: 2; }
+  .workshop-progress { fill: none; stroke: #ff783d; stroke-width: 3; stroke-dasharray: 28 180; animation: ecosystem-packet 5s linear infinite; }
+  .is-paused .flow-packet, .is-paused .ecosystem-core::before, .is-paused .workshop-ticket { animation-play-state: paused; }
+  @keyframes ecosystem-packet { to { stroke-dashoffset: -384; } }
+  @keyframes ecosystem-breathe { 50% { opacity: .3; transform: scale(1.03); } }
+  @keyframes workshop-float { 50% { transform: translateY(-3px); } }
+  @keyframes showcase-detail-in { from { opacity: .25; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .product-showcase *, .product-showcase *::before { animation: none !important; transition: none !important; }
+  }
+</style>

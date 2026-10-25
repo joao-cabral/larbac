@@ -1,0 +1,250 @@
+---
+const experiences = [
+  {
+    company: "Bilhon",
+    role: "Engenheiro de Software",
+    period: "2024 — agora",
+    start: "2024",
+    description:
+      "Desenvolvimento fullstack e evolução arquitetural de uma plataforma SaaS em monorepo, da componentização e integrações à sustentação em produção.",
+    current: true,
+  },
+  {
+    company: "RepareCar",
+    role: "Engenheiro de Software · Freelance",
+    period: "2025 · 2026",
+    start: "2025",
+    description:
+      "Atuei no frontend e em evoluções do backend da plataforma, desenvolvendo fluxos de ordens de serviço, checklists, orçamentos, gestão de pátio e portal do cliente.",
+    current: false,
+  },
+  {
+    company: "Kasco P&D",
+    role: "Engenheiro de Software",
+    period: "2022 — 2024",
+    start: "2022",
+    description:
+      "Liderança técnica e desenvolvimento de soluções web, desktop e mobile para o setor agro.",
+    current: false,
+  },
+  {
+    company: "Grupo ICTS",
+    role: "Engenheiro de Software",
+    period: "2021 — 2023",
+    start: "2021",
+    description:
+      "Produtos web e mobile para sensoriamento IoT e acompanhamento de rotas em tempo real.",
+    current: false,
+  },
+  {
+    company: "Sidia",
+    role: "Desenvolvedor de Testes",
+    period: "2019 — 2021",
+    start: "2019",
+    description:
+      "Automação de testes e ferramentas internas para os principais dispositivos Samsung.",
+    current: false,
+  },
+];
+---
+
+<section class="experience-timeline" aria-label="Experiência profissional">
+  <header class="experience-timeline__heading">
+    <h2>Experiência</h2>
+  </header>
+
+  <ol class="timeline" role="list">
+    {experiences.map((experience) => (
+      <li class:list={["timeline__item", { "is-current": experience.current }]}>
+        <span class="timeline__node" aria-hidden="true"></span>
+        <div class="timeline__card">
+          <div class="timeline__meta">
+            <span class="timeline__period"><time datetime={experience.start}>{experience.start}</time>{experience.period.slice(4)}</span>
+            {experience.current && <span class="timeline__badge">Em andamento</span>}
+          </div>
+          <h3>{experience.company}</h3>
+          <p class="timeline__role">{experience.role}</p>
+          <p class="timeline__description">{experience.description}</p>
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>
+
+<style>
+  .experience-timeline {
+    --timeline-ink: #202820;
+    --timeline-muted: #626c63;
+    --timeline-green: #36764f;
+    grid-column: 1 / -1;
+    min-width: 0;
+    color: var(--timeline-ink);
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .experience-timeline,
+  .experience-timeline * {
+    box-sizing: border-box;
+  }
+
+  .experience-timeline__heading {
+    margin-bottom: 30px;
+  }
+
+  .experience-timeline h2 {
+    margin: 0;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.055em;
+  }
+
+  .timeline {
+    position: relative;
+    display: grid;
+    gap: 18px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .timeline::before {
+    position: absolute;
+    top: 28px;
+    bottom: 28px;
+    left: 7px;
+    width: 1px;
+    background: linear-gradient(#8bae94, #dce5d9);
+    content: "";
+  }
+
+  .timeline__item {
+    position: relative;
+    min-width: 0;
+    padding-left: 36px;
+  }
+
+  .timeline__node {
+    position: absolute;
+    z-index: 1;
+    top: 27px;
+    left: 2px;
+    width: 11px;
+    height: 11px;
+    border: 2px solid #aab8aa;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 5px #f8faf6;
+  }
+
+  .is-current .timeline__node {
+    border-color: var(--timeline-green);
+    background: var(--timeline-green);
+    box-shadow: 0 0 0 5px #eaf3e9;
+  }
+
+  .timeline__card {
+    min-width: 0;
+    padding: clamp(18px, 2.6vw, 26px);
+    border: 1px solid #e1e7df;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 3px 10px rgb(32 40 32 / 2%);
+    overflow-wrap: anywhere;
+  }
+
+  .is-current .timeline__card {
+    border-color: #c9ddca;
+    background: linear-gradient(110deg, #f5faf3, #fff 75%);
+  }
+
+  .timeline__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 13px;
+  }
+
+  .timeline__period {
+    color: var(--timeline-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }
+
+  .timeline__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 9px;
+    border: 1px solid #d3e4d0;
+    border-radius: 999px;
+    background: #edf5e9;
+    color: #366046;
+    font-size: 0.65rem;
+    font-weight: 650;
+    line-height: 1.2;
+  }
+
+  .timeline__badge::before {
+    width: 5px;
+    height: 5px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #4d8658;
+    content: "";
+  }
+
+  .timeline__card h3 {
+    margin: 0;
+    color: var(--timeline-ink);
+    font-size: 1.13rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+  }
+
+  .timeline__role {
+    margin: 5px 0 0;
+    color: #42624b;
+    font-size: 0.78rem;
+    font-weight: 550;
+    line-height: 1.5;
+  }
+
+  .timeline__description {
+    max-width: 68ch;
+    margin: 13px 0 0;
+    color: var(--timeline-muted);
+    font-size: 0.85rem;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 480px) {
+    .experience-timeline__heading {
+      margin-bottom: 25px;
+    }
+
+    .timeline {
+      gap: 14px;
+    }
+
+    .timeline__item {
+      padding-left: 25px;
+    }
+
+    .timeline__card {
+      padding: 17px 14px;
+      border-radius: 14px;
+    }
+
+    .timeline__meta {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+</style>

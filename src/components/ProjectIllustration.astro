@@ -1,0 +1,199 @@
+---
+interface Props {
+  kind: 'clickmax' | 'reparecar' | 'routes' | 'iot' | 'automation';
+}
+const { kind } = Astro.props;
+const descriptions = {
+  clickmax: 'editor de páginas com funil ramificado e checkout',
+  reparecar: 'oficina com quadro de serviços e veículo em manutenção',
+  routes: 'ônibus percorrendo o trajeto até o marcador de destino',
+  iot: 'sensor conectado a gráficos de telemetria',
+  automation: 'terminal de testes com verificações de sucesso',
+};
+---
+
+<svg class="project-flow project-illustration" data-project-kind={kind} viewBox="0 0 440 240" role="img" aria-label={`Ilustração: ${descriptions[kind]}`} xmlns="http://www.w3.org/2000/svg">
+  <title>{`Ilustração: ${descriptions[kind]}`}</title>
+  {kind === 'clickmax' && <g class="clickmax-scene">
+    <rect width="440" height="240" fill="#edf1ff" />
+    <circle cx="400" cy="25" r="100" fill="#e0e7ff" />
+    <text x="22" y="26" class="eyebrow" fill="#4b5492">CLICKMAX / EDITOR DE FUNIL</text>
+    <path d="M182 115H216V75H250M216 115V174H281M340 100V133" class="wire" stroke="#8795cb" />
+    <path d="M182 115H216V75H250" class="wire flow-packet funnel-signal" stroke="#6b59cf" />
+    <rect x="22" y="48" width="160" height="147" rx="9" fill="#fff" stroke="#c6cfea" />
+    <path d="M22 71H182" stroke="#dbe1f2" />
+    <circle cx="34" cy="60" r="3" fill="#e0b7c3" /><circle cx="44" cy="60" r="3" fill="#d7c78c" /><circle cx="54" cy="60" r="3" fill="#a8c6b7" />
+    <text x="94" y="63" class="micro" fill="#53608c">Páginas</text>
+    <rect x="34" y="83" width="136" height="55" rx="4" fill="#e8e4ff" />
+    <path d="M46 96H117M46 104H100" stroke="#8d80c6" stroke-width="4" stroke-linecap="round" />
+    <rect x="46" y="115" width="52" height="12" rx="6" fill="#6d5ac6" />
+    <rect x="34" y="149" width="60" height="31" rx="4" fill="#f1f3fb" /><rect x="103" y="149" width="67" height="31" rx="4" fill="#f1f3fb" />
+    <path d="M143 126L143 145L148 140L153 148L157 145L152 137L159 136Z" fill="#38416c" stroke="#fff" />
+    <rect x="250" y="49" width="158" height="51" rx="8" fill="#fff" stroke="#c6cfea" />
+    <text x="264" y="69" class="label" fill="#424b7f">Oferta principal</text>
+    <text x="264" y="86" class="small" fill="#69739a">Página de conversão</text>
+    <rect x="281" y="151" width="127" height="43" rx="8" fill="#dcece8" stroke="#a6c8bb" />
+    <text x="294" y="169" class="label" fill="#365e54">Checkout</text>
+    <path d="M295 178H317M321 178H330M373 169L379 175L391 162" class="wire" stroke="#548975" />
+    <circle cx="216" cy="115" r="4" fill="#6d5ac6" />
+    <text x="226" y="136" class="micro" fill="#626f97">ramificação</text>
+    <text x="22" y="222" class="footnote" fill="#69739a">INTERFACE ILUSTRATIVA · DA PÁGINA À VENDA</text>
+  </g>}
+
+  {kind === 'reparecar' && <g class="reparecar-scene">
+    <rect width="440" height="240" fill="#faf0e5" />
+    <path d="M0 216L440 174V240H0Z" fill="#f0dfcc" />
+    <text x="22" y="26" class="eyebrow" fill="#875941">REPARECAR / OFICINA ORGANIZADA</text>
+    <rect x="22" y="45" width="257" height="151" rx="9" fill="#fffaf4" stroke="#d9c5ae" />
+    <text x="35" y="65" class="label" fill="#694b3a">Quadro de serviços</text>
+    <path d="M106 79V182M190 79V182" stroke="#e8d9c7" />
+    <text x="34" y="86" class="small" fill="#8a6852">Entrada</text><text x="118" y="86" class="small" fill="#8a6852">Serviço</text><text x="202" y="86" class="small" fill="#8a6852">Pronto</text>
+    <rect x="32" y="98" width="64" height="49" rx="5" fill="#f0e4d5" />
+    <text x="39" y="116" class="micro" fill="#71543e">Revisão</text><path d="M40 128H77M40 135H61" stroke="#b49b81" stroke-width="2" />
+    <g class="flow-packet service-card">
+      <rect x="116" y="107" width="64" height="65" rx="5" fill="#e8b994" />
+      <text x="123" y="125" class="micro" fill="#65462e">Inspeção</text>
+      <path d="M125 137H166M125 144H151" stroke="#a56e43" stroke-width="2" /><circle cx="164" cy="158" r="5" fill="#fff4e7" />
+    </g>
+    <rect x="200" y="98" width="66" height="43" rx="5" fill="#dce5d8" />
+    <text x="207" y="116" class="micro" fill="#4e6b4e">Entrega</text><path d="M208 126L212 130L220 122" class="wire" stroke="#638765" />
+    <circle cx="350" cy="104" r="57" fill="#eedac2" />
+    <path d="M296 132L307 107Q310 101 319 101H369Q378 101 382 111L392 132V155H296Z" fill="#fff9f0" stroke="#946d50" stroke-width="2" />
+    <path d="M314 109H366L375 128H306ZM339 109V128" fill="#c7d8db" stroke="#946d50" stroke-width="2" />
+    <rect x="301" y="148" width="15" height="18" rx="5" fill="#665345" /><rect x="373" y="148" width="15" height="18" rx="5" fill="#665345" />
+    <path d="M303 138H318M370 138H385M331 145H357M290 178H400M309 174V185M382 174V185" stroke="#946d50" stroke-width="3" stroke-linecap="round" />
+    <text x="345" y="76" text-anchor="middle" class="small" fill="#805b40">Em manutenção</text>
+    <text x="22" y="222" class="footnote" fill="#875f46">CENÁRIO ILUSTRATIVO · CUIDADO EM CADA ETAPA</text>
+  </g>}
+
+  {kind === 'routes' && <g class="routes-scene">
+    <rect width="440" height="240" fill="#eaf1ef" />
+    <path d="M335 0Q276 62 342 120T356 240H440V0Z" fill="#c5dfe8" />
+    <path d="M12 47H118V97H21ZM144 43H248V88H144ZM27 126H100V195H27ZM130 125H196V213H130ZM231 132H282V208H231Z" fill="#d8e2d8" />
+    <path d="M0 110H300M116 0V240M0 211H320M265 0V240M0 33H307" stroke="#fff" stroke-width="15" fill="none" />
+    <path d="M0 110H300M116 0V240M0 211H320M265 0V240M0 33H307" stroke="#c6cecb" stroke-width="1" fill="none" />
+    <path d="M295 0Q238 93 340 147T395 240" stroke="#f9fcfc" stroke-width="16" fill="none" />
+    <path d="M44 176V110H116V33H265V110H304" class="route-base" />
+    <path d="M44 176V110H116V33H265V110H304" class="flow-packet route-trail" />
+    <circle cx="44" cy="176" r="7" fill="#fff" stroke="#5d70b0" stroke-width="3" />
+    <circle cx="304" cy="110" r="13" class="route-arrival" aria-hidden="true" />
+    <g class="vehicle-pin">
+      <path d="M304 69C289 69 281 80 284 92C286 101 304 117 304 117S322 101 324 92C327 80 319 69 304 69Z" fill="#586daf" stroke="#fff" stroke-width="3" />
+      <circle cx="304" cy="87" r="7" fill="none" stroke="#fff" stroke-width="2" />
+      <circle cx="304" cy="87" r="2.5" fill="#fff" />
+    </g>
+    <g class="route-bus" aria-hidden="true">
+      <circle r="18" fill="#586daf" opacity=".1" />
+      <rect x="-8" y="-9" width="5" height="3" rx="1" fill="#344368" />
+      <rect x="5" y="-9" width="5" height="3" rx="1" fill="#344368" />
+      <rect x="-8" y="6" width="5" height="3" rx="1" fill="#344368" />
+      <rect x="5" y="6" width="5" height="3" rx="1" fill="#344368" />
+      <rect x="-13" y="-7" width="26" height="14" rx="4" fill="#586daf" stroke="#fff" stroke-width="1.5" />
+      <rect x="7" y="-5" width="3" height="10" rx="1" fill="#d5eafa" />
+      <rect x="-10" y="-4" width="2" height="8" rx="1" fill="#a6c6e0" />
+      <rect x="-5" y="-4" width="9" height="8" rx="2" fill="#8195c4" />
+      <path d="M12-4V-2M12 2V4" stroke="#f6edbb" stroke-width="2" stroke-linecap="round" />
+    </g>
+    <rect x="14" y="15" width="86" height="34" rx="7" fill="#fff" stroke="#d3ded9" />
+    <circle cx="28" cy="32" r="4" fill="#586daf" /><text x="40" y="36" class="label" fill="#40517d">Em rota</text>
+    <rect x="289" y="167" width="132" height="46" rx="8" fill="#fff" stroke="#d3ded9" />
+    <text x="301" y="186" class="label" fill="#40517d">Trajeto do veículo</text><text x="301" y="202" class="small" fill="#64776f">Mapa ilustrativo</text>
+    <text x="22" y="233" class="footnote" fill="#4e6561">ROTAS / CONTEXTO PARA CADA DESLOCAMENTO</text>
+  </g>}
+
+  {kind === 'iot' && <g class="iot-scene">
+    <rect width="440" height="240" fill="#eaf5f1" />
+    <circle cx="80" cy="128" r="76" fill="#dceee6" />
+    <text x="22" y="26" class="eyebrow" fill="#376c60">IOT / DO SENSOR À TELEMETRIA</text>
+    <g class="sensor-transmission" aria-hidden="true">
+      <path d="M97 88Q119 110 97 132" class="wire sensor-wave" style="--signal-delay: 0s" />
+      <path d="M108 75Q143 110 108 145" class="wire sensor-wave" style="--signal-delay: .35s" />
+      <path d="M119 62Q167 110 119 158" class="wire sensor-wave" style="--signal-delay: .7s" />
+      <path d="M92 119H177" class="sensor-channel" />
+      {[0, .8, 1.6].map(delay => <circle cx="93" cy="119" r="2.6" class="flow-packet sensor-packet" style={`--signal-delay: ${delay}s`} />)}
+    </g>
+    <rect x="32" y="83" width="58" height="71" rx="12" fill="#fff" stroke="#8bb4a2" stroke-width="2" />
+    <circle cx="61" cy="106" r="10" fill="#d6e9df" />
+    <circle cx="61" cy="106" r="8" class="sensor-led-halo" />
+    <circle cx="61" cy="106" r="4" fill="#458770" class="sensor-led" />
+    <path d="M47 128H75M47 136H65M53 154V169M69 154V169" stroke="#8bb4a2" stroke-width="3" stroke-linecap="round" />
+    <text x="61" y="190" text-anchor="middle" class="label" fill="#376c60">Sensor</text>
+    <rect x="177" y="47" width="241" height="145" rx="9" fill="#fff" stroke="#b8d5c8" />
+    <text x="192" y="68" class="label" fill="#376c60">Telemetria</text>
+    <circle cx="399" cy="64" r="7" class="telemetry-receiver" />
+    <circle cx="399" cy="64" r="3" fill="#458770" />
+    <path d="M192 91H402M192 115H402M192 139H402M192 163H402M218 84V172M264 84V172M310 84V172M356 84V172" stroke="#e6eee9" fill="none" />
+    <svg x="192" y="84" width="210" height="88" viewBox="0 0 210 88" class="telemetry-viewport" aria-hidden="true">
+      <g class="telemetry-stream">
+        <path d="M0 62L18 55L35 61L54 27L72 34L91 21L110 41L131 16L151 23L169 8L187 17L210 62L228 55L245 61L264 27L282 34L301 21L320 41L341 16L361 23L379 8L397 17L420 62V88H0Z" fill="#dcefe5" />
+        <path d="M0 62L18 55L35 61L54 27L72 34L91 21L110 41L131 16L151 23L169 8L187 17L210 62L228 55L245 61L264 27L282 34L301 21L320 41L341 16L361 23L379 8L397 17L420 62" class="wire" stroke="#458770" />
+        <path d="M0 73C17 58 35 58 52.5 66S87.5 78 105 66S140 44 157.5 50S192.5 76 210 73C227 58 245 58 262.5 66S297.5 78 315 66S350 44 367.5 50S402.5 76 420 73" class="wire" stroke="#8c9cce" />
+      </g>
+      <path d="M205 0V88" class="telemetry-scan" />
+    </svg>
+    <text x="192" y="184" class="micro" fill="#6d8579">Sinais ilustrativos · sem escala</text>
+    <text x="22" y="222" class="footnote" fill="#557d6d">CONECTIVIDADE · LEITURA · CONTEXTO</text>
+  </g>}
+
+  {kind === 'automation' && <g class="automation-scene">
+    <rect width="440" height="240" fill="#18242d" />
+    <path d="M0 0L118 0L0 118ZM440 240H325L440 125Z" fill="#20333c" />
+    <text x="22" y="26" class="eyebrow" fill="#a7c5ba">AUTOMATION / CONFIANÇA A CADA MUDANÇA</text>
+    <rect x="22" y="43" width="396" height="160" rx="9" fill="#101a23" stroke="#40535e" />
+    <path d="M22 69H418" stroke="#344651" />
+    <circle cx="36" cy="56" r="3" fill="#b98d88" /><circle cx="47" cy="56" r="3" fill="#beae7f" /><circle cx="58" cy="56" r="3" fill="#85b09d" />
+    <text x="77" y="59" class="micro" fill="#9eb0bd">terminal — testes ilustrativos</text>
+    <text x="39" y="91" class="terminal" fill="#bdcfdf">$ executar testes</text>
+    <path d="M41 110L45 114L52 106M41 135L45 139L52 131M41 160L45 164L52 156" class="wire" stroke="#9dceab" />
+    <text x="64" y="115" class="terminal" fill="#c4d7cb">PASS</text><text x="112" y="115" class="terminal" fill="#a7bac9">autenticação</text>
+    <text x="64" y="140" class="terminal" fill="#c4d7cb">PASS</text><text x="112" y="140" class="terminal" fill="#a7bac9">integração</text>
+    <text x="64" y="165" class="terminal" fill="#c4d7cb">PASS</text><text x="112" y="165" class="terminal" fill="#a7bac9">fluxo de compra</text>
+    <rect x="39" y="181" width="7" height="10" fill="#b8d4c2" class="flow-packet terminal-cursor" />
+    <rect x="308" y="88" width="92" height="90" rx="8" fill="#1d3434" stroke="#3f6055" />
+    <path d="M354 101L377 110V130Q376 148 354 158Q332 148 331 130V110Z" fill="#2e5043" stroke="#86b49b" />
+    <path d="M343 129L351 137L366 120" fill="none" stroke="#b5dfbf" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="354" y="170" text-anchor="middle" class="micro" fill="#b5cebf">validado</text>
+    <text x="22" y="222" class="footnote" fill="#9eb6b5">CENÁRIO ILUSTRATIVO · QUALIDADE COMO ROTINA</text>
+  </g>}
+</svg>
+
+<style>
+  .project-illustration { display: block; width: 100%; height: auto; flex-shrink: 0; overflow: hidden; isolation: isolate; }
+  .project-illustration text { font-family: Inter, system-ui, sans-serif; }
+  .eyebrow { font-size: 10px; font-weight: 650; letter-spacing: 1px; }
+  .label { font-size: 11px; font-weight: 600; }
+  .small { font-size: 10px; }
+  .micro { font-size: 9px; }
+  .footnote { font-size: 9px; letter-spacing: .7px; }
+  .project-illustration .terminal { font-family: ui-monospace, SFMono-Regular, monospace; font-size: 11px; }
+  .wire { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .funnel-signal { stroke-dasharray: 9 140; animation: illustration-travel 6s linear infinite; }
+  .service-card { animation: illustration-service 6s ease-in-out infinite; }
+  .route-base { fill: none; stroke: #a1afd0; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+  .route-trail { fill: none; stroke: #566cae; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 16 20; animation: illustration-travel 5s linear infinite; }
+  .route-bus { offset-path: path('M44 176V110H116V33H265V110H304'); offset-distance: 0%; offset-rotate: auto; offset-anchor: 0px 0px; animation: route-bus-trip 10s linear infinite; }
+  .route-arrival { fill: none; stroke: #586daf; stroke-width: 2; transform-box: fill-box; transform-origin: center; opacity: 0; animation: route-destination-pulse 10s linear infinite; }
+  .sensor-wave { stroke: #73aa96; animation: sensor-broadcast 2.4s ease-out infinite; animation-delay: var(--signal-delay); }
+  .sensor-channel { fill: none; stroke: #9bc6b4; stroke-width: 1; stroke-dasharray: 2 5; }
+  .sensor-packet { fill: #348268; animation: sensor-send 2.4s linear infinite; animation-delay: var(--signal-delay); opacity: 0; }
+  .sensor-led { animation: sensor-led-blink 2.4s ease-in-out infinite; }
+  .sensor-led-halo { fill: none; stroke: #458770; stroke-width: 1; transform-box: fill-box; transform-origin: center; animation: sensor-halo 2.4s ease-out infinite; }
+  .telemetry-receiver { fill: #83bc9e; transform-box: fill-box; transform-origin: center; animation: sensor-halo 2.4s ease-out infinite; animation-delay: 1.9s; }
+  .telemetry-viewport { overflow: hidden; }
+  .telemetry-stream { animation: telemetry-scroll 7s linear infinite; }
+  .telemetry-scan { fill: none; stroke: #71a58a; stroke-width: 1; stroke-dasharray: 2 4; opacity: .55; }
+  .terminal-cursor { animation: illustration-cursor 2.5s ease-in-out infinite; }
+  @keyframes illustration-travel { to { stroke-dashoffset: -298; } }
+  @keyframes route-bus-trip { 0% { offset-distance: 0%; opacity: 0; } 3% { offset-distance: 0%; opacity: 1; } 84%, 94% { offset-distance: 100%; opacity: 1; } 100% { offset-distance: 100%; opacity: 0; } }
+  @keyframes route-destination-pulse { 0%, 82% { opacity: 0; transform: scale(.5); } 86% { opacity: .7; transform: scale(.7); } 100% { opacity: 0; transform: scale(2); } }
+  @keyframes illustration-service { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes sensor-broadcast { 0% { opacity: .15; transform: translateX(-3px); } 30% { opacity: 1; } 85%, 100% { opacity: .12; transform: translateX(7px); } }
+  @keyframes sensor-send { 0% { opacity: 0; transform: translateX(0); } 12%, 82% { opacity: 1; } 100% { opacity: 0; transform: translateX(84px); } }
+  @keyframes sensor-led-blink { 0%, 100% { fill: #458770; } 20% { fill: #78cfa0; } }
+  @keyframes sensor-halo { 0% { opacity: .7; transform: scale(.6); } 85%, 100% { opacity: 0; transform: scale(1.8); } }
+  @keyframes telemetry-scroll { to { transform: translateX(-210px); } }
+  @keyframes illustration-cursor { 0%, 100% { opacity: .25; } 50% { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) {
+    .project-illustration, .project-illustration * { animation: none !important; transition: none !important; }
+  }
+</style>

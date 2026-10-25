@@ -1,0 +1,62 @@
+---
+import { Icon } from "astro-icon/components";
+
+const flows = {
+  clickmax: { label: "Funil de vendas", accent: "#a7d7ff", nodes: ["Páginas", "Automação", "Vendas"], icons: ["web", "source-branch", "credit-card"], caption: "CONECTAR · AUTOMATIZAR · CONVERTER" },
+  reparecar: { label: "Jornada de uma ordem de serviço", accent: "#ffb38f", nodes: ["Entrada", "Serviço", "Entrega"], icons: ["car-wrench", "cog", "check-decagram"], caption: "DO ATENDIMENTO À ENTREGA" },
+  routes: { label: "Fluxo de acompanhamento de rotas", accent: "#c5bbff", nodes: ["Veículo", "Localização", "Operação"], icons: ["car-wrench", "map-marker", "cellphone"], caption: "ROTAS · POSIÇÃO · ACOMPANHAMENTO" },
+  iot: { label: "Fluxo de monitoramento IoT", accent: "#8de2b0", nodes: ["Sensores", "MQTT", "Monitoramento"], icons: ["access-point", "cloud-outline", "chart-line"], caption: "DO MUNDO FÍSICO AO DIGITAL" },
+  automation: { label: "Fluxo de automação de qualidade", accent: "#e0e893", nodes: ["Código", "Testes", "Validação"], icons: ["source-branch", "test-tube", "check-decagram"], caption: "MENOS ETAPAS MANUAIS. MAIS QUALIDADE." },
+  air: { label: "Dados ambientais e qualidade do ar", accent: "#8de2b0", nodes: ["Sensores", "Dados", "Mapa do ar"], icons: ["weather-windy", "database", "map-marker"], caption: "DADOS ABERTOS · IMPACTO LOCAL" },
+  print: { label: "Da criação 3D à loja", accent: "#f4bf8a", nodes: ["Criação", "Impressão 3D", "Loja"], icons: ["cog", "printer-3d-nozzle", "cart"], caption: "IDEIAS QUE GANHAM FORMA" },
+};
+interface Props { kind: keyof typeof flows; }
+const flow = flows[Astro.props.kind];
+---
+
+<svg class="project-flow" viewBox="0 0 440 220" role="img" aria-label={`Ilustração: ${flow.label}`} style={`--flow-accent: ${flow.accent}`}>
+  <title>{flow.label}</title>
+  <rect class="flow-background" width="440" height="220" />
+  <g class="flow-grid" aria-hidden="true">
+    {[40, 80, 120, 160, 200, 240, 280, 320, 360, 400].map(x => <path d={`M${x} 0V220`} />)}
+    {[40, 80, 120, 160, 200].map(y => <path d={`M0 ${y}H440`} />)}
+  </g>
+  <text class="flow-caption" x="26" y="32">{flow.caption}</text>
+  <g class="flow-connections" aria-hidden="true">
+    <path d="M112 100 C145 100 145 118 178 118" />
+    <path d="M262 118 C295 118 295 100 328 100" />
+    <path class="flow-packet" d="M112 100 C145 100 145 118 178 118" />
+    <path class="flow-packet flow-packet--second" d="M262 118 C295 118 295 100 328 100" />
+  </g>
+  {flow.nodes.map((label, index) => {
+    const x = 28 + index * 150;
+    const y = index === 1 ? 86 : 68;
+    return <g class="flow-node" style={`--node-delay: ${index * 0.7}s`}>
+      <rect x={x} y={y} width="84" height="64" rx="16" />
+      <Icon name={`mdi:${flow.icons[index]}`} x={x + 28} y={y + 18} width={28} height={28} />
+      <text x={x + 42} y={y + 86} text-anchor="middle">{label}</text>
+    </g>;
+  })}
+  <g class="flow-footnote" aria-hidden="true">
+    <circle cx="29" cy="202" r="3" />
+    <text x="40" y="205">FLUXO DO PRODUTO</text>
+    <text x="412" y="205" text-anchor="end">→</text>
+  </g>
+</svg>
+
+<style>
+  .project-flow { display: block; width: 100%; height: auto; flex-shrink: 0; overflow: hidden; background: #121b23; }
+  .flow-background { fill: #121b23; }
+  .flow-grid { fill: none; stroke: #fff; stroke-width: .5; opacity: .045; }
+  .flow-caption, .flow-footnote text { fill: #a4b0bc; font: 8px ui-monospace, monospace; letter-spacing: 1.3px; }
+  .flow-connections { fill: none; stroke: #394b59; stroke-width: 1.5; }
+  .flow-packet { stroke: var(--flow-accent); stroke-width: 2.5; stroke-dasharray: 10 90; animation: flow-travel 3s linear infinite; }
+  .flow-packet--second { animation-delay: -1.5s; }
+  .flow-node rect { fill: #1b2934; stroke: #455a68; stroke-width: 1; animation: flow-node-glow 4s ease-in-out infinite; animation-delay: var(--node-delay); }
+  .flow-node :global(svg) { color: var(--flow-accent); }
+  .flow-node text { fill: #e0e8ed; font: 11px Inter, system-ui, sans-serif; font-weight: 550; }
+  .flow-footnote circle { fill: var(--flow-accent); }
+  @keyframes flow-travel { to { stroke-dashoffset: -100; } }
+  @keyframes flow-node-glow { 0%, 70%, 100% { stroke: #455a68; } 35% { stroke: var(--flow-accent); } }
+  @media (prefers-reduced-motion: reduce) { .flow-packet, .flow-node rect { animation: none; } }
+</style>

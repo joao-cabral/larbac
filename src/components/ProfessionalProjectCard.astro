@@ -1,0 +1,55 @@
+---
+import ProjectIllustration from './ProjectIllustration.astro';
+import ProductShowcase from './ProductShowcase.astro';
+import type { ProfessionalProject } from '../lib/professional-projects';
+interface Props { project: ProfessionalProject; headingLevel?: 'h2' | 'h3'; }
+const { project, headingLevel: Heading = 'h3' } = Astro.props;
+---
+<article class:list={['professional-card', 'work-card', `professional-card--${project.flow}`, { 'is-featured': project.featured }]}>
+  <div class="professional-card__visual">
+    {project.flow === 'clickmax' || project.flow === 'reparecar'
+      ? <ProductShowcase kind={project.flow} />
+      : <ProjectIllustration kind={project.flow} />}
+  </div>
+  <div class="professional-card__body">
+    <div class="professional-card__meta">
+      <span>{project.company} · {project.period}</span>
+      {project.current && <span class="professional-card__status">Em andamento</span>}
+    </div>
+    <Heading><a class="professional-card__primary" href={project.href} aria-label={`Ver minha contribuição em ${project.title}`}>{project.title}</a></Heading>
+    <p class="professional-card__description">{project.featured ? project.contribution : project.description}</p>
+    <div class="professional-card__actions">
+      <span class="professional-card__cta" aria-hidden="true">Ver minha contribuição <span>→</span></span>
+      {project.website && <a class="professional-card__external" href={project.website} target="_blank" rel="noopener noreferrer" aria-label={`Visitar site do ${project.title} (abre em nova aba)`}>Visitar site <span aria-hidden="true">↗</span></a>}
+    </div>
+  </div>
+</article>
+<style>
+  .professional-card { position: relative; min-width: 0; display: flex; flex-direction: column; overflow: hidden; border: 1px solid #dce2dd; border-radius: 24px; background: #f7f9f6; color: #1c251f; transition: transform 200ms ease, box-shadow 200ms ease; }
+  .professional-card:hover { transform: translateY(-3px); box-shadow: 0 16px 32px #1c251f12; }
+  .professional-card__visual { min-width: 0; overflow: hidden; }
+  .professional-card__body { display: flex; flex-direction: column; flex: 1; padding: 20px; }
+  .professional-card__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-bottom: 10px; color: #637069; font-size: .62rem; line-height: 1.5; font-weight: 600; }
+  .professional-card__status { color: #306a45; }
+  h2, h3 { margin: 0; font-size: 1.5rem; line-height: 1.1; letter-spacing: -.045em; }
+  .professional-card__primary { color: inherit; text-decoration: none; }
+  .professional-card__primary::after { content: ''; position: absolute; z-index: 1; inset: 0; border-radius: 24px; }
+  .professional-card__primary:focus-visible { outline: none; }
+  .professional-card__primary:focus-visible::after { outline: 3px solid #43835b; outline-offset: -4px; }
+  .professional-card__description { margin: 10px 0 18px; color: #627068; font-size: .8rem; line-height: 1.55; }
+  .professional-card__actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 12px; border-top: 1px solid #dce2dd; font-size: .68rem; font-weight: 650; }
+  .professional-card__cta { display: inline-flex; align-items: center; gap: 12px; }
+  .professional-card__external { position: relative; z-index: 2; display: inline-flex; gap: 6px; padding: 6px 0; color: #536459; text-decoration: underline; text-underline-offset: 4px; }
+  .professional-card__external:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+  .is-featured h2, .is-featured h3 { font-size: 1.5rem; }
+  .professional-card--clickmax { background: #141d22; border-color: #29373d; color: #f4f8f5; }
+  .professional-card--clickmax .professional-card__description,
+
+  .professional-card--clickmax .professional-card__meta { color: #aebfc0; }
+  .professional-card--clickmax .professional-card__status,
+  .professional-card--clickmax .professional-card__external { color: #b9e0c0; }
+  .professional-card--clickmax .professional-card__actions { border-color: #344349; }
+  .professional-card--reparecar { background: #fcf3e9; border-color: #e6d6c2; }
+
+  @media (prefers-reduced-motion: reduce) { .professional-card { transition: none; } }
+</style>
