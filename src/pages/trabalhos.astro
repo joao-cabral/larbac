@@ -1,240 +1,49 @@
 ---
 import SectionLayout from "../layouts/sectionLayout.astro";
+import ProfessionalProjectCard from "../components/ProfessionalProjectCard.astro";
+import { professionalProjects } from "../lib/professional-projects";
+import PersonalProjectCards from "../components/PersonalProjectCards.astro";
 
-const works = [
-  {
-    title: "Clickmax",
-    company: "Bilhon",
-    period: "2024 — agora",
-    description:
-      "Plataforma all-in-one para negócios digitais, com páginas, checkouts, CRM, automações e programa de afiliados.",
-    href: "/projects/clickmax-project",
-    video: "/videos/funnel-builder.webm",
-    theme: "blue",
-    status: "Atual",
-  },
-  {
-    title: "RepareCar",
-    company: "Freelance",
-    period: "2025 — agora",
-    description:
-      "Plataforma completa para gerenciar oficinas, do atendimento e orçamento à entrega do veículo.",
-    href: "/projects/reparecar-project",
-    image: "/images/reparecar.png",
-    theme: "coral",
-    status: "Atual",
-  },
-  {
-    title: "Sistema de Rotas",
-    company: "Grupo ICTS",
-    period: "2021 — 2023",
-    description:
-      "Aplicações mobile e web para acompanhar transporte corporativo, itinerários e ocorrências em tempo real.",
-    href: "/projects/routes-project",
-    image: "https://media4.giphy.com/media/j1RdWetLBJQIdP8TnK/200w.webp",
-    theme: "coral",
-  },
-  {
-    title: "Sensoriamento IoT",
-    company: "Grupo ICTS",
-    period: "2021 — 2023",
-    description:
-      "Configuração de placas industriais e monitoramento de luminosidade, temperatura, ruído e umidade.",
-    href: "/projects/nimrod-project",
-    image: "https://media2.giphy.com/media/LNmzbkBXpDl5yPGtf2/200w.webp",
-    theme: "green",
-  },
-  {
-    title: "Automação e qualidade",
-    company: "Sidia",
-    period: "2019 — 2021",
-    description:
-      "Automação de testes e desenvolvimento de ferramentas internas para reduzir etapas manuais e o tempo de submissão.",
-    href: "/projects/sidia-automation-project",
-    theme: "dark",
-  },
-];
+
+
+
 ---
 
 <SectionLayout
   title="Trabalhos"
   eyebrow="Experiência profissional"
-  description="Produtos e sistemas que ajudei a levar da ideia à operação. Esta coleção cresce junto com os desafios em que trabalho."
+  description="Produtos e sistemas que ajudei a construir. Explore cada projeto para conhecer o contexto, minha contribuição e as soluções desenvolvidas."
 >
-  <div class="works-grid">
-    {works.map((work, index) => {
-      const Tag = work.href ? "a" : "article";
-      return (
-        <Tag
-          class={`work-card work-card--${work.theme}`}
-          href={work.href}
-          target={work.href?.startsWith("http") ? "_blank" : undefined}
-          rel={work.href?.startsWith("http") ? "noreferrer" : undefined}
-          aria-label={work.href ? `Ver detalhes de ${work.title}` : undefined}
-        >
-          <div class="work-card__meta">
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            {work.status && <strong>{work.status}</strong>}
-          </div>
-
-          {work.video ? (
-            <video
-              src={work.video}
-              aria-label={`Demonstração de ${work.title}`}
-              autoplay
-              muted
-              loop
-              playsinline
-              preload="metadata"
-            ></video>
-          ) : work.image ? (
-            <img src={work.image} alt="" loading="lazy" />
-          ) : (
-            <div class="work-card__visual" aria-hidden="true">
-              <span>QA</span><span>AUTO</span><span>DEV</span>
-            </div>
-          )}
-
-          <div class="work-card__body">
-            <p class="work-card__company">{work.company} · {work.period}</p>
-            <div class="work-card__title">
-              <h2>{work.title}</h2>
-              {work.href && <span aria-hidden="true">↗</span>}
-            </div>
-            <p>{work.description}</p>
-          </div>
-        </Tag>
-      );
-    })}
+  <div class="works-grid professional-grid">
+    {professionalProjects.map(project => <ProfessionalProjectCard project={project} headingLevel="h2" />)}
   </div>
+  <section class="personal-projects-section">
+    <header class="collection-heading">
+      <h2>Projetos pessoais</h2>
+    </header>
+    <div class="works-grid"><PersonalProjectCards /></div>
+  </section>
+
+
 </SectionLayout>
 
 <style lang="scss">
+  .professional-grid { container-type: inline-size; }
+
+
+  .personal-projects-section { margin-top: 64px; }
+  .collection-heading { margin-bottom: 24px; }
+  .collection-heading h2 { margin: 0; font-size: clamp(1.8rem, 3vw, 2.6rem); letter-spacing: -.05em; }
   .works-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
   }
 
-  .work-card {
-    min-height: 520px;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    border-radius: 30px;
-    color: #171816;
-    text-decoration: none;
-    transition: transform 200ms ease, box-shadow 200ms ease;
-  }
-
-  a.work-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 24px 56px rgba(35, 39, 35, 0.13);
-  }
-
-  .work-card--blue { background: #cadbff; }
-  .work-card--coral { background: #f3b7a2; }
-  .work-card--green { background: #c8decf; }
-  .work-card--dark { background: #171a18; color: #fff; }
-
-  .work-card__meta {
-    position: absolute;
-    z-index: 2;
-    top: 22px;
-    left: 24px;
-    right: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 0.7rem;
-    font-weight: 780;
-  }
-
-  .work-card__meta strong {
-    padding: 6px 9px;
-    border-radius: 999px;
-    background: #fff;
-    color: #258753;
-    font-size: 0.62rem;
-    text-transform: uppercase;
-  }
-
-  .work-card > img,
-  .work-card > video {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-  }
-
-  .work-card__visual {
-    height: 250px;
-    padding: 56px 24px 22px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-  }
-
-  .work-card__visual span {
-    display: grid;
-    place-items: center;
-    border: 1px solid #414642;
-    border-radius: 18px;
-    color: #7bdd9e;
-    font-size: clamp(0.75rem, 1.5vw, 1.1rem);
-    font-weight: 800;
-    transform: rotate(-3deg);
-  }
-
-  .work-card__visual span:nth-child(2) { transform: translateY(12px) rotate(3deg); }
-  .work-card__visual span:nth-child(3) { transform: rotate(-2deg); }
-
-  .work-card__body {
-    margin-top: auto;
-    padding: 28px;
-  }
-
-  .work-card__company {
-    margin: 0 0 12px;
-    color: rgba(23, 24, 22, 0.62);
-    font-size: 0.72rem;
-    font-weight: 720;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  .work-card--dark .work-card__company,
-  .work-card--dark .work-card__body > p {
-    color: #aeb4af;
-  }
-
-  .work-card__title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
-
-  .work-card h2 {
-    margin: 0;
-    font-size: clamp(1.65rem, 3vw, 2.5rem);
-    line-height: 1;
-    letter-spacing: -0.055em;
-  }
-
-  .work-card__title > span {
-    font-size: 1.5rem;
-  }
-
-  .work-card__body > p {
-    margin: 14px 0 22px;
-    color: rgba(23, 24, 22, 0.68);
-    font-size: 0.88rem;
-    line-height: 1.55;
-  }
 
   @media (max-width: 760px) {
     .works-grid { grid-template-columns: 1fr; gap: 16px; }
-    .work-card { min-height: 480px; border-radius: 24px; }
+
   }
+
 </style>

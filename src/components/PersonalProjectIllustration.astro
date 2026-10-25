@@ -1,0 +1,134 @@
+---
+interface Props { kind: 'air' | 'print'; }
+const { kind } = Astro.props;
+const star = 'M275 126L281 139L296 141L285 151L288 166L275 159L262 166L265 151L254 141L269 139Z';
+---
+<svg class={`personal-illustration personal-illustration--${kind}`} data-personal-kind={kind} viewBox="0 0 440 220" role="img" aria-label={kind === 'air' ? 'Ilustração de um mapa de Manaus com vento em movimento e sensores de qualidade do ar' : 'Ilustração de uma impressora 3D criando uma estrela em camadas'}>
+  <title>{kind === 'air' ? 'Ar Manaus — enxergar o ar, cuidar da cidade' : 'Cabral 3D Lab — ideias que ganham forma'}</title>
+  {kind === 'air' ? (
+    <g class="air-scene">
+      <rect width="440" height="220" fill="#e6f0e9" />
+      <circle cx="365" cy="38" r="91" fill="#dce9d7" />
+      <circle cx="395" cy="31" r="35" fill="#f5eed8" />
+      <path d="M0 156Q64 123 124 153T251 157T440 163V220H0Z" fill="#bbd8d4" />
+      <path d="M0 182Q75 145 152 180T308 179T440 177V220H0Z" fill="#a6cbc9" />
+      <path d="M10 179Q80 150 151 179T300 180T430 174M23 199Q93 169 166 196T316 194" class="river-ripples" />
+      <g class="air-city-map">
+        <path d="M174 58L352 42L414 128L261 180L153 111Z" fill="#adcbb9" opacity=".55" transform="translate(0 9)" />
+        <path d="M174 58L352 42L414 128L261 180L153 111Z" fill="#f3f5e9" stroke="#9db9a6" />
+        <path d="M174 58L243 52L254 99L199 119L153 111Z" fill="#b9d5b3" />
+        <path d="M243 52L310 46L312 100L254 99Z" fill="#d2dfb0" />
+        <path d="M310 46L352 42L382 83L312 100Z" fill="#c5d4a2" />
+        <path d="M153 111L199 119L234 162L261 180L186 133Z" fill="#bfdcc9" />
+        <path d="M199 119L254 99L298 140L261 180L234 162Z" fill="#d9e4b9" />
+        <path d="M254 99L312 100L343 150L298 140Z" fill="#e6dcae" />
+        <path d="M312 100L382 83L414 128L343 150Z" fill="#c6dcca" />
+        <path d="M174 58L199 119L261 180M243 52L254 99L298 140M310 46L312 100L343 150M153 111L254 99L382 83M199 119L298 140L414 128" fill="none" stroke="#ffffffb0" stroke-width="3" stroke-linejoin="round" />
+        <path d="M218 70L229 66L240 74L229 78ZM334 111L345 107L355 115L344 119ZM269 149L279 145L290 152L279 157Z" fill="#739b88" opacity=".45" />
+        {[[218, 90], [335, 82], [294, 139]].map(([x, y], index) => <g class="air-sensor" aria-hidden="true">
+          <circle cx={x} cy={y} r="12" class="air-sensor-pulse" style={`--pulse-delay: ${index * .8}s`} />
+          <circle cx={x} cy={y} r="5" fill="#fff" stroke="#3d8365" stroke-width="2" />
+          <circle cx={x} cy={y} r="2" fill="#3d8365" />
+        </g>)}
+      </g>
+      <g class="air-wind" aria-hidden="true">
+        <path d="M167 44Q208 28 247 42T328 40T405 37" class="air-current" />
+        <path d="M172 121Q217 103 258 119T342 119T414 107" class="air-current air-current--second" />
+        <path d="M212 160Q250 143 286 160T366 154" class="air-current air-current--third" />
+      </g>
+      <g class="air-observatory">
+        <rect x="21" y="42" width="127" height="126" rx="14" fill="#244d43" />
+        <circle cx="38" cy="62" r="3" fill="#bedc9a" />
+        <text x="48" y="65" class="micro" fill="#bed8c8">OLHAR PARA A CIDADE</text>
+        <text x="34" y="91" class="scene-title" fill="#f4f7e9">Ar Manaus</text>
+        <path d="M35 109H75Q85 109 85 102Q85 96 78 99M35 119H106Q117 119 117 111M35 129H70Q79 129 79 135" class="air-symbol" />
+        <text x="34" y="153" class="small" fill="#c5d6c9">Sensores e previsão</text>
+      </g>
+      <text x="22" y="25" class="caption" fill="#416354">ENXERGAR O AR. CUIDAR DE MANAUS.</text>
+      <circle cx="23" cy="199" r="3" fill="#4a826b" /><text x="32" y="202" class="micro" fill="#3a6257">MAPA ILUSTRATIVO · SEM LEITURAS REAIS</text>
+      <path d="M407 197V180M402 186L407 180L412 186" fill="none" stroke="#416d60" stroke-width="1.5" stroke-linecap="round" />
+      <text x="407" y="211" class="micro" text-anchor="middle" fill="#416d60">N</text>
+    </g>
+  ) : (
+    <g class="print-scene">
+      <rect width="440" height="220" fill="#f9ecdf" />
+      <circle cx="301" cy="91" r="88" fill="#f1d9bd" />
+      <path d="M0 184Q126 142 221 171T440 160V220H0Z" fill="#eedcc8" />
+      <ellipse cx="281" cy="187" rx="119" ry="13" fill="#c6a98b" opacity=".25" />
+      <text x="22" y="25" class="caption" fill="#855a38">IDEIAS QUE SAEM DA TELA.</text>
+      <g class="filament-spool">
+        <circle cx="80" cy="112" r="43" fill="#d7b693" stroke="#b9916d" />
+        <circle cx="80" cy="112" r="34" fill="#efd1aa" stroke="#b9916d" />
+        <circle cx="80" cy="112" r="27" fill="none" stroke="#d6aa7a" stroke-width="5" />
+        <circle cx="80" cy="112" r="16" fill="#f9ecdf" stroke="#b9916d" />
+        <circle cx="80" cy="112" r="6" fill="#c3a07b" />
+        <path d="M64 86L68 92M102 94L97 99M103 128L97 124M66 138L70 132" stroke="#ac805b" stroke-width="3" stroke-linecap="round" />
+      </g>
+      <path d="M113 87Q142 49 199 60T274 84" class="filament-feed" />
+      <path d="M113 87Q142 49 199 60T274 84" class="filament-moving" />
+      <g class="printer-frame">
+        <rect x="185" y="43" width="190" height="13" rx="5" fill="#5b554d" />
+        <rect x="187" y="49" width="11" height="129" rx="4" fill="#71685a" />
+        <rect x="362" y="49" width="11" height="129" rx="4" fill="#71685a" />
+        <path d="M199 81H361" stroke="#c9b9a6" stroke-width="5" />
+        <path d="M199 85H361" stroke="#7d7265" stroke-width="2" />
+        <rect x="194" y="167" width="174" height="10" rx="3" fill="#ad9477" />
+        <path d="M195 162L334 155L367 169L223 179Z" fill="#d3b99a" stroke="#a28b70" />
+        <path d="M212 165L344 161M224 170L356 166M238 160L252 174M272 158L287 172M307 157L323 171" stroke="#eaddc9" stroke-width="1" />
+        <rect x="174" y="180" width="211" height="11" rx="5" fill="#61594f" />
+        <circle cx="364" cy="185" r="2" fill="#d6e7b2" class="printer-status" />
+      </g>
+      <g class="printed-layers">
+        <path d={star} transform="translate(0 7)" fill="#ba7041" />
+        <path d={star} transform="translate(0 4)" fill="#cf8b52" stroke="#e5ad6c" stroke-width=".8" />
+        <path d={star} transform="translate(0 2)" fill="#e4a466" stroke="#f5cc91" stroke-width=".8" />
+        <path d={star} fill="#efbd7e" stroke="#a9693e" stroke-width="1" />
+        <path d="M275 134L279 144L289 144L281 150L284 159L275 153L266 159L269 150L261 144L271 144Z" class="print-layer-trace" />
+      </g>
+      <g class="printer-head">
+        <rect x="259" y="75" width="33" height="24" rx="5" fill="#424b49" />
+        <rect x="266" y="81" width="19" height="10" rx="2" fill="#717c70" />
+        <path d="M266 99H286L281 107H271Z" fill="#ba8851" />
+        <path d="M274 107H278V112H274Z" fill="#855f3d" />
+        <path d="M276 112V136" class="nozzle-filament" />
+      </g>
+      <g class="print-sparkles" aria-hidden="true">
+        <path d="M145 123V133M140 128H150M393 75V85M388 80H398" />
+        <circle cx="147" cy="155" r="2" /><circle cx="404" cy="120" r="2" />
+      </g>
+      <text x="80" y="174" text-anchor="middle" class="small" fill="#946b48">Um fio. Muitas ideias.</text>
+      <text x="22" y="203" class="micro" fill="#875d3d">CAMADA POR CAMADA · ILUSTRAÇÃO DO PROCESSO</text>
+    </g>
+  )}
+</svg>
+<style>
+  .personal-illustration { display: block; width: 100%; height: auto; flex-shrink: 0; overflow: hidden; }
+  text { font-family: Inter, system-ui, sans-serif; }
+  .caption { font-size: 8px; font-weight: 700; letter-spacing: 1.25px; }
+  .micro { font-size: 6.6px; letter-spacing: .7px; font-weight: 600; }
+  .small { font-size: 9px; }
+  .scene-title { font-size: 20px; font-weight: 750; letter-spacing: -.7px; }
+  .air-current { fill: none; stroke: #f9ffed; stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 14 38; animation: air-flow 7s linear infinite; }
+  .air-current--second { animation-delay: -2.1s; stroke: #5e967f; stroke-width: 1.5; opacity: .7; }
+  .air-current--third { animation-delay: -4s; stroke-width: 1.5; opacity: .7; }
+  .air-sensor-pulse { fill: #649e74; transform-box: fill-box; transform-origin: center; animation: air-sensor-ping 3.6s ease-out infinite; animation-delay: var(--pulse-delay); }
+  .air-symbol { fill: none; stroke: #c5dfa5; stroke-width: 2.5; stroke-linecap: round; }
+  .river-ripples { fill: none; stroke: #dfefdf; stroke-width: 1; stroke-dasharray: 22 18; opacity: .55; animation: air-flow 12s linear infinite reverse; }
+  .filament-spool { transform-origin: 80px 112px; animation: spool-turn 16s linear infinite; }
+  .filament-feed { fill: none; stroke: #c5a17c; stroke-width: 2; }
+  .filament-moving { fill: none; stroke: #e8ad6c; stroke-width: 2.5; stroke-dasharray: 6 12; animation: filament-run 2.5s linear infinite; }
+  .printer-head { animation: printer-traverse 5s ease-in-out infinite; }
+  .printed-layers { transform-origin: 275px 174px; animation: print-build 10s ease-in-out infinite; }
+  .print-layer-trace { fill: none; stroke: #fff1c6; stroke-width: 1; stroke-linejoin: round; stroke-dasharray: 11 7; animation: filament-run 3s linear infinite; }
+  .nozzle-filament { fill: none; stroke: #edbb78; stroke-width: 1.5; stroke-dasharray: 2 3; animation: filament-run 1s linear infinite; }
+  .printer-status { animation: printer-light 2.5s ease-in-out infinite; }
+  .print-sparkles { fill: #bf925c; stroke: #bf925c; stroke-width: 1; stroke-linecap: round; animation: printer-light 5s ease-in-out infinite; }
+  @keyframes air-flow { to { stroke-dashoffset: -208; } }
+  @keyframes air-sensor-ping { 0% { opacity: .6; transform: scale(.4); } 85%, 100% { opacity: 0; transform: scale(1.7); } }
+  @keyframes spool-turn { to { transform: rotate(360deg); } }
+  @keyframes filament-run { to { stroke-dashoffset: -72; } }
+  @keyframes printer-traverse { 0%, 100% { transform: translate(-13px, 3px); } 25% { transform: translate(9px, 0); } 50% { transform: translate(-4px, -5px); } 75% { transform: translate(14px, -2px); } }
+  @keyframes print-build { 0%, 100% { transform: scaleY(.45); opacity: .7; } 15% { opacity: 1; } 80%, 90% { transform: scaleY(1); opacity: 1; } 98% { transform: scaleY(1); opacity: 0; } }
+  @keyframes printer-light { 0%, 100% { opacity: .4; } 50% { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { .personal-illustration * { animation: none !important; transition: none !important; } }
+</style>

@@ -1,0 +1,159 @@
+---
+interface Props { kind: 'schulte' | 'libras'; }
+const { kind } = Astro.props;
+const numbers = [17, 3, 21, 8, 12, 6, 24, 1, 19, 10, 14, 9, 23, 5, 16, 2, 18, 11, 25, 7, 22, 4, 15, 13, 20];
+const first = numbers.indexOf(1);
+const firstX = 214 + (first % 5) * 34 + 14.5;
+const firstY = 33 + Math.floor(first / 5) * 34 + 14.5;
+---
+<svg class={`learning-illustration learning-illustration--${kind}`} data-personal-kind={kind} data-step={kind === 'schulte' ? '1' : undefined} viewBox="0 0 440 220" role="img" aria-label={kind === 'schulte' ? 'Demonstração automática de uma tabela de Schulte 5 por 5, clicada de 1 a 25' : 'Ilustração do LibrasCode: QR Code em um espaço cultural abre conteúdo em vídeo em Libras'}>
+  <title>{kind === 'schulte' ? 'Encontre os números na ordem — Tabela de Schulte' : 'Cultura que se comunica — LibrasCode'}</title>
+  {kind === 'schulte' ? <g class="schulte-scene">
+    <rect width="440" height="220" fill="#121b18" />
+    <circle cx="72" cy="122" r="91" fill="#1b3026" opacity=".65" />
+    <text x="24" y="26" class="caption" fill="#91bc9d">ATENÇÃO EM MOVIMENTO</text>
+    <text x="24" y="59" class="title" fill="#e9f4e9">Um número</text>
+    <text x="24" y="81" class="title" fill="#e9f4e9">por vez.</text>
+    <circle cx="83" cy="129" r="31" fill="#20382a" stroke="#49664e" />
+    <text x="83" y="141" text-anchor="middle" class="schulte-next" data-next-number>1</text>
+    <text x="83" y="178" text-anchor="middle" class="micro" fill="#97b59c">SIGA DE 1 ATÉ 25</text>
+    <rect x="205" y="24" width="183" height="183" rx="13" fill="#19271f" stroke="#3a5141" />
+    {numbers.map((number, index) => {
+      const x = 214 + (index % 5) * 34;
+      const y = 33 + Math.floor(index / 5) * 34;
+      return <g class:list={['schulte-cell', { 'is-active': number === 1 }]} data-schulte-number={number} data-center-x={x + 14.5} data-center-y={y + 14.5}>
+        <rect x={x} y={y} width="29" height="29" rx="5" />
+        <text x={x + 14.5} y={y + 19} text-anchor="middle">{number}</text>
+      </g>;
+    })}
+    <g class="schulte-target" style={`transform: translate(${firstX}px, ${firstY}px)`} aria-hidden="true">
+      <circle r="16" class="schulte-click" />
+      <path class="schulte-cursor" d="M6 7V24L10 20L14 28L18 26L14 18H21Z" />
+    </g>
+    <path d="M25 192H153" stroke="#314e3a" stroke-width="3" stroke-linecap="round" />
+    <path d="M25 192H153" class="schulte-progress" data-schulte-progress style="transform: scaleX(.04)" />
+    <text x="24" y="210" class="micro" fill="#91aa98">PRÉVIA AUTOMÁTICA · O JOGO É SEU</text>
+  </g> : <g class="libras-scene">
+    <rect width="440" height="220" fill="#ebeafa" />
+    <circle cx="358" cy="53" r="91" fill="#dbd8f3" />
+    <path d="M0 181Q91 155 179 181T440 176V220H0Z" fill="#d9d7ef" />
+    <text x="22" y="25" class="caption" fill="#62508a">CULTURA QUE SE COMUNICA.</text>
+    <g class="cultural-gallery">
+      <path d="M29 60L89 35L149 60Z" fill="#c5bcdf" />
+      <rect x="32" y="62" width="114" height="121" rx="8" fill="#f7f3fa" stroke="#c7bfdc" />
+      <rect x="42" y="73" width="94" height="66" rx="5" fill="#e5dbea" />
+      <path d="M79 87H101L98 98Q113 104 104 118Q97 128 85 123Q72 116 79 103L83 98Z" fill="#ab8db9" stroke="#846c94" />
+      <path d="M81 89Q66 89 75 101M100 89Q115 90 105 102" fill="none" stroke="#846c94" stroke-width="2" />
+      <path d="M67 128H114M72 133H109" stroke="#b5a3c8" stroke-width="2" />
+      <rect x="43" y="147" width="43" height="29" rx="3" fill="#fff" stroke="#d4cbe2" />
+      <g class="qr-code" transform="translate(48 151)" fill="#52466c">
+        <path d="M0 0H9V9H0ZM2 2V7H7V2ZM13 0H22V9H13ZM15 2V7H20V2ZM0 13H9V22H0ZM2 15V20H7V15Z" fill-rule="evenodd" />
+        <path d="M11 10H14V14H11ZM16 11H20V14H16ZM11 17H15V22H11ZM18 16H22V18H20V22H17V20H18ZM25 1H28V5H25ZM26 9H30V12H26ZM25 16H28V22H25Z" />
+      </g>
+      <text x="94" y="158" class="micro" fill="#776488">QR CODE</text><text x="94" y="169" class="tiny" fill="#9382a3">na exposição</text>
+    </g>
+    <path d="M151 159C185 159 185 102 241 102" class="cultural-connection" />
+    <path d="M151 159C185 159 185 102 241 102" class="cultural-packet" />
+    <g class="libras-phone">
+      <rect x="247" y="25" width="121" height="181" rx="19" fill="#53638d" />
+      <rect x="253" y="31" width="109" height="169" rx="14" fill="#f8f9ff" />
+      <rect x="291" y="35" width="33" height="4" rx="2" fill="#c1c9db" />
+      <text x="308" y="56" text-anchor="middle" class="phone-brand" fill="#53638d">LibrasCode</text>
+      <g class="libras-scan">
+        <rect x="265" y="66" width="85" height="89" rx="7" fill="#e7e9f7" />
+        <path d="M273 84V75H282M333 75H342V84M273 136V145H282M333 145H342V136" fill="none" stroke="#747ba7" stroke-width="2" stroke-linecap="round" />
+        <g transform="translate(287 91)" fill="#8d91b5" aria-hidden="true">
+          <path d="M0 0H15V15H0ZM4 4V11H11V4ZM23 0H38V15H23ZM27 4V11H34V4ZM0 23H15V38H0ZM4 27V34H11V27Z" fill-rule="evenodd" />
+          <path d="M20 19H26V25H20ZM29 20H38V25H29ZM19 29H25V38H19ZM29 30H38V34H34V38H29Z" />
+        </g>
+        <path d="M277 83H338" class="qr-scanline" />
+        <text x="308" y="173" text-anchor="middle" class="small" fill="#7b7e9d">Lendo a história da peça…</text>
+      </g>
+      <g class="libras-video">
+        <rect x="265" y="66" width="85" height="89" rx="7" fill="#dce8ed" />
+        <circle cx="308" cy="87" r="10" fill="#bc927b" />
+        <path d="M298 84Q296 73 308 75Q320 73 318 84L313 80L301 82Z" fill="#4a4b66" />
+        <path d="M295 104Q308 95 321 104L328 148H288Z" fill="#676793" />
+        <g class="libras-arm libras-arm--left"><path d="M296 107L286 121L300 130" fill="none" stroke="#bc927b" stroke-width="6" stroke-linecap="round" /><circle cx="301" cy="130" r="4" fill="#bc927b" /></g>
+        <g class="libras-arm libras-arm--right"><path d="M320 107L331 119L317 127" fill="none" stroke="#bc927b" stroke-width="6" stroke-linecap="round" /><circle cx="316" cy="127" r="4" fill="#bc927b" /></g>
+        <rect x="271" y="139" width="73" height="11" rx="3" fill="#53638d" opacity=".9" />
+        <text x="308" y="147" text-anchor="middle" class="tiny" fill="#fff">Vídeo em Libras</text>
+        <path d="M270 168H344M270 174H326" stroke="#d1d5e6" stroke-width="3" stroke-linecap="round" />
+        <text x="308" y="187" text-anchor="middle" class="tiny" fill="#8c88a4">Cena e gestos ilustrativos</text>
+      </g>
+      <path d="M295 194H320" stroke="#c1c9db" stroke-width="2" stroke-linecap="round" />
+    </g>
+    <path d="M392 100V110M387 105H397M197 57V65M193 61H201" class="libras-sparkle" />
+    <text x="22" y="207" class="micro" fill="#73658d">QR CODE → CONTEÚDO EM LIBRAS → AUTONOMIA</text>
+  </g>}
+</svg>
+
+<script>
+  document.querySelectorAll<SVGSVGElement>('[data-personal-kind="schulte"]').forEach(root => {
+    const cells = Array.from(root.querySelectorAll<SVGGElement>('[data-schulte-number]'));
+    const target = root.querySelector<SVGGElement>('.schulte-target');
+    const counter = root.querySelector<SVGTextElement>('[data-next-number]');
+    const progress = root.querySelector<SVGPathElement>('[data-schulte-progress]');
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let step = 1;
+    let visible = false;
+    const observer = new IntersectionObserver(entries => { visible = entries.some(entry => entry.isIntersecting); }, { threshold: .2 });
+    observer.observe(root);
+    window.setInterval(() => {
+      if (!visible || motion.matches || document.hidden) return;
+      step = step === 25 ? 1 : step + 1;
+      root.dataset.step = String(step);
+      cells.forEach(cell => {
+        const value = Number(cell.dataset.schulteNumber);
+        cell.classList.toggle('is-active', value === step);
+        cell.classList.toggle('is-complete', value < step);
+        if (value === step && target) target.style.transform = `translate(${cell.dataset.centerX}px, ${cell.dataset.centerY}px)`;
+      });
+      if (counter) counter.textContent = String(step);
+      if (progress) progress.style.transform = `scaleX(${step / 25})`;
+    }, 900);
+  });
+</script>
+
+<style>
+  .learning-illustration { display: block; width: 100%; height: auto; flex-shrink: 0; overflow: hidden; pointer-events: none; }
+  text { font-family: Inter, system-ui, sans-serif; }
+  .caption { font-size: 8px; font-weight: 650; letter-spacing: 1.15px; }
+  .title { font-size: 21px; font-weight: 700; letter-spacing: -.65px; }
+  .micro { font-size: 6.6px; font-weight: 600; letter-spacing: .6px; }
+  .tiny { font-size: 6.5px; }
+  .small { font-size: 7px; }
+  .schulte-next { fill: #9de3aa; font-size: 34px; font-weight: 750; font-variant-numeric: tabular-nums; }
+  .schulte-cell rect { fill: #22352a; stroke: #3a5341; stroke-width: .7; transition: fill 160ms ease; }
+  .schulte-cell text { fill: #d6e7d8; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .schulte-cell.is-complete rect { fill: #35583e; }
+  .schulte-cell.is-complete text { fill: #95bb9e; }
+  .schulte-cell.is-active rect { fill: #9de3aa; stroke: #caf4d0; }
+  .schulte-cell.is-active text { fill: #173421; }
+  .schulte-target { transition: transform 260ms cubic-bezier(.22, 1, .36, 1); }
+  .schulte-click { fill: none; stroke: #b7efb8; stroke-width: 1; transform-box: fill-box; transform-origin: center; animation: schulte-tap 900ms ease-out infinite; }
+  .schulte-cursor { fill: #f3fff3; stroke: #264b31; stroke-width: 1; stroke-linejoin: round; }
+  .schulte-progress { stroke: #91d59f; stroke-width: 3; stroke-linecap: round; transform-origin: 25px 192px; transition: transform 250ms linear; }
+  .phone-brand { font-size: 10px; font-weight: 750; letter-spacing: -.3px; }
+  .cultural-connection { fill: none; stroke: #b7abce; stroke-width: 1; stroke-dasharray: 3 5; }
+  .cultural-packet { fill: none; stroke: #8173ae; stroke-width: 2; stroke-dasharray: 8 110; animation: cultural-transmission 5s linear infinite; }
+  .libras-scan { animation: libras-scan-phase 9s ease-in-out infinite; }
+  .qr-scanline { fill: none; stroke: #7f79b5; stroke-width: 2; animation: qr-sweep 2.2s ease-in-out infinite; }
+  .libras-video { opacity: 0; animation: libras-video-phase 9s ease-in-out infinite; }
+  .libras-arm { transform-origin: 308px 108px; animation: interpreter-gesture 2.4s ease-in-out infinite; }
+  .libras-arm--right { animation-delay: -.8s; animation-direction: reverse; }
+  .libras-sparkle { fill: none; stroke: #a89ac5; stroke-width: 1.5; stroke-linecap: round; animation: cultural-glow 4s ease-in-out infinite; }
+  @keyframes schulte-tap { 0% { opacity: .9; transform: scale(.3); } 75%, 100% { opacity: 0; transform: scale(1.25); } }
+  @keyframes cultural-transmission { to { stroke-dashoffset: -236; } }
+  @keyframes qr-sweep { 0%, 100% { transform: translateY(0); opacity: .35; } 50% { transform: translateY(52px); opacity: 1; } }
+  @keyframes libras-scan-phase { 0%, 35%, 100% { opacity: 1; } 45%, 90% { opacity: 0; } }
+  @keyframes libras-video-phase { 0%, 35%, 100% { opacity: 0; } 45%, 90% { opacity: 1; } }
+  @keyframes interpreter-gesture { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(8deg); } }
+  @keyframes cultural-glow { 0%, 100% { opacity: .3; } 50% { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) {
+    .learning-illustration * { animation: none !important; transition: none !important; }
+    .libras-scan { opacity: 0; }
+    .libras-video { opacity: 1; }
+    .schulte-click { opacity: 0; }
+  }
+</style>

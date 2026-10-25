@@ -2,37 +2,12 @@
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/index.astro";
 import { DotPattern } from "../components/ui/dot-pattern";
+import ProfessionalProjectCard from "../components/ProfessionalProjectCard.astro";
+import { professionalProjects } from "../lib/professional-projects";
+import PersonalProjectCards from "../components/PersonalProjectCards.astro";
+import ExperienceTimeline from "../components/ExperienceTimeline.astro";
 
-const projects = [
-  {
-    title: "Clickmax",
-    description: "Plataforma all-in-one para negócios digitais.",
-    href: "/projects/clickmax-project",
-    image: "https://media1.giphy.com/media/3oKIPEqDGUULpEU0aQ/200w.webp",
-    className: "project-card--blue",
-  },
-  {
-    title: "RepareCar",
-    description: "Gestão completa para oficinas automotivas.",
-    href: "/projects/reparecar-project",
-    image: "/images/reparecar.png",
-    className: "project-card--orange",
-  },
-  {
-    title: "Sistema de Rotas",
-    description: "Acompanhamento de rotas e geolocalização em tempo real.",
-    href: "/projects/routes-project",
-    image: "https://media4.giphy.com/media/j1RdWetLBJQIdP8TnK/200w.webp",
-    className: "project-card--coral",
-  },
-  {
-    title: "Sensoriamento IoT",
-    description: "Configuração e monitoramento de placas IoT via MQTT.",
-    href: "/projects/nimrod-project",
-    image: "https://media2.giphy.com/media/LNmzbkBXpDl5yPGtf2/200w.webp",
-    className: "project-card--dark",
-  },
-];
+const projects = professionalProjects.filter((project) => project.featured);
 
 const contributionYear = new Date().getFullYear();
 const calendarStart = new Date(Date.UTC(contributionYear, 0, 1));
@@ -50,54 +25,6 @@ const contributionCells = Array.from({ length: 371 }, (_, index) => {
     level,
   };
 });
-
-const primaryTechnologies = [
-  { name: "React", symbol: "⚛", color: "#61dafb" },
-  { name: "TypeScript", symbol: "TS", color: "#5aa6f8" },
-  { name: "Flutter", symbol: "◆", color: "#68c8ff" },
-  { name: "Angular", symbol: "A", color: "#f45b69" },
-  { name: "Node.js", symbol: "JS", color: "#81c784" },
-  { name: "PostgreSQL", symbol: "DB", color: "#8ab4e8" },
-];
-
-const experiences = [
-  {
-    company: "Bilhon",
-    role: "Engenheiro de Software",
-    period: "2024 — agora",
-    description:
-      "Desenvolvimento fullstack e evolução arquitetural de uma plataforma SaaS em monorepo, da componentização e integrações à sustentação em produção.",
-    current: true,
-  },
-  {
-    company: "RepareCar",
-    role: "Engenheiro de Software · Freelance",
-    period: "2025 — agora",
-    description:
-      "Atuei no frontend e em evoluções do backend da plataforma, desenvolvendo fluxos de ordens de serviço, checklists, orçamentos, gestão de pátio e portal do cliente.",
-  },
-  {
-    company: "Kasco P&D",
-    role: "Engenheiro de Software",
-    period: "2022 — 2024",
-    description:
-      "Liderança técnica e desenvolvimento de soluções web, desktop e mobile para o setor agro.",
-  },
-  {
-    company: "Grupo ICTS",
-    role: "Engenheiro de Software",
-    period: "2021 — 2023",
-    description:
-      "Produtos web e mobile para sensoriamento IoT e acompanhamento de rotas em tempo real.",
-  },
-  {
-    company: "Sidia",
-    role: "Desenvolvedor de Testes",
-    period: "2019 — 2021",
-    description:
-      "Automação de testes e ferramentas internas para os principais dispositivos Samsung.",
-  },
-];
 ---
 
 <Layout title="João Cabral — Software Engineer" header={true}>
@@ -150,12 +77,6 @@ const experiences = [
           GitHub
         </a>
       </nav>
-
-      <div class="profile__education">
-        <span>Formação</span>
-        <strong>Sistemas de Informação</strong>
-        <a href="https://fucapi.edu.br/" target="_blank" rel="noreferrer">FUCAPI · 2017—2020</a>
-      </div>
     </aside>
 
     <main class="bento" aria-label="Portfólio">
@@ -205,156 +126,25 @@ const experiences = [
             </div>
           </div>
         </a>
-
-        <div class="technology-strip">
-          <div>
-            <p class="eyebrow">Principais tecnologias</p>
-            <h2>Ferramentas que uso para construir</h2>
-          </div>
-          <div class="technology-icons">
-            {primaryTechnologies.map((technology) => (
-              <div class="technology-icon" style={`--icon-color: ${technology.color}`}>
-                <strong class="technology-icon__mark">{technology.symbol}</strong>
-                <span>{technology.name}</span>
-              </div>
-            ))}
-          </div>
-        </div>
       </section>
 
-      <div class="section-heading selected-projects-heading">
-        <div>
-          <p class="eyebrow">Destaques profissionais</p>
-          <h2>Projetos selecionados</h2>
-        </div>
-      </div>
-
-      <a
-        class="card card--clickmax"
-        href="https://clickmax.io/"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <span class="card__arrow" aria-hidden="true">↗</span>
-        <div class="clickmax__header">
-          <span class="clickmax__mark">clickmax</span>
-          <span>Clickmax 2.0</span>
-        </div>
-        <div class="clickmax__copy">
-          <p>Marketing · SaaS</p>
-          <h2>Clickmax</h2>
-          <p>Uma plataforma completa para criar, vender e escalar negócios digitais.</p>
-        </div>
-        <video
-          class="clickmax__image"
-          src="/videos/funnel-builder.webm"
-          aria-label="Demonstração do construtor de funis do Clickmax"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-        ></video>
-      </a>
-
-      <a
-        class="card card--reparecar"
-        href="https://www.reparecar.com.br/"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <span class="card__arrow" aria-hidden="true">↗</span>
-        <div class="reparecar__copy">
-          <p>Gestão automotiva</p>
-          <h2>RepareCar</h2>
-          <p>
-            Uma plataforma completa para gerenciar oficinas, do atendimento e
-            orçamento à entrega do veículo.
-          </p>
-        </div>
-        <img
-          class="reparecar__image"
-          src="/images/reparecar.png"
-          alt="Painel de gestão de oficinas do RepareCar"
-          loading="lazy"
-        />
-      </a>
 
       <section class="projects-section">
         <div class="section-heading projects-section__heading">
           <div>
-            <p class="eyebrow">Portfólio profissional</p>
-            <h2>Projetos em que trabalhei</h2>
+            <h2>Projetos</h2>
           </div>
-          <a href="/trabalhos">Ver todos <span aria-hidden="true">→</span></a>
         </div>
-        <div class="projects-grid">
+        <div class="projects-grid professional-grid">
           {projects.map((project) => (
-            <a href={project.href} class={`project-card ${project.className}`}>
-              <span class="card__arrow" aria-hidden="true">↗</span>
-              <img src={project.image} alt="" loading="lazy" />
-              <div class="project-card__body">
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
-              </div>
-            </a>
+            <ProfessionalProjectCard project={project} />
           ))}
+          <PersonalProjectCards limit={1} />
         </div>
+        <a class="projects-section__more" href="/trabalhos">Ver mais</a>
       </section>
 
-      <section class="projects-section personal-projects-section">
-        <div class="section-heading projects-section__heading">
-          <div>
-            <p class="eyebrow">Experimentos e estudos</p>
-            <h2>Projetos pessoais</h2>
-          </div>
-        </div>
-        <div class="projects-grid personal-projects-grid">
-          <a href="/games/schulte-table" class="project-card project-card--game">
-            <span class="card__arrow" aria-hidden="true">↗</span>
-            <div class="game-mark" aria-hidden="true">25</div>
-            <div class="project-card__body">
-              <p class="eyebrow">Jogo de atenção</p>
-              <h3>Tabela de Schulte</h3>
-              <p>Um exercício de concentração, percepção periférica e velocidade mental.</p>
-            </div>
-          </a>
-          <a href="/projects/librascode-project" class="project-card project-card--librascode">
-            <span class="card__arrow" aria-hidden="true">↗</span>
-            <img
-              src="/images/librascodebanner.png"
-              alt="Identidade visual do aplicativo LibrasCode"
-              loading="lazy"
-            />
-            <div class="project-card__body">
-              <p class="eyebrow">Acessibilidade · Flutter</p>
-              <h3>LibrasCode</h3>
-              <p>Aplicativo para ampliar a acessibilidade e a autonomia de pessoas surdas em espaços culturais.</p>
-            </div>
-          </a>
-        </div>
-      </section>
-
-      <section class="card card--experience">
-        <div class="section-heading experience__heading">
-          <p class="eyebrow">Trajetória</p>
-          <h2>Experiência</h2>
-        </div>
-        <div class="timeline">
-          {experiences.map((experience) => (
-            <article class:list={["timeline__item", { "is-current": experience.current }]}>
-              <div class="timeline__period">{experience.period}</div>
-              <div>
-                <div class="timeline__title">
-                  <h3>{experience.company}</h3>
-                  <span>{experience.role}</span>
-                </div>
-                <p>{experience.description}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+      <ExperienceTimeline />
     </main>
   </div>
 </Layout>
@@ -414,6 +204,7 @@ const experiences = [
 </script>
 
 <style lang="scss">
+  .professional-grid { container-type: inline-size; }
   :global(body) {
     margin: 0;
     background: transparent;
@@ -675,28 +466,11 @@ const experiences = [
     height: 17px;
   }
 
-  .profile__education {
-    margin-top: auto;
-    padding-top: 24px;
-    display: grid;
-    gap: 4px;
-    font-size: 0.84rem;
-  }
-
-  .profile__education > span {
-    color: #868a83;
-  }
-
-  .profile__education a {
-    color: #696c68;
-    text-decoration: none;
-  }
-
   .bento {
     grid-column: 2;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
+    gap: 56px 24px;
   }
 
   .card,
@@ -744,9 +518,6 @@ const experiences = [
     letter-spacing: -0.055em;
   }
 
-  .selected-projects-heading {
-    grid-column: 1 / -1;
-  }
 
   .card--skills {
     grid-column: 1 / -1;
@@ -881,242 +652,12 @@ const experiences = [
     background: #202521;
   }
 
-  .technology-strip {
-    position: relative;
-    z-index: 0;
-    padding: clamp(24px, 3vw, 34px) clamp(18px, 3vw, 28px);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-  }
-
-  .technology-strip h2 {
-    max-width: 280px;
-    font-size: clamp(1.3rem, 2vw, 1.8rem);
-  }
-
-  .technology-icons {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: clamp(8px, 1.4vw, 14px);
-  }
-
-  .technology-icon {
-    width: clamp(62px, 7vw, 82px);
-    padding: 12px 8px 10px;
-    display: grid;
-    place-items: center;
-    gap: 7px;
-    border: 1px solid #e0e3df;
-    border-radius: 15px;
-    background: #fff;
-  }
-
-  .technology-icon__mark {
-    display: grid;
-    place-items: center;
-    min-width: 30px;
-    height: 28px;
-    color: var(--icon-color);
-    font-size: 1.15rem;
-    font-weight: 850;
-    letter-spacing: -0.06em;
-  }
-
-  .technology-icon span {
-    color: #555b56;
-    font-size: 0.6rem;
-    font-weight: 700;
-    white-space: nowrap;
-  }
-
-  @media (hover: hover) and (pointer: fine) {
-    .technology-strip {
-      max-height: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-      overflow: hidden;
-      opacity: 0;
-      pointer-events: none;
-      transition:
-        max-height 520ms cubic-bezier(0.22, 1, 0.36, 1),
-        padding 520ms cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 360ms ease;
-    }
-
-    .card--skills:hover .technology-strip,
-    .card--skills:focus-within .technology-strip {
-      max-height: 180px;
-      padding-top: clamp(24px, 3vw, 34px);
-      padding-bottom: clamp(24px, 3vw, 34px);
-      opacity: 1;
-      pointer-events: auto;
-    }
-  }
 
   @keyframes contribution-wave {
     0%, 70%, 100% { filter: brightness(1); transform: scale(1); }
     78% { filter: brightness(1.65); transform: scale(1.13); }
   }
 
-  .card--reparecar {
-    min-height: 490px;
-    padding: 26px;
-    display: flex;
-    flex-direction: column;
-    background: #fff8f4;
-    border-color: #f0d8ce;
-    color: #171513;
-  }
-
-  .card--reparecar::before {
-    position: absolute;
-    inset: 0;
-    content: "";
-    background: radial-gradient(circle at 82% 10%, rgba(255, 112, 61, 0.18), transparent 34%);
-    pointer-events: none;
-  }
-
-  .card--reparecar .card__arrow {
-    background: #ff703d;
-    color: #fff;
-    box-shadow: 0 8px 24px rgba(255, 112, 61, 0.24);
-  }
-
-  .reparecar__copy {
-    position: relative;
-    z-index: 1;
-    max-width: 430px;
-  }
-
-  .reparecar__copy > p:first-child {
-    width: fit-content;
-    margin: 0 0 12px;
-    padding: 5px 9px;
-    border: 1px solid #f0c8b9;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.62);
-    color: #b5441c;
-    font-size: 0.76rem;
-  }
-
-  .reparecar__copy h2 {
-    color: #171513;
-    font-size: clamp(2.2rem, 3.4vw, 3.5rem);
-  }
-
-  .reparecar__copy > p:nth-child(3) {
-    margin: 10px 0 0;
-    color: #69635f;
-    font-size: 0.88rem;
-    line-height: 1.5;
-  }
-
-  .reparecar__image {
-    width: calc(100% + 52px);
-    height: 178px;
-    margin: auto -26px -26px;
-    object-fit: cover;
-    object-position: center bottom;
-  }
-
-  .card--clickmax {
-    min-height: 490px;
-    padding: 26px;
-    display: flex;
-    flex-direction: column;
-    isolation: isolate;
-    background: #111315;
-    border-color: #303335;
-    color: #f8f8f8;
-  }
-
-  .card--clickmax::before {
-    position: absolute;
-    z-index: -2;
-    inset: 0;
-    content: "";
-    background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1.2px);
-    background-size: 14px 14px;
-    opacity: 0.52;
-  }
-
-  .card--clickmax::after {
-    position: absolute;
-    z-index: -1;
-    inset: 30% -20% -30% -20%;
-    content: "";
-    background:
-      radial-gradient(circle at 24% 78%, rgba(164, 255, 112, 0.17), transparent 34%),
-      radial-gradient(circle at 76% 84%, rgba(135, 211, 255, 0.19), transparent 38%);
-    pointer-events: none;
-  }
-
-  .card--clickmax .card__arrow {
-    background: linear-gradient(100deg, #bfe8ff, #cafa77);
-    color: #171a18;
-    box-shadow: 0 8px 24px rgba(202, 250, 119, 0.18);
-  }
-
-  .clickmax__header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: #a8aba9;
-    font-size: 0.74rem;
-    font-weight: 700;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-  }
-
-  .clickmax__mark {
-    display: inline-block;
-    padding-right: 12px;
-    border-right: 1px solid #46494a;
-    color: #fff;
-    font-size: 1.08rem;
-    font-weight: 800;
-    letter-spacing: -0.06em;
-    text-transform: lowercase;
-  }
-
-  .clickmax__copy {
-    position: relative;
-    z-index: 1;
-    max-width: 330px;
-    margin-top: 48px;
-  }
-
-  .clickmax__copy > p:first-child {
-    margin: 0 0 8px;
-    width: fit-content;
-    padding: 5px 9px;
-    border: 1px solid #34393a;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.06);
-    color: #c8eebf;
-    font-size: 0.76rem;
-  }
-
-  .clickmax__copy h2 {
-    font-size: clamp(2.2rem, 3.4vw, 3.5rem);
-    color: #fff;
-  }
-
-  .clickmax__copy > p:last-child {
-    margin: 12px 0 0;
-    color: #a9acab;
-    line-height: 1.5;
-  }
-
-  .clickmax__image {
-    width: calc(100% + 52px);
-    height: 165px;
-    margin: auto -26px -26px;
-    object-position: center;
-  }
 
   .projects-section {
     grid-column: 1 / -1;
@@ -1125,27 +666,26 @@ const experiences = [
   .projects-section__heading {
     margin-bottom: 24px;
     display: flex;
-    align-items: flex-end;
+    align-items: baseline;
     justify-content: space-between;
     gap: 20px;
   }
 
-  .projects-section__heading > a {
-    flex: 0 0 auto;
-    padding: 10px 14px;
-    border: 1px solid #d8dad5;
-    border-radius: 999px;
-    background: #fff;
+  .projects-section__more {
+    display: block;
+    width: fit-content;
+    margin: 6px 0 0 auto;
     color: #30332f;
-    font-size: 0.76rem;
-    font-weight: 700;
-    text-decoration: none;
-    transition: background 180ms ease, border-color 180ms ease;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transition: color 180ms ease;
   }
 
-  .projects-section__heading > a:hover {
-    border-color: #b9bdb6;
-    background: #f5f6f3;
+  .projects-section__more:hover {
+    color: #36764f;
   }
 
   .projects-grid {
@@ -1154,8 +694,21 @@ const experiences = [
     gap: 24px;
   }
 
+  @media (min-width: 1400px) {
+    .projects-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+  }
+
+  @media (max-width: 999px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
   .project-card {
-    min-height: 390px;
+    min-height: 330px;
     display: flex;
     flex-direction: column;
     border: 0;
@@ -1185,111 +738,9 @@ const experiences = [
     line-height: 1.5;
   }
 
-  .project-card--blue { background: #cbdcff; }
-  .project-card--coral { background: #f2b49f; }
-  .project-card--orange { background: #f4c1ad; }
-  .project-card--dark { background: #c8d5cb; }
 
-  .personal-projects-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 
-  .project-card--game {
-    padding: 0;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: space-between;
-    background: #121413;
-    color: #fff;
-  }
 
-  .project-card--game p { color: #aeb4ae; }
-  .project-card--game .eyebrow { color: #82d9a4; }
-  .project-card--game .project-card__body {
-    max-width: none;
-    padding: 24px;
-  }
-  .game-mark {
-    align-self: center;
-    display: grid;
-    place-items: center;
-    width: 146px;
-    height: 146px;
-    margin-top: 30px;
-    border: 1px solid #4b514d;
-    border-radius: 24px;
-    color: #7be0a2;
-    font-size: 4rem;
-    font-weight: 800;
-    letter-spacing: -0.08em;
-    transform: rotate(-6deg);
-  }
-
-  .project-card--librascode {
-    background: #e8e3ff;
-  }
-
-  .project-card--librascode > img {
-    height: 190px;
-    object-position: center;
-  }
-
-  .project-card--librascode .eyebrow {
-    color: #6553a5;
-  }
-
-  .card--experience {
-    grid-column: 1 / -1;
-    margin-top: 34px;
-    padding: clamp(26px, 4vw, 48px);
-  }
-
-  .experience__heading {
-    margin-bottom: 34px;
-  }
-
-  .timeline__item {
-    display: grid;
-    grid-template-columns: 130px 1fr;
-    gap: 24px;
-    padding: 24px 0;
-    border-top: 1px solid #e4e5e1;
-  }
-
-  .timeline__item.is-current {
-    border-top-color: #68bd87;
-  }
-
-  .timeline__period {
-    color: #777b74;
-    font-size: 0.75rem;
-    font-weight: 650;
-  }
-
-  .timeline__title {
-    display: flex;
-    justify-content: space-between;
-    gap: 18px;
-  }
-
-  .timeline__title h3 {
-    margin: 0;
-    font-size: 1.05rem;
-  }
-
-  .timeline__title span {
-    color: #387953;
-    font-size: 0.76rem;
-    text-align: right;
-  }
-
-  .timeline__item p {
-    max-width: 630px;
-    margin: 8px 0 0;
-    color: #6b6f69;
-    font-size: 0.85rem;
-    line-height: 1.55;
-  }
 
   @media (max-width: 1080px) {
     .portfolio-shell {
@@ -1306,22 +757,16 @@ const experiences = [
       );
     }
 
-    .bento,
-    .projects-grid,
-    .personal-projects-grid {
+    .bento {
       grid-template-columns: 1fr;
     }
 
     .card--skills,
-    .projects-section,
-    .card--experience {
+    .projects-section {
       grid-column: 1;
     }
 
-    .card--reparecar,
-    .card--clickmax {
-      min-height: 440px;
-    }
+
   }
 
   @media (max-width: 760px) {
@@ -1361,14 +806,9 @@ const experiences = [
       font-size: 1.08rem;
     }
 
-    .profile__education {
-      margin-top: 34px;
-      padding-top: 0;
-    }
-
     .bento {
       grid-column: auto;
-      gap: 16px;
+      gap: 56px 16px;
     }
 
     .card--skills {
@@ -1384,50 +824,20 @@ const experiences = [
       flex-direction: column;
     }
 
-    .technology-strip {
-      align-items: flex-start;
-      flex-direction: column;
-    }
-
-    .technology-icons {
-      width: 100%;
-      padding-bottom: 6px;
-      justify-content: flex-start;
-      overflow-x: auto;
-    }
-
-    .technology-icon {
-      flex: 0 0 70px;
-    }
 
     .card,
     .project-card {
       border-radius: 22px;
     }
 
-    .card--reparecar,
-    .card--clickmax {
-      min-height: 430px;
-    }
+
 
     .projects-grid {
+      grid-template-columns: 1fr;
       gap: 16px;
     }
 
-    .timeline__item {
-      grid-template-columns: 1fr;
-      gap: 8px;
-    }
 
-    .timeline__title {
-      display: block;
-    }
-
-    .timeline__title span {
-      display: block;
-      margin-top: 4px;
-      text-align: left;
-    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -1441,9 +851,6 @@ const experiences = [
       animation: none;
     }
 
-    .technology-strip {
-      transition: none;
-    }
 
     .location-static,
     .location-suffix {
