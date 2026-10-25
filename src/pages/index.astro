@@ -139,7 +139,7 @@ const contributionCells = Array.from({ length: 371 }, (_, index) => {
           {projects.map((project) => (
             <ProfessionalProjectCard project={project} />
           ))}
-          <PersonalProjectCards limit={1} />
+          <PersonalProjectCards limit={1} wide={true} />
         </div>
         <a class="projects-section__more" href="/trabalhos">Ver mais</a>
       </section>
@@ -694,12 +694,6 @@ const contributionCells = Array.from({ length: 371 }, (_, index) => {
     gap: 24px;
   }
 
-  @media (min-width: 1400px) {
-    .projects-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-  }
 
   @media (max-width: 999px) {
     .projects-grid {

@@ -1,8 +1,8 @@
 ---
 import PersonalProjectIllustration from "./PersonalProjectIllustration.astro";
 import LearningProjectIllustration from "./LearningProjectIllustration.astro";
-interface Props { limit?: number; }
-const { limit } = Astro.props;
+interface Props { limit?: number; wide?: boolean; }
+const { limit, wide = false } = Astro.props;
 const allProjects = [
   { title: "issoeseu · Ar Manaus", category: "Dados abertos · Meio ambiente", description: "Qualidade do ar em Manaus em um mapa: sensores, previsão de fumaça e dados ambientais para entender o que estamos respirando.", href: "https://ar.issoeseu.com/", flow: "air" as const, theme: "air" },
   { title: "Cabral 3D Lab", category: "Impressão 3D · E-commerce", description: "Da ideia ao objeto: uma loja de criações em impressão 3D, com brinquedos sensoriais, peças decorativas e novas formas de explorar.", href: "https://shop.cabral3dlab.com/", flow: "print" as const, theme: "print" },
@@ -12,7 +12,7 @@ const allProjects = [
 const projects = limit === undefined ? allProjects : allProjects.slice(0, limit);
 ---
 {projects.map(project => (
-  <a class={`personal-card personal-card--${project.theme}`} href={project.href} target={project.href.startsWith('https://') ? '_blank' : undefined} rel={project.href.startsWith('https://') ? 'noopener noreferrer' : undefined}>
+  <a class:list={['personal-card', `personal-card--${project.theme}`, { 'personal-card--wide': wide }]} href={project.href} target={project.href.startsWith('https://') ? '_blank' : undefined} rel={project.href.startsWith('https://') ? 'noopener noreferrer' : undefined}>
     {project.flow === 'air' || project.flow === 'print'
       ? <PersonalProjectIllustration kind={project.flow} />
       : <LearningProjectIllustration kind={project.flow} />}
@@ -29,6 +29,7 @@ const projects = limit === undefined ? allProjects : allProjects.slice(0, limit)
   .personal-card--print { background: #fbefe3; border-color: #e9d8c8; }
   .personal-card--game { background: #121b18; border-color: #344e3d; color: #edf5ed; }
   .personal-card--libras { background: #eae5fb; border-color: #d9d0ed; }
+  .personal-card--wide { grid-column: 1 / -1; min-width: 0; }
   .personal-card:hover { transform: translateY(-4px); box-shadow: 0 22px 48px #2529241c; }
   .personal-card__body { display: flex; flex-direction: column; flex: 1; padding: 24px; }
   .personal-card__category { margin: 0 0 12px; color: #42614d; font-size: .65rem; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
@@ -42,6 +43,11 @@ const projects = limit === undefined ? allProjects : allProjects.slice(0, limit)
   .personal-card--libras .personal-card__body > p:not(.personal-card__category) { color: #6e6680; }
   .personal-card__link { margin-top: auto; display: flex; justify-content: space-between; font-size: .76rem; font-weight: 650; }
   .personal-card:focus-visible { outline: 3px solid #258753; outline-offset: 4px; }
+  @container (min-width: 600px) {
+    .personal-card--wide { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); }
+    .personal-card--wide > :global(svg) { align-self: center; }
+    .personal-card--wide .personal-card__body { min-width: 0; padding: clamp(24px, 3vw, 36px); }
+  }
   @media (max-width: 760px) { .personal-card { border-radius: 22px; } }
   @media (prefers-reduced-motion: reduce) { .personal-card { transition: none; } }
 </style>
