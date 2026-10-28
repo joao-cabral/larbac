@@ -12,7 +12,7 @@ export default defineConfig({
     react(),
     icon({
       include: {
-        mdi: ["github", "account-file-outline", "linkedin", "arrow-left", "file-download", "facebook", "instagram", "whatsapp", "web", "source-branch", "credit-card", "car-wrench", "cog", "check-decagram", "map-marker", "cellphone", "access-point", "cloud-outline", "chart-line", "test-tube", "weather-windy", "database", "printer-3d-nozzle", "cart"],
+        mdi: ["github", "account-file-outline", "linkedin", "arrow-left", "file-download", "facebook", "instagram", "whatsapp", "web", "source-branch", "credit-card", "car-wrench", "cog", "check-decagram", "map-marker", "cellphone", "access-point", "cloud-outline", "chart-line", "test-tube", "weather-windy", "database", "printer-3d-nozzle", "cart", "open-in-new"],
         "simple-icons": ["react", "typescript", "flutter", "angular", "nodedotjs", "postgresql"],
       },
     }),

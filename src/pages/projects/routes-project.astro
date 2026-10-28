@@ -1,0 +1,62 @@
+---
+import CaseStudyLayout from '../../layouts/caseStudyLayout.astro';
+import type { CaseHighlight } from '../../lib/case-study';
+
+const facts = [
+  { label: 'Empresa', value: 'Grupo ICTS' },
+  { label: 'Papel', value: 'Desenvolvedor Web/Mobile' },
+  { label: 'Período', value: '2021 — 2023' },
+];
+
+const highlights: CaseHighlight[] = [
+  {
+    mock: { source: 'case', kind: 'driver' },
+    eyebrow: 'App do motorista',
+    title: 'Navegação com o itinerário designado',
+    text: 'O motorista acessa a rota do dia e navega em tempo real, com o trajeto atualizado conforme os colaboradores são coletados.',
+    points: ['Visualização do itinerário designado', 'Navegação em tempo real com Mapbox', 'Rota atualizada a cada coleta'],
+  },
+  {
+    mock: { source: 'case', kind: 'attendance' },
+    eyebrow: 'Paradas e presença',
+    title: 'Presença e ocorrências na rota',
+    text: 'Registro de presença ou ausência em cada parada e de incidentes durante o trajeto.',
+    points: ['Registro de presença por parada', 'Registro de sinistros pelo motorista', 'Relato de incidentes pelos colaboradores'],
+  },
+  {
+    mock: { source: 'case', kind: 'admin' },
+    eyebrow: 'Painel administrativo',
+    title: 'Monitoramento de todas as rotas',
+    text: 'Painel web em React e TypeScript para acompanhar o progresso das rotas e as ocorrências registradas.',
+    points: ['Progresso das rotas em tempo real', 'Detalhes de cada rota', 'Histórico de incidentes'],
+  },
+];
+
+const foundation = {
+  title: 'Para cada perfil, uma experiência',
+  lead: 'O produto atendia motoristas, colaboradores e administradores, cada um com fluxos próprios a partir do mesmo dado em tempo real.',
+  items: [
+    { title: 'Colaboradores', text: 'Localização da rota ao vivo, confirmação de participação e aviso de início de rota.' },
+    { title: 'Motoristas', text: 'Itinerário, navegação, presença e sinistros.' },
+    { title: 'Administradores', text: 'Monitoramento, detalhes de rota e incidentes.' },
+    { title: 'Tempo real', text: 'Localização sincronizada por Socket.IO e verificação de conexão no dispositivo.' },
+  ],
+};
+
+const stack = [
+  { group: 'Mobile', items: ['Flutter', 'Modular', 'Mapbox', 'flutter_map', 'Geolocalização', 'Bússola'] },
+  { group: 'Web', items: ['React', 'TypeScript'] },
+  { group: 'Tempo real', items: ['Socket.IO', 'Notificações', 'Verificação de conexão'] },
+];
+---
+
+<CaseStudyLayout
+  title="Sistema de Rotas"
+  eyebrow="Grupo ICTS · Transporte corporativo"
+  description="Aplicativo e painel web para gerenciar rotas de transporte de colaboradores, com navegação e acompanhamento em tempo real, no estilo de um app de mobilidade."
+  facts={facts}
+  highlightsLead="Prévias ilustrativas, sem dados reais, das principais telas do produto."
+  highlights={highlights}
+  foundation={foundation}
+  stack={stack}
+/>

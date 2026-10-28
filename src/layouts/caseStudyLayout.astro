@@ -1,0 +1,240 @@
+---
+import SectionLayout from './sectionLayout.astro';
+import ClickmaxMock from '../components/ClickmaxMock.astro';
+import CaseMock from '../components/CaseMock.astro';
+import type { CaseFact, CasePhase, CaseHighlight, CaseFoundation, CaseStackGroup } from '../lib/case-study';
+import ExternalIcon from '../components/ExternalIcon.astro';
+
+interface Props {
+  title: string;
+  eyebrow: string;
+  description: string;
+  facts: CaseFact[];
+  phasesTitle?: string;
+  phases?: CasePhase[];
+  highlightsTitle?: string;
+  highlightsLead?: string;
+  highlights: CaseHighlight[];
+  foundation?: CaseFoundation;
+  stack: CaseStackGroup[];
+  cta?: { text: string; label: string; href: string };
+}
+
+const {
+  title, eyebrow, description, facts, phasesTitle = 'Como meu escopo evoluiu', phases,
+  highlightsTitle = 'O que desenvolvi',
+  highlightsLead = 'Prévias ilustrativas, sem dados reais, das áreas em que trabalhei.',
+  highlights, foundation, stack, cta,
+} = Astro.props;
+
+// Destaques em linha inteira: o primeiro e, se a quantidade deixar uma sobra, o último.
+const lastWide = highlights.length > 1 && (highlights.length - 1) % 2 === 1;
+---
+
+<SectionLayout title={title} eyebrow={eyebrow} description={description} back={{ href: '/trabalhos', label: 'Todos os trabalhos' }}>
+  <dl class="facts" style={`--facts: ${facts.length}`}>
+    {facts.map(fact => (
+      <div>
+        <dt>{fact.label}</dt>
+        <dd>{fact.href ? <a href={fact.href} target="_blank" rel="noopener noreferrer">{fact.value}<ExternalIcon /></a> : fact.value}</dd>
+      </div>
+    ))}
+  </dl>
+
+  {phases && phases.length > 0 && (
+    <section class="block" aria-labelledby="evolution-title">
+      <h2 id="evolution-title">{phasesTitle}</h2>
+      <ol class="phases">
+        {phases.map(phase => (
+          <li class:list={['phase', { 'phase--current': phase.current }]}>
+            <span class="phase__period">{phase.period}{phase.current && <em>agora</em>}</span>
+            <strong>{phase.title}</strong>
+            <p>{phase.text}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+  )}
+
+  <section class="block" aria-labelledby="highlights-title">
+    <h2 id="highlights-title">{highlightsTitle}</h2>
+    <p class="block__lead">{highlightsLead}</p>
+    <div class="highlights">
+      {highlights.map((item, index) => {
+        const isLast = index === highlights.length - 1;
+        const wide = item.wide ?? (index === 0 || (isLast && lastWide));
+        const reverse = item.wide !== undefined
+          ? highlights.slice(0, index).filter((h) => h.wide).length % 2 === 1
+          : isLast && lastWide;
+        return (
+          <article class:list={['highlight', { 'highlight--wide': wide, 'highlight--reverse': wide && reverse, 'highlight--image': item.mock.source === 'image', 'highlight--embed': item.mock.source === 'embed' || item.mock.source === 'phones' }]}>
+            <div class="highlight__mock">
+              {item.mock.source === 'clickmax' && <ClickmaxMock kind={item.mock.kind} />}
+              {item.mock.source === 'case' && <CaseMock kind={item.mock.kind} />}
+              {item.mock.source === 'embed' && (
+                <div class="embed-frame" style={`--shot-bg: ${item.mock.background ?? '#f3f4f1'}`}>
+                  <iframe src={item.mock.src} title={item.mock.title} loading="lazy" scrolling="no" tabindex="-1" data-case-embed></iframe>
+                </div>
+              )}
+              {item.mock.source === 'phones' && (
+                <div class="phones" style={`--shot-bg: ${item.mock.background ?? '#f3f4f1'}`}>
+                  {item.mock.screens.map(screen => (
+                    <div class="phone-frame"><iframe src={screen.src} title={screen.title} loading="lazy"></iframe></div>
+                  ))}
+                </div>
+              )}
+              {item.mock.source === 'image' && (
+                <figure class:list={['shot', `shot--${item.mock.fit ?? 'cover'}`]} style={`--shot-bg: ${item.mock.background ?? '#f3f4f1'}; --shot-position: ${item.mock.position ?? 'top center'}`}>
+                  <a href={item.mock.src} target="_blank" rel="noopener" aria-label={`Ampliar: ${item.mock.alt}`}>
+                    <img src={item.mock.src} alt={item.mock.alt} loading="lazy" decoding="async" />
+                  </a>
+                </figure>
+              )}
+            </div>
+            <div class="highlight__body">
+              <span class="highlight__eyebrow">{item.eyebrow}</span>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+              <ul>{item.points.map(point => <li>{point}</li>)}</ul>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </section>
+
+  {foundation && (
+    <section class="block block--split" aria-labelledby="foundation-title">
+      <div>
+        <h2 id="foundation-title">{foundation.title}</h2>
+        <p class="block__lead">{foundation.lead}</p>
+      </div>
+      <ul class="foundation">
+        {foundation.items.map(item => <li><strong>{item.title}</strong><span>{item.text}</span></li>)}
+      </ul>
+    </section>
+  )}
+
+  <section class="block" aria-labelledby="stack-title">
+    <h2 id="stack-title">Tecnologias e práticas</h2>
+    <div class="stack" style={`--stack: ${Math.min(stack.length, 4)}`}>
+      {stack.map(group => (
+        <div class="stack__group">
+          <span>{group.group}</span>
+          <ul>{group.items.map(item => <li>{item}</li>)}</ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {cta && (
+    <footer class="cta">
+      <p>{cta.text} <a href={cta.href} target="_blank" rel="noopener noreferrer">{cta.label}<ExternalIcon /></a></p>
+    </footer>
+  )}
+</SectionLayout>
+
+<script>
+  // As cópias estáticas informam a própria altura para o iframe não cortar o conteúdo.
+  window.addEventListener('message', (event) => {
+    const data = event.data;
+    if (event.origin !== location.origin || !data || data.type !== 'case-embed') return;
+    document.querySelectorAll<HTMLIFrameElement>('iframe[data-case-embed]').forEach((frame) => {
+      if (frame.contentWindow === event.source) frame.style.height = `${data.height}px`;
+    });
+  });
+</script>
+
+<style>
+  .facts { display: grid; grid-template-columns: repeat(var(--facts, 4), minmax(0, 1fr)); gap: 1px; margin: 0 0 64px; overflow: hidden; border: 1px solid #e3e5df; border-radius: 18px; background: #e3e5df; }
+  .facts > div { padding: 18px 20px; background: #fffffff2; }
+  .facts dt { margin-bottom: 6px; color: #7a7f77; font-size: .72rem; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
+  .facts dd { margin: 0; font-weight: 650; letter-spacing: -.01em; }
+  .facts a { color: #1f6f43; text-decoration: none; }
+  .facts a:hover { text-decoration: underline; }
+
+  .block { margin-bottom: 72px; }
+  .block h2 { margin: 0 0 16px; line-height: 1.08; font-size: clamp(1.7rem, 3vw, 2.4rem); letter-spacing: -.05em; }
+  .block__lead { max-width: 640px; margin: 0 0 28px; color: #686c66; line-height: 1.55; }
+
+  .phases { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 20px 0 0; padding: 0; list-style: none; }
+  .phase { position: relative; padding: 24px; border: 1px solid #e3e5df; border-radius: 18px; background: #fff; }
+  .phase--current { border-color: #b9dc8f; background: linear-gradient(160deg, #f6fbef, #fff 60%); }
+  .phase__period { display: flex; min-height: 22px; align-items: center; gap: 8px; color: #7a7f77; font-size: .8rem; font-weight: 650; }
+  .phase__period em { padding: 2px 8px; border-radius: 999px; background: #caf37e; color: #24361a; font-size: .68rem; font-style: normal; font-weight: 750; text-transform: uppercase; letter-spacing: .06em; }
+  .phase strong { display: block; margin: 10px 0 6px; font-size: 1.2rem; letter-spacing: -.03em; }
+  .phase p { margin: 0; color: #575b55; line-height: 1.55; }
+
+  .highlights { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .highlight { display: flex; flex-direction: column; overflow: hidden; border: 1px solid #e3e5df; border-radius: 20px; background: #fff; }
+  .highlight--wide { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+  .highlight__mock { border-bottom: 1px solid #e3e5df; }
+  .highlight--reverse .highlight__mock { order: 2; border-right: 0 !important; border-left: 1px solid #e3e5df; }
+  .highlight--reverse { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); }
+  .highlight--wide .highlight__mock { border-bottom: 0; border-right: 1px solid #e3e5df; }
+  .highlight__mock { display: flex; }
+  .highlight__mock > :global(*) { flex: 1; }
+  .embed-frame { background: var(--shot-bg); }
+  .embed-frame iframe { display: block; width: 100%; height: 320px; border: 0; }
+  .phones { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px; padding: 28px 20px; background: var(--shot-bg); }
+  .phone-frame { width: 300px; height: 600px; overflow: hidden; border: 6px solid #2a2824; border-radius: 34px; background: #0f0e0d; box-shadow: 0 18px 40px rgb(0 0 0 / 35%); }
+  .phone-frame iframe { display: block; width: 375px; height: 766px; border: 0; transform: scale(.768); transform-origin: 0 0; }
+  .highlight--wide.highlight--embed { grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); }
+  .highlight--wide.highlight--embed.highlight--reverse { grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr); }
+  .shot { position: relative; height: 280px; margin: 0; overflow: hidden; background: var(--shot-bg); }
+  .shot a { display: block; height: 100%; cursor: zoom-in; }
+  .shot a:focus-visible { outline: 3px solid #258753; outline-offset: -3px; }
+  .highlight--wide.highlight--image { grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); }
+  .highlight--wide.highlight--image.highlight--reverse { grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr); }
+  .shot img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: var(--shot-position); }
+  .shot--contain { padding: 16px; }
+  .shot--contain img { object-fit: contain; filter: drop-shadow(0 10px 22px rgb(0 0 0 / 22%)); }
+  .highlight--wide .shot { height: 100%; min-height: 300px; }
+  .highlight--wide .highlight__mock :global(.cx-mock),
+  .highlight--wide .highlight__mock :global(.case-mock) { height: 100%; min-height: 300px; }
+  .highlight__body { padding: 22px 24px 26px; }
+  .highlight--wide .highlight__body { align-self: center; }
+  .highlight__eyebrow { color: #258753; font-size: .7rem; font-weight: 760; letter-spacing: .1em; text-transform: uppercase; }
+  .highlight h3 { margin: 8px 0 8px; font-size: 1.3rem; letter-spacing: -.04em; }
+  .highlight p { margin: 0 0 14px; color: #575b55; line-height: 1.55; }
+  .highlight ul { display: grid; gap: 7px; margin: 0; padding: 0; list-style: none; }
+  .highlight li { position: relative; padding-left: 18px; color: #3d413b; font-size: .92rem; line-height: 1.45; }
+  .highlight li::before { content: ''; position: absolute; left: 0; top: .55em; width: 7px; height: 7px; border-radius: 2px; background: #9fd36a; }
+
+  .block--split { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 32px; align-items: start; }
+  .foundation { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+  .foundation li { display: grid; align-content: start; gap: 6px; padding: 18px; border: 1px solid #e3e5df; border-radius: 16px; background: #fff; }
+  .foundation strong { letter-spacing: -.02em; }
+  .foundation span { color: #5f635d; font-size: .9rem; line-height: 1.5; }
+
+  .stack { display: grid; grid-template-columns: repeat(var(--stack, 4), minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
+  .stack__group { padding: 18px; border: 1px solid #e3e5df; border-radius: 16px; background: #fff; }
+  .stack__group > span { display: block; margin-bottom: 12px; color: #7a7f77; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .stack__group ul { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+  .stack__group li { padding: 4px 10px; border: 1px solid #e3e5df; border-radius: 999px; background: #f7f8f5; font-size: .82rem; }
+
+  .cta { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; padding: 24px 28px; border-radius: 20px; background: #101417; color: #e6efe9; }
+  .cta p { margin: 0; font-size: 1.1rem; }
+  .cta a { color: #caf37e; }
+  .facts a, .cta p a { display: inline-flex; align-items: center; }
+
+  @media (max-width: 960px) {
+    .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .stack { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .block--split { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 760px) {
+    .phases, .highlights, .foundation { grid-template-columns: 1fr; }
+    .highlight--wide { display: flex; }
+    .highlight--wide .highlight__mock { border-right: 0; border-bottom: 1px solid #e3e5df; }
+    .highlight--reverse .highlight__mock { order: 0; border-left: 0; }
+    .highlight--wide .highlight__mock :global(.cx-mock),
+    .highlight--wide .highlight__mock :global(.case-mock) { min-height: 310px; }
+    .highlight--wide .shot { min-height: 230px; }
+  }
+
+  @media (max-width: 480px) {
+    .facts, .stack { grid-template-columns: 1fr; }
+  }
+</style>

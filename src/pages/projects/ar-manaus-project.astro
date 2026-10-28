@@ -1,0 +1,76 @@
+---
+import CaseStudyLayout from '../../layouts/caseStudyLayout.astro';
+import type { CaseHighlight } from '../../lib/case-study';
+
+const facts = [
+  { label: 'Tipo', value: 'Projeto pessoal' },
+  { label: 'Papel', value: 'Concepção e desenvolvimento' },
+  { label: 'Tema', value: 'Dados abertos · Meio ambiente' },
+  { label: 'Site', value: 'ar.issoeseu.com', href: 'https://ar.issoeseu.com/' },
+];
+
+const highlights: CaseHighlight[] = [
+  {
+    wide: true,
+    mock: { source: 'image', src: '/images/projects/ar-manaus/mapa.webp', alt: 'Mapa do Ar Manaus com as zonas de Manaus coloridas pela qualidade do ar e os sensores de PM2.5', background: '#0f1311', position: 'center' },
+    eyebrow: 'Mapa da cidade',
+    title: 'Qualidade do ar por zona e por município',
+    text: 'Mapa com as zonas de Manaus coloridas pela mediana de PM2.5 dos sensores de solo, focos de calor por satélite e áreas de fogo ativas.',
+    points: ['Zonas e municípios coloridos pela mediana dos sensores', 'Focos de calor NASA FIRMS das últimas 24 horas', 'Áreas de fogo por município com prioridade (Painel do Fogo/CENSIPAM)'],
+  },
+  {
+    wide: true,
+    mock: { source: 'embed', src: '/embeds/ar-manaus/hoje.html', title: 'Cartão “Qualidade do ar em Manaus hoje” do Ar Manaus (cópia estática)', background: '#0f0e0d' },
+    eyebrow: 'Sensores de solo',
+    title: 'O que se respira no bairro',
+    text: 'Estações de baixo custo com PM2.5 por ponto, idade da leitura e correção oficial aplicada antes de exibir o valor.',
+    points: ['Correção EPA CF=1 (Barkjohn et al., 2022) com a umidade do sensor', 'Faixas do CONAMA e alternância entre µg/m³ e AQI', 'Leituras implausíveis marcadas como suspeitas, não escondidas'],
+  },
+  {
+    wide: true,
+    mock: { source: 'embed', src: '/embeds/ar-manaus/previsao.html', title: 'Cartões de previsão do Ar Manaus (cópia estática)', background: '#0f0e0d' },
+    eyebrow: 'Previsão',
+    title: '“O ar vai piorar?”',
+    text: 'Curva de previsão a partir do modelo CAMS Global, apresentada separada das medições de solo e com a origem de cada dado explícita.',
+    points: ['Previsão de 48 horas pelo modelo CAMS via Open-Meteo', 'Vento animado no mapa', 'Modelo e sensores separados, sem misturar estimativa com medição'],
+  },
+  {
+    wide: true,
+    mock: { source: 'phones', screens: [{ src: '/embeds/ar-manaus/hoje.html', title: 'Qualidade do ar hoje no celular' }, { src: '/embeds/ar-manaus/previsao.html', title: 'Previsão no celular' }], background: '#1a1916' },
+    eyebrow: 'No celular',
+    title: 'Pensado para consultar na rua',
+    text: 'No celular, os cartões se reorganizam em uma coluna. Role dentro dos aparelhos para ver as versões mobile.',
+    points: ['Interface responsiva', 'Localização aproximada só com permissão', 'Tela cheia nativa e atualização automática a cada 10 minutos'],
+  },
+];
+
+const foundation = {
+  title: 'Transparência sobre os dados',
+  lead: 'Cada número mostra de onde vem, quando foi medido e quais são os limites da fonte. O painel não é um serviço oficial de alerta.',
+  items: [
+    { title: 'Origem explícita', text: 'Satélite, sensor de solo e modelo regional aparecem como fontes diferentes.' },
+    { title: 'Idade da leitura', text: 'Horário de aquisição exibido no fuso de Manaus; fontes indisponíveis são sinalizadas.' },
+    { title: 'Privacidade', text: 'Localização aproximada só com permissão e contador de presença sem dados pessoais.' },
+    { title: 'Qualidade', text: 'Testes automatizados em Python e JavaScript e deploy contínuo por GitHub Actions.' },
+  ],
+};
+
+const stack = [
+  { group: 'Web', items: ['JavaScript', 'Leaflet', 'HTML e CSS responsivos'] },
+  { group: 'Backend', items: ['Python', 'Cache em memória', 'Testes automatizados'] },
+  { group: 'Dados', items: ['NASA FIRMS', 'CENSIPAM', 'PurpleAir', 'CAMS / Open-Meteo'] },
+  { group: 'Entrega', items: ['GitHub Actions', 'VPS', 'SEO e llms.txt'] },
+];
+---
+
+<CaseStudyLayout
+  title="Ar Manaus"
+  eyebrow="Projeto pessoal · Dados abertos"
+  description="Painel para entender o ar de Manaus: focos de calor por satélite, sensores de qualidade do ar na cidade e previsão por modelo, cada um com sua origem e seus limites."
+  facts={facts}
+  highlightsLead="O mapa é um print; os cartões são o HTML e o CSS reais do painel, copiados em 27/10/2026 e sem dados ao vivo."
+  highlights={highlights}
+  foundation={foundation}
+  stack={stack}
+  cta={{ text: 'Veja o painel em', label: 'ar.issoeseu.com', href: 'https://ar.issoeseu.com/' }}
+/>

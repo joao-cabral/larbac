@@ -1,0 +1,71 @@
+---
+import CaseStudyLayout from '../../layouts/caseStudyLayout.astro';
+import type { CaseHighlight } from '../../lib/case-study';
+
+const facts = [
+  { label: 'Vínculo', value: 'Freelance · meio período' },
+  { label: 'Papel', value: 'Engenheiro de Software' },
+  { label: 'Período', value: '2025 — 2026' },
+  { label: 'Produto', value: 'reparecar.com.br', href: 'https://www.reparecar.com.br/' },
+];
+
+const highlights: CaseHighlight[] = [
+  {
+    mock: { source: 'case', kind: 'yard' },
+    eyebrow: 'Operação da oficina',
+    title: 'Gestão de pátio e ordens de serviço',
+    text: 'Telas para acompanhar os veículos dentro da oficina, da entrada à entrega, integradas ao quadro de ordens de serviço.',
+    points: ['Kanban de pátio integrado à API', 'Modal de ordem de serviço com destaque dos sintomas selecionados', 'Cadastro de clientes e mecânicos com tabelas e modais reutilizáveis'],
+  },
+  {
+    mock: { source: 'case', kind: 'checklist' },
+    eyebrow: 'Configuração',
+    title: 'Oficina, perfil e valor hora',
+    text: 'Telas de configuração que alimentam o restante do produto: dados da oficina, orçamento, valor hora e perfil do usuário.',
+    points: ['Configuração da oficina e do orçamento', 'Cálculo do valor hora', 'Perfil, troca de senha e sessões ativas'],
+  },
+  {
+    mock: { source: 'case', kind: 'budget' },
+    eyebrow: 'Cadastro e onboarding',
+    title: 'Empresa preenchida pelo CNPJ',
+    text: 'Onboarding com autocompletar dos dados da empresa a partir do CNPJ e campos bloqueados até a consulta.',
+    points: ['Autocompletar de empresa pelo CNPJ', 'Campos travados antes do CNPJ, sem rerender ao digitar', 'Categoria "outros" no onboarding'],
+  },
+  {
+    mock: { source: 'case', kind: 'portal' },
+    eyebrow: 'Experiência do cliente',
+    title: 'Portal do cliente mobile-first',
+    text: 'Portal em que o dono do veículo acompanha o serviço e responde ao orçamento pelo celular.',
+    points: ['Layout mobile-first', 'Ações do orçamento fixas no rodapé', 'Ajustes de leitura para nomes de veículos longos'],
+  },
+];
+
+const foundation = {
+  title: 'Como o trabalho foi conduzido',
+  lead: 'Atuei principalmente no frontend, com evoluções pontuais no backend, colaborando com a equipe no planejamento e na entrega contínua.',
+  items: [
+    { title: 'Monorepo', text: 'Frontend, backend e portal do cliente no mesmo repositório, desde a estrutura inicial.' },
+    { title: 'Contratos tipados', text: 'Cliente da API gerado a partir do OpenAPI, com validação de dados por schema.' },
+    { title: 'Desempenho', text: 'Cache do endpoint do usuário logado e cuidado com rerenders em formulários.' },
+    { title: 'Sustentação', text: 'Correções em estoque de peças, modais e cálculos, acompanhando o produto em produção.' },
+  ],
+};
+
+const stack = [
+  { group: 'Frontend', items: ['React', 'TypeScript', 'TanStack Router', 'TanStack Query', 'Vite', 'Tailwind CSS', 'shadcn/ui'] },
+  { group: 'Formulários e dados', items: ['React Hook Form', 'Zod', 'Orval', 'OpenAPI'] },
+  { group: 'Backend', items: ['Node.js', 'Fastify', 'PostgreSQL', 'Supabase'] },
+];
+---
+
+<CaseStudyLayout
+  title="RepareCar"
+  eyebrow="Freelance · Gestão de oficinas"
+  description="Plataforma para oficinas automotivas organizarem a operação e o relacionamento com clientes. Atuei no frontend e em evoluções do backend, em fluxos de ordens de serviço, checklists, orçamentos, gestão de pátio e portal do cliente."
+  facts={facts}
+  highlightsLead="Prévias ilustrativas, sem dados reais, dos fluxos em que trabalhei."
+  highlights={highlights}
+  foundation={foundation}
+  stack={stack}
+  cta={{ text: 'Conheça o produto em', label: 'reparecar.com.br', href: 'https://www.reparecar.com.br/' }}
+/>

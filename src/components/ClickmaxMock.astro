@@ -1,0 +1,217 @@
+---
+/**
+ * Mocks animados e ilustrativos das áreas do Clickmax em que atuo.
+ * Nenhum dado real: apenas formas e textos genéricos.
+ */
+interface Props {
+  kind: 'max' | 'suggestions' | 'email' | 'pages' | 'marketplace' | 'segments';
+}
+const { kind } = Astro.props;
+---
+
+<div class={`cx-mock cx-mock--${kind}`} aria-hidden="true">
+  {kind === 'max' && (
+    <div class="chat">
+      <div class="chat__bubble chat__bubble--user">Recupere as vendas de carrinhos abandonados desta semana</div>
+      <div class="chat__steps">
+        <span class="step step--1"><i></i>Consultando pedidos</span>
+        <span class="step step--2"><i></i>Montando segmento</span>
+        <span class="step step--3"><i></i>Preparando e-mail</span>
+      </div>
+      <div class="chat__bubble chat__bubble--max">Montei uma automação de recuperação. Quer revisar antes de ativar?</div>
+      <div class="chat__result">
+        <b class="thumb"></b>
+        <span><strong>Automação pronta para revisão</strong><small>Aguardando sua aprovação</small></span>
+        <em>Revisar</em>
+      </div>
+      <div class="chat__composer"><span>Pergunte ao Max…</span><b>↑</b></div>
+    </div>
+  )}
+
+  {kind === 'suggestions' && (
+    <div class="suggest">
+      <div class="suggest__header"><span class="spark">✦</span>Oportunidades para hoje</div>
+      <div class="suggest__card"><b class="dot dot--lime"></b><span>Leads quentes sem contato</span><em>Retomar</em></div>
+      <div class="suggest__card"><b class="dot dot--blue"></b><span>Clientes prontos para recompra</span><em>Ver lista</em></div>
+      <div class="suggest__card"><b class="dot dot--amber"></b><span>Canal de WhatsApp desconectado</span><em>Conectar</em></div>
+      <div class="suggest__progress"><span>Primeiros passos</span><i><b></b></i></div>
+    </div>
+  )}
+
+  {kind === 'email' && (
+    <div class="editor">
+      <aside class="editor__blocks">
+        <span>Texto</span><span>Imagem</span><span class="is-dragging">Botão</span><span>Rodapé</span>
+      </aside>
+      <div class="editor__canvas">
+        <div class="mail">
+          <b class="mail__logo"></b>
+          <b class="mail__hero"></b>
+          <i></i><i></i><i class="short"></i>
+          <b class="mail__button"></b>
+          <small class="mail__footer"></small>
+        </div>
+        <span class="ghost">Botão</span>
+      </div>
+    </div>
+  )}
+
+  {kind === 'pages' && (
+    <div class="builder">
+      <div class="builder__prompt"><span class="spark">✦</span><span class="typing">Página de vendas para um e-book…</span></div>
+      <div class="builder__page">
+        <div class="section section--1"><b></b><i></i><i class="short"></i></div>
+        <div class="section section--2"><span></span><span></span><span></span></div>
+        <div class="section section--3"><b class="cta"></b></div>
+      </div>
+      <div class="builder__check">
+        <span>Estrutura</span><span>Checkout</span><span>Publicação</span>
+      </div>
+    </div>
+  )}
+
+  {kind === 'marketplace' && (
+    <div class="market">
+      <div class="market__profile"><b class="avatar"></b><span><strong></strong><small></small></span><em>Vitrine</em></div>
+      <div class="market__grid">
+        {[0, 1, 2].map(i => (
+          <div class="product" style={`--i:${i}`}><b></b><i></i><i class="short"></i><span>Afiliar-se</span></div>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {kind === 'segments' && (
+    <div class="segments">
+      <div class="rule"><span>Abriu</span><b>≥ 2</b><span>das últimas 5 campanhas</span></div>
+      <div class="rule rule--and"><span>E</span></div>
+      <div class="rule"><span>Temperatura</span><b>quente</b></div>
+      <div class="segments__meter">
+        <span>Contatos no segmento</span>
+        <strong><i class="count"></i></strong>
+        <i class="bar"><b></b></i>
+      </div>
+    </div>
+  )}
+</div>
+
+<style>
+  .cx-mock {
+    --bg: #101417; --panel: #182024; --line: #2c3a3c; --text: #e6efe9; --muted: #8fa199; --accent: #caf37e;
+    position: relative; overflow: hidden; height: 236px; padding: 18px; box-sizing: border-box;
+    color: var(--text); background: var(--bg);
+    background-image: radial-gradient(#ffffff0b 1px, transparent 1px); background-size: 18px 18px;
+    font: 500 12px/1.4 Inter, system-ui, sans-serif;
+  }
+  .cx-mock *, .cx-mock *::before { box-sizing: border-box; }
+  .cx-mock i, .cx-mock b, .cx-mock em { font-style: normal; }
+  .spark { color: var(--accent); }
+
+  /* Max — conversa com etapas de ferramentas */
+  .chat { display: flex; flex-direction: column; gap: 12px; height: 100%; }
+  .chat__bubble--user { align-self: flex-end; max-width: 78%; padding: 8px 11px; border-radius: 12px 12px 3px 12px; background: #2a3a2b; color: #e5f6cf; animation: rise 8s ease both infinite; }
+  .chat__bubble--max { align-self: flex-start; max-width: 82%; color: #cfdcd4; opacity: 0; animation: result 8s ease infinite; }
+  .chat__steps { display: flex; flex-direction: column; gap: 5px; padding-left: 2px; }
+  .step { display: flex; align-items: center; gap: 7px; color: var(--muted); opacity: 0; animation: step 8s ease infinite; }
+  .step i { display: grid; place-items: center; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); color: #172012; font-size: 8px; font-weight: 800; }
+  .step i::before { content: '✓'; }
+  .step--2 { animation-delay: .5s; } .step--3 { animation-delay: 1s; }
+  .chat__result { display: flex; align-items: center; gap: 10px; padding: 9px; border: 1px solid #a7d98766; border-radius: 10px; background: #1b261d; opacity: 0; animation: result 8s ease infinite; }
+  .chat__result .thumb { width: 30px; height: 30px; border-radius: 7px; background: linear-gradient(135deg, #b5deed, var(--accent)); }
+  .chat__result span { flex: 1; display: grid; }
+  .chat__result small { color: var(--muted); font-size: 10px; }
+  .chat__result em { padding: 4px 9px; border-radius: 999px; background: var(--accent); color: #172012; font-size: 10px; font-weight: 700; }
+  .chat__composer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding: 7px 7px 7px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); color: var(--muted); }
+  .chat__composer b { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 7px; background: var(--accent); color: #172012; }
+
+  /* Motor de sugestões */
+  .suggest { display: flex; flex-direction: column; gap: 8px; }
+  .suggest__header { display: flex; gap: 6px; font-weight: 650; }
+  .suggest__card { display: flex; align-items: center; gap: 9px; padding: 9px 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); animation: card 6s ease infinite; }
+  .suggest__card:nth-of-type(3) { animation-delay: 2s; } .suggest__card:nth-of-type(4) { animation-delay: 4s; }
+  .suggest__card span { flex: 1; }
+  .suggest__card em { color: var(--accent); font-size: 10px; font-weight: 700; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .dot--lime { background: var(--accent); } .dot--blue { background: #8cc8f0; } .dot--amber { background: #f2c86b; }
+  .suggest__progress { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 10px; margin-top: 4px; color: var(--muted); font-size: 10px; }
+  .suggest__progress i { height: 5px; border-radius: 9px; background: var(--line); overflow: hidden; }
+  .suggest__progress i b { display: block; height: 100%; background: var(--accent); animation: fill 6s ease-in-out infinite; }
+
+  /* Editor de e-mail */
+  .cx-mock--email { --bg: #f4f2ee; --line: #ddd8d0; --text: #2b2b28; --muted: #8b857c; background-image: radial-gradient(#0000000a 1px, transparent 1px); }
+  .editor { display: grid; grid-template-columns: 74px 1fr; gap: 12px; height: 100%; }
+  .editor__blocks { display: flex; flex-direction: column; gap: 6px; }
+  .editor__blocks span { padding: 7px 8px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--muted); font-size: 10px; }
+  .editor__blocks .is-dragging { border-color: #6f9b45; color: #3f6a1d; }
+  .editor__canvas { position: relative; display: grid; place-items: center; border: 1px dashed var(--line); border-radius: 10px; }
+  .mail { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 72%; padding: 12px; border-radius: 8px; background: #fff; box-shadow: 0 6px 20px #0000000f; }
+  .mail b, .mail i, .mail small { display: block; border-radius: 4px; }
+  .mail__logo { width: 34px; height: 8px; background: #2b2b28; }
+  .mail__hero { width: 100%; height: 44px; background: linear-gradient(120deg, #dce9cf, #f1e2c8); }
+  .mail i { width: 100%; height: 5px; background: #e5e1da; } .mail i.short { width: 60%; }
+  .mail__button { width: 70px; height: 16px; background: #6f9b45; animation: drop 6s ease infinite; transform-origin: center; }
+  .mail__footer { width: 50%; height: 4px; background: #eeeae4; }
+  .ghost { position: absolute; left: -64px; top: 28px; padding: 5px 9px; border-radius: 7px; background: #6f9b45; color: #fff; font-size: 10px; box-shadow: 0 6px 14px #0000001f; animation: drag 6s ease infinite; }
+
+  /* Páginas geradas por IA */
+  .builder { display: flex; flex-direction: column; gap: 9px; height: 100%; }
+  .builder__prompt { display: flex; gap: 7px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); }
+  .typing { overflow: hidden; white-space: nowrap; width: 0; animation: type 7s steps(30) infinite; }
+  .builder__page { display: flex; flex-direction: column; gap: 5px; flex: 1; padding: 8px; border-radius: 10px; background: #f5f7f2; }
+  .section { opacity: 0; border-radius: 6px; padding: 6px; background: #fff; animation: section 7s ease infinite; }
+  .section--1 { animation-delay: .4s; } .section--2 { animation-delay: .9s; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; } .section--3 { animation-delay: 1.4s; display: grid; place-items: center; }
+  .section--1 b { display: block; width: 55%; height: 8px; border-radius: 3px; background: #23302a; margin-bottom: 5px; }
+  .section i { display: block; height: 4px; border-radius: 3px; background: #c9d2c5; margin-top: 3px; } .section i.short { width: 70%; }
+  .section--2 span { height: 18px; border-radius: 4px; background: #dfe9d3; }
+  .cta { display: block; width: 74px; height: 12px; border-radius: 6px; background: #8fc35a; }
+  .builder__check { display: flex; gap: 6px; }
+  .builder__check span { flex: 1; padding: 4px 0; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); font-size: 9.5px; text-align: center; animation: check 7s ease infinite; }
+  .builder__check span:nth-child(1) { animation-delay: 3.4s; } .builder__check span:nth-child(2) { animation-delay: 3.9s; } .builder__check span:nth-child(3) { animation-delay: 4.4s; }
+
+  /* Mercado de afiliação */
+  .cx-mock--marketplace { --bg: #f7f4ff; --panel: #fff; --line: #e3dcf5; --text: #2c2540; --muted: #8a80a3; --accent: #7a5cf0; background-image: radial-gradient(#3a1d8f0d 1px, transparent 1px); }
+  .market { display: flex; flex-direction: column; justify-content: center; gap: 12px; height: 100%; }
+  .market__profile { display: flex; align-items: center; gap: 10px; padding: 9px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); }
+  .avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, #c8b8ff, #ffc9a8); }
+  .market__profile span { flex: 1; display: grid; gap: 4px; }
+  .market__profile strong { width: 90px; height: 7px; border-radius: 3px; background: #3a3150; }
+  .market__profile small { width: 60px; height: 5px; border-radius: 3px; background: #d9d2ea; }
+  .market__profile em { padding: 4px 9px; border-radius: 999px; background: #eee8ff; color: var(--accent); font-size: 10px; font-weight: 700; }
+  .market__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .product { display: flex; flex-direction: column; gap: 4px; padding: 7px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); animation: float 6s ease-in-out infinite; animation-delay: calc(var(--i) * .6s); }
+  .product b { height: 46px; border-radius: 6px; background: linear-gradient(135deg, #e6defc, #fbe7da); }
+  .product i { height: 4px; border-radius: 3px; background: #e2dcef; } .product i.short { width: 60%; }
+  .product span { margin-top: 3px; padding: 3px 0; border-radius: 6px; background: var(--accent); color: #fff; font-size: 9px; text-align: center; }
+
+  /* Segmentos do CRM */
+  .segments { display: flex; flex-direction: column; justify-content: center; gap: 8px; height: 100%; }
+  .rule { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); color: var(--muted); }
+  .rule b { padding: 2px 8px; border-radius: 6px; background: #2a3a2b; color: var(--accent); }
+  .rule--and { align-self: flex-start; padding: 2px 9px; border-radius: 999px; font-size: 10px; }
+  .segments__meter { display: grid; grid-template-columns: 1fr auto; gap: 6px 10px; margin-top: 4px; color: var(--muted); }
+  .segments__meter strong { color: var(--text); font-size: 15px; }
+  .count::after { content: '184'; animation: count 6s steps(1) infinite; }
+  .segments__meter .bar { grid-column: 1 / -1; height: 6px; border-radius: 9px; background: var(--line); overflow: hidden; }
+  .segments__meter .bar b { display: block; height: 100%; background: linear-gradient(90deg, #8cc8f0, var(--accent)); animation: fill 6s ease-in-out infinite; }
+
+  @keyframes rise { 0% { opacity: 0; transform: translateY(6px); } 6%, 100% { opacity: 1; transform: none; } }
+  @keyframes step { 0%, 4% { opacity: 0; transform: translateX(-4px); } 10%, 96% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+  @keyframes result { 0%, 30% { opacity: 0; transform: translateY(6px); } 38%, 96% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+  @keyframes card { 0%, 100% { border-color: var(--line); } 15%, 30% { border-color: #a7d987aa; background: #1d2a20; } }
+  @keyframes fill { 0% { width: 12%; } 60%, 100% { width: 78%; } }
+  @keyframes drag { 0%, 10% { transform: translate(0, 0); opacity: 0; } 15% { opacity: 1; } 45% { transform: translate(140px, 112px); opacity: 1; } 50%, 100% { transform: translate(140px, 112px); opacity: 0; } }
+  @keyframes drop { 0%, 45% { opacity: .15; transform: scale(.85); } 52%, 100% { opacity: 1; transform: none; } }
+  @keyframes type { 0% { width: 0; } 20%, 90% { width: 100%; } 100% { width: 0; } }
+  @keyframes section { 0%, 5% { opacity: 0; transform: translateY(5px); } 12%, 85% { opacity: 1; transform: none; } 95%, 100% { opacity: 0; } }
+  @keyframes check { 0%, 5% { border-color: var(--line); color: var(--muted); } 10%, 80% { border-color: var(--accent); color: var(--accent); background: #caf37e14; } 90%, 100% { border-color: var(--line); color: var(--muted); } }
+  @keyframes float { 50% { transform: translateY(-4px); } }
+  @keyframes count { 0% { content: '184'; } 15% { content: '184'; } 30% { content: '612'; } 45%, 100% { content: '1.248'; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cx-mock *, .cx-mock *::after { animation: none !important; }
+    .step, .chat__result, .chat__bubble--max, .section { opacity: 1; }
+    .typing { width: 100%; }
+    .ghost { display: none; }
+    .count::after { content: '1.248'; }
+  }
+</style>

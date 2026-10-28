@@ -2,17 +2,17 @@
 const experiences = [
   {
     company: "Bilhon",
-    role: "Engenheiro de Software",
+    role: "Engenheiro de Software Fullstack · IA aplicada",
     period: "2024 — agora",
     start: "2024",
     description:
-      "Desenvolvimento fullstack e evolução arquitetural de uma plataforma SaaS em monorepo, da componentização e integrações à sustentação em produção.",
+      "Desenvolvimento fullstack do Clickmax com foco no Max, o assistente de IA: tools MCP, motor de sugestões, páginas geradas por IA, editor de e-mail e Mercado de afiliação.",
     current: true,
   },
   {
     company: "RepareCar",
     role: "Engenheiro de Software · Freelance",
-    period: "2025 · 2026",
+    period: "2025 — 2026",
     start: "2025",
     description:
       "Atuei no frontend e em evoluções do backend da plataforma, desenvolvendo fluxos de ordens de serviço, checklists, orçamentos, gestão de pátio e portal do cliente.",
@@ -20,9 +20,9 @@ const experiences = [
   },
   {
     company: "Kasco P&D",
-    role: "Engenheiro de Software",
-    period: "2022 — 2024",
-    start: "2022",
+    role: "Engenheiro de Software · Meio período",
+    period: "2021 — 2025",
+    start: "2021",
     description:
       "Liderança técnica e desenvolvimento de soluções web, desktop e mobile para o setor agro.",
     current: false,
@@ -58,12 +58,15 @@ const experiences = [
       <li class:list={["timeline__item", { "is-current": experience.current }]}>
         <span class="timeline__node" aria-hidden="true"></span>
         <div class="timeline__card">
-          <div class="timeline__meta">
-            <span class="timeline__period"><time datetime={experience.start}>{experience.start}</time>{experience.period.slice(4)}</span>
-            {experience.current && <span class="timeline__badge">Em andamento</span>}
+          <div class="timeline__header">
+            <div class="timeline__title">
+              <h3>{experience.company}</h3>
+              <p class="timeline__role">{experience.role}</p>
+            </div>
+            <div class="timeline__meta">
+              <span class="timeline__period"><time datetime={experience.start}>{experience.start}</time>{experience.period.slice(4)}</span>
+            </div>
           </div>
-          <h3>{experience.company}</h3>
-          <p class="timeline__role">{experience.role}</p>
           <p class="timeline__description">{experience.description}</p>
         </div>
       </li>
@@ -158,45 +161,36 @@ const experiences = [
     background: linear-gradient(110deg, #f5faf3, #fff 75%);
   }
 
+  .timeline__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .timeline__title {
+    min-width: 0;
+  }
+
   .timeline__meta {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 13px;
+    flex-shrink: 0;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    padding-top: 3px;
+    text-align: right;
   }
 
   .timeline__period {
     color: var(--timeline-muted);
-    font-size: 0.75rem;
+    font-size: 0.68rem;
     font-weight: 600;
     font-variant-numeric: tabular-nums;
     letter-spacing: 0.02em;
+    white-space: nowrap;
   }
 
-  .timeline__badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 5px 9px;
-    border: 1px solid #d3e4d0;
-    border-radius: 999px;
-    background: #edf5e9;
-    color: #366046;
-    font-size: 0.65rem;
-    font-weight: 650;
-    line-height: 1.2;
-  }
-
-  .timeline__badge::before {
-    width: 5px;
-    height: 5px;
-    flex-shrink: 0;
-    border-radius: 50%;
-    background: #4d8658;
-    content: "";
-  }
 
   .timeline__card h3 {
     margin: 0;
@@ -241,10 +235,12 @@ const experiences = [
       border-radius: 14px;
     }
 
+    .timeline__header {
+      gap: 10px;
+    }
+
     .timeline__meta {
-      align-items: flex-start;
-      flex-direction: column;
-      gap: 8px;
+      gap: 6px;
     }
   }
 </style>

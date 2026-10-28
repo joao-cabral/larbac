@@ -1,0 +1,51 @@
+---
+import CaseStudyLayout from '../../layouts/caseStudyLayout.astro';
+import type { CaseHighlight } from '../../lib/case-study';
+
+const facts = [
+  { label: 'Empresa', value: 'Grupo ICTS' },
+  { label: 'Papel', value: 'Desenvolvedor Web/Mobile' },
+  { label: 'Período', value: '2021 — 2023' },
+];
+
+const highlights: CaseHighlight[] = [
+  {
+    mock: { source: 'case', kind: 'bluetooth' },
+    eyebrow: 'Configuração pelo celular',
+    title: 'Placas STM32 configuradas via Bluetooth',
+    text: 'O aplicativo se conecta às placas de uma linha de produção por Bluetooth e as configura para enviar dados ao broker MQTT.',
+    points: ['Pareamento Bluetooth com as placas', 'Configuração de rede Wi-Fi', 'Conexão da placa ao protocolo MQTT'],
+  },
+  {
+    mock: { source: 'case', kind: 'sensors' },
+    eyebrow: 'Leituras em tempo real',
+    title: 'Sensores na palma da mão',
+    text: 'Os dados de luminosidade, temperatura, ruído e umidade são coletados e exibidos em tempo real no app.',
+    points: ['Leitura contínua dos sensores', 'Estado reativo com MobX e Provider', 'Comunicação em tempo real via MQTT e WebSocket'],
+  },
+  {
+    mock: { source: 'case', kind: 'monitor' },
+    eyebrow: 'Painel web',
+    title: 'Monitoramento das linhas de produção',
+    text: 'Interface web em Angular para acompanhar todas as linhas de produção com suas placas instaladas e configuradas.',
+    points: ['Visão geral das linhas e placas', 'Acompanhamento em tempo real', 'Relatórios e operação dos dispositivos'],
+  },
+];
+
+const stack = [
+  { group: 'Mobile', items: ['Flutter', 'MobX', 'Provider', 'flutter_blue', 'wifi_iot'] },
+  { group: 'Comunicação', items: ['Bluetooth', 'MQTT', 'WebSocket', 'HTTP'] },
+  { group: 'Web', items: ['Angular'] },
+  { group: 'Hardware', items: ['STM32', 'Sensores ambientais'] },
+];
+---
+
+<CaseStudyLayout
+  title="Sensoriamento IoT"
+  eyebrow="Grupo ICTS · Indústria"
+  description="Aplicativo para configurar placas IoT de linhas de produção pelo celular e coletar dados dos sensores em tempo real, com um painel web para monitorar toda a operação."
+  facts={facts}
+  highlightsLead="Prévias ilustrativas, sem leituras reais, do fluxo do dispositivo ao painel."
+  highlights={highlights}
+  stack={stack}
+/>

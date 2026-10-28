@@ -3,7 +3,7 @@ interface Props { kind: 'air' | 'print'; }
 const { kind } = Astro.props;
 const star = 'M275 126L281 139L296 141L285 151L288 166L275 159L262 166L265 151L254 141L269 139Z';
 ---
-<svg class={`personal-illustration personal-illustration--${kind}`} data-personal-kind={kind} viewBox="0 0 440 220" role="img" aria-label={kind === 'air' ? 'Ilustração de um mapa de Manaus com vento em movimento e sensores de qualidade do ar' : 'Ilustração de uma impressora 3D criando uma estrela em camadas'}>
+<svg class={`personal-illustration personal-illustration--${kind}`} data-personal-kind={kind} viewBox="0 0 440 220" preserveAspectRatio="xMinYMid slice" role="img" aria-label={kind === 'air' ? 'Ilustração de um mapa de Manaus com vento em movimento e sensores de qualidade do ar' : 'Ilustração de uma impressora 3D criando uma estrela em camadas'}>
   <title>{kind === 'air' ? 'Ar Manaus — enxergar o ar, cuidar da cidade' : 'Cabral 3D Lab — ideias que ganham forma'}</title>
   {kind === 'air' ? (
     <g class="air-scene">

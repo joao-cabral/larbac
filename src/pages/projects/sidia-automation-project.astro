@@ -1,0 +1,54 @@
+---
+import CaseStudyLayout from '../../layouts/caseStudyLayout.astro';
+import type { CaseHighlight } from '../../lib/case-study';
+
+const facts = [
+  { label: 'Empresa', value: 'SIDIA' },
+  { label: 'Papel', value: 'Desenvolvedor de Testes' },
+  { label: 'Período', value: 'mar. 2019 — jun. 2021' },
+];
+
+const highlights: CaseHighlight[] = [
+  {
+    mock: { source: 'case', kind: 'tests' },
+    eyebrow: 'Automação de testes',
+    title: 'Qualidade para releases globais',
+    text: 'Planejamento, execução e desenvolvimento de testes automatizados para smartphones Samsung.',
+    points: ['Testes automatizados de funcionalidades', 'Análise de falhas e documentação de cenários', 'Acompanhamento de ciclos de validação'],
+  },
+  {
+    mock: { source: 'case', kind: 'tool' },
+    eyebrow: 'Ferramentas internas',
+    title: 'Menos etapas manuais',
+    text: 'Ferramentas com React, Electron e Python que automatizam processos que antes eram manuais, reduzindo o tempo de submissão dos testes.',
+    points: ['Aplicações desktop com React e Electron', 'Automação de processos com Python', 'Fluxo de submissão mais rápido e organizado'],
+  },
+];
+
+const foundation = {
+  title: 'Engenharia a serviço da qualidade',
+  lead: 'O trabalho uniu testes e desenvolvimento de software, em contato constante com diferentes equipes técnicas.',
+  items: [
+    { title: 'Colaboração', text: 'Validação de funcionalidades e preparação de releases com vários times.' },
+    { title: 'Diagnóstico', text: 'Investigação de falhas, documentação de problemas e apoio à correção.' },
+    { title: 'Escala', text: 'Ambiente corporativo de grande porte, com demandas e ciclos bem definidos.' },
+    { title: 'Produtividade', text: 'Equipes de QA com mais tempo para análise e menos tarefas repetitivas.' },
+  ],
+};
+
+const stack = [
+  { group: 'Ferramentas', items: ['React', 'Electron', 'Python'] },
+  { group: 'Qualidade', items: ['Testes automatizados', 'Automação de QA', 'Validação de releases'] },
+];
+---
+
+<CaseStudyLayout
+  title="Automação e qualidade"
+  eyebrow="SIDIA · Dispositivos Samsung"
+  description="Automação de testes para smartphones Samsung e desenvolvimento de ferramentas internas para tornar as equipes de QA mais eficientes."
+  facts={facts}
+  highlightsLead="Prévias ilustrativas, sem dados reais, das frentes em que atuei."
+  highlights={highlights}
+  foundation={foundation}
+  stack={stack}
+/>
