@@ -14,8 +14,8 @@ export interface ProfessionalProject {
 export const professionalProjects: ProfessionalProject[] = [
   {
     title: 'Clickmax', company: 'Bilhon', period: '2024 — agora',
-    description: 'Plataforma all-in-one para negócios digitais, com páginas, checkouts, CRM, automações e programa de afiliados.',
-    contribution: 'Arquitetura frontend, Design System e evolução de uma plataforma SaaS em produção.',
+    description: 'Plataforma all-in-one de marketing, vendas e IA, com páginas, checkouts, CRM, automações, afiliados e o assistente Max.',
+    contribution: 'Fullstack com IA aplicada: tools MCP e motor de sugestões do Max, páginas geradas por IA, editor de e-mail e Mercado de afiliação.',
     href: '/projects/clickmax-project', website: 'https://clickmax.io/',
     flow: 'clickmax', featured: true, current: true,
   },

@@ -6,7 +6,7 @@
   "phone": "+55 92 99268-9937",
   "email": "joaocabral1232@gmail.com",
   "about": [
-    "<b>Engenheiro de Software Fullstack/Mobile</b> com <b>mais de 7 anos de experiência</b> em tecnologia, desenvolvendo aplicações web, mobile e desktop. Especialista em <b>React, Next.js, TypeScript, React Native e Node.js</b>, com atuação em produtos SaaS e soluções para Agronegócio, IoT, Marketing Digital, Logística e Automação de Testes. Experiência em <b>arquitetura frontend, integração com APIs, performance, CI/CD e sustentação em produção</b>. Vivência em <b>liderança técnica, planejamento, code reviews e mentoria</b>, com colaboração direta com Produto, Design, clientes e stakeholders."
+    "<b>Engenheiro de Software Fullstack/Mobile</b> com <b>mais de 7 anos de experiência</b> em tecnologia, desenvolvendo aplicações web, mobile e desktop. Especialista em <b>React, Next.js, TypeScript, React Native e Node.js</b>, atualmente com foco em <b>IA aplicada a produto (agentes, tools MCP e geração de conteúdo)</b>, com atuação em produtos SaaS e soluções para Agronegócio, IoT, Marketing Digital, Logística e Automação de Testes. Experiência em <b>arquitetura frontend, integração com APIs, performance, CI/CD e sustentação em produção</b>. Vivência em <b>liderança técnica, planejamento, code reviews e mentoria</b>, com colaboração direta com Produto, Design, clientes e stakeholders."
   ],
   "educationName": "Formação",
   "education": [
@@ -19,19 +19,19 @@
   "experienceName": "Experiência Profissional",
   "experiences": [
     {
-      "title": "Engenheiro de Software | Bilhon",
+      "title": "Engenheiro de Software Fullstack · IA aplicada | Bilhon",
       "start": "jun. 2024",
       "end": "atual",
-      "type": "Contrato PJ · meio período",
+      "type": "Contrato PJ",
       "about": [
-        "Desenvolvimento e evolução de uma plataforma SaaS de grande porte, com múltiplas aplicações e serviços integrados.",
-        "▸ Desenvolvo aplicações frontend com React, Next.js, TypeScript, TanStack e Vite, atuando da arquitetura de componentes à entrega e sustentação em produção.",
-        "▸ Participei da migração de aplicações distribuídas em micro frontends para uma arquitetura unificada em monorepo, contribuindo para a decomposição do legado e o compartilhamento de código entre aplicações.",
-        "▸ Crio e evoluo componentes reutilizáveis e padrões de interface integrados ao Design System, em colaboração direta com Design e Produto.",
-        "▸ Desenvolvo integrações por APIs REST e eventos, mantendo contratos consistentes entre interfaces, serviços e pacotes compartilhados.",
-        "▸ Aplico SSR, lazy loading e divisão de bundles, além de testes automatizados e observabilidade frontend, para melhorar performance, confiabilidade e diagnóstico de falhas.",
-        "▸ Participo de CI/CD, code reviews, rollout, monitoramento e estabilização de entregas em produção.",
-        "▸ Contribuo em decisões arquiteturais, planejamento técnico, mentoria e transformação de requisitos de negócio em soluções escaláveis."
+        "Desenvolvimento fullstack do Clickmax, plataforma SaaS de marketing, vendas e IA, com foco no Max, o assistente de IA do produto.",
+        "▸ Desenvolvo as tools MCP que permitem ao Max operar a plataforma (consultar dados, criar páginas, montar automações e navegar o usuário), com contratos tipados, paginação, validação e ações sujeitas a aprovação.",
+        "▸ Construí o motor de sugestões do Max, com detectores de oportunidade (leads sem contato, recompra, recuperação de vendas), além de memória da conta, sessões, onboarding guiado e experiência mobile do chat.",
+        "▸ Implementei o pipeline de geração de páginas por IA, com receitas por tipo de página, validação do resultado, importação de HTML e vínculo com checkout e ofertas.",
+        "▸ Migrei o editor de e-mail para GrapesJS e evoluí CRM e automações: segmentos por engajamento, confirmação de inscrição com token assinado e temperatura de contatos.",
+        "▸ Entreguei de ponta a ponta o Mercado de afiliação (perfil do produtor, vitrine e moderação), com Node.js, OpenAPI, Prisma, Kysely, PostgreSQL e mensageria AMQP.",
+        "▸ Na fase inicial, participei da migração de micro frontends para monorepo e da criação de componentes do Design System com React, Next.js, TypeScript, TanStack e Vite.",
+        "▸ Mantenho a qualidade com testes unitários e E2E, code review, Sentry, feature flags e CI/CD, acompanhando as entregas em produção."
       ]
     },
     {
@@ -93,12 +93,13 @@
   ],
   "ossTitle": "Competências Técnicas",
   "oss": [
-    "<b>Front-end:</b> React, Next.js, TypeScript, Redux, TanStack, Vite, micro frontends, Design Systems, componentes compartilhados, Material UI, Tailwind CSS, Electron",
+    "<b>Front-end:</b> React, Next.js, TypeScript, Redux, TanStack, Vite, micro frontends, GrapesJS, Design Systems, componentes compartilhados, Material UI, Tailwind CSS, Electron",
     "<b>Mobile:</b> React Native, Flutter, MobX, Provider, integração com dispositivos, MQTT, Bluetooth, rastreamento em tempo real",
-    "<b>Back-end:</b> Node.js, Express, Fastify, PostgreSQL, Kysely, OpenAPI, APIs REST",
+    "<b>Back-end:</b> Node.js, Express, Fastify, PostgreSQL, Prisma, Kysely, OpenAPI, AMQP, APIs REST",
+    "<b>IA aplicada:</b> agentes de IA, MCP (Model Context Protocol), tool calling, motores de sugestão, geração e validação de páginas",
     "<b>Arquitetura e Performance:</b> monorepos, arquitetura orientada a eventos, SSR, SSG, lazy loading, otimização de bundles, componentização escalável, observabilidade frontend",
     "<b>Cloud & DevOps:</b> AWS, CI/CD, Jenkins, Docker, pipelines de build e deploy",
-    "<b>Testes e Qualidade:</b> testes automatizados, testes unitários, automação de QA, validação de releases",
+    "<b>Testes e Qualidade:</b> testes automatizados, testes unitários, testes E2E, Sentry, automação de QA, validação de releases",
     "<b>Ferramentas e Práticas:</b> Git, Jira, metodologias ágeis, code review, liderança técnica, mentoria, sustentação em produção"
   ]
 }

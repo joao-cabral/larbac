@@ -126,6 +126,7 @@ const pdfVersion = Date.now();
 
     @media print {
       background-color: white !important;
+      overflow: visible !important;
       
       a {
         text-decoration: underline !important;
@@ -235,6 +236,7 @@ const pdfVersion = Date.now();
   }
 
   .layout {
+    box-sizing: border-box;
     max-width: 800px;
     width: 100%;
     margin: 0 auto;

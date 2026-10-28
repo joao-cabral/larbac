@@ -32,6 +32,9 @@ const browser = await puppeteer.launch({
 
 async function generatePDF(url, outputPath) {
   const page = await browser.newPage();
+  // Largura útil do A4 (210mm - 28mm de margem) dividida pela escala do PDF.
+  // Evita depender do viewport padrão de 800px do Puppeteer.
+  await page.setViewport({ width: 955, height: 1200 });
 
   await page.goto(url, {
     waitUntil: "networkidle0",
