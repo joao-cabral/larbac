@@ -1,11 +1,12 @@
 ---
 import PersonalProjectIllustration from "./PersonalProjectIllustration.astro";
 import LearningProjectIllustration from "./LearningProjectIllustration.astro";
+import ExternalIcon from "./ExternalIcon.astro";
 interface Props { limit?: number; wide?: boolean; }
 const { limit, wide = false } = Astro.props;
 const allProjects = [
-  { title: "issoeseu · Ar Manaus", category: "Dados abertos · Meio ambiente", description: "Qualidade do ar em Manaus em um mapa: sensores, previsão de fumaça e dados ambientais para entender o que estamos respirando.", href: "https://ar.issoeseu.com/", flow: "air" as const, theme: "air" },
-  { title: "Cabral 3D Lab", category: "Impressão 3D · E-commerce", description: "Da ideia ao objeto: uma loja de criações em impressão 3D, com brinquedos sensoriais, peças decorativas e novas formas de explorar.", href: "https://shop.cabral3dlab.com/", flow: "print" as const, theme: "print" },
+  { title: "Ar Manaus", category: "Dados abertos · Meio ambiente", description: "Qualidade do ar em Manaus em um mapa: sensores, previsão de fumaça e dados ambientais para entender o que estamos respirando.", href: "/projects/ar-manaus-project", flow: "air" as const, theme: "air" },
+  { title: "Cabral 3D Lab", category: "Impressão 3D · E-commerce", description: "Da ideia ao objeto: uma loja de criações em impressão 3D, com brinquedos sensoriais, peças decorativas e novas formas de explorar.", href: "/projects/cabral3dlab-project", flow: "print" as const, theme: "print" },
   { title: "Tabela de Schulte", category: "Jogo de atenção", description: "Um exercício de concentração, percepção periférica e velocidade mental. Encontre os números em ordem crescente.", href: "/games/schulte-table", flow: "schulte" as const, theme: "game" },
   { title: "LibrasCode", category: "Acessibilidade · Flutter", description: "QR Codes conectam espaços culturais a vídeos em Libras, ampliando a acessibilidade e a autonomia de pessoas surdas.", href: "/projects/librascode-project", flow: "libras" as const, theme: "libras" },
 ];
@@ -18,7 +19,7 @@ const projects = limit === undefined ? allProjects : allProjects.slice(0, limit)
       : <LearningProjectIllustration kind={project.flow} />}
     <div class="personal-card__body">
       <p class="personal-card__category">{project.category}</p>
-      <h3>{project.title}<span aria-hidden="true">↗</span></h3>
+      <h3>{project.title}{project.href.startsWith('https://') && <ExternalIcon />}</h3>
       <p>{project.description}</p>
       <span class="personal-card__link">Explorar projeto <span aria-hidden="true">→</span></span>
     </div>
@@ -44,9 +45,12 @@ const projects = limit === undefined ? allProjects : allProjects.slice(0, limit)
   .personal-card__link { margin-top: auto; display: flex; justify-content: space-between; font-size: .76rem; font-weight: 650; }
   .personal-card:focus-visible { outline: 3px solid #258753; outline-offset: 4px; }
   @container (min-width: 600px) {
-    .personal-card--wide { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); }
-    .personal-card--wide > :global(svg) { align-self: center; }
-    .personal-card--wide .personal-card__body { min-width: 0; padding: clamp(24px, 3vw, 36px); }
+    .personal-card--wide { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); min-height: 300px; }
+    .personal-card--wide > :global(svg) { align-self: stretch; height: 100%; min-height: 300px; }
+    .personal-card--wide .personal-card__body { min-width: 0; justify-content: center; padding: clamp(24px, 3vw, 36px); }
+    .personal-card--wide h3 { font-size: clamp(1.6rem, 2.6vw, 2.1rem); }
+    .personal-card--wide .personal-card__body > p:not(.personal-card__category) { font-size: .95rem; }
+    .personal-card--wide .personal-card__link { margin-top: 0; }
   }
   @media (max-width: 760px) { .personal-card { border-radius: 22px; } }
   @media (prefers-reduced-motion: reduce) { .personal-card { transition: none; } }

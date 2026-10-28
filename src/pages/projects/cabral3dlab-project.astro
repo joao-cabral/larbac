@@ -1,0 +1,72 @@
+---
+import CaseStudyLayout from '../../layouts/caseStudyLayout.astro';
+import type { CaseHighlight } from '../../lib/case-study';
+
+const facts = [
+  { label: 'Tipo', value: 'Projeto pessoal' },
+  { label: 'Papel', value: 'Produto, desenvolvimento e operação' },
+  { label: 'Tema', value: 'Impressão 3D' },
+  { label: 'Loja', value: 'shop.cabral3dlab.com', href: 'https://shop.cabral3dlab.com/' },
+];
+
+const highlights: CaseHighlight[] = [
+  {
+    mock: { source: 'image', src: '/images/projects/cabral3dlab/inicio.webp', alt: 'Página inicial da Cabral 3D Lab com a coleção de brinquedos sensoriais e produtos em destaque', position: 'top left' },
+    eyebrow: 'Vitrine',
+    title: 'Catálogo de criações em 3D',
+    text: 'Loja com coleções, categorias e produtos em destaque, de brinquedos sensoriais a peças decorativas.',
+    points: ['Coleções e campanhas na página inicial', 'Busca com debounce, categorias e ordenação de catálogos', 'Imagens otimizadas e entregues via R2'],
+  },
+  {
+    mock: { source: 'image', src: '/images/projects/cabral3dlab/produto.webp', alt: 'Página de produto da Cabral 3D Lab com galeria de imagens, preço e botões de compra', fit: 'contain', background: '#f3f6fa' },
+    eyebrow: 'Produto',
+    title: 'Galeria e detalhes do produto',
+    text: 'Cada produto tem galeria de imagens, selo de disponibilidade, especificações e variações de cor e tamanho quando existem.',
+    points: ['Galeria com miniaturas', 'Selos como “sob encomenda” e “em estoque”', 'Personalização de cores, tamanhos e imagens'],
+  },
+  {
+    mock: { source: 'image', src: '/images/projects/cabral3dlab/orcamento.webp', alt: 'Página de orçamento da Cabral 3D Lab com dois itens e o total estimado', fit: 'contain', background: '#f3f6fa' },
+    eyebrow: 'Orçamento',
+    title: 'Do carrinho ao WhatsApp',
+    text: 'O cliente monta um carrinho de orçamento e envia o pedido direto para o WhatsApp da loja, sem login nem pagamento online.',
+    points: ['Carrinho de orçamento sem cadastro', 'Mensagem pronta para o WhatsApp', 'Páginas de informação para o cliente'],
+  },
+  {
+    mock: { source: 'image', src: '/images/projects/cabral3dlab/celular.webp', alt: 'Vitrine e página de produto da Cabral 3D Lab no celular', fit: 'contain', background: '#e9eef6' },
+    eyebrow: 'No celular',
+    title: 'Loja responsiva',
+    text: 'Vitrine, produto e orçamento adaptados para quem chega pelo celular, do Instagram ou do WhatsApp.',
+    points: ['Layout responsivo da vitrine ao orçamento', 'Rodapé e navegação adaptados', 'Consentimento de cookies antes de medir'],
+  },
+];
+
+const foundation = {
+  title: 'Da ideia ao objeto',
+  lead: 'A loja nasceu como um MVP para vender criações em impressão 3D e evolui junto com a operação.',
+  items: [
+    { title: 'Admin e campanhas', text: 'Admin em subdomínio próprio para produtos, galerias e descontos, com links UTM por canal.' },
+    { title: 'Testes', text: 'RSpec, RuboCop e Brakeman no CI.' },
+    { title: 'Deploy', text: 'Docker e Kamal, com health checks em produção.' },
+    { title: 'Analytics e LGPD', text: 'Consentimento antes de medir e compras enviadas ao GA4 pelo servidor.' },
+  ],
+};
+
+const stack = [
+  { group: 'Backend', items: ['Ruby on Rails 8', 'PostgreSQL', 'Solid Queue', 'Active Storage'] },
+  { group: 'Frontend', items: ['Hotwire', 'Turbo', 'Stimulus', 'Tailwind CSS'] },
+  { group: 'Infra', items: ['Docker', 'Kamal', 'Cloudflare R2', 'GitHub Actions'] },
+  { group: 'Marketing', items: ['GA4', 'Measurement Protocol', 'UTMs', 'LGPD'] },
+];
+---
+
+<CaseStudyLayout
+  title="Cabral 3D Lab"
+  eyebrow="Projeto pessoal · Impressão 3D"
+  description="Loja de criações em impressão 3D com catálogo interativo e orçamento pelo WhatsApp, de brinquedos sensoriais a peças decorativas."
+  facts={facts}
+  highlightsLead="Telas reais da loja em funcionamento."
+  highlights={highlights}
+  foundation={foundation}
+  stack={stack}
+  cta={{ text: 'Conheça a loja em', label: 'shop.cabral3dlab.com', href: 'https://shop.cabral3dlab.com/' }}
+/>

@@ -1,0 +1,55 @@
+---
+import CaseStudyLayout from '../../layouts/caseStudyLayout.astro';
+import type { CaseHighlight } from '../../lib/case-study';
+
+const facts = [
+  { label: 'Tipo', value: 'Aplicativo mobile' },
+  { label: 'Papel', value: 'Liderança do desenvolvimento' },
+  { label: 'Tema', value: 'Acessibilidade em espaços culturais' },
+];
+
+const highlights: CaseHighlight[] = [
+  {
+    mock: { source: 'case', kind: 'scan' },
+    eyebrow: 'Leitura de QR Code',
+    title: 'Da obra ao conteúdo acessível',
+    text: 'O visitante aponta o celular para o QR Code de um espaço cultural e o vídeo correspondente começa no próprio app.',
+    points: ['Leitura de QR Codes no app', 'Início automático do conteúdo', 'Interface pensada para autonomia'],
+  },
+  {
+    mock: { source: 'case', kind: 'video' },
+    eyebrow: 'Conteúdo em Libras',
+    title: 'Vídeos que traduzem a experiência',
+    text: 'Conteúdos em Libras ampliam o acesso de pessoas surdas a museus e outros espaços culturais.',
+    points: ['Reprodução de vídeos em Libras', 'Armazenamento local com SQLite', 'Navegação simples e acessível'],
+  },
+];
+
+const foundation = {
+  title: 'Da concepção à implementação',
+  lead: 'Liderei o desenvolvimento do aplicativo, desde as decisões de arquitetura até a interface.',
+  items: [
+    { title: 'Arquitetura', text: 'Estrutura modular do app e escolha das tecnologias.' },
+    { title: 'Interface', text: 'Experiência intuitiva e acessível para os usuários.' },
+    { title: 'Dados locais', text: 'Persistência com SQLite.' },
+    { title: 'Estado', text: 'Gerenciamento de estado com MobX e Provider.' },
+  ],
+};
+
+const stack = [
+  { group: 'Mobile', items: ['Flutter', 'Dart', 'Modular', 'MobX', 'Provider'] },
+  { group: 'Recursos', items: ['QR Code', 'SQLite', 'Vídeo'] },
+];
+---
+
+<CaseStudyLayout
+  title="LibrasCode"
+  eyebrow="Acessibilidade · Flutter"
+  description="Aplicativo que usa QR Codes para levar vídeos em Libras a espaços culturais, ampliando a acessibilidade e a autonomia de pessoas surdas."
+  facts={facts}
+  highlightsTitle="Como funciona"
+  highlightsLead="Prévias ilustrativas da experiência do app."
+  highlights={highlights}
+  foundation={foundation}
+  stack={stack}
+/>

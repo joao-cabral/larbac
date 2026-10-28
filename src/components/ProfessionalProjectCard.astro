@@ -1,6 +1,7 @@
 ---
 import ProjectIllustration from './ProjectIllustration.astro';
 import ProductShowcase from './ProductShowcase.astro';
+import ExternalIcon from './ExternalIcon.astro';
 import type { ProfessionalProject } from '../lib/professional-projects';
 interface Props { project: ProfessionalProject; headingLevel?: 'h2' | 'h3'; }
 const { project, headingLevel: Heading = 'h3' } = Astro.props;
@@ -14,13 +15,12 @@ const { project, headingLevel: Heading = 'h3' } = Astro.props;
   <div class="professional-card__body">
     <div class="professional-card__meta">
       <span>{project.company} · {project.period}</span>
-      {project.current && <span class="professional-card__status">Em andamento</span>}
     </div>
     <Heading><a class="professional-card__primary" href={project.href} aria-label={`Ver minha contribuição em ${project.title}`}>{project.title}</a></Heading>
     <p class="professional-card__description">{project.featured ? project.contribution : project.description}</p>
     <div class="professional-card__actions">
       <span class="professional-card__cta" aria-hidden="true">Ver minha contribuição <span>→</span></span>
-      {project.website && <a class="professional-card__external" href={project.website} target="_blank" rel="noopener noreferrer" aria-label={`Visitar site do ${project.title} (abre em nova aba)`}>Visitar site <span aria-hidden="true">↗</span></a>}
+      {project.website && <a class="professional-card__external" href={project.website} target="_blank" rel="noopener noreferrer" aria-label={`Visitar site do ${project.title} (abre em nova aba)`}>Visitar site<ExternalIcon /></a>}
     </div>
   </div>
 </article>
@@ -30,7 +30,6 @@ const { project, headingLevel: Heading = 'h3' } = Astro.props;
   .professional-card__visual { min-width: 0; overflow: hidden; }
   .professional-card__body { display: flex; flex-direction: column; flex: 1; padding: 20px; }
   .professional-card__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-bottom: 10px; color: #637069; font-size: .62rem; line-height: 1.5; font-weight: 600; }
-  .professional-card__status { color: #306a45; }
   h2, h3 { margin: 0; font-size: 1.5rem; line-height: 1.1; letter-spacing: -.045em; }
   .professional-card__primary { color: inherit; text-decoration: none; }
   .professional-card__primary::after { content: ''; position: absolute; z-index: 1; inset: 0; border-radius: 24px; }
@@ -46,7 +45,6 @@ const { project, headingLevel: Heading = 'h3' } = Astro.props;
   .professional-card--clickmax .professional-card__description,
 
   .professional-card--clickmax .professional-card__meta { color: #aebfc0; }
-  .professional-card--clickmax .professional-card__status,
   .professional-card--clickmax .professional-card__external { color: #b9e0c0; }
   .professional-card--clickmax .professional-card__actions { border-color: #344349; }
   .professional-card--reparecar { background: #fcf3e9; border-color: #e6d6c2; }

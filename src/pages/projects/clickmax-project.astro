@@ -1,0 +1,101 @@
+---
+import CaseStudyLayout from '../../layouts/caseStudyLayout.astro';
+import type { CaseHighlight } from '../../lib/case-study';
+
+const facts = [
+  { label: 'Empresa', value: 'Bilhon' },
+  { label: 'Papel', value: 'Engenheiro de Software Fullstack · IA aplicada' },
+  { label: 'Período', value: 'jun. 2024 — atual' },
+  { label: 'Produto', value: 'clickmax.io', href: 'https://clickmax.io/' },
+];
+
+const phases = [
+  {
+    period: '2024 — 2025',
+    title: 'Frontend e Design System',
+    text: 'Migração de micro frontends para um monorepo, componentes compartilhados no Design System e modernização gradual de interfaces legadas.',
+  },
+  {
+    period: '2026 — atual',
+    title: 'Fullstack e IA aplicada',
+    text: 'Max, o assistente de IA do Clickmax: tools MCP, motor de sugestões e memória da conta. Também APIs, banco de dados, mensageria e produtos completos, do banco à interface.',
+    current: true,
+  },
+];
+
+const highlights: CaseHighlight[] = [
+  {
+    mock: { source: 'clickmax', kind: 'max' },
+    eyebrow: 'IA aplicada',
+    title: 'Max, o assistente que executa',
+    text: 'Interface de chat do Max e as tools que ele usa para operar a plataforma: consultar dados, criar páginas, montar automações e levar o usuário para a tela certa.',
+    points: ['Tools MCP com contratos tipados, paginação e validação', 'Etapas de execução visíveis no chat e ações sujeitas a aprovação', 'Memória da conta, sessões e onboarding guiado pelo Max', 'Experiência mobile em formato de app de chat'],
+  },
+  {
+    mock: { source: 'clickmax', kind: 'suggestions' },
+    eyebrow: 'Backend e produto',
+    title: 'Motor de sugestões',
+    text: 'Detectores de oportunidade que transformam dados da conta em próximos passos acionáveis, exibidos na home do Max.',
+    points: ['Leads quentes sem contato, recompra e recuperação de vendas', 'Trilhas de primeiros passos por objetivo do usuário', 'Mapa de capacidades por rota para orientar o assistente'],
+  },
+  {
+    mock: { source: 'clickmax', kind: 'pages' },
+    eyebrow: 'Geração com IA',
+    title: 'Páginas e funis criados por IA',
+    text: 'Pipeline que gera páginas a partir de receitas, valida o resultado e conecta checkout e ofertas antes da publicação.',
+    points: ['Receitas por tipo de página e validação da geração', 'Importação de HTML com estilos, undo/redo e guias de estilo', 'Revisão dos dados na primeira publicação de páginas feitas pela IA'],
+  },
+  {
+    mock: { source: 'clickmax', kind: 'email' },
+    eyebrow: 'Editor visual',
+    title: 'Editor de e-mail',
+    text: 'Migração do editor de e-mail para GrapesJS, com blocos, importação de HTML e edição direta no fluxo de automações.',
+    points: ['Seletor de links para checkout, páginas e redirecionamentos', 'Cabeçalho, rodapé e bloco de descadastro', 'Edição de imagens e alças de preenchimento e margem'],
+  },
+  {
+    mock: { source: 'clickmax', kind: 'segments' },
+    eyebrow: 'CRM e automações',
+    title: 'Segmentos, contatos e engajamento',
+    text: 'Regras de segmentação, confirmação de inscrição e temperatura dos contatos a partir do engajamento real.',
+    points: ['Segmentos por engajamento em campanhas de e-mail', 'Confirmação de inscrição com token assinado', 'Cliques em e-mail recalculando a temperatura do contato'],
+  },
+  {
+    mock: { source: 'clickmax', kind: 'marketplace' },
+    eyebrow: 'Afiliados',
+    title: 'Mercado de afiliação',
+    text: 'Perfil público do produtor, vitrine de produtos e moderação no back-office, do modelo de dados à interface.',
+    points: ['Vitrine, prova social e top revendedores com dados reais', 'Solicitações de afiliação com busca e paginação no servidor', 'Moderação de produtos e lançamento por feature flag'],
+  },
+];
+
+const stack = [
+  { group: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'TanStack', 'Vite', 'GrapesJS', 'Design System'] },
+  { group: 'Backend', items: ['Node.js', 'APIs REST', 'OpenAPI', 'Prisma', 'Kysely', 'PostgreSQL', 'AMQP'] },
+  { group: 'IA', items: ['Agentes', 'MCP', 'Tool calling', 'Skills e base de conhecimento'] },
+  { group: 'Qualidade', items: ['Testes unitários', 'E2E', 'Code review', 'Sentry', 'CI/CD', 'Feature flags'] },
+];
+
+const foundation = {
+  title: 'Base que sustenta as entregas',
+  lead: 'A fase inicial continua presente no dia a dia: o monorepo, os componentes compartilhados e as práticas de qualidade são a base para as entregas de IA.',
+  items: [
+    { title: 'Monorepo', text: 'Aplicações, bibliotecas e contratos compartilhados num só lugar, após a migração dos micro frontends.' },
+    { title: 'Design System', text: 'Componentes reutilizáveis, como cards de resultado e checklists de onboarding, documentados e testados.' },
+    { title: 'Qualidade', text: 'Tipagem estrita, testes unitários e E2E, revisão de código e diagnóstico de erros em produção.' },
+    { title: 'Produção', text: 'CI/CD, rollout por feature flag, observabilidade e sustentação.' },
+  ],
+};
+---
+
+<CaseStudyLayout
+  title="Clickmax"
+  eyebrow="Bilhon · Projeto atual"
+  description="Plataforma all-in-one de marketing, vendas e IA. Comecei pelo frontend e pelo Design System; hoje atuo de ponta a ponta, do banco de dados à interface, com foco no Max, o assistente de IA do produto."
+  facts={facts}
+  phases={phases}
+  highlightsLead="Prévias ilustrativas, sem dados reais, das áreas do produto em que trabalhei."
+  highlights={highlights}
+  foundation={foundation}
+  stack={stack}
+  cta={{ text: 'Conheça o produto em', label: 'clickmax.io', href: 'https://clickmax.io/' }}
+/>
